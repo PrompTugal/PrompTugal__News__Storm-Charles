@@ -43,6 +43,7 @@ const AGENTS = [
   ['storyteller', 'the story of the team: the cast, the primitives, ten paths, the arc', '📜', 'scroll', 'story/'],
   ['motion', 'small animations of the work: the flow format, the gallery at /flows/', '🎞️', 'film', 'flows/, app/flows/, data/flows/, tools/flows-*.mjs'],
   ['broadcast', 'the news-channel wall at /broadcast/: the storm as a live channel shows it', '📺', 'tv', 'broadcast/'],
+  ['transport', 'flights and transport, live: open data on flights at the four airports, the trains, the ferries', '✈️', 'plane', 'transport/'],
   ['meteorologist', 'the forecaster\'s reading of the storm; writes in the Web Summit site, the conductor syncs', '🌀', 'cyclone', 'data/weather/ (synced)'],
   ['researcher', 'checks the organiser\'s decisions and times; writes in the Web Summit site, the conductor syncs', '🔬', 'microscope', 'data/decisions/ (synced)'],
   ['dev', 'the watchers and the storm script (websummit.mjs, the blog poll); writes in the Web Summit site, the conductor syncs', '🛠️', 'wrench', 'tools/websummit*, app/storm.js (synced)'],
@@ -128,7 +129,7 @@ for (const o of OTHERS.slice(1)) md += `| ${o.icon.emoji} | **${o.name}** | ${o.
 md += `
 ## Reading it (the storyteller's)
 
-- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (10:12) and broadcast@ (10:13) on Dinis's words of the morning. [The arc](arc.md) tells it.
+- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six and a half hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (~10:10), broadcast@ (~10:13) and transport@ (~10:25) on Dinis's words of the morning. [The arc](arc.md) tells it.
 - The roles with the most generations are the ones that write the most and carry the most context: the librarian (${(agents.find(a => a.role === 'librarian') || {}).sessions?.length}), the designer, observability, stories@ and the journalist (4 each).
 - Icons: an emoji for text, and a glyph name for each, which incident.motion@ draws as a small SVG (the list is in [primitives.md](primitives.md)).
 

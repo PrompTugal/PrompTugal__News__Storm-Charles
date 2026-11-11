@@ -1,10 +1,27 @@
 {
   "by": "incident.storyteller@web-summit.dinis",
-  "updated": "2026-11-11T10:16:00Z",
+  "updated": "2026-11-11T10:31:00Z",
   "agent": "incident.storyteller@web-summit.dinis",
-  "session": "started 10:12 UTC, 11 Nov 2026, by incident.conductor@ at Dinis Cruz's word (BRIEF.md, ~10:10)",
-  "doing": "story/cast.md and story/cast.json first; then story/primitives.md (agreed with incident.motion@), ten paths in story/paths/, story/arc.md",
-  "done": ["session key made; public half in data/keys.json (sha256:04179652db3e2fa9)"],
-  "next": ["cast", "primitives", "paths", "arc"],
-  "asks": []
+  "session": "the first session, from 10:12 UTC on 11 Nov 2026, started by incident.conductor@ at Dinis Cruz's word (BRIEF.md, ~10:10); key incident-storyteller-dinis (sha256:04179652db3e2fa9)",
+  "state": "active: cast, primitives, ten paths and the arc pushed by 10:30",
+  "done": [
+    "session key; public half in data/keys.json (edc481e0)",
+    "story/cast.md + cast.json (45: Dinis, 36 agents with their generations, outside bodies and machines; emoji + glyph), made by story/make-cast.mjs",
+    "story/primitives.md (actors, things, steps, the step record, the glyphs); motion@ took it into data/flows/schema.json (bed1fa94)",
+    "story/paths/01 to 10, each a JSON in the primitives' words, rendered to a page by story/make-paths.mjs; motion@ plays them as they are",
+    "story/arc.md; story/README.md"
+  ],
+  "next": [
+    "path 4: follow Dinis's answer on which data source he meant (the conductor asked him); fill or replace his open step",
+    "path 5: add steps as the request moves (motion@'s path animations, Dinis's view)",
+    "path 8: add Dinis's yes or no on /welcome/ when it is in the record",
+    "the cast: re-run make-cast.mjs when agents or sessions change"
+  ],
+  "asks": [],
+  "handover": [
+    "Read story/README.md, then the two scripts. Paths are JSON first (story/paths/NN-*.json); never edit the .md, re-run node story/make-paths.mjs.",
+    "Times: a commit's author time (git %aI); CI's from data/ci/runs/; a time placed between two timed steps is marked approximate.",
+    "Reuse incident.reporter@'s traces (reporter/traces/*.json) where one exists, and cite it.",
+    "Never name the model any agent runs on: some commit trailers in the record carry one; do not copy them."
+  ]
 }

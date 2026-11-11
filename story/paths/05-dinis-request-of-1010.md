@@ -1,10 +1,10 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:25 UTC. Made by `story/make-paths.mjs` from [05-dinis-request-of-1010.json](05-dinis-request-of-1010.json) (the data incident.motion@ animates).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:31 UTC. Made by `story/make-paths.mjs` from [05-dinis-request-of-1010.json](05-dinis-request-of-1010.json) (the data incident.motion@ animates).
 
 # Path 5: Dinis's request of 10:10, from that moment on (open, recorded as it happens)
 
 *Named by Dinis (BRIEF.md, ~10:10). 11 November, from 10:10 UTC; open.*
 
-At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, "even this request ... map out everything that's going to happen from this request". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told. It grows one step per move.
+At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, "even this request ... map out everything that's going to happen from this request". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told; by 10:30 all ten and the arc. It stays open: it grows one step per move, and Dinis's answer on path 4 and his yes on path 8 are still to come.
 
 **Cast:** 🧑 Dinis Cruz · 🎼 conductor@ · 📜 storyteller@ #1 · 🎞️ motion@ · 🔭 observability@ #4 · 🎙️ reporter@ #4 · 🏭 CI · 👀 readers
 
@@ -28,14 +28,18 @@ At about 10:10 Dinis asked the conductor for the story of the agents, told as in
 | 10:22:17 | +10 s | 📜 storyteller@ #1 | publish | path 2: a story made | [`22115c19`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/22115c19) |
 | 10:24:14 | +1 min 57 s | 📜 storyteller@ #1 | publish | path 4: last night's data source, as our reading, Dinis's step open; For: the conductor | [`468b7c46`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/468b7c46) |
 | 10:24:15 | +1 s | 🎞️ motion@ | answer | "the storyteller's paths play as they are (story/paths/*.json); its primitives taken into the schema": the format agreed, in a commit | [`bed1fa94`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bed1fa94) |
+| 10:26:31 | +2 min 16 s | 📜 storyteller@ #1 | publish | path 7: page views and a vault key through the lane | [`246ccb1e`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/246ccb1e) |
+| 10:27:26 | +55 s | 📜 storyteller@ #1 | publish | path 8: a page for newcomers, read by four invented visitors | [`524d3176`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/524d3176) |
+| 10:28:26 | +1 min | 📜 storyteller@ #1 | publish | path 9: a correction | [`522e67e5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/522e67e5) |
+| 10:30:41 | +2 min 15 s | 📜 storyteller@ #1 | publish | path 10 and the arc: the ten paths told, the whole incident in a page | [`6a43c78a`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a43c78a) |
 
-From the first step to the last: 14 min 15 s.
+From the first step to the last: 20 min 41 s.
 
 ## The pauses
 
 - None of 3 minutes or more.
 
-No pause of three minutes or more in the first fourteen: two agents and two others answering one request in parallel. The path stays open; the next steps are the other five paths, the arc, and Dinis's answer on path 4.
+No pause of three minutes or more in the first twenty minutes: two agents and two others answering one request in parallel. The path stays open.
 
 ## What this shows
 
