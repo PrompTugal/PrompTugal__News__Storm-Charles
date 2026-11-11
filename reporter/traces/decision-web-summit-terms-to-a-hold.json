@@ -4,7 +4,7 @@
  "size": "decision",
  "title": "A decision without Dinis: Web Summit's terms read, and every automated read of its site stopped in under two minutes",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T06:09:29Z",
+ "updated": "2026-11-11T07:08:32Z",
  "captured_at": "2026-11-11T06:09:29Z",
  "summary": [
   "At 05:26:18 incident.sources@, on its hourly round of reading each source's terms, pushed what Web Summit's say: automated access to its websites and apps is forbidden, and so is copying, archiving, storing or summarising their content (sections 48.2 and 52.1, as that agent read them).",
@@ -21,7 +21,8 @@
   "agents/perplexity/status.json",
   "agents/archivist/status.json",
   "evidence/websummit/index.json",
-  "research/perplexity/hosts.json"
+  "research/perplexity/hosts.json",
+  "agents/conductor/holds.md"
  ],
  "input": {
   "kind": "a page read",
@@ -337,13 +338,67 @@
    "evidence": [],
    "evidence_note": "no evidence of an answer: the card is open and BRIEF.md has not changed since 02:49:18",
    "n": 7
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the decision written down",
+   "sha": "1777559b7a5098c68f95587fe38e4d64fe1fda80",
+   "in": "this trace's step 2, which said how the hold was passed is \"not in the record\"",
+   "out": "Out of time order (it documents step 2). \"the record of my two interim holds (websummit.com, IPMA's session) and two corrections to my own record\": the hold was passed \"By session message to each agent, 05:26 to 05:28; no commit of the lead's until this file\"; the two-minute blog poll was stopped by incident.dev@ at 05:27:38 (last read 05:27:31), which no commit in this repository showed; \"Nothing deleted\"; \"The lead has not read the terms itself (that would be one more automated read)\". Meanwhile incident.journalist@ told this trace as a piece, \"The first decision to stop\" (5c2749f, 06:21:00), and the board joined incident.dev@'s ask into the card (15dc24d, 06:34:21). One hour and 39 minutes after the card opened, no word from Dinis in the record.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "agents/conductor/holds.md and board/items/a-websummit-terms.json",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/conductor/holds.md",
+     "section": "Holds",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/conductor/holds.md"
+    },
+    {
+     "type": "commit",
+     "sha": "5c2749f1346dc6e7adda59347b1e0fd348d18775",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5c2749f1346dc6e7adda59347b1e0fd348d18775"
+    },
+    {
+     "type": "commit",
+     "sha": "15dc24de20d89ad40acdb4503b4b66b2632a7c52",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/15dc24de20d89ad40acdb4503b4b66b2632a7c52"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "1777559b7a5098c68f95587fe38e4d64fe1fda80",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1777559b7a5098c68f95587fe38e4d64fe1fda80"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.607",
+     "run": 607,
+     "own_run": true,
+     "served_by": "2026-11-11T06:22:31Z",
+     "push_to_served_s": 45
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T06:21:45Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.reporter@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 7,
+  "steps": 8,
   "steps_with_no_evidence": 1,
   "person_steps": 1,
-  "agent_steps": 6
+  "agent_steps": 7
  },
  "people_acted": [
   "Dinis Cruz"
@@ -354,5 +409,11 @@
   "incident.perplexity@web-summit.dinis",
   "incident.board@web-summit.dinis",
   "incident.archivist@web-summit.dinis"
+ ],
+ "corrections": [
+  {
+   "at": "2026-11-11T07:08:32Z",
+   "what": "Step 2 said the way the hold was passed was not in the record, and no step showed the blog poll stopping. The conductor wrote both down at 06:21:45 (agents/conductor/holds.md): session messages, 05:26 to 05:28; the poll stopped 05:27:38 by incident.dev@. Added as step 8; step numbers unchanged. The summary's \"four commits by four agents\" stands for this repository; a fifth agent (incident.dev@) and incident.researcher@ also stopped, outside it."
+  }
  ]
 }
