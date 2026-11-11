@@ -518,9 +518,14 @@
   // the first screen's line of what is closed and what runs: names only, each a link to its entry below
   function closedStrip(t) {
     var d = decided(); if (!d) return ''
-    // "in part": the body is listed as closed or suspended, and the data also holds a decision of the same body, with hours stated for today, that it runs
-    var day0 = T(day(t) + 'T00:00:00Z'), part = function (e) { return d.g.off.indexOf(e) >= 0 && d.g.on.concat(d.g.lim).some(function (o) { return o.by === e.by && ok(o.effect_from_utc) && T(o.effect_from_utc) >= day0 && T(o.effect_from_utc) < day0 + 864e5 }) }
-    var seen = {}, names = function (list) { return list.filter(function (e) { var k = e.by; if (seen[k] || d.nodes[k].kind === 'government') return false; seen[k] = 1; return true }).map(function (e) { return '<a href="#d-' + esc(e.id) + '">' + esc(short(d.nodes[e.by])) + '</a>' + (part(e) ? ' <i>in part</i>' : '') + (ok(e.read) ? ' <small>read ' + when(e.read, t) + '</small>' : '') }).join(', ') }
+    // "in part": read from the edge's own `scope` (incident.researcher@'s: extent whole / part / unknown, and `parts`, which part) for a body
+    // listed as closed or as running ("with limits" is partial already). Only an edge with no scope yet falls back to the old inference:
+    // closed, and the data also holds a decision of the same body, with hours stated for today, that it runs.
+    var day0 = T(day(t) + 'T00:00:00Z'), part = function (e) {
+      if (e.scope && e.scope.extent) return e.scope.extent === 'part' && d.g.lim.indexOf(e) < 0
+      return d.g.off.indexOf(e) >= 0 && d.g.on.concat(d.g.lim).some(function (o) { return o.by === e.by && ok(o.effect_from_utc) && T(o.effect_from_utc) >= day0 && T(o.effect_from_utc) < day0 + 864e5 }) }
+    var partTip = function (e) { return e.scope && e.scope.parts ? ' title="' + esc('Which part, as the data room records it: ' + e.scope.parts) + '"' : '' }
+    var seen = {}, names = function (list) { return list.filter(function (e) { var k = e.by; if (seen[k] || d.nodes[k].kind === 'government') return false; seen[k] = 1; return true }).map(function (e) { return '<a href="#d-' + esc(e.id) + '">' + esc(short(d.nodes[e.by])) + '</a>' + (part(e) ? ' <i' + partTip(e) + '>in part</i>' : '') + (ok(e.read) ? ' <small>read ' + when(e.read, t) + '</small>' : '') }).join(', ') }
     var offN = names(d.g.off), limN = names(d.g.lim), onN = names(d.g.on)   // a body is named once: closed first, then limited, then running
     return '<div class="wxc-strip3"><p><b>Closed or suspended today</b> ' + (offN || 'none in the data') + '</p>' + (limN ? '<p><b>Said it would run, with limits</b> ' + limN + '</p>' : '') + (onN ? '<p><b>Said it would run</b> ' + onN + '</p>' : '') + '<p class="prov">As each body announced, at the time read; not a live service status. <a href="#wxc-h-closed">what exactly, when, and the source of each</a></p></div>'
   }
