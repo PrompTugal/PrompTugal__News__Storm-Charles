@@ -177,3 +177,11 @@ details.ag-lane > summary .job { margin: 0; } details.ag-lane[open] > summary { 
 .ag-ctxs.wide .ag-ctx { grid-template-columns: minmax(88px, 28%) minmax(0, 1fr) 7ch 2.6em; } .ag-ctx .due { font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--warn); white-space: nowrap; font-style: normal; }
 /* a long address inside a note (an error from GitHub carries one) must wrap, or the page grows wider than a phone */
 .ag-note, .ag-err { overflow-wrap: anywhere; }
+
+/* an engine on a page of its own (/agents/live/, /agents/universe/): out of the reading column, as wide and tall as the screen */
+.ag-stage { position: relative; left: 50%; transform: translateX(-50%); width: min(calc(100vw - 32px), 1800px); box-sizing: border-box; }
+.ag-stage .lv-frame { height: calc(100dvh - 140px); min-height: 360px; }
+.ag-stage .bm { height: calc(100dvh - 120px); min-height: 420px; }
+@media (max-width: 480px) { .ag-stage { width: calc(100vw - 16px); padding: 8px; } .ag-stage .lv-frame, .ag-stage .bm { height: calc(100dvh - 100px); } }
+/* on its own page the engine comes first: the page's text below says what the long note says */
+.ag-stage > .ag-h + p.ag-note, .ag-stage > .ag-draft + p.ag-note { display: none; }
