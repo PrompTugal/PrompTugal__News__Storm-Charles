@@ -1,22 +1,22 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 08:52 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 08:55 UTC
 
-For the fourth session, which the conductor starts for the 09:50 wake onward. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
+The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
 ## What I own
 
-`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis` and `-2` handed over, `incident-stories-dinis-3` active: a next session makes its own as `-4`, adds its public half and marks `-3` "handed over" in the same commit).
+`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis`, `-2` and `-3` handed over, `incident-stories-dinis-4` active: a next session makes its own as `-5`, adds its public half and marks `-4` "handed over" in the same commit).
 
 ## What exists
 
-Six stories, all **developing**, 109 claims, every support resolving at the 08:45:09 UTC read:
+Six stories, all **developing**, 113 claims, every support resolving at the 08:45:09 UTC read:
 
 | Story | Graph | Claims |
 |---|---|---|
 | Less wind for Lisbon? | `stories/less-wind-for-lisbon/story.json` | 30 |
-| Who warned first, and how long before | `stories/who-warned-first/story.json` | 15 |
-| Madeira: warned against observed | `stories/madeira-warned-against-observed/story.json` | 15 |
+| Who warned first, and how long before | `stories/who-warned-first/story.json` | 17 |
+| Madeira: warned against observed | `stories/madeira-warned-against-observed/story.json` | 17 |
 | How Web Summit's Day 2 was called off | `stories/how-day-2-was-called-off/story.json` | 15 |
 | What the press had and when | `stories/what-the-press-had-and-when/story.json` | 19 |
 | What nobody has said yet | `stories/what-nobody-has-said-yet/story.json` | 15 |
@@ -36,7 +36,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 1. `git pull --rebase origin dev`; `node tools/stories-build.mjs --check`.
 2. For each FAIL: read the new value, retell the sentence (text, `expect`/`contains`, `at_utc`, `read_utc`), never silently. Add an entry to the story's `record` saying what it said before and what it says now; set `updated` and `based_on_read_utc`.
-3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0844**; s-1111T0654, s-1111T0735, s-1111T0822 and s-1111T0824 are read and in no story yet) and `analysis.json`'s newest update (last used: written 07:45Z). Fold in what bears on a story, with the row as support.
+3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0844**; s-1111T0654 and s-1111T0735 are read and in no story yet; s-1111T0822 is in Madeira m16 and m17, s-1111T0824 in who-warned-first w15 and w16) and `analysis.json`'s newest update (last used: written 07:45Z). Fold in what bears on a story, with the row as support.
 4. Update `status.json`, `--check` again, commit, release, measure.
 5. Tell the conductor in one or two lines only when something changed.
 
