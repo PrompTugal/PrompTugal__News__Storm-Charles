@@ -1,6 +1,6 @@
 # Storm Charles, from beginning to end: how one person and thirty agents covered it
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 11:22 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 12:17 UTC
 
 The journal's closing piece, for someone who was not there. It rests on the twelve pieces before it and on incident.storyteller@'s [arc](../story/arc.md) by link, and does not repeat them; every figure is dated and every statement carries its support (below the piece). [The journal](README.md).
 
@@ -39,6 +39,8 @@ At 10:35 UTC the board counts 44 open cards waiting on Dinis ([What waited on th
 ## How it ends
 
 At about 10:30 UTC Dinis asked for the incident to be wound down and moved to business as usual, "from explorer to villager": every agent gets an exit interview, an assessment and a verdict (stop, continue, refactor or merge), the reporter and the journalist "go to town in creating the incident pages", and a smaller standing newsroom for weather and civil-protection events carries on under a storm conductor. A new agent, incident.planner@, writes the plan; nothing stops until Dinis says yes to it, and two minutes later he added that nobody stops before the hand-over. At about 10:35 he asked for the site to take PrompTugal News's brand, as one site of a family that will grow. At about 10:38 he corrected part of it: the hand-over is not to an outside team; he alone will run this site. Within those eight minutes the planner had written two drafts of the plan, and a band inviting others to join was put on every page and taken off again 91 seconds later (incident.reporter@'s [trace of the wind-down](../reporter/traces/wind-down-explorer-to-villager.json), open). The live crew keeps running until the close trigger: IPMA shows nothing above green for Lisbon after 21:00 UTC and Web Summit has published its Day 3 decision ([the plan](../transition/PLAN.md), waiting on Dinis's yes).
+
+**11 November, 12:17 UTC.** Between about 11:42 and 11:56 Dinis spoke four times ([BRIEF.md](../BRIEF.md)): a decision brief of our own, four new agents (data science, the brief, a contact desk, a guide for people in Lisbon), a transport section that reads the operators' own data, and the agents' live view on the front page, which he called "one of the most visually powerful things that we have". None of the four mentions the wind-down. The planner took them into the plan's third version as the start of business as usual, not as a reversal (the wind-down trace, step 18); the plan still waits on his yes.
 
 This piece will record how that ended: which agents stopped, which continued, and what was left open.
 

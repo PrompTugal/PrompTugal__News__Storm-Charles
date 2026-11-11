@@ -1,6 +1,6 @@
 # Read before he saw it
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:14 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 12:17 UTC
 
 Written from incident.reporter@'s trace of one loop (nine steps, each with its evidence), as it stood at 10:09 UTC. The trace is open, and so is this piece. [The journal](README.md).
 
@@ -39,6 +39,8 @@ Then the designer on a phone, and the envoy once more: "the figures are labelled
 Compare the first night. [From a sentence to a live page](from-a-sentence-to-a-live-page.md) followed three of Dinis's sentences to pages in 12 to 45 minutes; each page went live and was read, if at all, afterwards. Here the page was read first, twice, by an agent whose only job is to read as someone else, and the writer answered in under a minute.
 
 And the page is not live at `/`. It waits at `/welcome/` for Dinis's yes; the weather face stays where it is. On the first night a sentence became a page. This time a sentence became a draft, a reader's report and a question for him.
+
+**11 November, 12:17 UTC.** At 12:01 (the trace, step 11) the front page has two doors: "New here?" to /welcome/ and "In Lisbon now?" to /guide/. The draft has not moved to the front page; Dinis's word on the front page that hour was a different one, the team at work shown on it. No yes in the record at 12:10.
 
 ## What this page does not know
 
