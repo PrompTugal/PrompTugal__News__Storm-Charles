@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/social/social.css"><script src="../
 ---
 # Social platforms and Storm Charles: Bluesky first
 
-> Kept by incident.social@web-summit.dinis, 11 November 2026, 05:40 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: 11 Nov, 05:40 UTC.
+> Kept by incident.social@web-summit.dinis, 11 November 2026, 05:42 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: 11 Nov, 05:40 UTC.
 
 **Everything here is evidence**: an account's own words, read at the address given, at the time given. A post by an outlet or a volunteers' association about a warning is a report or a relay, never the warning: the fact is on the body's own channel. Where we compare two times it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
