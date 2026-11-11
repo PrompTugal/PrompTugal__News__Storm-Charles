@@ -1,0 +1,153 @@
+{
+ "by": "incident.synthetic@web-summit.dinis",
+ "updated": "2026-11-11T10:08:00Z",
+ "label": "Invented person; not user research",
+ "persona": "investor",
+ "run": 3,
+ "start": "/welcome/",
+ "steps": [
+  {
+   "url": "/welcome/",
+   "seconds": 75,
+   "note": "3,023 px; H1 @132; decision box @~494; four figures @~720; 0 links to pack; 0 'what next'"
+  },
+  {
+   "url": "/accounts/",
+   "seconds": 30,
+   "note": "model spend 1.06 of 20 USD; provider out-of-credit row read 02:57 UTC; tokens not priced"
+  },
+  {
+   "url": "/",
+   "seconds": 20,
+   "note": "5,757 px; RED IPMA block @162; closures @749; H1 @5,304"
+  },
+  {
+   "url": "https://web-summit.sgit.ai/investors/",
+   "seconds": 25,
+   "note": "0 mentions of Storm Charles"
+  },
+  {
+   "url": "https://web-summit.sgit.ai/investors/story/",
+   "seconds": 25,
+   "note": "proof that it ships @1,515; What comes next @2,257; 0 mentions of Storm Charles"
+  }
+ ],
+ "understood_10s": "An AI-agent newsroom on one storm, one named person in charge, sourced numbers; the latest real decision on the first screen.",
+ "understood_1min": "Built in 13 hours by 31 agents and one person, gated, corrections in the open, 22 minutes source to row. Not told: whose company, whether it is for sale, what happens next.",
+ "looked_for": [
+  {
+   "what": "What is new here",
+   "result": "found",
+   "where": "/welcome/ H1 @132, paragraph @~303, decision box @~494",
+   "clicks": 0
+  },
+  {
+   "what": "Who is behind it",
+   "result": "partly",
+   "where": "Dinis Cruz @~303; '31 agents and one person' @~720; no company or pack link",
+   "clicks": 0
+  },
+  {
+   "what": "How big / what next",
+   "result": "not found",
+   "where": "0 mentions on /welcome/; pack 'What comes next' omits the storm",
+   "clicks": 3
+  }
+ ],
+ "lost": [
+  "'The costs' leads to an out-of-credit row read 02:57 UTC",
+  "nav label truncated to 'Abou' at 1,440 px",
+  "draft label and 13-hour age signal an unfinished pitch"
+ ],
+ "words_not_understood": [
+  "weighted tokens",
+  "cache reads",
+  "the gate",
+  "a capture",
+  "hash",
+  "Panel",
+  "Studio"
+ ],
+ "pack_comparison": "No link either way (0 links, 0 mentions); the welcome is now the stronger proof page, the pack's proof is still PrompTugal.news alone.",
+ "would_act": "Book a call if /welcome/ linked the company and pack and said what next; invest on a cost per incident in money and the pack citing Storm Charles.",
+ "score": 3,
+ "score_reason": "The front door is tighter and shows a real decision on the first screen, but the business behind it and what repeats are still absent from both sites.",
+ "vs_run2": [
+  {
+   "finding": "No route site <-> company/pack",
+   "status": "not fixed"
+  },
+  {
+   "finding": "No 'what next' on /welcome/",
+   "status": "not fixed"
+  },
+  {
+   "finding": "Costs in tokens, stale out-of-credit row",
+   "status": "not fixed"
+  },
+  {
+   "finding": "'22 minutes' vs 'within a minute'",
+   "status": "partly"
+  },
+  {
+   "finding": "Welcome filed under Data room",
+   "status": "fixed"
+  },
+  {
+   "finding": "'1 editor' unclear",
+   "status": "fixed"
+  },
+  {
+   "finding": "Team and Board lead with backlogs",
+   "status": "held"
+  },
+  {
+   "finding": "Draft label",
+   "status": "held"
+  }
+ ],
+ "findings": [
+  {
+   "class": "costly",
+   "what": "No route to the company or pack, and back",
+   "where": "/welcome/; web-summit.sgit.ai/investors/ and /story/",
+   "measure": "0 links; 0 mentions of Storm Charles",
+   "change": "One line linking the pack; ask the pack's owner to cite Storm Charles"
+  },
+  {
+   "class": "costly",
+   "what": "No 'What next'",
+   "where": "/welcome/",
+   "measure": "3,023 px, 0 mentions of next/template/repeat",
+   "change": "Short section in Dinis's words once agreed, linking ROADMAP"
+  },
+  {
+   "class": "costly",
+   "what": "Costs in tokens; accounts open on a stale out-of-credit row",
+   "where": "/welcome/ 'The costs' @~2,150 px; /accounts/ row 2",
+   "measure": "provider row read 02:57 UTC, over 7 h old",
+   "change": "Money figure with source on /welcome/; date-flag or refresh the provider row"
+  },
+  {
+   "class": "minor",
+   "what": "Nav 'About' truncated",
+   "where": "header at 1,440 px",
+   "measure": "shows 'Abou'",
+   "change": "Let nav wrap or shorten a label"
+  },
+  {
+   "class": "minor",
+   "what": "'usually within a minute' unqualified",
+   "where": "/welcome/ @~1,800 px",
+   "measure": "1 sentence",
+   "change": "Say 'from push to served'"
+  },
+  {
+   "class": "held",
+   "what": "Draft label",
+   "where": "/welcome/ @~271 px",
+   "measure": "shown",
+   "change": "Dinis's call"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:08:39Z",
+  "label": "Invented person; not user research",
+  "persona": "journalist",
+  "run": 3,
+  "start": "/welcome/",
+  "version_seen": "v0.1.811",
+  "steps": [
+    {"url": "/welcome/", "seconds": 50, "note": "H1 132 px; latest-decision box ~500 px; figures 700 px; About highlighted, no Data room breadcrumb"},
+    {"url": "/research/media/ranking.html", "seconds": 30, "from": "welcome 1270 px", "note": "Day 2 entry at 3566 px"},
+    {"url": "/contribute.html", "seconds": 35, "from": "welcome Tell us what is wrong 2564 px", "note": "19 cards from 199 px, H1 1015 px; no press contact"},
+    {"url": "/help/cite.html", "seconds": 20, "from": "nav Help", "note": "Cite the source first 348 px; not linked from welcome"},
+    {"url": "/agents/", "seconds": 25, "from": "welcome the team 780 px", "note": "outsider paragraph first; What Dinis can unblock moved to 4430 px"},
+    {"url": "/stories/how-day-2-was-called-off/", "seconds": 30, "note": "header Written 02:33 UTC, data read 07:38 UTC unchanged"},
+    {"url": "/", "seconds": 30, "from": "See the storm, live 609 px", "note": "RED IPMA rain warning above fold; nothing on who makes it; H1 at 5340 px"}
+  ],
+  "understood_10s": "AI agents directed by one named person keep a sourced record of Storm Charles; Web Summit Day 2 is off and IPMA's red rain warning runs to 18:00, in the same screen; not a warning service.",
+  "understood_1min": "Lead figures (22-minute IPMA-to-row lag, 311 press items, who-was-first ranking) and what it is not; still no idea what PrompTugal is or who answers questions.",
+  "looked_for": [
+    {"what": "Is there a story / what is this", "result": "found", "where": "/welcome/ H1 132 px, decision box ~500 px; /research/media/ranking.html", "clicks": 0},
+    {"what": "Can I cite it, and how", "result": "found", "where": "/help/cite.html 348 px; not linked from /welcome/", "clicks": 2},
+    {"what": "Who do I call for comment", "result": "not found", "where": "/welcome/ 2564 px -> /contribute.html (GitHub issue), /outreach/ 'Nobody has been contacted yet'", "clicks": 2}
+  ],
+  "lost": [
+    "Tell us what is wrong is corrections only, the only way in",
+    "Draft note under the H1 (264 px) reads as do-not-quote",
+    "31 agents on welcome vs about two dozen on Team",
+    "Front page has no line on who runs it above the fold"
+  ],
+  "words_not_understood": ["incident.envoy@web-summit.dinis", "Labs", "Studio", "Panel", "Repo", "METAR", "CAP", "Comunicado nº2", "sha256 (why)"],
+  "would_act": "Write: yes, peg on page one. Cite: yes, authorities first. Call: blocked; would write that the project lists no press contact.",
+  "score": 4,
+  "score_reason": "Faster to the story than run 2 (peg above the fold, team page reads for outsiders), but a reporter on deadline still has nobody to ask.",
+  "vs_run2": [
+    {"finding": "blocking: no press contact", "status": "not fixed"},
+    {"finding": "costly: the team link opens on Dinis's 40-item list", "status": "fixed"},
+    {"finding": "costly: draft, words not agreed under H1", "status": "not fixed"},
+    {"finding": "costly: welcome does not link How to cite us", "status": "not fixed"},
+    {"finding": "minor: welcome under Data room", "status": "fixed"},
+    {"finding": "minor: 31 vs 32 agents", "status": "partly"},
+    {"finding": "minor: contribute H1 at 1015 px under 19 cards", "status": "not fixed"},
+    {"finding": "minor: story header times read reversed", "status": "not fixed"},
+    {"finding": "minor: About opens BRIEF.html", "status": "fixed"},
+    {"finding": "held: /agents/ calls api.github.com", "status": "not fixed"}
+  ],
+  "findings": [
+    {"class": "blocking", "what": "No press contact", "where": "/welcome/ Tell us what is wrong; /outreach/", "measure": "2564 px; 2 clicks, not found", "change": "One line within 800 px on /welcome/: role-based press address or form answered by a person, with response time"},
+    {"class": "costly", "what": "Draft note under the H1", "where": "/welcome/", "measure": "264 px", "change": "Agree the words or move the note to the footer"},
+    {"class": "costly", "what": "No Cite this link on welcome", "where": "/welcome/ Take the data", "measure": "~1504 px; 2 clicks to /help/cite.html", "change": "Add a link to /help/cite.html beside Take the data"},
+    {"class": "minor", "what": "Front page says nothing about who makes it above the fold", "where": "/", "measure": "H1 at 5340 px; only New here? at 12 px", "change": "One line under the date linking /welcome/"},
+    {"class": "minor", "what": "Agent count differs", "where": "/welcome/ 700 px vs /agents/ 0 px", "measure": "31 agents vs about two dozen", "change": "One count from one file on both"},
+    {"class": "minor", "what": "Contribute H1 below 19 cards", "where": "/contribute.html", "measure": "H1 1015 px", "change": "H1 and Three ways in first"},
+    {"class": "minor", "what": "Story header times read reversed", "where": "/stories/how-day-2-was-called-off/", "measure": "Written 02:33, data read 07:38", "change": "Say updated or reorder"},
+    {"class": "held", "what": "/agents/ requests api.github.com", "where": "/agents/", "measure": "walker external_hosts", "change": "Not the Weather face; held"}
+  ]
+}

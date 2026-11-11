@@ -1,0 +1,53 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:08:00Z",
+  "label": "Invented person; not user research",
+  "persona": "visitor",
+  "run": 3,
+  "start": "/welcome/",
+  "decision_px_welcome": 411,
+  "decision_in_first_screen": true,
+  "seconds_to_decision": 9,
+  "decision_px_front": 1593,
+  "steps": [
+    "/welcome/ screen 1: H1 at 121 px, agents paragraph 246-364 px",
+    "/welcome/ decision box at 401 px ('Web Summit' at 411 px), inside the 664 px screen, about 9 s",
+    "/welcome/ buttons 'See the storm, live' 573 px and 'How it is made' 625 px; tiles about 700-1050 px",
+    "tap 'See the storm, live' -> / (9,553 px); red IPMA box at 170 px; decision fact at 1,593 px",
+    "looks for injuries or people: nothing on /welcome/ or / screens 1-3"
+  ],
+  "understood_10s": "Site run by AI agents on the storm; Web Summit called off Day 2 (Wednesday), aims to run Day 3 (Thursday); IPMA red rain for Lisbon to 18:00. Just inside 10 s, only if he reads past the agents paragraph.",
+  "understood_1min": "Summit off today, Thursday an aim not a promise; rain warning to 18:00; one person plus 31 agents, every claim sourced. Nothing on whether people are hurt.",
+  "looked_for": [
+    {"what": "Is Web Summit on today?", "result": "found", "where": "/welcome/ box, 411 px", "clicks": 0},
+    {"what": "What is happening now?", "result": "found", "where": "/welcome/ box (IPMA red rain 09:00-18:00, read 09:03 UTC); / red box 170 px", "clicks": 0},
+    {"what": "Are people OK?", "result": "not found", "where": "/welcome/ 0-5,300 px; / screens 1-3", "clicks": 1}
+  ],
+  "lost": [
+    "H1 and first paragraph about the agents; decision below them in a muted box",
+    "'A draft for Dinis Cruz: the words are not yet agreed' casts doubt on the decision",
+    "'What stands now' opens /, where the decision is at 1,593 px",
+    "Tiles read as storm figures; no 'About this site' heading"
+  ],
+  "words_not_understood": ["AI agents", "Kept by incident.envoy@", "Panel", "Data room", "Labs", "Studio", "IPMA", "ANEPC", "UTC", "primary source", "hash", "sha256", "API", "commit", "tokens", "Comunicado nº2"],
+  "would_act": "Would forward /welcome/ to colleagues now; more readily if the decision were the first line in body type above the agents paragraph.",
+  "score": 4,
+  "score_reason": "The answer he came for is on the first screen of the shared link, with source and time; minus one for sitting under the method text in footnote style and for no word on people.",
+  "vs_run2": [
+    {"finding": "/welcome/ never states the summit decision", "status": "fixed"},
+    {"finding": "Newcomer link leads with the method; storm link below fold", "status": "partly"},
+    {"finding": "Decision on / at ~1,593 px", "status": "not fixed"},
+    {"finding": "'Are people OK' unanswered", "status": "not fixed"},
+    {"finding": "Data-room sub-bar and breadcrumb on /welcome/", "status": "fixed"},
+    {"finding": "Tiles read as storm figures", "status": "not fixed"},
+    {"finding": "Web Summit entity page not judged", "status": "held"}
+  ],
+  "findings": [
+    {"class": "costly", "what": "Decision in screen 1 but below the agents paragraph, in a muted box", "where": "/welcome/", "measure": "box at 401 px after H1 121 px and paragraph to 364 px; about 9 s", "change": "Move the box just under the H1 (~200 px) in body-size type; about 4 s"},
+    {"class": "costly", "what": "Front page still puts the decision in screen 3; 'What stands now' leads there", "where": "/", "measure": "1,593 px", "change": "One-line summit status at the top of / screen 1, or link 'What stands now' to the decision row"},
+    {"class": "costly", "what": "No line on whether people are hurt", "where": "/welcome/; / screens 1-3", "measure": "0 mentions", "change": "ANEPC-sourced line, or 'No injury or damage figures read from ANEPC yet' (no advice of our own)"},
+    {"class": "minor", "what": "'A draft for Dinis Cruz: the words are not yet agreed' undermines trust", "where": "/welcome/", "measure": "198 px", "change": "Remove once agreed, or move to the footer"},
+    {"class": "minor", "what": "Tiles lack an 'About this site' heading", "where": "/welcome/", "measure": "about 700-1,050 px", "change": "Add the heading"},
+    {"class": "held", "what": "Web Summit entity page not judged (walker script error)", "where": "/entities/organisation/websummit.html", "measure": "n/a", "change": "none"}
+  ]
+}

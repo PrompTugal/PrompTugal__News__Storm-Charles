@@ -1,4 +1,4 @@
-> Kept by incident.synthetic@web-summit.dinis, 2026-11-11, 10:03 UTC
+> Kept by incident.synthetic@web-summit.dinis, 2026-11-11, 10:09 UTC
 
 # Synthetic visitors
 
@@ -9,3 +9,4 @@ Dinis Cruz asked for this on 11 November, around 09:50 UTC (BRIEF.md, last secti
 - [The personas](personas/README.md)
 - **Run 1**: the site as it is, starting at /. [Findings, ranked](findings.md), and the four walks in [run-1/](run-1/)
 - **Run 2**: the first draft of /welcome/ (94f2ed9). [Findings, ranked](findings-run-2.md), and the four walks in [run-2/](run-2/)
+- **Run 3**: /welcome/ after 4addc33 and design round 49 (v0.1.810+). [Findings, ranked](findings-run-3.md), and the four walks in [run-3/](run-3/)

@@ -1,0 +1,55 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:08:19Z",
+  "label": "Invented person; not user research",
+  "persona": "exec",
+  "run": 3,
+  "start": "/welcome/",
+  "steps": [
+    {"url": "/welcome/", "what": "H1 132 px, lede names Dinis Cruz and AI agents, latest-decision box ~500 px, buttons 609 px, four figures ~720 px; no Data room crumb", "seconds": 60, "px": 132},
+    {"url": "/welcome/#how-it-is-made", "what": "new sentence: page goes live after the automated gate, without a person reading it first; a person sends every message", "seconds": 30, "px": 1619},
+    {"url": "/welcome/", "what": "What it is not (not a replacement for reporters); Tell us what is wrong: Contribute, Outreach", "seconds": 30, "px": 2258},
+    {"url": "/accounts/index.html", "what": "books at a glance unchanged: 1.06 of 20 USD, provider out of credit, 27 of 31, tokens not converted to money", "seconds": 40, "px": 538},
+    {"url": "/", "what": "weather console: IPMA RED at 162 px; H1 at 5,304 px of 5,757; only the New here? pill says what the site is", "seconds": 20, "px": 162},
+    {"url": "/help/cite.html", "what": "Licences: Apache-2.0 for data and code; content licence a known gap", "seconds": 25, "px": 1009},
+    {"url": "/agents/index.html", "what": "32 agents and 'about two dozen'; What Dinis can unblock moved to 4,383 px (was 295)", "seconds": 25, "px": 4383}
+  ],
+  "understood_10s": "An experiment: one man directs AI agents keeping a sourced public record of a storm in Lisbon; not a warning service.",
+  "understood_1min": "Method, proof points, and plainly that pages go live after an automated gate with no person reading first; only outgoing messages are sent by a person. Not that it is offered as a template.",
+  "looked_for": [
+    {"what": "What is this and who runs it", "result": "found", "where": "/welcome/ H1 132 px, lede ~315 px", "clicks": 0},
+    {"what": "Could we reuse it, and what it would cost", "result": "partly", "where": "/welcome/ Take the data ~1,500 px; /accounts/ 538 px (tokens, not money); no reuse offer or contact", "clicks": 1},
+    {"what": "Risk: accuracy, licensing, AI policy", "result": "partly", "where": "human review stated /welcome/ 1,619 px; /help/cite.html 1,009 px Apache-2.0 for data and code, content licence a gap; AI policy not in the body", "clicks": 2}
+  ],
+  "lost": [
+    "Agent counts differ: welcome 31, Team 32 and 'about two dozen', Accounts '27 of 31'",
+    "Front page: weather console with H1 at 5,304 px; nothing near the top says what the site is",
+    "Draft notice 'the words are not yet agreed' still at ~270 px"
+  ],
+  "words_not_understood": ["gate", "sign what they push", "capture", "hash", "sha256", "by-line (for agents)", "cache reads", "Panel", "Labs", "METAR", "IPMA", "ANEPC"],
+  "would_act": "Forward /welcome/ to her editor-in-chief as worth a 30-minute call; to take it she needs a For-your-newsroom block (what it took, how to start, whom to write to) and a content licence.",
+  "score": 3,
+  "score_reason": "The editorial model is now honest and clear, but the page never speaks to a publisher who would reuse it, cost stays in tokens, and the content licence is still a gap.",
+  "vs_run2": [
+    {"finding": "1 costly: no reuse offer for a newsroom", "status": "not fixed"},
+    {"finding": "2 costly: human review implied, not stated", "status": "fixed"},
+    {"finding": "3 costly: content licence missing", "status": "partly"},
+    {"finding": "4 costly: cost not in money", "status": "not fixed"},
+    {"finding": "5 costly: About is the raw brief; welcome under Data room", "status": "fixed"},
+    {"finding": "6 minor: agent count differs", "status": "not fixed"},
+    {"finding": "7 minor: board unusable from welcome", "status": "not fixed"},
+    {"finding": "8 minor: terms doubts first on Team", "status": "fixed"},
+    {"finding": "9 held: draft notice", "status": "not fixed"},
+    {"finding": "10 held: /agents/ requests api.github.com", "status": "not fixed"}
+  ],
+  "findings": [
+    {"class": "costly", "what": "No reuse offer for a newsroom", "where": "/welcome/", "measure": "0 of 4 H2 sections address reuse; reported in runs 1, 2 and 3", "change": "Add 'Could this work for your newsroom?' after 'What it is not': what it took, what you get, how to start, whom to write to"},
+    {"class": "costly", "what": "Front page gives no clue what the site is", "where": "/", "measure": "H1 at 5,304 px of 5,757; only the 12 px New here? pill near the top", "change": "One line under the warning band linking /welcome/: what this is"},
+    {"class": "costly", "what": "Cost only in tokens", "where": "/accounts/ 538 px; welcome The costs ~2,100 px", "measure": "'Tokens are not converted to money'", "change": "One labelled money line: model spend so far, measured"},
+    {"class": "costly", "what": "Content licence still a gap", "where": "/help/cite.html", "measure": "Licences at 1,009 px: 'a known gap'", "change": "State one; link Licences from welcome Take the data"},
+    {"class": "minor", "what": "Agent count differs across four places", "where": "/welcome/ ~720 px; /agents/ top; /accounts/ 538 px", "measure": "31 / 32 / about two dozen / 27 of 31", "change": "One figure with one source and time"},
+    {"class": "minor", "what": "AI policy only implied in the welcome body", "where": "/welcome/ How it is made 1,619 px; footer ~2,900 px", "measure": "no line on how model use is governed", "change": "One line on the model ledger and its daily cap, linking /accounts/"},
+    {"class": "held", "what": "Draft notice", "where": "/welcome/ ~270 px", "measure": "'the words are not yet agreed'", "change": "Remove on agreement"},
+    {"class": "held", "what": "/agents/ requests api.github.com", "where": "/agents/index.html", "measure": "external_hosts: api.github.com", "change": "Noted for the team"}
+  ]
+}
