@@ -71,7 +71,7 @@ for (const f of html) {
 }
 const front = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8')
 if (!/Not a warning service/.test(front)) fail('index.html: the "Not a warning service" line is missing')
-for (const need of ['api/v1/index.json', 'llms.txt', 'version.json', 'sitemap.xml']) if (!fs.existsSync(path.join(OUT, need))) fail(`_site/${need} missing`)
+for (const need of ['api/v1/index.json', 'llms.txt', 'version.json', 'sitemap.xml', 'library/index.html', 'library/index.json', 'data/agents/index.json', 'data/graph/storm.json'])   if (!fs.existsSync(path.join(OUT, need))) fail(`_site/${need} missing`)
 
 const ms = Date.now() - t0
 if (ms > 5000) warns.push(`the gate took ${ms} ms: over its 5 s budget`)
