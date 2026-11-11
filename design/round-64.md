@@ -18,3 +18,16 @@ The conductor (18:12): incident.datascience@ rebuilds `people-by-hour.json`; the
 6. **The table twin**: hour, red, orange, yellow, folded.
 
 Measured on a throwaway copy in `_site` (not in git), the 15:52 read: 27 hours; 390 px: 585 px tall, the scroll 760 in 358, no page overflow; 1280 px: 560 px tall, no scroll; paper and azulejo use their own IPMA colours; no script errors. Waiting for datascience's host page to mount it there.
+
+## Mounted (19:14)
+
+The conductor (19:12): mount it in the data room, on the exposure page, now, on the current file. Prepared through the page's front matter (`mount:`, the frame's contract; the markdown body strips raw HTML), in `incidents/2026-11-10-storm-charles/data/exposure/README.md` (incident.datascience@'s file; nothing else on it changed). A line above the chart says it shows the 15:52 UTC read and that the hours before 15:00 are being rebuilt. The part's own note now reads "hours before the read may be missing: a missing hour is not zero" (the file holds 12:00 to 02:00). **Not pushed: the policy gate refuses it (the file is incident.datascience@'s); the three lines below are with the owner and the conductor.** Measured on a local build: under the title at 667 px on a phone (511 at 1280), 599 px tall, scroll 760 in 324, no page overflow; 0 contrast failures in all five themes.
+
+The three lines to put at the top of `data/exposure/README.md` (front matter; nothing else changes):
+
+```
+---
+title: "Exposure: who and what lies under the storm (data)"
+mount: <section class="card hc-card"><h2>Residents under each level, hour by hour</h2><p class="meta">This chart shows the file's read at 15:52 UTC on 11 November; incident.datascience@ is rebuilding the hours before 15:00 UTC, and the chart fills in when the new file lands.</p><div data-hours-chart="people-by-hour.json"></div></section>
+---
+```

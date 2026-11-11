@@ -46,7 +46,7 @@
     var rows = hrs.map(function (h) { return '<tr><td>' + esc(h.hour_utc.slice(0, 16).replace('T', ' ')) + '</td><td>' + full(h.red || 0) + '</td><td>' + full(h.orange || 0) + '</td><td>' + full(h.yellow || 0) + '</td></tr>' }).join('')
     var table = '<details class="wx-table"><summary>The table</summary><table><thead><tr><th>Hour (UTC)</th><th>Red</th><th>Orange</th><th>Yellow</th></tr></thead><tbody>' + rows + '</tbody></table></details>'
     box.innerHTML = '<p class="hc-head">' + head + '</p>' + legend + '<div class="wx-scroll" tabindex="0" role="region" aria-label="Residents by hour, scrolls sideways">' + s + '</div>'
-      + '<p class="meta">Residents where they sleep (INE Census 2021), not people at risk and not visitors. IPMA drops windows that have ended, so the hours start at the read; earlier hours are not zero, they are not in this read.</p>'
+      + '<p class="meta">Residents where they sleep (INE Census 2021), not people at risk and not visitors. IPMA drops windows that have ended, so hours before the read may be missing: a missing hour is not zero.</p>'
       + prov + table
   }
   var id = 0
