@@ -1,12 +1,12 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
 | Items we read | 29: 24 articles, 3 live, 1 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 18:20 UTC |
+| First and last | 9 Nov 08:34 to 11 Nov 19:36 UTC |
 | Whose reporting | 26 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 10% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 
@@ -22,9 +22,10 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 7 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 11 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 19:04 (live entry) | +1229 min | 6 of 7 | [Vento menos intenso minimizou estragos e depressão Charles esta já a… ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:14 (live entry) | +118 min | 4 of 6 | [Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para… ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 | IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places | 11 Nov 12:33 | 11 Nov 13:44 (live entry) | +71 min | 1 of 1 | [Lisboa e Setúbal em alerta vermelho para chuva só até às 15h00 ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
-| IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00 | 11 Nov 15:55 | 11 Nov 18:09 (live entry) | +134 min | 3 of 5 | [Portugal sem avisos vermelhos após desativação em Faro ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
+| IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00 | 11 Nov 15:55 | 11 Nov 18:09 (live entry) | +134 min | 3 of 6 | [Portugal sem avisos vermelhos após desativação em Faro ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 
 ## Its sources, as far as its own pages say
 
@@ -86,4 +87,4 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 15:34 | article | Rui Frias | [Faltas ao trabalho devido ao mau tempo: Luís Neves diz que "lei é para cumprir" e pede compreensão… ↗](https://www.dn.pt/sociedade/faltas-ao-trabalho-devido-ao-mau-tempo-lus-neves-diz-que-lei-para-cumprir-e-pede-compreenso-dos-patres) |
 | 11 Nov 16:03 | video | Reinaldo Rodrigues | [Tempestade Charles atinge Lisboa: "O período mais grave está à porta" ↗](https://www.dn.pt/videos-dn/tempestade-charles-atinge-lisboa-o-perodo-mais-grave-est-porta) |
 | 11 Nov 16:09 | article | Rui Frias | [Ministro rejeita excesso de zelo na prevenção da depressão Charles: "Não podemos responder só quand… ↗](https://www.dn.pt/sociedade/ministro-rejeita-excesso-de-zelo-na-preveno-da-depresso-charles-no-podemos-responder-s-quando-h-uma-desgraa) |
-| 11 Nov 18:20 | live | Sofia Fonseca, Susete Henriques | [Portugal sem avisos vermelhos após desativação em Faro. Principais artérias em redor de Lisboa cond… ↗](https://www.dn.pt/sociedade/perodo-mais-grave-est-a-porta-avisa-mai-situao-de-alerta-no-se-prolonga-para-amanh) |
+| 11 Nov 19:36 | live | Sofia Fonseca, Susete Henriques | [Portugal sem avisos vermelhos após desativação em Faro. Principais artérias em redor de Lisboa cond… ↗](https://www.dn.pt/sociedade/perodo-mais-grave-est-a-porta-avisa-mai-situao-de-alerta-no-se-prolonga-para-amanh) |

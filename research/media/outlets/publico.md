@@ -1,6 +1,6 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 14:09 (article) | +295 min | 4 of 7 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +119 min | 5 of 7 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:00 (article) | +60 min | 4 of 6 | [Tempestade Charles encerra túneis em Lisboa e coloca Web Summit em dú… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442) |
-| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 10:39 (article) | +723 min | 5 of 5 | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos i… ↗](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 10:39 (article) | +723 min | 5 of 7 | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos i… ↗](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
 
 ## Its sources, as far as its own pages say
 

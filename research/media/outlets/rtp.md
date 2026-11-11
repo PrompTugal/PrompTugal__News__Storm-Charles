@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 51: 51 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 18:19 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 50 the desk's, 1 not read; wire share 0% |
+| Items we read | 53: 53 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 19:36 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 52 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -21,13 +21,14 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:18 (live entry) | -172 min | 3 of 7 | [Governo declara situação de alerta para quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:47 (live entry) | +38 min | 6 of 11 | [Web Summit fecha portas esta quarta-feira devido ao mau tempo ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 22:22 (article) | unknown | 2 of 4 | [22h IPMA depressão mudou a trajetória mais para sul ↗](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
-| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:08 (live entry) | +32 min | 2 of 5 | [Tempestade terá mudado de trajetória ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:08 (live entry) | +32 min | 2 of 7 | [Tempestade terá mudado de trajetória ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:22 (live entry) | +125 min | 5 of 6 | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369) |
 | IPMA lowers Santarém's rain warning from red to yellow and Leiria's from orange to yellow, 15:06 to 18:00; no change for Lisbon | 11 Nov 15:05 | 11 Nov 17:17 (article) | +131 min | 2 of 2 | [Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível ma… ↗](https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482) |
+| IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00 | 11 Nov 15:55 | 11 Nov 18:56 (live entry) | +180 min | 6 of 6 | [Portugal sem avisos vermelhos após desativação em Faro ↗](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778512) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 51 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 53 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -104,3 +105,5 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 16:59 | article | Rádio e Televisão de Portugal | ["Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/aparentemente-o-pior-ja-passou-adianta-o-ipma_v1778480) |
 | 11 Nov 17:17 | article | Rádio e Televisão de Portugal | [Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível mais elevado ↗](https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482) |
 | 11 Nov 18:19 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/depressao-charles-aparentemente-o-pior-ja-passou-adianta-o-ipma_e1778319) |
+| 11 Nov 18:56 | article | Rádio e Televisão de Portugal | [16h Charles, Governo prevê regresso à normalidade amanhã ↗](https://www.rtp.pt/noticias/noticiario-antena1/16h-charles-governo-preve-regresso-a-normalidade-amanha_a1_1778511) |
+| 11 Nov 19:36 | article | Rádio e Televisão de Portugal | [Depressão Charles. Proteção Civil contabiliza 1630 ocorrências em todo o país, a maioria inundações ↗](https://www.rtp.pt/noticias/pais/depressao-charles-protecao-civil-contabiliza-1630-ocorrencias-em-todo-o-pais-a-maioria-inundacoes_e1778319) |

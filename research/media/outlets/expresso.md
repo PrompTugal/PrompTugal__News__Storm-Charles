@@ -1,6 +1,6 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -21,7 +21,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:41 (article) | +101 min | 6 of 6 | [Lisboa com túneis, jardins e equipamentos culturais encerrados, Web S… ↗](https://expresso.pt/tempestades/2026-11-10-lisboa-com-tuneis-jardins-e-equipamentos-culturais-encerrados-web-summit-em-duvida-medidas-serao-reavaliadas-dentro-de-24h-diz-moedas-2c217504) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:39 (article) | +90 min | 10 of 11 | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 23:54 (article) | unknown | 3 of 4 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
-| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:54 (article) | +79 min | 3 of 5 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:54 (article) | +79 min | 3 of 7 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 
 ## Its sources, as far as its own pages say
 
