@@ -1,7 +1,7 @@
 {
  "about": "Model calls of the incident team, in US dollars: the model ledger's totals (one line per call through tools/llm.mjs; the cost is the one the provider reported on each call) by agent, task and model, and the spend other desks report from ledgers in their own sessions. The models named are third-party models that were called, the subject of this table, never the model an agent runs on. No prompt or answer text.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T03:02:19Z",
+ "updated": "2026-11-11T03:32:58Z",
  "currency": "USD",
  "cap": {
   "usd_per_day": 20,
@@ -19,7 +19,7 @@
   "reported_by_other_desks_usd": 0.19,
   "kind": "measured (the ledger) plus reported (other desks)",
   "source": "models/ledger-summary.json",
-  "read": "2026-11-11T02:59:24Z"
+  "read": "2026-11-11T03:06:05Z"
  },
  "most_expensive_hour": {
   "hour": "02:00",
@@ -33,18 +33,18 @@
  "ledger": {
   "kind": "measured",
   "source": "models/ledger-summary.json",
-  "read": "2026-11-11T02:59:24Z",
+  "read": "2026-11-11T03:06:05Z",
   "kept_by": "incident.models@web-summit.dinis",
   "days": [
    {
     "day": "2026-11-11",
-    "calls": 4922,
+    "calls": 4927,
     "cost_usd": 0.872425,
     "tokens_in": 1039681,
     "tokens_out": 559894,
     "by_agent": {
      "incident.models@web-summit.dinis": {
-      "calls": 4922,
+      "calls": 4927,
       "cost_usd": 0.872425,
       "tokens_in": 1039681,
       "tokens_out": 559894
@@ -94,7 +94,7 @@
       "tokens_out": 321
      },
      "WS-214/eval/warnings-in-force": {
-      "calls": 572,
+      "calls": 577,
       "cost_usd": 0.140888,
       "tokens_in": 730756,
       "tokens_out": 121028
@@ -156,7 +156,7 @@
       "tokens_out": 54808
      },
      "google/gemini-3.5-flash-lite": {
-      "calls": 330,
+      "calls": 335,
       "cost_usd": 0.012306,
       "tokens_in": 19361,
       "tokens_out": 2649
@@ -216,12 +216,22 @@
       "cost_usd": 0,
       "tokens_in": 0,
       "tokens_out": 0
+     },
+     "account_out_of_credit": {
+      "calls": 5,
+      "cost_usd": 0,
+      "tokens_in": 0,
+      "tokens_out": 0
      }
     },
     "by_hour": {
      "02:00": {
       "calls": 4922,
       "cost_usd": 0.872425
+     },
+     "03:00": {
+      "calls": 5,
+      "cost_usd": 0
      }
     }
    }
@@ -242,7 +252,7 @@
    "cost_usd": 0,
    "kind": "reported",
    "source": "agents/accountant/status.json",
-   "read": "2026-11-11T03:04:00Z"
+   "read": "2026-11-11T03:35:00Z"
   }
  ],
  "provider_account": {
@@ -257,6 +267,8 @@
   "key_limit_left_usd": 74.5,
   "state": "out of credit: every call refused with HTTP 402 since 02:55 UTC",
   "note": "The account covers more than this project: its usage is not this team's spend (about 1 US dollar today, accounts/models.json).",
+  "key_used_today_usd": 1.09,
+  "key_used_today_source": "incident.models@, by message at 03:05 UTC: the provider's count on the team's key at 02:57 UTC, everyone on it",
   "file": "accounts/provider.json"
  },
  "not_counted": "A ledger lives in the session that made the calls. A desk whose calls are in neither the ledger summary nor its own status file is not in these totals: its cell would say \"not measured\"."
