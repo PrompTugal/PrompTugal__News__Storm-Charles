@@ -1,9 +1,9 @@
 {
   "agent": "incident.ci@web-summit.dinis",
   "by": "incident.ci@web-summit.dinis",
-  "updated": "2026-11-11T03:40:00Z",
-  "state": "active: watching. 442 runs, 6 failed, none since 02:59; the deploy retry is live since run 418 and has not fired; gate step median 4 s of 8 on the runner; push to served median 32 s",
-  "last_wake": "2026-11-11T03:38:00Z",
+  "updated": "2026-11-11T04:12:00Z",
+  "state": "active: watching. 477 runs, 6 failed, none since 02:59; the deploy retry has not fired; gate step median 5 s of 8 on the runner (one run at 9 s); push to served median 33 s",
+  "last_wake": "2026-11-11T04:10:00Z",
   "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
   "key": "sha256:c3f625a55509acc1 (encryption), sha256:815a07d3a9d80692 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -25,7 +25,8 @@
     "02:36Z corrected: the times first written in this file and on the pages' Kept-by lines were estimates up to ten minutes ahead of the clock; they now give the clock's time",
     "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the menu and a Repo chip in the top bar; signed-release-record.patch rebuilt against the new release.sh (tested: signed tree OK)",
     "03:18Z wake: 414 runs and 457 commits read. Two new failures (runs 343, 344, 02:58: deploy-pages found no artifact, as 54, 55 and 205): ci/patches/deploy-retry.patch for the conductor (one more try after 8 s; a hypothesis, testable only on the runner). The gate's budget is now 8 s (the conductor, 95c0757): the pages read it from validate.mjs; two of the last 20 runs took 8 s. Fixed in tools/ci-read.mjs: a busy hour passed 256 KB and the tool stopped; an hour now splits by ten minutes. The signing patch rebuilt again (validate.mjs and the policy changed)",
-    "03:40Z wake: 442 runs and 485 commits read; no new failure, no queue over 29 s. The conductor applied deploy-retry.patch (9ed312b): tools/ci-read.mjs now records a second deploy try as its own step and a run the retry saved as deploy_retried (pipeline.deploy_retries in the index); none yet. From this commit: one trailer paragraph and no model name in Co-Authored-By, as tools/policy-check.mjs asks"
+    "03:40Z wake: 442 runs and 485 commits read; no new failure, no queue over 29 s. The conductor applied deploy-retry.patch (9ed312b): tools/ci-read.mjs now records a second deploy try as its own step and a run the retry saved as deploy_retried (pipeline.deploy_retries in the index); none yet. From this commit: one trailer paragraph and no model name in Co-Authored-By, as tools/policy-check.mjs asks",
+    "04:12Z wake: 477 runs and 523 commits read; no new failure, no retry fired, no queue over 26 s. Gate step on the runner, last 20: 3 to 9 s, median 5 s; run 474 took 9 s, the first over the 8 s budget (a warning). Here 4.0 s; the linker is down to 456 ms"
   ],
   "next": [
     "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",

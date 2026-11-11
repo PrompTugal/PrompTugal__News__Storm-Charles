@@ -1,15 +1,15 @@
 {
  "about": "The pipeline and the repository of storm-charles.promptugal.news as data: the list of the day files (runs/, commits/), the totals, the pipeline's measures, who pushes where (agents against top-level folders, by files changed), hand-offs (For: trailers), changes outside an agent's own paths, and what is and is not signed. Written by tools/ci-read.mjs, run by incident.ci@ each wake in a full clone: a snapshot as of updated, not a live feed. The pages under /ci/ draw it. No session ids.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T03:38:46Z",
+ "updated": "2026-11-11T04:10:43Z",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "web": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "6cc6041f8b8c63cc61bff7aa9acce3c6669fd0a0",
+ "head": "4c55e894a607cd12b0c722250e7c38d1bc041b7c",
  "series": "0.1",
  "read": {
-  "api": "read 2026-11-11T03:38:46Z",
-  "api_calls": 61,
+  "api": "read 2026-11-11T04:10:43Z",
+  "api_calls": 82,
   "history": "a full clone, origin/dev at head"
  },
  "files": {
@@ -49,10 +49,18 @@
    {
     "file": "runs/2026-11-11T03.json",
     "period": "2026-11-11T03",
-    "count": 96,
-    "bytes": 96979,
+    "count": 116,
+    "bytes": 123756,
     "from": "2026-11-11T03:00:08Z",
-    "to": "2026-11-11T03:37:49Z"
+    "to": "2026-11-11T03:57:06Z"
+   },
+   {
+    "file": "runs/2026-11-11T04.json",
+    "period": "2026-11-11T04",
+    "count": 15,
+    "bytes": 16972,
+    "from": "2026-11-11T04:05:27Z",
+    "to": "2026-11-11T04:09:53Z"
    }
   ],
   "commits": [
@@ -131,26 +139,34 @@
    {
     "file": "commits/2026-11-11T03.json",
     "period": "2026-11-11T03",
-    "count": 103,
-    "bytes": 128742,
+    "count": 125,
+    "bytes": 161376,
     "from": "2026-11-11T03:00:00Z",
-    "to": "2026-11-11T03:37:39Z"
+    "to": "2026-11-11T03:56:57Z"
+   },
+   {
+    "file": "commits/2026-11-11T04.json",
+    "period": "2026-11-11T04",
+    "count": 16,
+    "bytes": 16663,
+    "from": "2026-11-11T04:05:18Z",
+    "to": "2026-11-11T04:09:42Z"
    }
   ]
  },
  "tree": "tree.json",
  "totals": {
-  "commits": 485,
+  "commits": 523,
   "first_commit": "2026-11-10T21:03:38Z",
-  "last_commit": "2026-11-11T03:37:39Z",
-  "runs": 442,
+  "last_commit": "2026-11-11T04:09:42Z",
+  "runs": 477,
   "by_result": {
    "failure": 6,
-   "success": 275,
-   "cancelled": 161
+   "success": 305,
+   "cancelled": 166
   },
   "agents": 28,
-  "tags": 277,
+  "tags": 307,
   "github_releases": 0
  },
  "pipeline": {
@@ -165,9 +181,9 @@
    "measure"
   ],
   "push_to_served_s": {
-   "runs": 244,
-   "median": 32,
-   "p90": 46,
+   "runs": 274,
+   "median": 33,
+   "p90": 48,
    "max": 161,
    "min": 21,
    "source": "each successful run's own notice"
@@ -175,77 +191,91 @@
   "steps": [
    {
     "step": "set up",
-    "runs": 275,
+    "runs": 305,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 3
    },
    {
     "step": "checkout",
-    "runs": 275,
+    "runs": 305,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 6
    },
    {
     "step": "version",
-    "runs": 275,
+    "runs": 305,
     "median_s": 0,
     "p90_s": 0,
     "max_s": 1
    },
    {
     "step": "gate",
-    "runs": 275,
-    "median_s": 2,
+    "runs": 305,
+    "median_s": 3,
     "p90_s": 5,
-    "max_s": 8
+    "max_s": 9
    },
    {
     "step": "upload",
-    "runs": 275,
+    "runs": 305,
     "median_s": 2,
     "p90_s": 3,
     "max_s": 4
    },
    {
     "step": "deploy",
-    "runs": 275,
+    "runs": 305,
     "median_s": 7,
     "p90_s": 8,
     "max_s": 139
    },
    {
     "step": "tag",
-    "runs": 275,
+    "runs": 305,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 4
    },
    {
     "step": "measure",
-    "runs": 275,
+    "runs": 305,
     "median_s": 0,
     "p90_s": 1,
     "max_s": 2
+   },
+   {
+    "step": "wait",
+    "runs": 1,
+    "median_s": 8,
+    "p90_s": 8,
+    "max_s": 8
+   },
+   {
+    "step": "deploy (2nd try)",
+    "runs": 1,
+    "median_s": 6,
+    "p90_s": 6,
+    "max_s": 6
    }
   ],
   "slowest_step": {
-   "step": "deploy",
-   "runs": 275,
-   "median_s": 7,
+   "step": "wait",
+   "runs": 1,
+   "median_s": 8,
    "p90_s": 8,
-   "max_s": 139
+   "max_s": 8
   },
   "gate": {
    "budget_s": 8,
-   "last_20_max_s": 8,
-   "last_20_median_s": 4,
+   "last_20_max_s": 9,
+   "last_20_median_s": 5,
    "note": "the step's seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run's log"
   },
   "queue": {
-   "last_20_max_s": 29,
-   "last_20_median_s": 7
+   "last_20_max_s": 26,
+   "last_20_median_s": 9
   },
   "deploy_retries": [],
   "failures": [
@@ -300,132 +330,132 @@
   ],
   "last": [
    {
-    "run": 442,
-    "version": "v0.1.442",
+    "run": 477,
+    "version": "v0.1.477",
     "result": "success",
-    "agent": "incident.media",
-    "queued": "2026-11-11T03:37:49Z",
-    "push_to_served_s": 35,
-    "what": "the official gazette is not press: removed from the coverage list (224 items, 17 outlets)"
+    "agent": "incident.journalist",
+    "queued": "2026-11-11T04:09:53Z",
+    "push_to_served_s": 57,
+    "what": "tokens measured"
    },
    {
-    "run": 441,
-    "version": "v0.1.441",
-    "result": "cancelled",
-    "agent": "incident.studio",
-    "queued": "2026-11-11T03:37:35Z",
-    "push_to_served_s": null,
-    "what": "tokens measured (the fresh session's first line)"
-   },
-   {
-    "run": 440,
-    "version": "v0.1.440",
+    "run": 476,
+    "version": "v0.1.476",
     "result": "success",
-    "agent": "incident.media",
-    "queued": "2026-11-11T03:37:20Z",
-    "push_to_served_s": 31,
-    "what": "03:36 wake: sweep"
+    "agent": "incident.journalist",
+    "queued": "2026-11-11T04:09:33Z",
+    "push_to_served_s": 47,
+    "what": "a second session takes over: its session key's public half; the first session's entry marked handed over"
    },
    {
-    "run": 439,
-    "version": "v0.1.439",
-    "result": "cancelled",
-    "agent": "incident.studio",
-    "queued": "2026-11-11T03:37:16Z",
-    "push_to_served_s": null,
-    "what": "a fresh studio session takes the row: its session key (the first session's marked handed over)"
-   },
-   {
-    "run": 438,
-    "version": "v0.1.438",
+    "run": 475,
+    "version": "v0.1.475",
     "result": "success",
-    "agent": "incident.weatherwatch",
-    "queued": "2026-11-11T03:36:48Z",
-    "push_to_served_s": 35,
-    "what": "the second session's key (public half) in data/keys.json; the first session's entry marked ended"
+    "agent": "incident.journalist",
+    "queued": "2026-11-11T04:09:24Z",
+    "push_to_served_s": 32,
+    "what": "handed over to a fresh session (the conductor's word, 04:08): this session's key marked handed over; a hand-over note in"
    },
    {
-    "run": 437,
-    "version": "v0.1.437",
+    "run": 474,
+    "version": "v0.1.474",
+    "result": "success",
+    "agent": "incident.librarian",
+    "queued": "2026-11-11T04:08:10Z",
+    "push_to_served_s": 47,
+    "what": "tokens measured"
+   },
+   {
+    "run": 473,
+    "version": "v0.1.473",
+    "result": "success",
+    "agent": "incident.librarian",
+    "queued": "2026-11-11T04:07:51Z",
+    "push_to_served_s": 32,
+    "what": "the third session's key (public half); the second session's entry marked handed over"
+   },
+   {
+    "run": 472,
+    "version": "v0.1.472",
     "result": "cancelled",
-    "agent": "incident.graph",
-    "queued": "2026-11-11T03:36:43Z",
+    "agent": "incident.reporter",
+    "queued": "2026-11-11T04:07:46Z",
     "push_to_served_s": null,
     "what": "tokens measured"
    },
    {
-    "run": 436,
-    "version": "v0.1.436",
-    "result": "success",
-    "agent": "incident.graph",
-    "queued": "2026-11-11T03:36:26Z",
-    "push_to_served_s": 31,
-    "what": "a fresh graph session takes the row: its session key (the first session's marked handed over); the graph rebuilt on the "
-   },
-   {
-    "run": 435,
-    "version": "v0.1.435",
-    "result": "success",
-    "agent": "incident.studio",
-    "queued": "2026-11-11T03:35:29Z",
-    "push_to_served_s": 56,
-    "what": "tokens measured at the handover (this session's last line)"
-   },
-   {
-    "run": 434,
-    "version": "v0.1.434",
-    "result": "success",
-    "agent": "incident.studio",
-    "queued": "2026-11-11T03:35:21Z",
-    "push_to_served_s": 32,
-    "what": "the handover: agents/studio/HANDOVER.md for a fresh studio session (what it owns, the player's formula, how an explanati"
-   },
-   {
-    "run": 433,
-    "version": "v0.1.433",
+    "run": 471,
+    "version": "v0.1.471",
     "result": "cancelled",
-    "agent": "incident.weatherwatch",
-    "queued": "2026-11-11T03:35:17Z",
+    "agent": "incident.journalist",
+    "queued": "2026-11-11T04:07:43Z",
     "push_to_served_s": null,
-    "what": "handover to a fresh session: agents/weatherwatch/HANDOVER.md; the working tools and address lists in research/weather-si"
+    "what": "04:05 round: a sixth piece, \"Starting again is cheaper than remembering\" (from the reporter's seventh trace); supports r"
    },
    {
-    "run": 432,
-    "version": "v0.1.432",
+    "run": 470,
+    "version": "v0.1.470",
     "result": "success",
-    "agent": "incident.graph",
-    "queued": "2026-11-11T03:34:56Z",
-    "push_to_served_s": 37,
-    "what": "handover to a fresh session (agents/graph/HANDOVER.md); the graph rebuilt on the 03:29 data; the token line"
+    "agent": "incident.reporter",
+    "queued": "2026-11-11T04:07:27Z",
+    "push_to_served_s": 36,
+    "what": "a second session takes over: its session key's public half (the first session marked its own entry handed over)"
    },
    {
-    "run": 431,
-    "version": "v0.1.431",
+    "run": 469,
+    "version": "v0.1.469",
     "result": "success",
-    "agent": "incident.accountant",
-    "queued": "2026-11-11T03:33:22Z",
-    "push_to_served_s": 50,
-    "what": "savings: the six largest sessions are 61% of the tokens, not 59% (795 of 1,311 million)"
+    "agent": "incident.reporter",
+    "queued": "2026-11-11T04:06:36Z",
+    "push_to_served_s": 43,
+    "what": "the first reporter session's key marked handed over (a fresh session carries on from agents/reporter/HANDOVER.md and the"
+   },
+   {
+    "run": 468,
+    "version": "v0.1.468",
+    "result": "cancelled",
+    "agent": "incident.shadow",
+    "queued": "2026-11-11T04:06:28Z",
+    "push_to_served_s": null,
+    "what": "the 04:00 hour is a second recorded gap (the engines' account still out of credit); shadow-ask reads the wrapper's out-o"
+   },
+   {
+    "run": 467,
+    "version": "v0.1.467",
+    "result": "cancelled",
+    "agent": "incident.librarian",
+    "queued": "2026-11-11T04:06:16Z",
+    "push_to_served_s": null,
+    "what": "the second session's hand-over (context 248,109 after 95 calls; a third session asked of the conductor before 04:44)"
+   },
+   {
+    "run": 466,
+    "version": "v0.1.466",
+    "result": "success",
+    "agent": "incident.board",
+    "queued": "2026-11-11T04:06:10Z",
+    "push_to_served_s": 41,
+    "what": "a-llm-cap: event_utc from another repository's commit, as reported by incident.reporter@ and marked as not checked here"
    }
   ]
  },
  "agents": [
   {
    "agent": "incident.conductor",
-   "commits": 94,
-   "files": 476,
+   "commits": 95,
+   "files": 501,
    "outside": 5,
-   "shared": 255,
+   "shared": 276,
    "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T03:30:02Z",
+   "last": "2026-11-11T03:53:35Z",
    "folders": {
     ".github/": 4,
     "(root)": 25,
     "admin/": 32,
-    "agents/": 63,
+    "agents/": 65,
     "app/": 3,
     "data/": 2,
-    "incidents/": 329,
+    "incidents/": 352,
     "tools/": 15,
     "studio/": 1,
     "research/": 1,
@@ -442,21 +472,21 @@
   },
   {
    "agent": "incident.librarian",
-   "commits": 57,
-   "files": 382,
+   "commits": 68,
+   "files": 437,
    "outside": 0,
-   "shared": 4,
+   "shared": 5,
    "first": "2026-11-10T23:38:35Z",
-   "last": "2026-11-11T03:18:22Z",
+   "last": "2026-11-11T04:08:01Z",
    "folders": {
-    "data/": 2,
-    "agents/": 119,
-    "library/": 182,
-    "tools/": 31,
+    "data/": 3,
+    "agents/": 127,
+    "library/": 217,
+    "tools/": 32,
     "admin/": 2,
     "help/": 15,
-    "news/": 26,
-    "accounts/": 5
+    "news/": 33,
+    "accounts/": 8
    },
    "outside_folders": {},
    "has_key": true
@@ -499,19 +529,54 @@
    "has_key": true
   },
   {
+   "agent": "incident.weatherwatch",
+   "commits": 26,
+   "files": 692,
+   "outside": 0,
+   "shared": 2,
+   "first": "2026-11-10T23:38:13Z",
+   "last": "2026-11-11T03:41:43Z",
+   "folders": {
+    "agents/": 19,
+    "data/": 2,
+    "research/": 665,
+    "accounts/": 6
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.graph",
+   "commits": 26,
+   "files": 301,
+   "outside": 0,
+   "shared": 2,
+   "first": "2026-11-10T23:44:08Z",
+   "last": "2026-11-11T03:54:03Z",
+   "folders": {
+    "agents/": 24,
+    "data/": 203,
+    "tools/": 16,
+    "app/": 51,
+    "accounts/": 7
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
    "agent": "incident.studio",
-   "commits": 24,
-   "files": 211,
+   "commits": 26,
+   "files": 224,
    "outside": 0,
    "shared": 2,
    "first": "2026-11-11T00:38:03Z",
-   "last": "2026-11-11T03:37:22Z",
+   "last": "2026-11-11T03:55:10Z",
    "folders": {
-    "agents/": 19,
-    "app/": 133,
+    "agents/": 21,
+    "app/": 136,
     "data/": 2,
-    "studio/": 54,
-    "accounts/": 3
+    "studio/": 61,
+    "accounts/": 4
    },
    "outside_folders": {},
    "has_key": true
@@ -530,41 +595,6 @@
     "(root)": 6,
     "outreach/": 16,
     "research/": 338,
-    "accounts/": 3
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.weatherwatch",
-   "commits": 22,
-   "files": 557,
-   "outside": 0,
-   "shared": 2,
-   "first": "2026-11-10T23:38:13Z",
-   "last": "2026-11-11T03:36:44Z",
-   "folders": {
-    "agents/": 16,
-    "data/": 2,
-    "research/": 535,
-    "accounts/": 4
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.graph",
-   "commits": 22,
-   "files": 262,
-   "outside": 0,
-   "shared": 2,
-   "first": "2026-11-10T23:44:08Z",
-   "last": "2026-11-11T03:36:35Z",
-   "folders": {
-    "agents/": 20,
-    "data/": 179,
-    "tools/": 13,
-    "app/": 47,
     "accounts/": 3
    },
    "outside_folders": {},
@@ -591,17 +621,17 @@
   },
   {
    "agent": "incident.entities",
-   "commits": 16,
-   "files": 715,
+   "commits": 18,
+   "files": 776,
    "outside": 0,
    "shared": 1,
    "first": "2026-11-11T02:20:30Z",
-   "last": "2026-11-11T03:25:08Z",
+   "last": "2026-11-11T03:43:47Z",
    "folders": {
     "agents/": 6,
     "app/": 8,
     "data/": 1,
-    "entities/": 672,
+    "entities/": 733,
     "tools/": 26,
     "accounts/": 2
    },
@@ -623,6 +653,26 @@
     "evidence/": 654,
     "tools/": 13,
     "accounts/": 2
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.journalist",
+   "commits": 12,
+   "files": 73,
+   "outside": 0,
+   "shared": 4,
+   "first": "2026-11-11T02:59:44Z",
+   "last": "2026-11-11T04:09:42Z",
+   "folders": {
+    "admin/": 1,
+    "agents/": 9,
+    "app/": 5,
+    "data/": 3,
+    "journal/": 45,
+    "tools/": 6,
+    "accounts/": 4
    },
    "outside_folders": {},
    "has_key": true
@@ -668,6 +718,25 @@
    "has_key": true
   },
   {
+   "agent": "incident.board",
+   "commits": 10,
+   "files": 589,
+   "outside": 0,
+   "shared": 1,
+   "first": "2026-11-11T02:23:14Z",
+   "last": "2026-11-11T04:06:00Z",
+   "folders": {
+    "agents/": 10,
+    "app/": 4,
+    "board/": 565,
+    "data/": 1,
+    "tools/": 7,
+    "accounts/": 2
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
    "agent": "incident.stories",
    "commits": 10,
    "files": 38,
@@ -688,19 +757,19 @@
    "has_key": true
   },
   {
-   "agent": "incident.board",
-   "commits": 9,
-   "files": 587,
+   "agent": "incident.ipma",
+   "commits": 8,
+   "files": 322,
    "outside": 0,
    "shared": 1,
-   "first": "2026-11-11T02:23:14Z",
-   "last": "2026-11-11T03:29:36Z",
+   "first": "2026-11-11T02:31:46Z",
+   "last": "2026-11-11T03:43:08Z",
    "folders": {
-    "agents/": 10,
-    "app/": 4,
-    "board/": 564,
+    "agents/": 4,
+    "app/": 6,
     "data/": 1,
-    "tools/": 6,
+    "sources/": 300,
+    "tools/": 9,
     "accounts/": 2
    },
    "outside_folders": {},
@@ -726,21 +795,37 @@
    "has_key": true
   },
   {
-   "agent": "incident.journalist",
+   "agent": "incident.reporter",
    "commits": 8,
-   "files": 56,
+   "files": 40,
    "outside": 0,
-   "shared": 2,
-   "first": "2026-11-11T02:59:44Z",
-   "last": "2026-11-11T03:13:30Z",
+   "shared": 3,
+   "first": "2026-11-11T03:03:46Z",
+   "last": "2026-11-11T04:07:42Z",
    "folders": {
-    "admin/": 1,
+    "agents/": 4,
+    "data/": 3,
+    "reporter/": 26,
+    "tools/": 4,
+    "accounts/": 3
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.wikipedia",
+   "commits": 7,
+   "files": 102,
+   "outside": 0,
+   "shared": 1,
+   "first": "2026-11-11T01:43:52Z",
+   "last": "2026-11-11T03:50:43Z",
+   "folders": {
     "agents/": 7,
-    "app/": 5,
     "data/": 1,
-    "journal/": 34,
-    "tools/": 6,
-    "accounts/": 2
+    "research/": 88,
+    "tools/": 5,
+    "accounts/": 1
    },
    "outside_folders": {},
    "has_key": true
@@ -758,25 +843,6 @@
     "app/": 14,
     "labs/": 18,
     "data/": 1,
-    "accounts/": 1
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.ipma",
-   "commits": 7,
-   "files": 258,
-   "outside": 0,
-   "shared": 1,
-   "first": "2026-11-11T02:31:46Z",
-   "last": "2026-11-11T03:03:19Z",
-   "folders": {
-    "agents/": 3,
-    "app/": 6,
-    "data/": 1,
-    "sources/": 238,
-    "tools/": 9,
     "accounts/": 1
    },
    "outside_folders": {},
@@ -803,56 +869,39 @@
    "has_key": true
   },
   {
-   "agent": "incident.wikipedia",
-   "commits": 6,
-   "files": 82,
-   "outside": 0,
-   "shared": 1,
-   "first": "2026-11-11T01:43:52Z",
-   "last": "2026-11-11T02:45:16Z",
-   "folders": {
-    "agents/": 6,
-    "data/": 1,
-    "research/": 70,
-    "tools/": 5
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
    "agent": "incident.shadow",
-   "commits": 5,
-   "files": 21,
+   "commits": 6,
+   "files": 29,
    "outside": 0,
    "shared": 1,
    "first": "2026-11-11T02:26:28Z",
-   "last": "2026-11-11T03:06:43Z",
+   "last": "2026-11-11T04:06:20Z",
    "folders": {
     "data/": 1,
-    "shadow/": 13,
-    "agents/": 2,
-    "tools/": 4,
-    "accounts/": 1
+    "shadow/": 18,
+    "agents/": 3,
+    "tools/": 5,
+    "accounts/": 2
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.ci",
-   "commits": 5,
-   "files": 74,
+   "commits": 6,
+   "files": 83,
    "outside": 0,
    "shared": 1,
    "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T03:17:25Z",
+   "last": "2026-11-11T03:39:26Z",
    "folders": {
-    "agents/": 8,
+    "agents/": 9,
     "app/": 3,
-    "ci/": 19,
-    "data/": 38,
-    "tools/": 3,
+    "ci/": 21,
+    "data/": 42,
+    "tools/": 4,
     "(root)": 2,
-    "accounts/": 1
+    "accounts/": 2
    },
    "outside_folders": {},
    "has_key": true
@@ -913,24 +962,6 @@
    "has_key": true
   },
   {
-   "agent": "incident.reporter",
-   "commits": 3,
-   "files": 28,
-   "outside": 0,
-   "shared": 1,
-   "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T03:04:49Z",
-   "folders": {
-    "agents/": 2,
-    "data/": 1,
-    "reporter/": 21,
-    "tools/": 3,
-    "accounts/": 1
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
    "agent": "not stated",
    "commits": 1,
    "files": 3,
@@ -981,10 +1012,10 @@
   {
    "from": "incident.librarian",
    "to": "incident.conductor",
-   "n": 50,
+   "n": 54,
    "first": "2026-11-10T23:38:35Z",
-   "last": "2026-11-11T03:14:23Z",
-   "last_sha": "87f48ea9e4"
+   "last": "2026-11-11T04:06:12Z",
+   "last_sha": "d4a941805f"
   },
   {
    "from": "incident.designer",
@@ -1005,18 +1036,18 @@
   {
    "from": "incident.graph",
    "to": "incident.conductor",
-   "n": 19,
+   "n": 20,
    "first": "2026-11-10T23:44:08Z",
-   "last": "2026-11-11T03:36:18Z",
-   "last_sha": "a8ae84ebf8"
+   "last": "2026-11-11T03:54:03Z",
+   "last_sha": "398af7770d"
   },
   {
    "from": "incident.studio",
    "to": "incident.conductor",
-   "n": 19,
+   "n": 20,
    "first": "2026-11-11T00:38:03Z",
-   "last": "2026-11-11T03:35:18Z",
-   "last_sha": "85779c5a26"
+   "last": "2026-11-11T03:54:54Z",
+   "last_sha": "863d28febe"
   },
   {
    "from": "incident.media",
@@ -1075,6 +1106,22 @@
    "last_sha": "fd9568a8ab"
   },
   {
+   "from": "incident.journalist",
+   "to": "incident.conductor",
+   "n": 10,
+   "first": "2026-11-11T02:59:44Z",
+   "last": "2026-11-11T04:09:25Z",
+   "last_sha": "a5745e7df7"
+  },
+  {
+   "from": "incident.librarian",
+   "to": "incident.accountant",
+   "n": 10,
+   "first": "2026-11-11T03:02:01Z",
+   "last": "2026-11-11T04:08:01Z",
+   "last_sha": "7418857e27"
+  },
+  {
    "from": "incident.conductor",
    "to": "incident.dev",
    "n": 9,
@@ -1099,6 +1146,14 @@
    "last_sha": "c7389c0818"
   },
   {
+   "from": "incident.weatherwatch",
+   "to": "incident.designer",
+   "n": 9,
+   "first": "2026-11-10T23:38:13Z",
+   "last": "2026-11-11T03:41:43Z",
+   "last_sha": "fb087e0f24"
+  },
+  {
    "from": "incident.conductor",
    "to": "incident.researcher",
    "n": 8,
@@ -1113,14 +1168,6 @@
    "first": "2026-11-11T02:21:39Z",
    "last": "2026-11-11T02:42:31Z",
    "last_sha": "6823e501c5"
-  },
-  {
-   "from": "incident.weatherwatch",
-   "to": "incident.designer",
-   "n": 8,
-   "first": "2026-11-10T23:38:13Z",
-   "last": "2026-11-11T02:14:26Z",
-   "last_sha": "8571958451"
   },
   {
    "from": "incident.archivist",
@@ -1139,20 +1186,28 @@
    "last_sha": "c1ff4de25e"
   },
   {
-   "from": "incident.journalist",
-   "to": "incident.conductor",
-   "n": 7,
-   "first": "2026-11-11T02:59:44Z",
-   "last": "2026-11-11T03:13:30Z",
-   "last_sha": "7ac60926f1"
-  },
-  {
    "from": "incident.studio",
    "to": "incident.designer",
    "n": 7,
    "first": "2026-11-11T00:38:03Z",
    "last": "2026-11-11T02:59:52Z",
    "last_sha": "30d5b48d5c"
+  },
+  {
+   "from": "incident.wikipedia",
+   "to": "incident.conductor",
+   "n": 7,
+   "first": "2026-11-11T01:43:52Z",
+   "last": "2026-11-11T03:50:43Z",
+   "last_sha": "6b68676317"
+  },
+  {
+   "from": "incident.ci",
+   "to": "incident.conductor",
+   "n": 6,
+   "first": "2026-11-11T02:28:32Z",
+   "last": "2026-11-11T03:39:26Z",
+   "last_sha": "b5b3dd7fb5"
   },
   {
    "from": "incident.conductor",
@@ -1179,12 +1234,20 @@
    "last_sha": "6823e501c5"
   },
   {
-   "from": "incident.librarian",
-   "to": "incident.accountant",
+   "from": "incident.conductor",
+   "to": "incident.stories",
    "n": 6,
-   "first": "2026-11-11T03:02:01Z",
-   "last": "2026-11-11T03:14:31Z",
-   "last_sha": "8154498f49"
+   "first": "2026-11-11T02:30:07Z",
+   "last": "2026-11-11T03:53:35Z",
+   "last_sha": "78b9265cbd"
+  },
+  {
+   "from": "incident.ipma",
+   "to": "incident.conductor",
+   "n": 6,
+   "first": "2026-11-11T02:31:46Z",
+   "last": "2026-11-11T03:43:08Z",
+   "last_sha": "0d11c8e090"
   },
   {
    "from": "incident.meteorology",
@@ -1219,12 +1282,20 @@
    "last_sha": "373bb28904"
   },
   {
-   "from": "incident.wikipedia",
+   "from": "incident.weatherwatch",
    "to": "incident.conductor",
    "n": 6,
-   "first": "2026-11-11T01:43:52Z",
-   "last": "2026-11-11T02:45:16Z",
-   "last_sha": "c7541cadd9"
+   "first": "2026-11-10T23:58:52Z",
+   "last": "2026-11-11T03:39:15Z",
+   "last_sha": "94634d9469"
+  },
+  {
+   "from": "incident.weatherwatch",
+   "to": "incident.archivist",
+   "n": 6,
+   "first": "2026-11-11T02:14:26Z",
+   "last": "2026-11-11T03:41:43Z",
+   "last_sha": "fb087e0f24"
   },
   {
    "from": "incident.accountant",
@@ -1233,22 +1304,6 @@
    "first": "2026-11-11T02:58:02Z",
    "last": "2026-11-11T03:33:13Z",
    "last_sha": "e3d4f3ea23"
-  },
-  {
-   "from": "incident.ci",
-   "to": "incident.conductor",
-   "n": 5,
-   "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T03:17:25Z",
-   "last_sha": "31a5b210c9"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.stories",
-   "n": 5,
-   "first": "2026-11-11T02:30:07Z",
-   "last": "2026-11-11T03:30:02Z",
-   "last_sha": "c4d3d0e23b"
   },
   {
    "from": "incident.conductor",
@@ -1267,12 +1322,36 @@
    "last_sha": "2ecdf8ba0a"
   },
   {
-   "from": "incident.ipma",
+   "from": "incident.graph",
+   "to": "incident.entities",
+   "n": 5,
+   "first": "2026-11-11T02:16:27Z",
+   "last": "2026-11-11T03:50:04Z",
+   "last_sha": "77121bed4d"
+  },
+  {
+   "from": "incident.journalist",
+   "to": "incident.accountant",
+   "n": 5,
+   "first": "2026-11-11T03:11:56Z",
+   "last": "2026-11-11T04:09:42Z",
+   "last_sha": "4c55e894a6"
+  },
+  {
+   "from": "incident.reporter",
    "to": "incident.conductor",
    "n": 5,
-   "first": "2026-11-11T02:31:46Z",
-   "last": "2026-11-11T02:36:30Z",
-   "last_sha": "c63f8432d6"
+   "first": "2026-11-11T03:03:46Z",
+   "last": "2026-11-11T04:07:18Z",
+   "last_sha": "6a509d66f7"
+  },
+  {
+   "from": "incident.shadow",
+   "to": "incident.conductor",
+   "n": 5,
+   "first": "2026-11-11T02:26:28Z",
+   "last": "2026-11-11T04:06:20Z",
+   "last_sha": "8d60f267fe"
   },
   {
    "from": "incident.sources",
@@ -1291,12 +1370,12 @@
    "last_sha": "b93e923d60"
   },
   {
-   "from": "incident.weatherwatch",
-   "to": "incident.conductor",
+   "from": "incident.studio",
+   "to": "incident.accountant",
    "n": 5,
-   "first": "2026-11-10T23:58:52Z",
-   "last": "2026-11-11T03:35:08Z",
-   "last_sha": "4041e5cb14"
+   "first": "2026-11-11T03:03:29Z",
+   "last": "2026-11-11T03:55:10Z",
+   "last_sha": "b5c1f47378"
   },
   {
    "from": "incident.board",
@@ -1305,6 +1384,14 @@
    "first": "2026-11-11T02:23:14Z",
    "last": "2026-11-11T02:32:05Z",
    "last_sha": "c7cad93e6a"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.wikipedia",
+   "n": 4,
+   "first": "2026-11-11T01:44:49Z",
+   "last": "2026-11-11T03:53:35Z",
+   "last_sha": "78b9265cbd"
   },
   {
    "from": "incident.designer",
@@ -1323,20 +1410,28 @@
    "last_sha": "11eb094728"
   },
   {
-   "from": "incident.shadow",
-   "to": "incident.conductor",
+   "from": "incident.journalist",
+   "to": "incident.reporter",
    "n": 4,
-   "first": "2026-11-11T02:26:28Z",
-   "last": "2026-11-11T03:06:43Z",
-   "last_sha": "acea93aefe"
+   "first": "2026-11-11T02:59:44Z",
+   "last": "2026-11-11T04:07:33Z",
+   "last_sha": "4d4b6abe4a"
   },
   {
-   "from": "incident.weatherwatch",
-   "to": "incident.archivist",
+   "from": "incident.reporter",
+   "to": "incident.accountant",
    "n": 4,
-   "first": "2026-11-11T02:14:26Z",
-   "last": "2026-11-11T03:03:41Z",
-   "last_sha": "bc19a18fb7"
+   "first": "2026-11-11T03:04:49Z",
+   "last": "2026-11-11T04:07:42Z",
+   "last_sha": "9451fc3ab7"
+  },
+  {
+   "from": "incident.studio",
+   "to": "incident.librarian",
+   "n": 4,
+   "first": "2026-11-11T00:42:40Z",
+   "last": "2026-11-11T03:54:54Z",
+   "last_sha": "863d28febe"
   },
   {
    "from": "incident.conductor",
@@ -1345,14 +1440,6 @@
    "first": "2026-11-10T23:42:56Z",
    "last": "2026-11-11T00:06:37Z",
    "last_sha": "ab7f170a41"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.wikipedia",
-   "n": 3,
-   "first": "2026-11-11T01:44:49Z",
-   "last": "2026-11-11T02:18:38Z",
-   "last_sha": "4577806b72"
   },
   {
    "from": "incident.conductor",
@@ -1387,20 +1474,12 @@
    "last_sha": "17eed4a5d5"
   },
   {
-   "from": "incident.journalist",
-   "to": "incident.reporter",
+   "from": "incident.graph",
+   "to": "incident.studio",
    "n": 3,
-   "first": "2026-11-11T02:59:44Z",
-   "last": "2026-11-11T03:11:56Z",
-   "last_sha": "b0510c90c4"
-  },
-  {
-   "from": "incident.journalist",
-   "to": "incident.accountant",
-   "n": 3,
-   "first": "2026-11-11T03:11:56Z",
-   "last": "2026-11-11T03:13:30Z",
-   "last_sha": "7ac60926f1"
+   "first": "2026-11-11T02:22:07Z",
+   "last": "2026-11-11T03:50:04Z",
+   "last_sha": "77121bed4d"
   },
   {
    "from": "incident.labs",
@@ -1460,14 +1539,6 @@
   },
   {
    "from": "incident.studio",
-   "to": "incident.librarian",
-   "n": 3,
-   "first": "2026-11-11T00:42:40Z",
-   "last": "2026-11-11T03:35:18Z",
-   "last_sha": "85779c5a26"
-  },
-  {
-   "from": "incident.studio",
    "to": "incident.observability",
    "n": 3,
    "first": "2026-11-11T02:23:24Z",
@@ -1475,12 +1546,20 @@
    "last_sha": "30d5b48d5c"
   },
   {
-   "from": "incident.studio",
+   "from": "incident.weatherwatch",
    "to": "incident.accountant",
    "n": 3,
-   "first": "2026-11-11T03:03:29Z",
-   "last": "2026-11-11T03:37:22Z",
-   "last_sha": "4208013109"
+   "first": "2026-11-11T03:02:11Z",
+   "last": "2026-11-11T03:41:43Z",
+   "last_sha": "64be6afaf5"
+  },
+  {
+   "from": "incident.wikipedia",
+   "to": "incident.researcher",
+   "n": 3,
+   "first": "2026-11-11T01:52:47Z",
+   "last": "2026-11-11T03:50:43Z",
+   "last_sha": "6b68676317"
   },
   {
    "from": "incident.archivist",
@@ -1507,12 +1586,28 @@
    "last_sha": "c1ff4de25e"
   },
   {
+   "from": "incident.board",
+   "to": "incident.reporter",
+   "n": 2,
+   "first": "2026-11-11T03:06:49Z",
+   "last": "2026-11-11T04:06:00Z",
+   "last_sha": "2edf9ad201"
+  },
+  {
    "from": "incident.ci",
    "to": "incident.observability",
    "n": 2,
    "first": "2026-11-11T02:28:32Z",
    "last": "2026-11-11T03:17:25Z",
    "last_sha": "31a5b210c9"
+  },
+  {
+   "from": "incident.ci",
+   "to": "incident.accountant",
+   "n": 2,
+   "first": "2026-11-11T03:17:25Z",
+   "last": "2026-11-11T03:39:26Z",
+   "last_sha": "b5b3dd7fb5"
   },
   {
    "from": "incident.conductor",
@@ -1555,6 +1650,14 @@
    "last_sha": "d2adc44af0"
   },
   {
+   "from": "incident.entities",
+   "to": "incident.graph",
+   "n": 2,
+   "first": "2026-11-11T03:42:19Z",
+   "last": "2026-11-11T03:43:47Z",
+   "last_sha": "f117306244"
+  },
+  {
    "from": "incident.graph",
    "to": "incident.observability",
    "n": 2,
@@ -1564,11 +1667,19 @@
   },
   {
    "from": "incident.graph",
-   "to": "incident.entities",
+   "to": "incident.sources",
    "n": 2,
-   "first": "2026-11-11T02:16:27Z",
-   "last": "2026-11-11T02:17:07Z",
-   "last_sha": "129a0f7ee3"
+   "first": "2026-11-11T03:41:28Z",
+   "last": "2026-11-11T03:50:04Z",
+   "last_sha": "77121bed4d"
+  },
+  {
+   "from": "incident.graph",
+   "to": "incident.labs",
+   "n": 2,
+   "first": "2026-11-11T03:43:21Z",
+   "last": "2026-11-11T03:50:04Z",
+   "last_sha": "77121bed4d"
   },
   {
    "from": "incident.ipma",
@@ -1577,6 +1688,14 @@
    "first": "2026-11-11T02:34:18Z",
    "last": "2026-11-11T02:42:08Z",
    "last_sha": "ebcb3b0831"
+  },
+  {
+   "from": "incident.ipma",
+   "to": "incident.accountant",
+   "n": 2,
+   "first": "2026-11-11T03:03:19Z",
+   "last": "2026-11-11T03:43:08Z",
+   "last_sha": "0d11c8e090"
   },
   {
    "from": "incident.journalist",
@@ -1593,6 +1712,14 @@
    "first": "2026-11-11T02:37:21Z",
    "last": "2026-11-11T02:43:23Z",
    "last_sha": "693cde56d0"
+  },
+  {
+   "from": "incident.librarian",
+   "to": "incident.identity",
+   "n": 2,
+   "first": "2026-11-11T03:02:59Z",
+   "last": "2026-11-11T04:07:47Z",
+   "last_sha": "f469b3c877"
   },
   {
    "from": "incident.media",
@@ -1644,11 +1771,27 @@
   },
   {
    "from": "incident.reporter",
-   "to": "incident.conductor",
+   "to": "incident.journalist",
    "n": 2,
    "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T03:04:49Z",
-   "last_sha": "2df2f0f989"
+   "last": "2026-11-11T04:05:18Z",
+   "last_sha": "f44d22e634"
+  },
+  {
+   "from": "incident.reporter",
+   "to": "incident.librarian",
+   "n": 2,
+   "first": "2026-11-11T03:03:46Z",
+   "last": "2026-11-11T04:05:18Z",
+   "last_sha": "f44d22e634"
+  },
+  {
+   "from": "incident.shadow",
+   "to": "incident.accountant",
+   "n": 2,
+   "first": "2026-11-11T03:06:43Z",
+   "last": "2026-11-11T04:06:20Z",
+   "last_sha": "8d60f267fe"
   },
   {
    "from": "incident.sources",
@@ -1723,20 +1866,20 @@
    "last_sha": "c885b63445"
   },
   {
+   "from": "incident.weatherwatch",
+   "to": "incident.weather",
+   "n": 2,
+   "first": "2026-11-11T02:23:38Z",
+   "last": "2026-11-11T03:41:43Z",
+   "last_sha": "fb087e0f24"
+  },
+  {
    "from": "incident.wikipedia",
    "to": "incident.media",
    "n": 2,
    "first": "2026-11-11T01:43:52Z",
    "last": "2026-11-11T01:52:47Z",
    "last_sha": "25c7467812"
-  },
-  {
-   "from": "incident.wikipedia",
-   "to": "incident.researcher",
-   "n": 2,
-   "first": "2026-11-11T01:52:47Z",
-   "last": "2026-11-11T02:01:37Z",
-   "last_sha": "32efe7eb1a"
   },
   {
    "from": "incident.archivist",
@@ -1779,14 +1922,6 @@
    "last_sha": "ebb05c5b69"
   },
   {
-   "from": "incident.board",
-   "to": "incident.reporter",
-   "n": 1,
-   "first": "2026-11-11T03:06:49Z",
-   "last": "2026-11-11T03:06:49Z",
-   "last_sha": "c83bd7cdbb"
-  },
-  {
    "from": "incident.ci",
    "to": "incident.designer",
    "n": 1,
@@ -1801,14 +1936,6 @@
    "first": "2026-11-11T02:36:53Z",
    "last": "2026-11-11T02:36:53Z",
    "last_sha": "1f5cb6293a"
-  },
-  {
-   "from": "incident.ci",
-   "to": "incident.accountant",
-   "n": 1,
-   "first": "2026-11-11T03:17:25Z",
-   "last": "2026-11-11T03:17:25Z",
-   "last_sha": "31a5b210c9"
   },
   {
    "from": "incident.conductor",
@@ -1940,11 +2067,19 @@
   },
   {
    "from": "incident.graph",
-   "to": "incident.studio",
+   "to": "incident.meteorology",
    "n": 1,
-   "first": "2026-11-11T02:22:07Z",
-   "last": "2026-11-11T02:22:07Z",
-   "last_sha": "5176f5eeb5"
+   "first": "2026-11-11T03:41:28Z",
+   "last": "2026-11-11T03:41:28Z",
+   "last_sha": "cbeb3bef15"
+  },
+  {
+   "from": "incident.graph",
+   "to": "incident.librarian",
+   "n": 1,
+   "first": "2026-11-11T03:41:28Z",
+   "last": "2026-11-11T03:41:28Z",
+   "last_sha": "cbeb3bef15"
   },
   {
    "from": "incident.identity",
@@ -1971,12 +2106,12 @@
    "last_sha": "c63f8432d6"
   },
   {
-   "from": "incident.ipma",
-   "to": "incident.accountant",
+   "from": "incident.journalist",
+   "to": "incident.journalist",
    "n": 1,
-   "first": "2026-11-11T03:03:19Z",
-   "last": "2026-11-11T03:03:19Z",
-   "last_sha": "152e2f9622"
+   "first": "2026-11-11T04:09:15Z",
+   "last": "2026-11-11T04:09:15Z",
+   "last_sha": "0fb17c3ae6"
   },
   {
    "from": "incident.labs",
@@ -1988,19 +2123,27 @@
   },
   {
    "from": "incident.librarian",
-   "to": "incident.identity",
-   "n": 1,
-   "first": "2026-11-11T03:02:59Z",
-   "last": "2026-11-11T03:02:59Z",
-   "last_sha": "7ce6e9916d"
-  },
-  {
-   "from": "incident.librarian",
    "to": "incident.observability",
    "n": 1,
    "first": "2026-11-11T03:18:22Z",
    "last": "2026-11-11T03:18:22Z",
    "last_sha": "8e8cd93098"
+  },
+  {
+   "from": "incident.librarian",
+   "to": "incident.sources",
+   "n": 1,
+   "first": "2026-11-11T03:48:37Z",
+   "last": "2026-11-11T03:48:37Z",
+   "last_sha": "f358880c3e"
+  },
+  {
+   "from": "incident.librarian",
+   "to": "incident.studio",
+   "n": 1,
+   "first": "2026-11-11T03:56:57Z",
+   "last": "2026-11-11T03:56:57Z",
+   "last_sha": "8a8c8a86ec"
   },
   {
    "from": "incident.media",
@@ -2131,30 +2274,6 @@
    "last_sha": "fb24b2fead"
   },
   {
-   "from": "incident.reporter",
-   "to": "incident.journalist",
-   "n": 1,
-   "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T03:03:46Z",
-   "last_sha": "4b5a93ac60"
-  },
-  {
-   "from": "incident.reporter",
-   "to": "incident.librarian",
-   "n": 1,
-   "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T03:03:46Z",
-   "last_sha": "4b5a93ac60"
-  },
-  {
-   "from": "incident.reporter",
-   "to": "incident.accountant",
-   "n": 1,
-   "first": "2026-11-11T03:04:49Z",
-   "last": "2026-11-11T03:04:49Z",
-   "last_sha": "103f649d25"
-  },
-  {
    "from": "incident.shadow",
    "to": "incident.archivist",
    "n": 1,
@@ -2169,14 +2288,6 @@
    "first": "2026-11-11T02:26:29Z",
    "last": "2026-11-11T02:26:29Z",
    "last_sha": "6d28025e7a"
-  },
-  {
-   "from": "incident.shadow",
-   "to": "incident.accountant",
-   "n": 1,
-   "first": "2026-11-11T03:06:43Z",
-   "last": "2026-11-11T03:06:43Z",
-   "last_sha": "acea93aefe"
   },
   {
    "from": "incident.social",
@@ -2267,6 +2378,14 @@
    "last_sha": "1fb0c5e8ae"
   },
   {
+   "from": "incident.studio",
+   "to": "incident.reporter",
+   "n": 1,
+   "first": "2026-11-11T03:54:54Z",
+   "last": "2026-11-11T03:54:54Z",
+   "last_sha": "863d28febe"
+  },
+  {
    "from": "incident.weather",
    "to": "incident.weatherwatch",
    "n": 1,
@@ -2308,27 +2427,19 @@
   },
   {
    "from": "incident.weatherwatch",
-   "to": "incident.weather",
-   "n": 1,
-   "first": "2026-11-11T02:23:38Z",
-   "last": "2026-11-11T02:23:38Z",
-   "last_sha": "8fb6af075c"
-  },
-  {
-   "from": "incident.weatherwatch",
-   "to": "incident.accountant",
-   "n": 1,
-   "first": "2026-11-11T03:02:11Z",
-   "last": "2026-11-11T03:02:11Z",
-   "last_sha": "228da92a1e"
-  },
-  {
-   "from": "incident.weatherwatch",
    "to": "incident.identity",
    "n": 1,
    "first": "2026-11-11T03:36:44Z",
    "last": "2026-11-11T03:36:44Z",
    "last_sha": "c197f9f107"
+  },
+  {
+   "from": "incident.weatherwatch",
+   "to": "incident.librarian",
+   "n": 1,
+   "first": "2026-11-11T03:39:15Z",
+   "last": "2026-11-11T03:39:15Z",
+   "last_sha": "94634d9469"
   },
   {
    "from": "incident.wikipedia",
@@ -2337,6 +2448,14 @@
    "first": "2026-11-11T02:01:37Z",
    "last": "2026-11-11T02:01:37Z",
    "last_sha": "32efe7eb1a"
+  },
+  {
+   "from": "incident.wikipedia",
+   "to": "incident.accountant",
+   "n": 1,
+   "first": "2026-11-11T03:50:43Z",
+   "last": "2026-11-11T03:50:43Z",
+   "last_sha": "6b68676317"
   }
  ],
  "cross_folder": [
@@ -2378,38 +2497,38 @@
  ],
  "signing": {
   "commits": {
-   "total": 485,
-   "with_a_signature": 485,
+   "total": 523,
+   "with_a_signature": 523,
    "without": [],
-   "github_verified": 485,
+   "github_verified": 523,
    "github_not_asked": 0,
    "keys": [
     {
      "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
-     "commits": 484,
+     "commits": 522,
      "in_data_keys_json": false
     }
    ],
    "kinds": {
     "pgp": 1,
-    "ssh": 484
+    "ssh": 522
    }
   },
   "agent_named_by": {
    "not stated": 1,
-   "Agent: trailer": 484
+   "Agent: trailer": 522
   },
   "tags": {
-   "total": 277,
+   "total": 307,
    "annotated": 0,
-   "lightweight": 277,
+   "lightweight": 307,
    "signed": 0
   },
   "releases": {
    "github_releases": 0,
    "signed_by_an_agent_key": 0
   },
-  "agent_keys_published": 33,
+  "agent_keys_published": 36,
   "reading": "Every commit object carries one signature, made by the hosting service the agents' sessions run in, with a key that is the same for every agent: it shows the commit came through that service and was not altered after, and GitHub marks it Verified. It does not say WHICH agent: that is only the Agent: trailer, a line of text any pusher could write. No commit, tag or release is signed with an agent's own key from data/keys.json. The version tags are lightweight: names for commits, with no signature. The proposal: ci/signing.md."
  }
 }
