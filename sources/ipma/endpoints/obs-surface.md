@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Station observations, last 3 hours, with coordinates
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 06:49 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 07:49 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -18,8 +18,8 @@ IPMA's name for it: *Observação Meteorológica de Estações, últimas 3 horas
 | Format | GeoJSON |
 | Shape | FeatureCollection of points, one per station and hour |
 | IPMA says it updates | Taxa de atualização horária. |
-| IPMA's file dated (its Last-Modified header) | 2026-11-11 06:31 UTC |
-| We last read it | 2026-11-11 06:48 UTC, 1 file, 431615 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-11 07:31 UTC |
+| We last read it | 2026-11-11 07:48 UTC, 1 file, 435411 bytes |
 | IPMA's note | "valor "-99.0" = nodata" |
 
 ## Fields
@@ -50,6 +50,6 @@ IPMA's name for it: *Observação Meteorológica de Estações, últimas 3 horas
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/meteorology/stations/obs-surface.geojson](https://api.ipma.pt/open-data/observation/meteorology/stations/obs-surface.geojson) | 200 | 431615 | `69e548b41f174d9f…` | 2026-11-11 06:31 | 2026-11-11 06:48 |
+| [observation/meteorology/stations/obs-surface.geojson](https://api.ipma.pt/open-data/observation/meteorology/stations/obs-surface.geojson) | 200 | 435411 | `2c1150f006ce3fda…` | 2026-11-11 07:31 | 2026-11-11 07:48 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/obs-surface.json](../changes/obs-surface.json). Our small files made from it: [data/observations.json](../data.md#data/observations.json).
