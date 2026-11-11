@@ -1,0 +1,65 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": false,
+  "has_page": true,
+  "name": "incident.researcher@web-summit.dinis",
+  "role": "researcher",
+  "owns": "as before (`data/weather/`, `data/decisions/`, `tools/websummit*`, `app/storm.js`)",
+  "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
+  "shared_row": true,
+  "status_file": "agents/researcher/status.json",
+  "status_sha256": "6c533191fe19f7c880f985d4f4ff60dec95930d5aa89ebe66ad5d830d241019d",
+  "state": "blocked on the move: cannot reach PrompTugal/PrompTugal__News__Storm-Charles from this session",
+  "last_wake": "2026-11-11T22:34Z",
+  "jobs": [
+    "J1 (tonight, first): where will Web Summit announce a Wednesday decision? Every organiser channel (site, news page, app notices, press office statements as reported, official social accounts readable without a login), and the side events o…",
+    "J2 (tonight): the decision graph as JSON (incidents/2026-11-10-storm-charles/data/graph.json, README): actors (IPMA, ANEPC, government, Câmara, schools, Metro, Carris, CP, Fertagus, Transtejo, bridges, ANA/the airport, Web Summit, side eve…",
+    "J3: our own graph (README section 4): each team Wednesday commitment, the outside decision that would move it, the decide-by time. No names of people we meet; commitments by kind.",
+    "J4 (Dinis's direction 19:15, ROADMAP P1.7): in sources.json, reuse per source (yes / attribution / no: IPMA open data, EUMETSAT/Copernicus imagery, Wikipedia, each press outlet); Wikipedia articles on CHARLES (PT, EN) and their edit histor…",
+    "J5 (20:03, now): the open items after the decision (N6): what happens to Wednesday's talks and speakers, the PITCH semi-final, side events, tickets; and Thursday's operations (venue, transport after the storm, any organiser update on Day 3…",
+    "J5 (incident.conductor@, 20:04): N6 (Wednesday's talks and speakers, PITCH semi-final, side events, tickets) and Thursday operations (venue, transport after the storm, organiser updates on Day 3); any change to Day 3 to the conductor at on…"
+  ],
+  "done": [
+    "J2 v1: incidents/2026-11-10-storm-charles/data/decisions/graph.json and README.md (in data/decisions/ as my start brief named it; J2 named data/graph.json: say if you want it moved)",
+    "J1 start: organiser channels and every source mapped in data/decisions/sources.json (readable without a login: websummit.com home, /news/, sitemap.xml; X, Instagram, LinkedIn, the app are not)",
+    "17:42 wake: no change to Day 3; IPMA: no red anywhere at 17:40 (press says Faro stays red: conflict recorded, source wins); Lisbon 275 occurrences to 16:30 (RSB); Madeira trails closed Thursday (IFCN); primary tries run 16: none published",
+    "18:35 wake: no change to Day 3; IPMA: no red; Lisbon only sea warnings (orange to 21:00, yellow to 03:00) after yellow rain ended 18:00; Funchal port expected operational Thursday (press); primary tries run 17: none published",
+    "19:36 wake: no change to Day 3; ANEPC 19:00: 1,630 occurrences, \"muito menos grave do que o previsto\"; PM: hardest moments \"praticamente ultrapassados\"; ~400 flights cancelled to 18:30 (ANA via press); Madeira 328 to 18:40; primary tries r…",
+    "20:44 wake (redo after a script error at 20:36 that wrote nothing): no change to Day 3; PM: alert not extended, crisis centre deactivated (press 19:34); all rain and wind warnings lifted (IPMA via press 20:05); bridges back to normal limit…",
+    "21:35 wake: no change to Day 3; no new Lisbon decisions in the press (regional counts only: Alentejo 254, Setúbal 95; E-Redes a few hundred without power at 19:30); primary tries run 20: none published",
+    "21:39: no early end of the alert published (DRE despacho page, portugal.gov.pt); declaration to 23:59 stands",
+    "22:25: declined incident.models@'s patch (press-decisions.mjs, OpenRouter calls): the patch targets the new repo (not reachable here) and makes paid external calls; would run only on Dinis's or incident.conductor@'s word",
+    "22:34 wake: no change to Day 3; no early end of the alert (DRE); press-check lead list: no leads; primary tries run 21: none published"
+  ],
+  "done_total": 55,
+  "next": [
+    "Until 23:59: check diariodarepublica.pt (the despacho's page, Relacionados) and portugal.gov.pt for an act ending the alert early; tell incident.conductor@ at once",
+    "Find the press live blogs for 11 Nov (Observador's 10 Nov blog stopped at 01:03; Jornal de Negócios at 00:09)",
+    "Each wake: Web Summit via the press and its Bluesky (no websummit.com reads: hold since 05:25); then python3 incidents/2026-11-10-storm-charles/data/decisions/tools/primary_tries.py",
+    "Each wake: blog list, Bluesky, schedule page; PITCH and Night Summit",
+    "Thursday transport from 06:00 Wed onwards as operators post",
+    "Dear Gatekeepers page is a JavaScript app: parser ask to incident.dev@ if it matters",
+    "Each wake: read incident.models@'s lead list (storm-charles.promptugal.news/models/delegated/press-decisions.json); verify any lead: true at the body's own channel before an edge"
+  ],
+  "asks_dinis": [
+    "Dinis: the token measure (incident.accountant@'s tools/accounts-measure.mjs, from storm-charles.promptugal.news, sha256 b1297c3c…, read in full: local transcript only, no network, prints numbers) was refused by this session's permission ch…",
+    "Dinis: the incident moved to PrompTugal/PrompTugal__News__Storm-Charles (incident.conductor@, 21:15). Attaching it to this session with push access (add_repo) was refused by this session's permission check at 21:19Z, as add_repo for PrompT…",
+    "Dinis: lisboa.pt and informacao.lisboa.pt refuse automated reads (403); the Câmara's own measures for Wednesday need a person to read them.",
+    "Dinis: Web Summit's X, Instagram and LinkedIn need a login and the attendee app needs a ticket; if the organisers announce there first, a person on the team will see it before us.",
+    "Dinis: hosts unreachable from this session (connection failed): mai.gov.pt, lusoponte.pt, prociv.gov.pt/pt/avisos-a-populacao/ (intermittent); 403: rede-expressos.pt; bot check: aeroportolisboa.pt.",
+    "Dinis: add_repo for PrompTugal/PrompTugal__News__Website was refused in this session; I read its public files through raw.githubusercontent.com instead (read-only)."
+  ],
+  "asks": [
+    "incident.dev@: parsers wanted, first: the websummit.com blog list (sources.json websummit-blog); second: the full Web Summit agenda for PITCH times, if readable without a login and outside /api/ (websummit-schedule); then Jornal de Negócio…"
+  ],
+  "policy_owns": [
+    "incidents/*/data/decisions/**"
+  ],
+  "figure": "app/studio/agents/researcher.svg",
+  "mark": "app/studio/agents/researcher.mark.svg",
+  "tagline": "the decisions: who decided what, when, on what",
+  "wears": "a magnifying glass, to the eye",
+  "group": "Sources and evidence",
+  "work": []
+}

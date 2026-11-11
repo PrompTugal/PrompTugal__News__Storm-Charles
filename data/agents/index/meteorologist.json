@@ -1,0 +1,44 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": false,
+  "has_page": true,
+  "name": "incident.meteorologist@web-summit.dinis",
+  "role": "meteorologist",
+  "owns": "as before (`data/weather/`, `data/decisions/`, `tools/websummit*`, `app/storm.js`)",
+  "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
+  "shared_row": true,
+  "status_file": "agents/meteorologist/status.json",
+  "status_sha256": "72c16ea76eca38a3f3805eb067fdda39ed39187f47b1ab10d4ef64721062412b",
+  "state": "23:00: CAP batch 22:43:28: yellow rain for Thursday in the north (Aveiro, Braga, Porto, Viana do Castelo, Vila Real, Viseu); nothing for Lisboa.",
+  "last_wake": "2026-11-11T22:23Z",
+  "jobs": [
+    "J1 (tonight): the weather as JSON for the dashboard, in incidents/2026-11-10-storm-charles/data/weather/ with a README per file: IPMA warnings for Lisboa (every level change with the time IPMA issued it and the time read), communiqués, Lis…",
+    "J2 (tonight): how far ahead could it be known? The first public sign of CHARLES (communiqué no. 1, 9 Nov 13:17), each warning's lead time to its start, and what the models said against what is observed from Wednesday 05:00. Facts, evidence…",
+    "J3 (Wednesday, hourly): observed against warned at the Lisbon stations and LPPT, for the Weather pane.",
+    "J4 (20:03): Thursday matters now (Day 3 on, subject to IPMA): at each wake, Lisbon's warnings for Thursday and the model for Thursday morning (residual wind, rain, sea) at the top of changes.json; from Wed 05:00, observed against warned as…"
+  ],
+  "done": [
+    "J1: incidents/2026-11-10-storm-charles/data/weather/ (warnings with history, communiqués, 8 Lisbon stations as series, LPPT TAF issues and METARs with gusts, IPMA daily and hourly model, gusts-vs-forecast, changes log; README covers every …",
+    "J2: analysis.md / analysis.json (labelled analysis): worst Wed 12:00-18:00, peak likely 15:00-19:00, over by 21:00; lead times: storm ~47 h (communiqué no. 1), red wind ~27.5 h (IPMA 08:31 Tue, via Lusa), red rain ~18.5 h"
+  ],
+  "done_total": 2,
+  "next": [
+    "at each wake: the first TAF covering Thursday (due ~23:00) and any IPMA communiqué no. 3 go to the top of changes.json",
+    "from Wed 05:00: observed against warned (gusts_above_warned first)"
+  ],
+  "asks_dinis": [
+    "Dinis: the incident moved to PrompTugal/PrompTugal__News__Storm-Charles (21:15 UTC). Attaching it to this session with push access (add_repo) was refused at 21:18 UTC by the session's permission check (auto mode). Please attach the repo to…",
+    "Dinis: running tools/accounts-measure.mjs (incident.accountant@'s token measure, reads this session's own transcript) was refused at 03:23 UTC by this session's permission check (auto mode). Allow it for this session, or the accountant mea…"
+  ],
+  "asks": [],
+  "policy_owns": [
+    "incidents/*/data/weather/**"
+  ],
+  "figure": "app/studio/agents/meteorologist.svg",
+  "mark": "app/studio/agents/meteorologist.mark.svg",
+  "tagline": "the weather data and its analysis, labelled as analysis",
+  "wears": "an anemometer",
+  "group": "Sources and evidence",
+  "work": []
+}

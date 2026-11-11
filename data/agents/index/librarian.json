@@ -1,0 +1,200 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.librarian@web-summit.dinis",
+  "role": "librarian",
+  "owns": "`library/`, `docs/`, `tools/policy-check.mjs` (and `agents/policy.json` with the conductor), the site's index of everything (`library/index.json`)",
+  "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
+  "shared_row": false,
+  "status_file": "agents/librarian/status.json",
+  "status_sha256": "bba01035e825bdbf7f938c298625307fa65360749448a736bf0a1ffbcb2169d7",
+  "state": "handing over: the thirteenth librarian session ([session], since 20:47 UTC) wrote this hand-over at 22:06 after its first hourly wake and Dinis's altitudes job.",
+  "last_wake": "2026-11-11T21:46Z",
+  "jobs": [
+    "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
+    "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
+    "L3: library/glossary.md: the terms this site uses, two lines each",
+    "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do",
+    "R2.1: a viewer page for every published file (tools/library-view.mjs --out): schema, table, who keeps it, sha256, where used, raw one click away",
+    "R2.2: news/: one article per release window; versions as data",
+    "R2.3: help/: how to read the site, short pages",
+    "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
+  ],
+  "done": [
+    "12:44 wake (ninth session): news/2026-11-11T11.md closed (92 commits by 33 agents, 84 versions, 58 served; /welcome/ still a draft, card a-wind-down-plan still open); T12 opened (communiqué no. 3, adjusted warnings with red standing in Lis…",
+    "12:29 (ninth session): tools/library-pack.mjs takes next and asks as a string or a list (the conductor's ask: a string next crashed it and turned the gate red); tested with strings",
+    "03:49 at the conductor's decision: start.md's contracts say that source:* ids are incident.sources@'s (sources/registry.json) and that links made in the browser are the maker's to check; the conductor's start prompts will give the pack's l…",
+    "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no …",
+    "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it",
+    "04:12 from incident.reporter@'s second session: start.md says who marks an earlier key handed over (the new session), tags fetched at every wake, where the context number is in the ledger line, and scripts in a file. Three points left for …",
+    "04:13 (third session) library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (what it is, the twelve rules it applies when routing, the bridge, its hourly wake, the agents with their sessions a…",
+    "07:49 (sixth session) started from the pack; key incident-librarian-dinis-6. The round article keeps the round: its hourly sections 5c to 5f moved into the hourly articles (three sentences added to T05, T06 and T07 that they did not yet sa…",
+    "08:46 (sixth session) the 08:44 wake: 07:00 to 08:00 closed (41 commits by 21 agents, 38 versions); 08:00 to 09:00 opened; the round article's list and corrections; start.md's session line computed from data/keys.json and the two-channel r…",
+    "09:52 (sixth session) the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened; the round article: the hour in the list, one correction, section 9 point 1 answered (vault keys) and point 10 added;…"
+  ],
+  "done_total": 37,
+  "next": [
+    "a fourteenth session: at the 22:44 wake close news/2026-11-11T21.md and open T22 (releases first); add incident.flights@ to library/abp.json once it pushes, and re-run tools/library-altitudes.mjs",
+    "the round article at each hourly wake: 5c, section 7, section 9",
+    "at the close trigger: library/closing-inventory.json for incident.planner@"
+  ],
+  "asks_dinis": [
+    "Dinis: whether to archive the first librarian session (it has handed over).",
+    "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed …"
+  ],
+  "asks": [
+    "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49).",
+    "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md …"
+  ],
+  "keys": [
+    {
+      "id": "incident-librarian-dinis",
+      "record": "sha256:c1dd34b5c4dcfc33",
+      "encryption": "sha256:cefff668d770eca8",
+      "added": "2026-11-10",
+      "status": "handed over",
+      "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. This is the first librarian session's …"
+    },
+    {
+      "id": "incident-librarian-dinis-2",
+      "record": "sha256:dda2eb162ed93165",
+      "encryption": "sha256:e77d2966a54afa44",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 03:02 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second librarian session, started from th…"
+    },
+    {
+      "id": "incident-librarian-dinis-3",
+      "record": "sha256:4f295d0960b0468d",
+      "encryption": "sha256:b9954567e6e13193",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 04:07 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third librarian session, started from the…"
+    },
+    {
+      "id": "incident-librarian-dinis-4",
+      "record": "sha256:5e31bdee54ec992b",
+      "encryption": "sha256:5f913e60ada18db9",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 04:15 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fourth librarian session, started from th…"
+    },
+    {
+      "id": "incident-librarian-dinis-5",
+      "record": "sha256:dc538c6dfba6f1f9",
+      "encryption": "sha256:0d8363fe56621ca1",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 05:48 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fifth librarian session, started from the…"
+    },
+    {
+      "id": "incident-librarian-dinis-6",
+      "record": "sha256:0b18cf6dab70f1fe",
+      "encryption": "sha256:0c478754e23a8cb1",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 07:47 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The sixth librarian session, started from the…"
+    },
+    {
+      "id": "incident-librarian-dinis-7",
+      "record": "sha256:656ec4d6064cff0d",
+      "encryption": "sha256:959ce49207047ded",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 09:54 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The seventh librarian session, started from t…"
+    },
+    {
+      "id": "incident-librarian-dinis-8",
+      "record": "sha256:97b7a5786ce154c2",
+      "encryption": "sha256:2a7ad8572f6c00ae",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 10:49 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The eighth librarian session, started from th…"
+    },
+    {
+      "id": "incident-librarian-dinis-9",
+      "record": "sha256:196ba7c026b4af0b",
+      "encryption": "sha256:0031937d702dc88f",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 11:50 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The ninth librarian session, started from the…"
+    },
+    {
+      "id": "incident-librarian-dinis-10",
+      "record": "sha256:8fdcba03544e2d1f",
+      "encryption": "sha256:340d5803140f06d7",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 13:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The tenth librarian session, started from the…"
+    },
+    {
+      "id": "incident-librarian-dinis-11",
+      "record": "sha256:fdbfe482fdb2ccd6",
+      "encryption": "sha256:9b2863bf304cefd3",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 15:04 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The eleventh librarian session, started from …"
+    },
+    {
+      "id": "incident-librarian-dinis-12",
+      "record": "sha256:8daf8a5fdebb37c1",
+      "encryption": "sha256:e4180613e2e35b5d",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 18:04 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The twelfth librarian session, started from t…"
+    },
+    {
+      "id": "incident-librarian-dinis-13",
+      "record": "sha256:adeb4ceb101edfb7",
+      "encryption": "sha256:886cc9f571583ded",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 20:47 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The thirteenth librarian session, started fro…"
+    },
+    {
+      "id": "incident-librarian-dinis-14",
+      "record": "sha256:e76fdab641b7fe00",
+      "encryption": "sha256:5e7a054a305779fc",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 22:08 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fourteenth librarian session, started fro…"
+    },
+    {
+      "id": "incident-librarian-dinis-15",
+      "record": "sha256:746627bfedd66d49",
+      "encryption": "sha256:3e676df46a407f4d",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 22:52 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fifteenth librarian session, started from…"
+    }
+  ],
+  "policy_owns": [
+    "library/**",
+    "docs/**",
+    "tools/library-*.mjs",
+    "agents/policy.json",
+    "tools/policy-check.mjs",
+    "agents/*/policy.md",
+    "news/**",
+    "help/**"
+  ],
+  "figure": "app/studio/agents/librarian.svg",
+  "mark": "app/studio/agents/librarian.mark.svg",
+  "tagline": "everything catalogued, findable and linked",
+  "wears": "reading glasses and a bun",
+  "group": "Knowledge: the graph, the entities, the library, the board",
+  "work": [
+    {
+      "href": "news/index.html",
+      "title": "What is new",
+      "path": "news/"
+    },
+    {
+      "href": "help/index.html",
+      "title": "Help: how to read this site",
+      "path": "help/"
+    }
+  ]
+}

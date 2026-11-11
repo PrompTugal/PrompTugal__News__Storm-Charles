@@ -1,0 +1,61 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.motion@web-summit.dinis",
+  "role": "motion",
+  "owns": "`flows/`, `app/flows/`, `data/flows/`, `tools/flows-*.mjs`",
+  "job": "**small animations of the work** (Dinis, 11 Nov ~10:10, BRIEF.md): one small data format for a flow (actors, steps, edges, times, each step with its commit or file), built by a tool from git, `agents/*/status.json`, hand-overs and `data/keys.json`, never by hand twice; served at `data/flows/` and `api/v1/`; small embeddable animations on the pinned copies of Angelo's live map and Silvio's Universe (`app/agents/vendor/`); a gallery at `/flows/`, one per path from storyteller@, each embeddable by one line. Experiments, labelled.",
+  "shared_row": false,
+  "status_file": "agents/motion/status.json",
+  "status_sha256": "5546325b3effa3279cb5e6a64fa4e3fb6167f2e051496fbc496bb654e67c1508",
+  "state": "active: the first session; /flows/ plays every flow of three sources: recipes, incident.storyteller@'s paths (story/paths/*.json) and incident.reporter@'s traces (reporter/traces/*.json)",
+  "last_wake": "",
+  "jobs": [],
+  "done": [
+    "data/flows/schema.json: the format (flows/v1): actors, steps (each with evidence; 'drawn' when a time is not recorded), edges, pauses",
+    "app/flows/core.js: the recipes (wake, handover, night, a storyteller path), shared by the build and the browser",
+    "tools/flows-build.mjs: a generator (after; --out, --check), from tracked files only; writes data/flows/ and api/v1/flows/",
+    "app/flows/player.js, flows.css, embed.html: a light SVG player, embeddable by one line (iframe or script tag); a browser API (?kind=&agent=&at=&n=)",
+    "flows/README.md: the gallery at /flows/, the format, how to embed, what the flows show badly",
+    "story/paths/*.json read as they are (incident.storyteller@'s step shape and primitives taken into the schema: its verbs, the machine kind, 'before' as the pause's why): path-01, path-03, path-06 live",
+    "a storyteller step's 'placed' (a time it placed, not recorded) is drawn dashed, like a recipe's 'drawn' time",
+    "reporter/traces/*.json read as they are (sc-trace/1): trace-<id>, the trace's own word kept as 'said'",
+    "/flows/ links observability's full pages /agents/live/ and /agents/universe/; every step's evidence on hover or tap",
+    "last-hour: the team in the last 60 minutes of the record, a lane per agent, for the front page's 'team at work' panel (Dinis ~11:55; offered to incident.observability@): embed.html?flow=last-hour&bare=1, or ?kind=hour&minutes=20"
+  ],
+  "done_total": 10,
+  "next": [
+    "a flow per storyteller path as each lands (nothing to do by hand: the build reads story/paths/*.json)",
+    "agree the verbs with story/primitives.md; agree the look with incident.designer@",
+    "an engine view: a flow handed to Angelo's live map (pinned, app/agents/vendor/live-map@57636ac), labelled",
+    "full pages for the Universe and the live map: incident.observability@'s (app/agents/)"
+  ],
+  "asks_dinis": [],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-motion-dinis",
+      "record": "sha256:ca5d87b5153a25ce",
+      "encryption": "sha256:2717dab9e1ac419f",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 10:12 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "app/flows/**",
+    "flows/**",
+    "data/flows/**",
+    "tools/flows-*.mjs"
+  ],
+  "group": "The faces: what a reader sees",
+  "work": [
+    {
+      "href": "flows/index.html",
+      "title": "Flows: the team's work, step by step",
+      "path": "flows/"
+    }
+  ]
+}

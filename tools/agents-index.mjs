@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // The team's index: repository -> data/agents/index.json (kept by incident.observability@web-summit.dinis).
-//   node tools/agents-index.mjs            write it
+//   node tools/agents-index.mjs            write it, split: data/agents/index/index.json (the head) and a file per agent (tools/agents-split.mjs)
 //   node tools/agents-index.mjs --check    exit 1 if the committed file is behind the repository
 //   node tools/agents-index.mjs --out _site   write <dir>/data/agents/index.json instead (for the build: on every push the
 //                                          site serves the index made from that commit, and no tracked file is touched)
@@ -13,6 +13,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
+import { readAgentsData, writeAgentsData } from './agents-split.mjs'   // tracked as data/agents/index/ (a file per agent), served whole
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const outAt = process.argv.indexOf('--out'), OUT = path.join(outAt > 0 ? path.resolve(process.argv[outAt + 1]) : ROOT, 'data/agents/index.json')
@@ -109,7 +110,7 @@ const body = {
 }
 // generated_at changes only when the content does: a run with nothing new writes nothing (no commit churn)
 const sig = crypto.createHash('sha256').update(JSON.stringify(body)).digest('hex')
-let prev = null; try { prev = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/agents/index.json'), 'utf8')) } catch { }
+let prev = null; try { prev = readAgentsData('index') } catch { }
 const same = prev?.content_sha256 === sig
 if (process.argv.includes('--check')) { console.log(same ? 'agents-index: current' : 'agents-index: behind the repository (run node tools/agents-index.mjs)'); process.exit(same ? 0 : 1) }
 if (same && outAt < 0) console.log(`agents-index: no change (${agents.length} agents)`)
@@ -117,6 +118,8 @@ else {
     fs.mkdirSync(path.dirname(OUT), { recursive: true })
     const upd = same && prev.updated ? prev.updated : new Date().toISOString().replace(/\.\d+Z$/, 'Z')
     fs.writeFileSync(path.join(path.dirname(OUT), 'count.json'), JSON.stringify({ ...body.count, by: body.by, updated: upd, source: 'data/agents/index.json (count), written by tools/agents-index.mjs' }, null, 2) + '\n')
-    fs.writeFileSync(OUT, JSON.stringify({ ...body, updated: same && prev.updated ? prev.updated : new Date().toISOString().replace(/\.\d+Z$/, 'Z'), content_sha256: sig }, null, 2) + '\n')
-    console.log(`agents-index: ${agents.length} agents, ${body.counts.with_status} with a status, ${body.counts.with_key} with a key, ${body.counts.asks_for_dinis} asks for Dinis -> data/agents/index.json`)
+    const whole = { ...body, updated: upd, content_sha256: sig }
+    // the build (--out) serves the whole object; the repository keeps it split, a file per agent, under the gate's 256 KB
+    if (outAt > 0) fs.writeFileSync(OUT, JSON.stringify(whole, null, 2) + '\n'); else writeAgentsData('index', whole, { indent: 2 })
+    console.log(`agents-index: ${agents.length} agents, ${body.counts.with_status} with a status, ${body.counts.with_key} with a key, ${body.counts.asks_for_dinis} asks for Dinis -> ${outAt > 0 ? OUT : 'data/agents/index/'}`)
 }

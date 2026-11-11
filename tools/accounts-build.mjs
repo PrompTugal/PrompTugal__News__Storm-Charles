@@ -12,12 +12,13 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { agentsFile } from './agents-split.mjs'   // data/agents/sessions.json and index.json are split per agent (11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const BY = 'incident.accountant@web-summit.dinis'
 const NOW = new Date().toISOString().slice(0, 19) + 'Z'
 const P = (...p) => path.join(ROOT, ...p)
-const J = f => { try { return JSON.parse(fs.readFileSync(P(f), 'utf8')) } catch { return null } }
+const J = f => { try { return agentsFile(f, ROOT) ?? JSON.parse(fs.readFileSync(P(f), 'utf8')) } catch { return null } }
 const W = (f, o) => fs.writeFileSync(P('accounts', f), JSON.stringify({ about: o.about, by: BY, updated: NOW, ...o }, null, 1) + '\n')
 const NM = 'not measured'
 const n = v => typeof v === 'number' ? v.toLocaleString('en-GB') : v

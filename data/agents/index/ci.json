@@ -1,0 +1,105 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.ci@web-summit.dinis",
+  "role": "ci",
+  "owns": "`ci/`, `data/ci/`, `README.md`",
+  "job": "**the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance",
+  "shared_row": false,
+  "status_file": "agents/ci/status.json",
+  "status_sha256": "f75a700c8b64f64150b0b616a568ffd1abafdac10d97702c5b89e071434aadbf",
+  "state": "handing over to a third session at the conductor's word (context past 220k tokens a call): agents/ci/HANDOVER.md",
+  "last_wake": "2026-11-11T22:18:00Z",
+  "jobs": [
+    "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
+    "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
+    "C3: README.md for a stranger from GitHub; the guidance checked against what is true (drift listed for the conductor)",
+    "C4: the repository address to incident.designer@ for the top bar; the data shapes to incident.observability@",
+    "C5: watch the pipeline: queues, failures, the gate's 5 s budget; tell the conductor at once with cause and fix"
+  ],
+  "done": [
+    "02:19Z session key made (record sha256:815a07d3a9d80692), public half in data/keys.json",
+    "02:22Z tools/ci-read.mjs: 204 runs and 224 commits read (GitHub's Actions API and a full clone) into data/ci/ (day files, each under 256 KB; a finished run is never asked for twice)",
+    "15:18Z wake: 49 runs since 14:20 (40 ok, 9 replaced), no failure, no new retry; gate last-20 median 5 s; gate-overlap (d4ba6505, run 1264) on the runner: 20 runs after median 5 s (max 8) vs 6 s (max 9) for 17 before, push to served 41.5 vs…",
+    "16:18Z wake: 66 runs since 15:18 (52 ok, 13 replaced, 1 running), no failure, no new retry; gate last-20 median 5 s, max 7; push to served median 46 s, max 125 s (run 1302, brief edition 8: its PDF render took 44 s, other misses 18 to 20 s…",
+    "17:18Z wake: 40 runs since 16:18 (37 ok, 3 replaced), no failure; deploy retry fired on run 1352 (16:20), second try passed (the seventh); gate last-20 median 5 s, max 8; push to served median 45 s, max 68 s; queue max 36 s; brief PDFs 37 …",
+    "18:18Z wake: 41 runs since 17:18 (36 ok, 5 replaced), no failure, no new retry; gate last-20 median 5 s, max 8; push to served median 42 s, max 82 s; queue max 50 s; brief PDFs 37 runs clean, no re-render; gate here 4.3 s",
+    "19:18Z wake: 38 runs since 18:18 (33 ok, 5 replaced), no failure, no new retry; gate last-20 median 5 s, max 6; push to served median 41 s, max 78 s; queue max 53 s; brief PDFs 33 runs clean, no re-render; gate here 4.3 s",
+    "20:18Z wake: 31 runs since 19:18 (30 ok, 1 queued), no failure, no new retry; gate last-20 median 5 s, max 7 (one run at 9 s this hour); push to served median 40 s, max 98 s; queue max 29 s; brief PDFs 30 runs clean, no re-render; gate her…",
+    "21:18Z wake: 45 runs since 20:18: GitHub held runs 1500-1523 queued with no jobs from 20:17:15; no deploy from 20:13:47 to 21:02:53 (49 min); runs back from 1525 at 21:02:28, normal from 1537; no run failed; 8 replaced as usual; deploy ret…",
+    "22:18Z wake: 71 runs since 21:18 (38 ok, 32 replaced, 1 running), no failure; deploy retry on 1564 passed (the ninth); 8 runs superseded by the newest-only check (1551 to 1597), each followed by a newer run's deploy within 35 to 70 s; thre…"
+  ],
+  "done_total": 37,
+  "next": [
+    "read the next twenty runs after run 1109 and tell the conductor the gate before and after generators-together; then remove ci/patches/generators-together.patch and mark its README row applied",
+    "on Dinis's yes: the conductor applies ci/patches/signed-release-record.patch; /ci/ then shows signed or unsigned per push, verified in the reader's browser",
+    "round 4: a page per version (what changed, who, signed or not); commits drawn as lanes per agent over time",
+    "each wake: agents/ci/HANDOVER.md, the wake"
+  ],
+  "asks_dinis": [
+    "Dinis: yes or no to a signed release record per push, signed with each agent's own key and checked by the gate (ci/signing.md)",
+    "Dinis: confirm the licence reading in README.md (our code and text Apache-2.0; others' material under its owner's terms), or name a licence for the data the team compiled"
+  ],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-ci-dinis",
+      "record": "sha256:815a07d3a9d80692",
+      "encryption": "sha256:c3f625a55509acc1",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. That session handed over to a second a…"
+    },
+    {
+      "id": "incident-ci-dinis-2",
+      "record": "sha256:7d21184584221853",
+      "encryption": "sha256:0f94b62eb1d9353a",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 05:45 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. That session handed over to…"
+    },
+    {
+      "id": "incident-ci-dinis-3",
+      "record": "sha256:978c7dc6bfbf8e14",
+      "encryption": "sha256:8ae4aefbedffbaa7",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 12:39 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-ci-dinis-4",
+      "record": "sha256:ad68b5afe5afa50b",
+      "encryption": "sha256:df0c513eca0ae883",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 22:21 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "ci/**",
+    "app/ci/**",
+    "tools/ci-*.mjs",
+    "data/ci/**",
+    "README.md",
+    "agents/ci/**"
+  ],
+  "figure": "app/studio/agents/ci.svg",
+  "mark": "app/studio/agents/ci.mark.svg",
+  "tagline": "the pipeline and the repository, made visible",
+  "wears": "a hard hat with a tick",
+  "group": "The machine: build, identity, models, visibility",
+  "work": [
+    {
+      "href": "ci/index.html",
+      "title": "The pipeline, as it happens",
+      "path": "ci/"
+    },
+    {
+      "href": "README.html",
+      "title": "Storm Charles: a newsroom for people, a data source for agents",
+      "path": "README.md"
+    }
+  ]
+}

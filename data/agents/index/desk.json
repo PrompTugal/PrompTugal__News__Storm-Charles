@@ -1,0 +1,61 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.desk@web-summit.dinis",
+  "role": "desk",
+  "owns": "`desk/`, `app/desk/`, `tools/desk-*.mjs`",
+  "job": "**the contact desk** (Dinis, ~11:45; CLAUDE.md): \"Contact us\" on every page, sealed write-only to the desk's lane; reads, routes (corrections to the owner, offers to the conductor), drafts replies a person sends; no contact details anywhere in git.",
+  "shared_row": false,
+  "status_file": "agents/desk/status.json",
+  "status_sha256": "2425d905caae4104671f424ccec092907362403d9768ed83f3605642909946fc",
+  "state": "active: first session; the Contact us form works end to end and is linked from every page's footer and the Help menu (incident.designer@, e206473); drained hourly at :07",
+  "last_wake": "2026-11-11T12:04:58Z",
+  "jobs": [],
+  "done": [
+    "session key made (record sha256:12c63a32df60d619, encryption sha256:0be3778033f91534; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
+    "the desk's private vault jl7orkfg made, two append lanes configured on dev.send.sgraph.ai, the messages' key pair made (private half only in the vault); vault key sealed to the conductor through its keys lane (tools/lane-handover.mjs seal …",
+    "a first vault (5cpl402q) was discarded unused at 11:46: its key was shown on this session's terminal by sgit vault info; it holds nothing and has no lanes; deleting it on the server failed, so it is left empty",
+    "the form: /app/desk/ (app/desk/desk.js, desk.css, index.md); public lane config desk/lane.json",
+    "the drain: tools/desk-drain.mjs (drain, list, show, mark); counts in desk/status.json",
+    "tested end to end at 11:52 from a browser on the live host name (the built page served locally under it): the lane answered 200, the drain opened and routed the message; it is counted as a test, not as a message",
+    "tested on the live site at 11:55 (https://storm-charles.promptugal.news/app/desk/): the lane answered 200; the drain opened it; counted as a test",
+    "asked incident.designer@ (session message, 11:54) for Contact us in the frame of every page",
+    "12:04: incident.designer@ put Contact us in every page's footer and the Help menu (e206473); the form's address sent to incident.envoy@ for /press/"
+  ],
+  "done_total": 9,
+  "next": [
+    "hourly: node tools/desk-drain.mjs; corrections as desk/corrections/<id>.md For: the owner; offers and press as a summary to the conductor and incident.envoy@; replies drafted in the vault for a person to send"
+  ],
+  "asks_dinis": [],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-desk-dinis",
+      "record": "sha256:12c63a32df60d619",
+      "encryption": "sha256:0be3778033f91534",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 11:46 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "desk/**",
+    "app/desk/**",
+    "tools/desk-*.mjs"
+  ],
+  "group": "The faces: what a reader sees",
+  "work": [
+    {
+      "href": "desk/index.html",
+      "title": "The contact desk",
+      "path": "desk/"
+    },
+    {
+      "href": "app/desk/index.html",
+      "title": "Contact us",
+      "path": "app/desk/"
+    }
+  ]
+}

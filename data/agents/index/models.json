@@ -1,0 +1,88 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.models@web-summit.dinis",
+  "role": "models",
+  "owns": "`models/`, `tools/llm.mjs`",
+  "job": "**other models, measured**: evals on checkable tasks through the ledger; spend; what each is good for",
+  "shared_row": false,
+  "status_file": "agents/models/status.json",
+  "status_sha256": "28a1d7d0233634dbe606359a63d784106de431e6b7584402d9f4a899e640dca6",
+  "state": "the router, third session: four of four collectors delegate (transport, media, sources, and the researcher’s press decisions run here); match-fact measured; eval round 2 complete",
+  "last_wake": "2026-11-11T22:34:41Z",
+  "jobs": [],
+  "done": [
+    "session key made (record sha256:ba085e12563c29bc, encryption sha256:81ba78c3312c1f76), public half in data/keys.json",
+    "02:21Z the first call through tools/llm.mjs with the key from the environment (the ledger held 0 calls before)",
+    "22:07Z step 1: every call through tools/llm.mjs gets a published, text-free record in models/calls/<date>/<HH>.json (other agents: agents/<role>/calls/): agent, task, provider, model asked and served, tokens, cost, latency, status, the sha…",
+    "22:07Z step 2: tools/models-delegate.mjs, an A2 loop: a task of models/delegate.json, an input, two open-weight models plus one commercial for comparison; schema check, at most two re-asks, agreement; fringe flow events (A2 start/step/end,…",
+    "22:08Z budgets: delegation 5 USD (1 per wired collector, delegated calls only) and flights 1, from the unassigned 8 (2 left), at the conductor's word of 22:01",
+    "22:11 to 22:16Z step 3: patches for transport (translate), sources (extract-warning against their parser), media (match-fact, new, against their patterns), researcher (extract-decision against graph.json), each tried on live data; models/p…",
+    "22:35Z third session: key incident-models-dinis-3 (record sha256:cf844977e80dc567, encryption sha256:133a99a450651f05; pki-agent.mjs fcb28a1c...02ab checked), -2 marked handed over (60953a9)",
+    "22:38Z the key of vault atrfw315 from the conductor, sealed to -3 (tools/lane-handover.mjs), opened; the vault cloned to ~/.incident-raw, its ledger restored (5,208 lines), pushed",
+    "22:39Z match-fact measured against incident.media@’s first-on-each-fact (61 items, gold by that desk’s ranking): llama-4-maverick 47, gemma-4-31b 44, gemini-3.5-flash-lite (comparison) 38; open-weight agree on 45, right on 39; recall only;…",
+    "22:47Z eval round 2 complete (1.37 USD; the day 2.31 of 6): the warnings-in-force task separates the models: deepseek-v4.1-flash, gemma-4-31b with reasoning on, gpt-6.1-terra and claude-haiku-5.5 13 of 13; gemma-4-31b without reasoning 33 …"
+  ],
+  "done_total": 28,
+  "next": [
+    "each :31 wake (HANDOVER.md)",
+    "a page for /models/calls/",
+    "with incident.ci@: run.yml for the runner repository once Dinis creates it (agents/conductor/RUNNER.md)"
+  ],
+  "asks_dinis": [
+    "Dinis: a fourth label, \"our measurement\", for what we counted or computed ourselves? The case and the three rows: models/label.md"
+  ],
+  "asks": [
+    "incident.observability@: tools/trace.mjs import-safe (its CLI runs on import) and our events read into data/trace/",
+    "incident.perplexity@, incident.shadow@: after each round, node tools/llm.mjs --summary > <your folder>/ledger-summary.json; it is read into models/ledger-summary.json by agent, task and model",
+    "incident.researcher@: the source's own sentence on each decision edge (a words field, as gov-alert's announced_utc has) would let the decision task grow from 10 items without anyone retyping official text",
+    "ANEPC's pages (prociv.gov.pt) refuse automated reads from this session (Request Rejected, 02:19Z): its two notices are not in the decision task for that reason"
+  ],
+  "keys": [
+    {
+      "id": "incident-models-dinis",
+      "record": "sha256:ba085e12563c29bc",
+      "encryption": "sha256:81ba78c3312c1f76",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The first models session (11 November,…"
+    },
+    {
+      "id": "incident-models-dinis-2",
+      "record": "sha256:d2de7f2d13f6dd7c",
+      "encryption": "sha256:c12fa892e0c16d9b",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 22:03 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second models session, started from agent…"
+    },
+    {
+      "id": "incident-models-dinis-3",
+      "record": "sha256:cf844977e80dc567",
+      "encryption": "sha256:133a99a450651f05",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 22:35 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third models session, started from agents…"
+    }
+  ],
+  "policy_owns": [
+    "models/**",
+    "app/models/**",
+    "tools/models-*.mjs",
+    "tools/llm.mjs",
+    "agents/models/**"
+  ],
+  "figure": "app/studio/agents/models.svg",
+  "mark": "app/studio/agents/models.mark.svg",
+  "tagline": "other models, measured on tasks that can be checked",
+  "wears": "a pair of scales",
+  "group": "The machine: build, identity, models, visibility",
+  "work": [
+    {
+      "href": "models/index.html",
+      "title": "Other models, measured",
+      "path": "models/"
+    }
+  ]
+}

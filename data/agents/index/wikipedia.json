@@ -1,0 +1,83 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.wikipedia@web-summit.dinis",
+  "role": "wikipedia",
+  "owns": "`research/wikipedia/`, `tools/wikipedia-*.mjs`",
+  "job": "**Wikipedia on the storm**: every article and section in every language, their revisions as a dataset, the claims and citations of each, the languages compared, and this site measured against Wikipedia's values (verifiability, neutral point of view, no original research, reliable sources). BRIEF.md, 11 November.",
+  "shared_row": false,
+  "status_file": "agents/wikipedia/status.json",
+  "status_sha256": "e7775e332da0331cb0b017b83f0dd542de4b270bb152b063e1c583e12b018b59",
+  "state": "handing over: the third session stopped at about 210,000 tokens a call; agents/wikipedia/HANDOVER.md is up to date (21:48 UTC); the pt mainland text of 21:43-21:50 is owed to the next session",
+  "last_wake": "2026-11-11T22:51:30Z",
+  "jobs": [],
+  "done": [
+    "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
+    "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'chec…",
+    "15:49 wake: eighteenth read. pt Charles: 1 revision (15:01; the Madeira section reordered; 291 incidents to 14:00, w-pt-33 rewritten; the port authority closing quays, not claimed). pt Bruna 15:33 (its Spain section), en 15:00 (a citation …",
+    "16:48 wake: nineteenth read. en 16:40: \"at least one person has died in the Canary Islands\" (a bare link to an English-language Canarian site) with 3 fatalities in its infobox (w-en-23, d-08): no death on our site, a lead. pt 16:34: Madeir…",
+    "17:50 wake: twentieth read. No page moved. Our timeline since 16:48 (Lisbon's last red lifted at 15:55, the wind turning west) leaves the warning claims already marked behind; no row of ours reports a death, so w-en-23 stays a lead",
+    "18:56 wake: twenty-first read. en 18:12: the in-text attribution to Meteored removed from the origin sentence (footnote kept; w-en-05 re-anchored); en redirect Storm Charles 18:43: categories only. The death claim (w-en-23) unchanged. pt, …",
+    "19:49 wake: twenty-second read. en 19:10-19:15: the storm's section rewritten (origin re-anchored w-en-01 to 05; 987 hPa w-en-25; 184 Lisbon flights, 18 harbours, ANEPC 538 incidents w-en-24; 3 deaths now in the season table too). pt seaso…",
+    "20:49 wake: twenty-third read. No page moved",
+    "21:48 wake: twenty-fourth read. pt Charles +8.5 kB (21:43, 21:50): a mainland section; anchors all survive; IPMA lifting the last red at 15:55 claimed (w-pt-51); the rest left to the next session (HANDOVER.md). pt Bruna moved (a mention)",
+    "22:51 wake: twenty-fifth read. No page moved. The pt mainland text of 21:43-21:50 is still owed (HANDOVER.md)"
+  ],
+  "done_total": 36,
+  "next": [
+    "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
+    "keep the list of open changes in values.md and against.json current as rows are fixed",
+    "Wikidata, when Dinis says yes to a client name; the talk pages, read-only"
+  ],
+  "asks_dinis": [
+    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (no 429 in either read). Wikidata reported server lag on every try in the first six rea…"
+  ],
+  "asks": [
+    "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
+  ],
+  "keys": [
+    {
+      "id": "incident-wikipedia-dinis",
+      "record": "sha256:75ed17adda4b899d",
+      "encryption": "sha256:da1d37c302cd8700",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-wikipedia-dinis-2",
+      "record": "sha256:dfff9ffd5c1ef6e1",
+      "encryption": "sha256:71df9610206086af",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made by the role's second session on 11 November 2026, taking over from the first (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-wikipedia-dinis-3",
+      "record": "sha256:9524ecd67715395b",
+      "encryption": "sha256:2a11f4930d84a31b",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made by the role's third session on 11 November 2026, taking over from the second (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "research/wikipedia/**",
+    "tools/wikipedia-*.mjs",
+    "agents/wikipedia/**"
+  ],
+  "figure": "app/studio/agents/wikipedia.svg",
+  "mark": "app/studio/agents/wikipedia.mark.svg",
+  "tagline": "Wikipedia on the storm, in every language, compared",
+  "wears": "an open book, worn as a hat",
+  "group": "Sources and evidence",
+  "work": [
+    {
+      "href": "research/wikipedia/index.html",
+      "title": "Wikipedia and Storm Charles",
+      "path": "research/wikipedia/"
+    }
+  ]
+}

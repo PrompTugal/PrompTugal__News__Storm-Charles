@@ -26,6 +26,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { readKeys } from './lane-keystore.mjs';   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
+import { agentsFile } from './agents-split.mjs';   // data/agents/sessions.json and index.json are split per agent (11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'data/trace');
@@ -45,7 +46,7 @@ const ENV = {
 const hex = (s, n) => crypto.createHash('sha256').update(String(s)).digest('hex').slice(0, n);
 export const traceIdOf = (flow) => hex('trace:' + flow, 32);   // as abp/tools/flow.mjs
 export const spanIdOf = (unit) => hex('span:' + unit, 16);     // as abp/tools/flow.mjs
-const readJSON = (p, d = null) => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8')); } catch { return d; } };
+const readJSON = (p, d = null) => { try { return agentsFile(p, ROOT) ?? JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8')); } catch { return d; } };
 const iso = (t) => new Date(t).toISOString();
 const flowOf = (at) => 'ws214-' + iso(at).slice(0, 13).replace(/-/g, '').replace(':', '');   // one flow per UTC hour: ws214-20261111T22
 export const clean = (s) => String(s || '').split('\n')[0]

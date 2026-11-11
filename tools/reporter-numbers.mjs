@@ -5,10 +5,11 @@
 //   node tools/reporter-numbers.mjs [--out <dir>]   (writes <dir>/reporter/numbers.json; default: the repository)
 import fs from 'node:fs';
 import path from 'node:path';
+import { agentsFile } from './agents-split.mjs';   // data/agents/sessions.json and index.json are split per agent (11 November)
 
 const outAt = process.argv.indexOf('--out');
 const outDir = outAt > 0 ? process.argv[outAt + 1] : '.';
-const read = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+const read = f => agentsFile(f) ?? JSON.parse(fs.readFileSync(f, 'utf8'));
 const hour = t => t.slice(0, 13);
 const hours = new Map();
 const H = h => { if (!hours.has(h)) hours.set(h, { hour: h + 'Z', commits: 0, agents_active: new Set(), handoffs_for: 0, runs: 0, releases: 0, runs_cancelled: 0, runs_failed: 0, p2s: [], cards_opened: 0, cards_closed: 0 }); return hours.get(h); };

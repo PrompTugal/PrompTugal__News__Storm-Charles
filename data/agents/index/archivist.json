@@ -1,0 +1,68 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.archivist@web-summit.dinis",
+  "role": "archivist",
+  "owns": "`evidence/`, `tools/capture*.mjs`, `data/vaults.json`",
+  "job": "**capture every external page** (screenshot, HTML, sha256), the vaults (packed for captures, normal for display), the evidence pages",
+  "shared_row": false,
+  "status_file": "agents/archivist/status.json",
+  "status_sha256": "97e8a6e14d11f3d770ea9dabc89de15e663ce992118864ef9766e6c8caf6395a",
+  "state": "active: capturing; primary sources re-read each hour",
+  "last_wake": "2026-11-11T22:27:00Z",
+  "jobs": [],
+  "done": [
+    "tools/capture.mjs: one address at a time, a few seconds apart, as 'Mozilla/5.0 (compatible; page-capture/1.0)', robots.txt read and obeyed, never logged in; keeps (outside git) the HTML as served, the document after scripts, the visible te…",
+    "tools/capture-records.mjs: captures -> the two vaults and evidence/<source>/<yyyy>/<mm>/<dd>/<hhmm>-<slug>.json + its page; evidence/index.json, index.md, rows.json (timeline row id -> evidence id); changed / unchanged against the capture …",
+    "15:24 hourly round: IPMA's timeline for Lisbon CHANGED (ipma/2026/11/11/1423-pt-otempo-prev-sam -> ipma/2026/11/11/1524-pt-otempo-prev-sam): last update 11 November 15:05; no red line is listed for Lisbon any more; rain yellow 15:06 to 18:…",
+    "16:24 hourly round: IPMA's timeline for Lisbon CHANGED (ipma/2026/11/11/1524-pt-otempo-prev-sam -> ipma/2026/11/11/1624-pt-otempo-prev-sam): last update 11 November 15:55; the wind line is no longer listed; rain yellow 15:56 to 18:00; sea …",
+    "17:23 hourly round: all five primaries answered 200. IPMA's timeline for Lisbon unchanged since 16:24 (rain yellow to 18:00, sea state orange to 21:00 and yellow to 03:00, last update 15:55, label 'Lisboa Laranja'); communiqués and the gov…",
+    "18:23 hourly round: IPMA's timeline for Lisbon CHANGED in one line (ipma/2026/11/11/1723-pt-otempo-prev-sam -> ipma/2026/11/11/1823-pt-otempo-prev-sam): the yellow rain line (15:56 to 18:00) is no longer listed (its own end time); left for…",
+    "19:23 hourly round: IPMA's timeline for Lisbon shows a new update time, 11 November 19:08 (was 15:55) (ipma/2026/11/11/1823-pt-otempo-prev-sam -> ipma/2026/11/11/1924-pt-otempo-prev-sam); the Lisbon lines are the same two sea-state warning…",
+    "20:23 hourly round: IPMA's timeline for Lisbon (ipma/2026/11/11/1924-pt-otempo-prev-sam -> ipma/2026/11/11/2023-pt-otempo-prev-sam): last update now 11 November 19:17 (was 19:08); the Lisbon lines are the same two sea-state warnings (orang…",
+    "21:23 hourly round: IPMA's timeline for Lisbon CHANGED (ipma/2026/11/11/2023-pt-otempo-prev-sam -> ipma/2026/11/11/2123-pt-otempo-prev-sam): the orange sea-state line is no longer listed (its end time, 21:00); the only line left for Lisbon…",
+    "22:23 hourly round: all five primaries answered 200 and are unchanged since 21:23. IPMA's timeline for Lisbon lists only sea state yellow 21:00 to 12 Nov 03:00; last update 19:17; label 'Lisboa Amarelo'. ANEPC's notice 21 page answers agai…"
+  ],
+  "done_total": 31,
+  "next": [
+    "primaries re-read hourly at :23, changed / unchanged",
+    "186 commercial or unclassified research addresses stay held until their terms are read",
+    "new addresses as rows and research add them (evidence/rows.json is rebuilt each round)",
+    "IPMA's feeds in evidence/data.json when incident.ipma@ publishes reads.json"
+  ],
+  "asks_dinis": [
+    "Dinis: the two vault write keys (display f86qsbla, captures worixdil) are still held only in this session. Three attempts to hand them over were refused by this session's permission check (reading the key back; sealing it with tools/lane-h…"
+  ],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-archivist-dinis",
+      "record": "sha256:1767bd4a70295162",
+      "encryption": "sha256:d3f6afe074c9293c",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "evidence/**",
+    "app/evidence/**",
+    "tools/capture*.mjs",
+    "data/vaults.json",
+    "agents/archivist/**"
+  ],
+  "figure": "app/studio/agents/archivist.svg",
+  "mark": "app/studio/agents/archivist.mark.svg",
+  "tagline": "captures every outside page: screenshot, hash, vault",
+  "wears": "an archive box",
+  "group": "Sources and evidence",
+  "work": [
+    {
+      "href": "evidence/index.html",
+      "title": "Wayback: what each outside page looked like when we read it",
+      "path": "evidence/"
+    }
+  ]
+}

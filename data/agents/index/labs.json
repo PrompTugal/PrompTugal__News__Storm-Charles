@@ -1,0 +1,86 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.labs@web-summit.dinis",
+  "role": "labs",
+  "owns": "`labs/`",
+  "job": "**experiments**: many timelines, many decision views, lead times, weather views",
+  "shared_row": false,
+  "status_file": "agents/labs/status.json",
+  "status_sha256": "36682eb56c7814647c8073045e09b07a35b586eac85baaf490f3c22ecc3ba066",
+  "state": "third session, after the 12:00 look: twelve experiments pass on the 11:26 data; two faults found by looking and fixed (lead-times drew the wind lowering as red; stations hid Lisbon's rain on Madeira's scale); known-when can jump to the wind change and the latest read",
+  "last_wake": "2026-11-11T12:08Z: one-shot from incident.conductor@ (the 12:00 look)",
+  "jobs": [],
+  "done": [
+    "session key made (encryption sha256:e7ba51b45cae191b, signing sha256:38e087ab3c122885; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
+    "the Labs core (app/labs/labs.js, labs.css): loads only the site's published JSON, draws SVG and HTML from the design tokens, every mark carries an item id and one hook, Labs.openItem(id), shows the row or edge with its source, the time rea…",
+    "day-bands: a decision with no stated end is drawn only on the day it starts (693cde5); tokens measured into accounts/ledger/labs.jsonl; HANDOVER.md written",
+    "second session, round 5: session key made (encryption sha256:ebba9a92c386ec63, record sha256:2bf209f3a17b276f), the first session's entry marked handed over",
+    "labs/decisions/state: a board of the decisions by state of service (closed, suspended, limited, running, not announced), by place or by kind of body, hiding what had ended or been superseded when the graph was last written; states are said…",
+    "a table twin under every chart, made from the chart's own marks in the order drawn (each row opens its item): a linear keyboard path through every view",
+    "tools/labs-check.mjs: every experiment at 1680 and 390 wide: marks drawn, nothing wider than the screen (also with an item or the table open), a click opens an item, the console quiet; 24 checks pass",
+    "checked against Wednesday morning's data: weather/models drew no observed rain (its station reports none: now the Lisbon station that does, named), flattened the forecast rain peak at 12 mm (the scale now fits), and joined the airport's oc…",
+    "09:12 look under the red rain (data read 08:45): day-bands, stations, state and lead-times read correctly; weather/models still said \"red wind warning: gusts to 120 km/h (140 where most exposed)\" in fixed words and drew red warnings only, …",
+    "12:00 look (11 Nov, data read 11:26): day-bands, models, stations, known-when, lead-times, state checked by eye against warnings.json, cap.json and graph.json (11:56); fixed L.level() to read the target of 'from X to Y'; stations opens on …"
+  ],
+  "done_total": 19,
+  "next": [
+    "Wikipedia on the lag view when the first edit per keyed fact is published in first-on-each-fact.json's shape_for_other_series (not there at 06:50)",
+    "a keyboard order check on the SVG marks themselves (the table twin gives a linear path meanwhile)",
+    "entity links in items when rows and edges carry entity ids",
+    "a view from data/exposure/: people-by-hour under each level in force (a stacked strip under day-bands), and ensemble.json's gust spread p10 to p90 as a band on models (labelled shares of forecasts, never a chance)"
+  ],
+  "asks_dinis": [],
+  "asks": [
+    "incident.researcher@: only 8 of the 47 edges in decisions/graph.json state both a minute of announcement and effect_from_utc; every edge that gains them appears on the lead-times chart by itself",
+    "incident.meteorologist@: a field on each Madeira station saying which IPMA warning area it is in (north coast, south coast, mountains, Porto Santo) would let the stations view draw the warning on the station's own row; and gust observation…",
+    "incident.media@: first-on-each-fact.json works well as data; the same shape for Wikipedia's first edit on each keyed fact would put Wikipedia on the lag view",
+    "incident.weather@: you said you would lift the Tuesday strip (labs/weather/day-rebuilt) after the 05:00 observations: does it need anything changed? Two fixes of this hour may matter to the front page too: a rain series should not come fro…"
+  ],
+  "keys": [
+    {
+      "id": "incident-labs-dinis",
+      "record": "sha256:38e087ab3c122885",
+      "encryption": "sha256:e7ba51b45cae191b",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. That session handed over to a second a…"
+    },
+    {
+      "id": "incident-labs-dinis-2",
+      "record": "sha256:2bf209f3a17b276f",
+      "encryption": "sha256:ebba9a92c386ec63",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 06:44 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second labs session, started from the bri…"
+    },
+    {
+      "id": "incident-labs-dinis-3",
+      "record": "sha256:7071f05e5732e6c7",
+      "encryption": "sha256:a5c56a67fc4acce5",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 12:12 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third labs session, started from the brie…"
+    }
+  ],
+  "policy_owns": [
+    "labs/**",
+    "app/labs/**",
+    "tools/labs-*.mjs",
+    "agents/labs/**"
+  ],
+  "figure": "app/studio/agents/labs.svg",
+  "mark": "app/studio/agents/labs.mark.svg",
+  "tagline": "experiments: timelines, decision views, weather views",
+  "wears": "a full flask",
+  "group": "The faces: what a reader sees",
+  "work": [
+    {
+      "href": "labs/index.html",
+      "title": "Labs",
+      "path": "labs/"
+    }
+  ]
+}

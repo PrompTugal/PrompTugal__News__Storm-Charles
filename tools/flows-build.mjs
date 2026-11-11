@@ -13,12 +13,13 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
+import { agentsFile } from './agents-split.mjs'   // data/agents/sessions.json and index.json are split per agent (11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2), CHECK = args.includes('--check')
 const OUT = args.includes('--out') ? path.resolve(args[args.indexOf('--out') + 1]) : null
 if (!OUT && !CHECK) { console.error('usage: flows-build.mjs --out <dir> | --check'); process.exit(2) }
-const read = rel => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8')) } catch { return null } }
+const read = rel => { try { return agentsFile(rel, ROOT) ?? JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8')) } catch { return null } }
 const text = rel => { try { return fs.readFileSync(path.join(ROOT, rel), 'utf8') } catch { return '' } }
 const ls = rel => { try { return fs.readdirSync(path.join(ROOT, rel)).sort() } catch { return [] } }
 

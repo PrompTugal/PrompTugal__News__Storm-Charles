@@ -1,0 +1,107 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.graph@web-summit.dinis",
+  "role": "graph",
+  "owns": "`data/graph/`, `data/query/`, `app/graph/`, `tools/graph-*.mjs`",
+  "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
+  "shared_row": false,
+  "status_file": "agents/graph/status.json",
+  "status_sha256": "44000ff67ae5930e7f81861afbccc545abdfc16790dfbd6c536cd08c49816fea",
+  "state": "the fourth graph session (from 14:04 on 11 November): the graph is six parts (storm.json names storm-decisions, storm-signals, storm-sources, storm-datasets, storm-elsewhere in `more`), joined to sources/, meteorology/ and evidence/ by crossings; rebuilt hourly",
+  "last_wake": "2026-11-11T22:55Z",
+  "jobs": [],
+  "done": [
+    "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
+    "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
+    "15:53 wake: 557 nodes, 780 edges (73 decisions, 117 signals), coverage 467; /data/query/ matches, /app/graph/ no page error",
+    "16:53 wake: 557 nodes, 769 edges (73 decisions, 122 signals; Warnings 49 to 46, Places 10 to 8: more districts' warnings ended), coverage 485; /data/query/ matches, /app/graph/ no page error",
+    "17:53 wake: 553 nodes, 759 edges (74 decisions, 126 signals; Warnings 46 to 40, Places 8 to 5: warnings ending as the storm passes), coverage 507; /data/query/ matches, /app/graph/ no page error",
+    "18:53 wake: 560 nodes, 767 edges (76 decisions, 130 signals, 40 warnings in force), coverage 525; /data/query/ matches, /app/graph/ no page error",
+    "19:53 wake: 563 nodes, 766 edges (77 decisions, 134 signals, 38 warnings in force), coverage 544 (media parts read past its 19:00 limit); /data/query/ matches, /app/graph/ no page error",
+    "20:53 wake: 569 nodes, 782 edges (81 decisions, 136 signals, 38 warnings in force), coverage 569; /data/query/ matches, /app/graph/ no page error",
+    "21:53 wake: 574 nodes, 795 edges (83 decisions, 138 signals, 39 warnings in force), coverage 590; CI deployed nothing from 20:13 to about 21:50 (runs queued, none started; told the conductor at 21:00), served again by 21:52; /data/query/ m…",
+    "22:53 wake: 579 nodes, 792 edges (83 decisions, 139 signals, 35 warnings in force, 60 datasets), coverage 608; storm-elsewhere.json is empty (0 nodes: no red or orange outside Lisbon) and both pages load it without error; /data/query/ matc…"
+  ],
+  "done_total": 49,
+  "next": [
+    "sizes at 22:53 on 11 November: tables/coverage*.json in parts of at most 190 KB of rows (coverage-2.json 154 KB; a third part comes by itself), tables/signals.json 140 KB (labs reads it whole: tell incident.labs@ near 190 KB), storm-decisi…",
+    "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is 103 KB at 14:06, growing faster than the note said: about 60 KB was stale)",
+    "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
+    "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
+    "check the pages on the live site, not only the local build"
+  ],
+  "asks_dinis": [
+    "Dinis: git history (earlier commits and CI tags) still holds a private person's post address in data/graph/; nothing here rewrites history. The conductor has it for you."
+  ],
+  "asks": [
+    "incident.meteorologist@: in weather/cap.json, most `replaces` point at messages no longer in the feed, so was_level and was_starts are empty for 10 of 11 updates; keeping each message once seen (as warnings.json keeps history) would fill t…",
+    "ontologist@'s schemas were not readable from this session (its repository is not attached).",
+    "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
+    "incident.sources@: sources/wikipedia/ has no page in the build (45 of 46 bodies do), so one registered-as link leads nowhere."
+  ],
+  "keys": [
+    {
+      "id": "incident-graph-dinis",
+      "record": "sha256:6c3575f81c3ff0e8",
+      "encryption": "sha256:6caf6606ce46c991",
+      "added": "2026-11-10",
+      "status": "handed over",
+      "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The first graph session (10 to 11 Nove…"
+    },
+    {
+      "id": "incident-graph-dinis-2",
+      "record": "sha256:cc9e5c52b41d3393",
+      "encryption": "sha256:4e092cb8c9676a39",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 03:35 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The second graph session (1…"
+    },
+    {
+      "id": "incident-graph-dinis-3",
+      "record": "sha256:bdff3e1a8cc41f1b",
+      "encryption": "sha256:af1009c9c126b694",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 07:56 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The third graph session (11…"
+    },
+    {
+      "id": "incident-graph-dinis-4",
+      "record": "sha256:a156b57983bc9b81",
+      "encryption": "sha256:edc574bd735d2f62",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 14:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "data/graph/**",
+    "app/graph/**",
+    "tools/graph-*.mjs",
+    "data/query/**"
+  ],
+  "figure": "app/studio/agents/graph.svg",
+  "mark": "app/studio/agents/graph.mark.svg",
+  "tagline": "the ontologist and cartographer: one graph of the storm",
+  "wears": "three nodes, joined",
+  "group": "Knowledge: the graph, the entities, the library, the board",
+  "work": [
+    {
+      "href": "data/graph/index.html",
+      "title": "The graph of the storm, and its ontology",
+      "path": "data/graph/"
+    },
+    {
+      "href": "app/graph/index.html",
+      "title": "The graph of the storm",
+      "path": "app/graph/"
+    },
+    {
+      "href": "data/query/index.html",
+      "title": "Query the storm",
+      "path": "data/query/"
+    }
+  ]
+}

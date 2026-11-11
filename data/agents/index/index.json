@@ -1,0 +1,219 @@
+{
+  "about": "Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks starting \"Dinis:\" are for the operator), and its public key fingerprints (data/keys.json). Written by tools/agents-index.mjs from the repository; nothing here is typed by hand. Commits are not in this file: the page reads them from GitHub's public API.",
+  "by": "incident.observability@web-summit.dinis",
+  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
+  "branch": "dev",
+  "sources": [
+    "agents/JOBS.md",
+    "agents/*/status.json",
+    "agents/policy.json",
+    "data/keys.json",
+    "data/agents/ledger/*.json"
+  ],
+  "count": {
+    "about": "The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.",
+    "agents": 43,
+    "with_active_key": 40,
+    "sessions": 140,
+    "handed_over": 99
+  },
+  "counts": {
+    "agents": 43,
+    "with_status": 43,
+    "with_key": 40,
+    "asks_for_dinis": 55
+  },
+  "ledger": [],
+  "groups": [
+    "Lead",
+    "The faces: what a reader sees",
+    "Sources and evidence",
+    "Knowledge: the graph, the entities, the library, the board",
+    "The machine: build, identity, models, visibility",
+    "The project on itself: what it costs, how it worked, how it is told",
+    "Other"
+  ],
+  "board": {
+    "script": "app/board/board.js",
+    "style": "app/board/board.css",
+    "index": "board/index.json",
+    "for_dinis": ""
+  },
+  "split": "one file per agent beside this one (agents[].file); tools/agents-split.mjs joins them (readAgentsData), and the build serves the whole object at data/agents/index.json",
+  "agents": [
+    {
+      "name": "incident.conductor@web-summit.dinis",
+      "file": "conductor.json"
+    },
+    {
+      "name": "incident.observability@web-summit.dinis",
+      "file": "observability.json"
+    },
+    {
+      "name": "incident.designer@web-summit.dinis",
+      "file": "designer.json"
+    },
+    {
+      "name": "incident.identity@web-summit.dinis",
+      "file": "identity.json"
+    },
+    {
+      "name": "incident.dev@web-summit.dinis",
+      "file": "dev.json"
+    },
+    {
+      "name": "incident.meteorologist@web-summit.dinis",
+      "file": "meteorologist.json"
+    },
+    {
+      "name": "incident.researcher@web-summit.dinis",
+      "file": "researcher.json"
+    },
+    {
+      "name": "incident.accountant@web-summit.dinis",
+      "file": "accountant.json"
+    },
+    {
+      "name": "incident.archivist@web-summit.dinis",
+      "file": "archivist.json"
+    },
+    {
+      "name": "incident.aws@web-summit.dinis",
+      "file": "aws.json"
+    },
+    {
+      "name": "incident.board@web-summit.dinis",
+      "file": "board.json"
+    },
+    {
+      "name": "incident.brief@web-summit.dinis",
+      "file": "brief.json"
+    },
+    {
+      "name": "incident.broadcast@web-summit.dinis",
+      "file": "broadcast.json"
+    },
+    {
+      "name": "incident.ci@web-summit.dinis",
+      "file": "ci.json"
+    },
+    {
+      "name": "incident.datascience@web-summit.dinis",
+      "file": "datascience.json"
+    },
+    {
+      "name": "incident.desk@web-summit.dinis",
+      "file": "desk.json"
+    },
+    {
+      "name": "incident.entities@web-summit.dinis",
+      "file": "entities.json"
+    },
+    {
+      "name": "incident.envoy@web-summit.dinis",
+      "file": "envoy.json"
+    },
+    {
+      "name": "incident.flights@web-summit.dinis",
+      "file": "flights.json"
+    },
+    {
+      "name": "incident.graph@web-summit.dinis",
+      "file": "graph.json"
+    },
+    {
+      "name": "incident.ipma@web-summit.dinis",
+      "file": "ipma.json"
+    },
+    {
+      "name": "incident.journalist@web-summit.dinis",
+      "file": "journalist.json"
+    },
+    {
+      "name": "incident.labs@web-summit.dinis",
+      "file": "labs.json"
+    },
+    {
+      "name": "incident.librarian@web-summit.dinis",
+      "file": "librarian.json"
+    },
+    {
+      "name": "incident.media@web-summit.dinis",
+      "file": "media.json"
+    },
+    {
+      "name": "incident.meteorology@web-summit.dinis",
+      "file": "meteorology.json"
+    },
+    {
+      "name": "incident.models@web-summit.dinis",
+      "file": "models.json"
+    },
+    {
+      "name": "incident.motion@web-summit.dinis",
+      "file": "motion.json"
+    },
+    {
+      "name": "incident.perplexity@web-summit.dinis",
+      "file": "perplexity.json"
+    },
+    {
+      "name": "incident.planner@web-summit.dinis",
+      "file": "planner.json"
+    },
+    {
+      "name": "incident.reporter@web-summit.dinis",
+      "file": "reporter.json"
+    },
+    {
+      "name": "incident.shadow@web-summit.dinis",
+      "file": "shadow.json"
+    },
+    {
+      "name": "incident.sherpa@web-summit.dinis",
+      "file": "sherpa.json"
+    },
+    {
+      "name": "incident.social@web-summit.dinis",
+      "file": "social.json"
+    },
+    {
+      "name": "incident.sources@web-summit.dinis",
+      "file": "sources.json"
+    },
+    {
+      "name": "incident.stories@web-summit.dinis",
+      "file": "stories.json"
+    },
+    {
+      "name": "incident.storyteller@web-summit.dinis",
+      "file": "storyteller.json"
+    },
+    {
+      "name": "incident.studio@web-summit.dinis",
+      "file": "studio.json"
+    },
+    {
+      "name": "incident.synthetic@web-summit.dinis",
+      "file": "synthetic.json"
+    },
+    {
+      "name": "incident.transport@web-summit.dinis",
+      "file": "transport.json"
+    },
+    {
+      "name": "incident.weather@web-summit.dinis",
+      "file": "weather.json"
+    },
+    {
+      "name": "incident.weatherwatch@web-summit.dinis",
+      "file": "weatherwatch.json"
+    },
+    {
+      "name": "incident.wikipedia@web-summit.dinis",
+      "file": "wikipedia.json"
+    }
+  ],
+  "updated": "2026-11-11T23:17:47Z",
+  "content_sha256": "127f3c3ab18a78bce368ecc1b7df981be69e843ee1ccacf744418b8d4c798e23"
+}

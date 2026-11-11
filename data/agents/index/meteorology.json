@@ -1,0 +1,81 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.meteorology@web-summit.dinis",
+  "role": "meteorology",
+  "owns": "`meteorology/`",
+  "job": "**where the weather data comes from**: observing systems, models, services, down to the raw material; who feeds which site; every licence",
+  "shared_row": false,
+  "status_file": "agents/meteorology/status.json",
+  "status_sha256": "8717fc28bee512d9df59f37b89d6138e8a0302d31a535c17a3bac31b38c23d17",
+  "state": "second session; re-read at 20:59Z: the two ERA5 rows are stated again; nothing else changed; next re-read about 00:05Z",
+  "last_wake": "2026-11-11T21:01Z",
+  "jobs": [],
+  "done": [
+    "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
+    "meteorology/lineage.json (grammar: 6 layers, 10 verbs each with its inverse), nodes/*.json (103 nodes), edges/*.json (143 edges)",
+    "05:23Z re-read of every edge and licence (--stale): 258 items stamped, 0 changed state, 126 pages changed bytes with the statement still standing, 22 not read (as before: refused, blocked, or not requested because of their terms)",
+    "05:23Z joins stated on the nodes (board card a-graph-2): \"entity\" on 3 nodes (body-ipma, body-aemet, svc-meteoalarm), \"of\" on 36 site nodes (the entity that publishes the site), \"source\" on 9 (the id in sources/registry.json); in meteorolo…",
+    "05:23Z names for the linker: body-open-meteo is now \"The Open-Meteo project\" (the bare name \"Open-Meteo\" goes to data-open-meteo), body-microsoft is \"Microsoft Research\"; \"ICON\" and \"Windy\" kept (every use outside meteorology/ is in resear…",
+    "08:24Z re-read (--stale): 258 stamped, 1 changed state: site-sc-negocios-live visualises site-windy went from stated to not found in this read (the live blog moved on; noted on the edge); 125 pages changed bytes with the statement still st…",
+    "11:36Z re-read (--stale): 258 stamped, 0 changed state in the end. EUMETSAT's licence page (three rows) first came back \"not read\": the page answered, but slowly, and the headless reader dropped its status; tools/meteorology-render.mjs now…",
+    "14:42Z re-read (--stale): 258 stamped, 0 changed state in the end. prociv.gov.pt (two rows) did not answer on the first pass and answered on a second, a few minutes later: \"not stated\", as before (the address answers intermittently from he…",
+    "17:55Z re-read (--stale): 258 stamped, 2 changed state: \"body-ecmwf publishes data-era5\" and the licence row lic-copernicus-era5 went from stated to not read. Their page (cds.climate.copernicus.eu) stalled, then answered 502, on five tries…",
+    "21:01Z re-read (--stale): 258 stamped; \"body-ecmwf publishes data-era5\" and lic-copernicus-era5 went from not read back to stated (Copernicus's page answers again, the licence wording unchanged). Météo-France's page on data.gouv.fr did not…"
+  ],
+  "done_total": 21,
+  "next": [
+    "about 00:05Z on 12 November: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed",
+    "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
+    "22 addresses not read (refused, blocked, or not requested because of their terms): listed on the map page",
+    "if Dinis says yes to a build-on item: a GRIB decoder outside the build (GFS box to small JSON); a person registers with EUMETSAT"
+  ],
+  "asks_dinis": [
+    "Dinis: two decisions on meteorology/build-on.html: (1) hour-old Meteosat pictures need a person to register with EUMETSAT and accept its licence, and design rule 9 lifted for that source; (2) GFS fields redrawn by us (public domain) need a…"
+  ],
+  "asks": [
+    "incident.entities@: node ids are stable (obs-, model-, data-, body-, svc-, site-); an entity-shaped file per node is served at meteorology/nodes/<id>.json",
+    "incident.archivist@: the addresses the edges cite are in meteorology/graph.json (source, read_utc, sha256): candidates for Wayback captures",
+    "incident.weatherwatch@: a lineage page and JSON per site is at meteorology/nodes/site-<your id>.md / .json (39 sites so far); your site pages can link there",
+    "incident.graph@: answered (a-graph-2): nodes carry \"entity\" (the same thing as that entity), \"of\" (a site: the entity that publishes it) and \"source\" (the id in sources/registry.json), each stated by us, in meteorology/nodes/<type>.json an…",
+    "incident.entities@: two node names changed: body-open-meteo \"The Open-Meteo project\", body-microsoft \"Microsoft Research\" (ids unchanged)"
+  ],
+  "keys": [
+    {
+      "id": "incident-meteorology-dinis",
+      "record": "sha256:c5d0a303df53cf64",
+      "encryption": "sha256:162a3344a5c28014",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-meteorology-dinis-2",
+      "record": "sha256:05ede4a171ccc4be",
+      "encryption": "sha256:29969fb5974c7b2c",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 05:20 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The second session of this …"
+    }
+  ],
+  "policy_owns": [
+    "meteorology/**",
+    "app/meteorology/**",
+    "tools/meteorology-*.mjs",
+    "agents/meteorology/**"
+  ],
+  "figure": "app/studio/agents/meteorology.svg",
+  "mark": "app/studio/agents/meteorology.mark.svg",
+  "tagline": "where every forecast and picture comes from, and its licence",
+  "wears": "a barometer",
+  "group": "Sources and evidence",
+  "work": [
+    {
+      "href": "meteorology/index.html",
+      "title": "Where a forecast comes from",
+      "path": "meteorology/"
+    }
+  ]
+}

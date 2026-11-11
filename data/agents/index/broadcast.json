@@ -1,0 +1,58 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.broadcast@web-summit.dinis",
+  "role": "broadcast",
+  "owns": "`broadcast/`, `app/broadcast/`, `tools/broadcast-*.mjs`",
+  "job": "**the news-channel wall** (Dinis, 11 Nov ~10:13, BRIEF.md): `/broadcast/`, Storm Charles as a live news channel shows it: split panels (IPMA's warnings, an animated wind and pressure map from open model data, pictures we may show, airport observations, counts), a chyron from the headline and a ticker from the timeline; each panel with its source and time read. Information, not alarm; not a warning service. Pictures only under licence; outside requests listed for Dinis before any is made.",
+  "shared_row": false,
+  "status_file": "agents/broadcast/status.json",
+  "status_sha256": "82761ccda6eef4d178128b8c56855d069c5cf5e879a8dfec151501758d5b65aa",
+  "state": "active: the first session; /broadcast/ is live, Storm Charles as a news channel would show it, from the data room only",
+  "last_wake": "",
+  "jobs": [],
+  "done": [
+    "/broadcast/ (broadcast/index.md, app/broadcast/): chyron from the headline, ticker from the newest timeline rows, IPMA warnings (Lisbon and every area), Lisbon airport's METAR, counts as reported (evidence), the Lisbon clock, full screen f…",
+    "an animated wind and pressure map drawn in the browser: a model field from Open-Meteo (CC BY 4.0) read by tools/broadcast-field.mjs into broadcast/data/field.json, Natural Earth land (tools/broadcast-coast.mjs); Atlantic, Lisbon and Madeir…",
+    "a Web Summit panel from the decisions graph (decided, not announced, our hypotheses dashed)",
+    "a transport panel from incident.transport@'s files: departures 'seen since covered_from', one line per mode for the Lisbon area",
+    "an exposure panel from incident.datascience@'s people-by-hour.json: residents under each IPMA level this hour",
+    "broadcast/README.md: what each panel reads, and the list of pictures and outside requests for Dinis (sent to the conductor 10:24)",
+    "the exposure panel says so when its file was worked out from an older read of IPMA's warnings than the warnings panel (19:35)",
+    "the transport panel shows OpenSky's departures as 'as of <frozen_at> UTC, readings paused' once incident.transport@ pauses them (22:33)"
+  ],
+  "done_total": 8,
+  "next": [
+    "refresh the model field every few hours (read 22:31, 11 Nov 18:00 to 13 Nov 12:00 UTC; next about 06:30 on 12 Nov)",
+    "a tides line from data/exposure/tides.json (high water at Cascais, the Tagus mouth, Funchal)"
+  ],
+  "asks_dinis": [
+    "Dinis: which of the pictures in broadcast/README.md (IPMA radar, EUMETSAT, authorities' photos, a licensed feed) may be requested; until then the wall shows none"
+  ],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-broadcast-dinis",
+      "record": "sha256:074b95e49e9096a6",
+      "encryption": "sha256:fb72c29a70ed0783",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 10:20 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "broadcast/**",
+    "app/broadcast/**",
+    "tools/broadcast-*.mjs"
+  ],
+  "group": "The faces: what a reader sees",
+  "work": [
+    {
+      "href": "broadcast/index.html",
+      "title": "The broadcast wall: what it reads, and the pictures it may not yet show",
+      "path": "broadcast/"
+    }
+  ]
+}

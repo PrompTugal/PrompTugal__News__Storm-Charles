@@ -10,6 +10,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { agentsFile } from './agents-split.mjs'   // data/agents/sessions.json and index.json are split per agent (11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2)
@@ -21,7 +22,7 @@ const NOW = Math.floor(Date.now() / 1000) * 1000, HOUR = 3600e3   // the build t
 let future = 0   // stamps later than the build time, or that do not parse: dropped and counted
 const ok = s => { const t = ms(s); if (!Number.isFinite(t) || t > NOW) { future++; return false } return true }
 const readAbs = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } }
-const read = rel => readAbs(path.join(ROOT, rel))
+const read = rel => { try { const j = agentsFile(rel, ROOT); if (j !== undefined) return j } catch { return null } return readAbs(path.join(ROOT, rel)) }
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z$/
 const SESSION = /(https?:\/\/)?claude\.ai\/code\/session_[A-Za-z0-9_-]*|session_[A-Za-z0-9]{8,}/g
 const clean = s => String(s ?? '').replace(SESSION, '[session]').replace(/\s+/g, ' ').trim().slice(0, 160)

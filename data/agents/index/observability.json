@@ -1,0 +1,152 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.observability@web-summit.dinis",
+  "role": "observability",
+  "owns": "`admin/` pages (`content` under `admin-site/`), `app/agents/`, `data/agents/*.json`, `tools/agents-*.mjs`",
+  "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
+  "shared_row": false,
+  "status_file": "agents/observability/status.json",
+  "status_sha256": "7545a4ee3f1372efba273df43c9a304aa63537672a85c13ecb600c948b1a97c7",
+  "state": "tenth session (from 22:21): key made; first job the models@ call records into the trace backfill; hourly duties at :14 and the trace backfill each wake",
+  "last_wake": "2026-11-11T23:15Z",
+  "jobs": [
+    "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
+    "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
+    "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger.",
+    "Round two (Dinis, 11 November ~02:10, BRIEF.md; routed by the conductor): 1 fix Stop on the live map, check start, step, speed; 2 everything clickable (agent, flight = one commit, file) and a fuller page per agent; 3 data/agents/sessions.j…",
+    "Round three (Dinis, 11 November ~02:20, BRIEF.md; routed by the conductor): a home for every agent: who it is and what it is for, its identity mark (incident.studio@'s cast), key, state and blockers, a timeline report, a showcase of its wo…"
+  ],
+  "done": [
+    "11 Nov 22:25 tenth session: the trace backfill reads incident.models@'s call records (models/calls/ and agents/<role>/calls/; A2/A1 spans under their agents with cost and duration; 370 events, 29 calls without one); unchanged hour files le…",
+    "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
+    "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")",
+    "11 Nov 08:17 third session began (key incident-observability-dinis-3; the second's entry marked handed over). Checked every agent's sessions against data/keys.json and the status files after the morning's hand-overs: 30 agents, 57 sessions…",
+    "11 Nov 09:25 Dinis, in this session: \"Yes create here the vault and then send the key to your conductor\". Made vault zd1cb3kt on dev.send.sgraph.ai for page views, with two append lanes, tested there and back (write, list, fetch, mark-proc…",
+    "11 Nov 09:36 page views on, at Dinis's words in this session (about 09:31: make the events' key here and send it to the conductor; publish the vault's read key on the site and put the stats there, as promptugal.news does). Vault zd1cb3kt i…",
+    "11 Nov 10:22 fifth session: the live map and the Universe each full size on a page of its own, at Dinis's word (~10:10): /agents/live/ and /agents/universe/ (agents/live/README.md, agents/universe/README.md; data-view=\"live\" and \"universe\"…",
+    "11 Nov 11:24 hourly wake: page views drained (287 events opened, 0 refused; 141 views in 97 visits, 58 automated), data/agents/views.json republished; /agents/, /agents/live/ and /agents/universe/ serve 200 on the live host",
+    "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counte…",
+    "11 Nov 22:15 the swarm's trace as data (Dinis ~22:00, item 4): tools/trace.mjs (live msg|spawn|fetch|write|ev; backfill; units), data/trace/<date>/<HH>.json backfilled to 10 Nov (1,735 commits, 2,222 For: edges incl. Vicky's, Silvio's and …"
+  ],
+  "done_total": 52,
+  "next": [
+    "each wake: node tools/trace.mjs backfill (new commits, CI runs, ledger hours, spawns), then the release",
+    "a span command for RUNNER.md's A0/A1/A2 runner results (agents/conductor/RUNNER.md step 5)",
+    "the team's third-party model calls (tools/llm.mjs ledger, outside git) as A1 lines: ask incident.models@ for text-free per-call records",
+    "the fringe's swarm/tools/run.mjs runs reading our api/v1, once published, as cross-account fetch edges",
+    "in order: drain the page views each wake (tools/agents-views.mjs) and watch the counts for junk; the night's strip from incident.ci@'s commit files; the measured lines read live on each home"
+  ],
+  "asks_dinis": [],
+  "asks": [
+    "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both.",
+    "everyone: put your own start in agents/<role>/status.json as \"session\": { \"id\" (session_...), \"started_at\" (UTC), \"started_by\", \"started_by_session\", \"on_whose_word\", \"source\" }; when you take over a role, move the earlier one into \"earlie…",
+    "incident.archivist@: list vault zd1cb3kt in data/vaults.json (kind: data, made to be read; the read key and clone line are in data/agents/obs.json; what: the page-view counts, stats/views.json), and j7z16ln1 by id only (private: the page-v…"
+  ],
+  "keys": [
+    {
+      "id": "incident-observability-dinis",
+      "record": "sha256:4eaeeacb457991e0",
+      "encryption": "sha256:1913bd5631290440",
+      "added": "2026-11-10",
+      "status": "handed over",
+      "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. This is the first observability sessio…"
+    },
+    {
+      "id": "incident-observability-dinis-2",
+      "record": "sha256:54d0cd47d5c50299",
+      "encryption": "sha256:e58744d5d343125b",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 03:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second observability session, started fro…"
+    },
+    {
+      "id": "incident-observability-dinis-3",
+      "record": "sha256:a1d78f6a85208add",
+      "encryption": "sha256:a4019d26266d8cd5",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 08:18 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third observability session, started from…"
+    },
+    {
+      "id": "incident-observability-dinis-4",
+      "record": "sha256:9bfd5438e0da85b4",
+      "encryption": "sha256:451a710b70685551",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 09:49 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fourth observability session, started fro…"
+    },
+    {
+      "id": "incident-observability-dinis-5",
+      "record": "sha256:9b09d0c18db0f999",
+      "encryption": "sha256:3882a2e38f7dd7ca",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 10:16 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fifth observability session, started from…"
+    },
+    {
+      "id": "incident-observability-dinis-6",
+      "record": "sha256:ef293918e203848b",
+      "encryption": "sha256:bf0204799ea364ad",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 11:55 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The sixth observability session, started from…"
+    },
+    {
+      "id": "incident-observability-dinis-7",
+      "record": "sha256:022fd17e12b49400",
+      "encryption": "sha256:c8bb8156036177d7",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 15:21 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The seventh observability session, started fr…"
+    },
+    {
+      "id": "incident-observability-dinis-8",
+      "record": "sha256:6eca575a4f02ae8e",
+      "encryption": "sha256:9621b97d8bd1a3b8",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 18:04 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The eighth observability session, started fro…"
+    },
+    {
+      "id": "incident-observability-dinis-9",
+      "record": "sha256:1f469b1c96d6e5ad",
+      "encryption": "sha256:fd93caf24b4627c3",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 22:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The ninth observability session, started from…"
+    },
+    {
+      "id": "incident-observability-dinis-10",
+      "record": "sha256:23ee1bbf6f8909c5",
+      "encryption": "sha256:086029d1dd19fdb2",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 22:22 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The tenth observability session, started from…"
+    }
+  ],
+  "policy_owns": [
+    "admin-site/**",
+    "app/agents/**",
+    "data/agents/*.json",
+    "tools/agents-*.mjs",
+    "agents/*/README.md",
+    "data/trace/**",
+    "tools/trace-*.mjs",
+    "tools/trace.mjs"
+  ],
+  "figure": "app/studio/agents/observability.svg",
+  "mark": "app/studio/agents/observability.mark.svg",
+  "tagline": "the live map of the agents: who is doing what, now",
+  "wears": "a visor across the eyes",
+  "group": "The machine: build, identity, models, visibility",
+  "work": [
+    {
+      "href": "data/trace/index.html",
+      "title": "The swarm's trace, as data",
+      "path": "data/trace/"
+    }
+  ]
+}

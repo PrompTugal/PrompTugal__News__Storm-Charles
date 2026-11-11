@@ -16,12 +16,13 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { agentsFile } from './agents-split.mjs'   // data/agents/sessions.json and index.json are split per agent (11 November)
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ME = 'incident.librarian@web-summit.dinis'
 const outAt = process.argv.indexOf('--out'), OUT = outAt > 0 && process.argv[outAt + 1] ? path.resolve(process.argv[outAt + 1]) : ''
 if (!OUT || OUT === ROOT) { console.error('library-pack: --out <dir> is required (not the repository root); nothing written'); process.exit(2) }
 const P = path.join(OUT, 'library/pack'); fs.mkdirSync(P, { recursive: true })
-const J = f => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')) } catch { return null } }
+const J = f => { try { return agentsFile(f, ROOT) ?? JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')) } catch { return null } }
 const now = new Date(), iso = now.toISOString().replace(/\.\d+Z$/, 'Z'), stamp = `${iso.slice(0, 10)}, ${iso.slice(11, 16)} UTC`
 const statCache = new Map()
 const stat = f => { if (statCache.has(f)) return statCache.get(f); const v = stat0(f); statCache.set(f, v); return v }
@@ -126,7 +127,7 @@ const board = (() => { try { return fs.readdirSync(path.join(ROOT, 'board/items'
         }
         const stands = new Map()
         let text = fill(fs.readFileSync(src, 'utf8'), stands).replace(/\[\[(agents-now|for-dinis|for-conductor)\]\]/g, (_, k) => blocks[k])
-        for (const f of ['data/agents/sessions.json', 'library/pack/wakes.json', ...Object.values(policy.agents).map(r => `agents/${r.role}/status.json`)]) { const s = stat(f); if (s) stands.set(f, s.bytes) }
+        for (const f of [...(fs.existsSync(path.join(ROOT, 'data/agents/sessions')) ? fs.readdirSync(path.join(ROOT, 'data/agents/sessions')).map(x => 'data/agents/sessions/' + x) : ['data/agents/sessions.json']), 'library/pack/wakes.json', ...Object.values(policy.agents).map(r => `agents/${r.role}/status.json`)]) { const s = stat(f); if (s) stands.set(f, s.bytes) }
         const words = text.split(/\s+/).filter(w => /[A-Za-z0-9]/.test(w)).length
         text += `\n---\n\n${n(words)} words at this build (the limit the conductor set is 2,000), ${n(Buffer.byteLength(text))} bytes; it stands for ${stands.size} files of ${n([...stands.values()].reduce((a, b) => a + b, 0))} bytes. Built ${stamp} by \`tools/library-pack.mjs\` from \`library/pack/conductor-handover.md\`.\n`
         if (words > 2000) console.error(`library-pack: conductor-handover.md is ${words} words (limit 2,000)`)

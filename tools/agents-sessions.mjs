@@ -15,6 +15,7 @@ import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
+import { readAgentsData, writeAgentsData } from './agents-split.mjs'   // tracked as data/agents/sessions/ (a file per agent); the build serves data/agents/sessions.json whole
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const j2 = x => String(x).replace(/\.\d+Z$/, 'Z')
@@ -92,7 +93,7 @@ const body = {
     counts: { agents: agents.length, sessions: agents.reduce((n, a) => n + (Array.isArray(a.sessions) ? a.sessions.length : 0), 0), agents_with_more_than_one_session: agents.filter(a => Array.isArray(a.sessions) && a.sessions.length > 1).length, sessions_stated_that_do_not_push_here: agents.filter(a => a.start_as_told && a.start_as_told.session_id !== NR).length, sessions_measured: agents.reduce((n, a) => n + (Array.isArray(a.sessions) ? a.sessions.filter(s => s.measured !== NR).length : 0), 0), sessions_with_a_recorded_start: agents.reduce((n, a) => n + (Array.isArray(a.sessions) ? a.sessions.filter(s => s.started_by !== NR).length : 0), 0), agents_without_a_key: agents.filter(a => a.keys === NR).length },
     agents
 }
-let prev = null; try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { }
+let prev = null; try { prev = readAgentsData('sessions') } catch { }
 const same = prev && JSON.stringify({ ...prev, updated: 0 }) === JSON.stringify({ ...body, updated: 0 })
-if (!same) fs.writeFileSync(OUT, JSON.stringify({ ...body, updated: iso(Date.now()) }, null, 1) + '\n')
-console.log(`agents-sessions: ${body.counts.agents} agents, ${body.counts.sessions} sessions (${body.counts.sessions_with_a_recorded_start} with a recorded start), ${body.counts.agents_without_a_key} without a key -> data/agents/sessions.json${same ? ' (no change)' : ''}`)
+if (!same) writeAgentsData('sessions', { ...body, updated: iso(Date.now()) }, { indent: 1 })
+console.log(`agents-sessions: ${body.counts.agents} agents, ${body.counts.sessions} sessions (${body.counts.sessions_with_a_recorded_start} with a recorded start), ${body.counts.agents_without_a_key} without a key -> data/agents/sessions/${same ? ' (no change)' : ''}`)

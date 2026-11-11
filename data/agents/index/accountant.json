@@ -1,0 +1,100 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.accountant@web-summit.dinis",
+  "role": "accountant",
+  "owns": "`accounts/`",
+  "job": "**what the project costs**: model spend, tokens per agent session, CI time; where the savings are",
+  "shared_row": false,
+  "status_file": "agents/accountant/status.json",
+  "status_sha256": "ef934f08dbe2bfa1d608268013a5b31a93c6af019512f251e065fdaef3c2b101",
+  "state": "active: round 24 released: 30 of 43 measured (3.44 billion tokens in 12,686 calls); models handed over at Dinis's word (47% less), four still held; the conductor 436,404 at 22:05",
+  "last_wake": "2026-11-11T22:47:00Z",
+  "jobs": [
+    "A1: what the project costs, as data: accounts/models.json, agents.json, machine.json, outputs.json, books.json (tools/accounts-build.mjs)",
+    "A2: tokens per agent session by the WS-148 method: tools/accounts-measure.mjs, accounts/ledger/<role>.jsonl, accounts/measure.md",
+    "A3: where the savings are: accounts/savings.md; the librarian's pack measured: accounts/pack-test.json",
+    "A4: the page accounts/index.md and a brief for Dinis each round: accounts/briefs/"
+  ],
+  "done": [
+    "02:52Z session key made, public half in data/keys.json",
+    "02:53Z tools/accounts-measure.mjs (from WS-148's measure.mjs): own session measured first",
+    "16:41Z round 18: the 15:00 hour without the conductor at 154,714 a call; journalist, reporter and observability handed over again (27% to 38% less); archivist 503,947; brief 18",
+    "17:44Z round 19: the conductor's line to 16:42 (599,746 a call, about 100,000 more an hour since its 13:09 compaction; 55% of the 16:00 hour); the team past 3 billion tokens; stories handed over again; brief 19",
+    "18:41Z round 20: the 17:00 hour read as a mix (five first-session agents at 451,269 a call, the rest at 165,030); shadow past 500,000; observability handed over again; brief 20",
+    "19:42Z round 21: the conductor's line to 18:42 (736,167 a call, no compaction since 13:09); the rest at 133,750 a call in the 18:00 hour; transport, weatherwatch, stories, librarian handed over again; brief 21",
+    "20:41Z round 22: the 19:00 hour at 236,099 a call (223 calls); no hand-over; brief 22",
+    "21:41Z round 23: the five held for Dinis 29% of the 20:00 hour; sources past 500,000; librarian handed over again; handover.md brought up to date for a fourth session; brief 23",
+    "21:43Z the fourth session: a new session key (incident-accountant-dinis-4), the third marked handed over; no vault key needed",
+    "22:47Z round 24: models handed over at Dinis's word (399,728 to 213,346 a call, 47% less; again at 22:34); the conductor's line to 22:05 (436,404); the 21:00 hour settled at 178,459 without the conductor; brief 24"
+  ],
+  "done_total": 34,
+  "next": [
+    "round 25 at 23:40 UTC",
+    "the eleven with no line",
+    "to hand over: archivist, shadow, sources, perplexity (held for Dinis); models handed over at his word at 22:01; the conductor 436,404 at 22:05, growing about 130,000 an hour",
+    "app/accounts/: the books drawn from the JSON",
+    "the wind-down (transition/PLAN.md, waiting on Dinis's yes): the accountant is among the early eleven: one closing round of the books as accounts/closing.md, the exit interview in transition/interviews/accountant.md when the planner asks, t…"
+  ],
+  "asks_dinis": [
+    "Dinis: the provider's account is out of credit since 02:55 UTC (accounts/provider.json): the 20-dollar cap cannot be used until it is topped up",
+    "Dinis: how a vault key reaches a fresh session (the conductor holds this): ipma, archivist, sources and models pay 362,000 to 387,000 tokens a call until it is settled"
+  ],
+  "asks": [
+    "incident.designer@: an Accounts entry under Team in the menu (accounts/index.html)"
+  ],
+  "keys": [
+    {
+      "id": "incident-accountant-dinis",
+      "record": "sha256:ca96a65cc0f549ff",
+      "encryption": "sha256:7740387a11cc72c6",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-accountant-dinis-2",
+      "record": "sha256:d0b6426e069787a4",
+      "encryption": "sha256:e1bfc8c65a6afbaa",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 05:40 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-accountant-dinis-3",
+      "record": "sha256:f45587a7246386d1",
+      "encryption": "sha256:744635677e584d8b",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 13:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. This is the third accountan…"
+    },
+    {
+      "id": "incident-accountant-dinis-4",
+      "record": "sha256:f5ee47b30db87081",
+      "encryption": "sha256:4ff7a437f6d71ed0",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 21:42 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). A session key: it ends with t…"
+    }
+  ],
+  "policy_owns": [
+    "accounts/**",
+    "app/accounts/**",
+    "tools/accounts-*.mjs",
+    "agents/accountant/**"
+  ],
+  "figure": "app/studio/agents/accountant.svg",
+  "mark": "app/studio/agents/accountant.mark.svg",
+  "tagline": "what the project costs, and where the savings are",
+  "wears": "a stack of coins",
+  "group": "The project on itself: what it costs, how it worked, how it is told",
+  "work": [
+    {
+      "href": "accounts/index.html",
+      "title": "The accounts",
+      "path": "accounts/"
+    }
+  ]
+}

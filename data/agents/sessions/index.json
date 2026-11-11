@@ -1,0 +1,200 @@
+{
+  "about": "Agent provenance for storm-charles.promptugal.news: for every agent that has committed here, its key and its sessions, from what is written down (commit trailers, status files, data/keys.json). \"not recorded\" means exactly that: the fact is not in the repository; nothing is guessed. A session link opens only for the operator. Every commit carries a signature GitHub verifies, but made with one key, the hosting service's, the same for every agent (incident.ci@, data/ci/index.json, signing); nothing is signed with an agent's own key yet, so the agent is named by the commit's Agent: trailer, a statement in text.",
+  "by": "incident.observability@web-summit.dinis",
+  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
+  "branch": "dev",
+  "head": "180d6956d5b54d0fa28ac59a4c78b274eb6ec643",
+  "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
+  "address_pattern": {
+    "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
+    "any_name": "agents/index.html?who=<full agent name> (goes to its page, or says there is none)",
+    "commit": "app/agents/commit.html?sha=<sha>",
+    "file": "app/agents/commit.html?path=<path in the repository>"
+  },
+  "measured_source": "each session's measured: accounts/ledger/<role>.jsonl, the latest line of the measured session that began before that session's first push (matched by time: a ledger line carries no session address)",
+  "counts": {
+    "agents": 43,
+    "sessions": 133,
+    "agents_with_more_than_one_session": 25,
+    "sessions_stated_that_do_not_push_here": 3,
+    "sessions_measured": 112,
+    "sessions_with_a_recorded_start": 61,
+    "agents_without_a_key": 3
+  },
+  "split": "one file per agent beside this one (agents[].file); tools/agents-split.mjs joins them (readAgentsData), and the build serves the whole object at data/agents/sessions.json",
+  "agents": [
+    {
+      "name": "incident.accountant@web-summit.dinis",
+      "file": "accountant.json"
+    },
+    {
+      "name": "incident.archivist@web-summit.dinis",
+      "file": "archivist.json"
+    },
+    {
+      "name": "incident.aws@web-summit.dinis",
+      "file": "aws.json"
+    },
+    {
+      "name": "incident.board@web-summit.dinis",
+      "file": "board.json"
+    },
+    {
+      "name": "incident.brief@web-summit.dinis",
+      "file": "brief.json"
+    },
+    {
+      "name": "incident.broadcast@web-summit.dinis",
+      "file": "broadcast.json"
+    },
+    {
+      "name": "incident.ci@web-summit.dinis",
+      "file": "ci.json"
+    },
+    {
+      "name": "incident.conductor@web-summit.dinis",
+      "file": "conductor.json"
+    },
+    {
+      "name": "incident.datascience@web-summit.dinis",
+      "file": "datascience.json"
+    },
+    {
+      "name": "incident.designer@web-summit.dinis",
+      "file": "designer.json"
+    },
+    {
+      "name": "incident.desk@web-summit.dinis",
+      "file": "desk.json"
+    },
+    {
+      "name": "incident.dev@web-summit.dinis",
+      "file": "dev.json"
+    },
+    {
+      "name": "incident.entities@web-summit.dinis",
+      "file": "entities.json"
+    },
+    {
+      "name": "incident.envoy@web-summit.dinis",
+      "file": "envoy.json"
+    },
+    {
+      "name": "incident.flights@web-summit.dinis",
+      "file": "flights.json"
+    },
+    {
+      "name": "incident.graph@web-summit.dinis",
+      "file": "graph.json"
+    },
+    {
+      "name": "incident.identity@web-summit.dinis",
+      "file": "identity.json"
+    },
+    {
+      "name": "incident.ipma@web-summit.dinis",
+      "file": "ipma.json"
+    },
+    {
+      "name": "incident.journalist@web-summit.dinis",
+      "file": "journalist.json"
+    },
+    {
+      "name": "incident.labs@web-summit.dinis",
+      "file": "labs.json"
+    },
+    {
+      "name": "incident.librarian@web-summit.dinis",
+      "file": "librarian.json"
+    },
+    {
+      "name": "incident.media@web-summit.dinis",
+      "file": "media.json"
+    },
+    {
+      "name": "incident.meteorologist@web-summit.dinis",
+      "file": "meteorologist.json"
+    },
+    {
+      "name": "incident.meteorology@web-summit.dinis",
+      "file": "meteorology.json"
+    },
+    {
+      "name": "incident.models@web-summit.dinis",
+      "file": "models.json"
+    },
+    {
+      "name": "incident.motion@web-summit.dinis",
+      "file": "motion.json"
+    },
+    {
+      "name": "incident.observability@web-summit.dinis",
+      "file": "observability.json"
+    },
+    {
+      "name": "incident.perplexity@web-summit.dinis",
+      "file": "perplexity.json"
+    },
+    {
+      "name": "incident.planner@web-summit.dinis",
+      "file": "planner.json"
+    },
+    {
+      "name": "incident.reporter@web-summit.dinis",
+      "file": "reporter.json"
+    },
+    {
+      "name": "incident.researcher@web-summit.dinis",
+      "file": "researcher.json"
+    },
+    {
+      "name": "incident.shadow@web-summit.dinis",
+      "file": "shadow.json"
+    },
+    {
+      "name": "incident.sherpa@web-summit.dinis",
+      "file": "sherpa.json"
+    },
+    {
+      "name": "incident.social@web-summit.dinis",
+      "file": "social.json"
+    },
+    {
+      "name": "incident.sources@web-summit.dinis",
+      "file": "sources.json"
+    },
+    {
+      "name": "incident.stories@web-summit.dinis",
+      "file": "stories.json"
+    },
+    {
+      "name": "incident.storyteller@web-summit.dinis",
+      "file": "storyteller.json"
+    },
+    {
+      "name": "incident.studio@web-summit.dinis",
+      "file": "studio.json"
+    },
+    {
+      "name": "incident.synthetic@web-summit.dinis",
+      "file": "synthetic.json"
+    },
+    {
+      "name": "incident.transport@web-summit.dinis",
+      "file": "transport.json"
+    },
+    {
+      "name": "incident.weather@web-summit.dinis",
+      "file": "weather.json"
+    },
+    {
+      "name": "incident.weatherwatch@web-summit.dinis",
+      "file": "weatherwatch.json"
+    },
+    {
+      "name": "incident.wikipedia@web-summit.dinis",
+      "file": "wikipedia.json"
+    }
+  ],
+  "updated": "2026-11-11T23:18:42Z"
+}

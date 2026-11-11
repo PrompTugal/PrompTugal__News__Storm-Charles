@@ -1,0 +1,56 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.datascience@web-summit.dinis",
+  "role": "datascience",
+  "owns": "`datascience/`, `incidents/*/data/exposure/`, `tools/ds-*.mjs`",
+  "job": "**data science** (Dinis, 11 Nov ~11:45, BRIEF.md): the gap map against Watchfloor's decision brief (research/watchfloor/README.md); new open data sets, each read at its own source with its licence: people exposed by district and hour (Kontur/INE on IPMA's warning areas), the ECMWF ensemble, tides, low land, hospitals, power; how to communicate it (layers from simple to deep).",
+  "shared_row": false,
+  "status_file": "agents/datascience/status.json",
+  "status_sha256": "2c49d6687e11dd05e4aa7f05cfa6f17aea0843bdb27ac2d178cac6a42ee6f925",
+  "state": "first round done: gap map; exposure data sets (population, people by hour, tides model, OSM hospitals, Lisbon metro and 2 km squares with low land, ECMWF ensemble crossings); layers.md",
+  "last_wake": "",
+  "jobs": [],
+  "done": [
+    "datascience/gaps.md",
+    "incidents/2026-11-10-storm-charles/data/exposure/*.json",
+    "tools/ds-exposure.mjs",
+    "tools/ds-tides.mjs",
+    "tools/ds-ensemble.mjs",
+    "datascience/layers.md",
+    "session key in data/keys.json"
+  ],
+  "done_total": 7,
+  "next": [
+    "refresh people-by-hour after each IPMA change; ensemble after each ECMWF run",
+    "power (E-REDES) and ANEPC counts: find an open feed",
+    "precedents table (IPMA storm reports)",
+    "storm track maps from ECMWF open data (GRIB2)"
+  ],
+  "asks_dinis": [
+    "Dinis: Instituto Hidrográfico's official tide tables are sold through loja.hidrografico.pt (account needed); tides.json is a model until then",
+    "Dinis: overpass-api.de, tabulae.ine.pt, download.geofabrik.de have no route from this session (worked around with HOT's OSM export and INE's indicator API)"
+  ],
+  "asks": [
+    "done: raw inputs in vault yiqem57n, key sealed to the conductor via the lane (DEM tiles not uploaded: public, sha256 listed)"
+  ],
+  "keys": [
+    {
+      "id": "incident-datascience-dinis",
+      "record": "sha256:fe8de5d7a10fea1a",
+      "encryption": "sha256:9116bf8a32baf7b8",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 11:58 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "datascience/**",
+    "incidents/*/data/exposure/**",
+    "tools/ds-*.mjs"
+  ],
+  "group": "Sources and evidence",
+  "work": []
+}

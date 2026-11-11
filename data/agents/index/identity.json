@@ -1,0 +1,91 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.identity@web-summit.dinis",
+  "role": "identity",
+  "owns": "`app/login/`, `account/`, `data/lanes.json`, `tools/lane-*.mjs`, `SECURITY.md`",
+  "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
+  "shared_row": false,
+  "status_file": "agents/identity/status.json",
+  "status_sha256": "1366f45954c3f8daf3632b8183aca667d244cd6a53f2ba4f2e1da39840b19625",
+  "state": "the conductor's append lane for vault keys is open (vault wowyrqlr, data/lanes.json keys_to_conductor). Dinis's feedback lane exists on the same vault and stays off until his key is a named sender. The login and the sealed feedback box are live as before",
+  "last_wake": "2026-11-11T22:58:26Z",
+  "jobs": [],
+  "done": [
+    "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
+    "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
+    "16:21: wake: 115 keys of 38 agents, 0 problems (since 15:21, by diffing data/keys.json: observability-7, stories-8, journalist-7, reporter-6 added, each previous one handed over); no private half in any tracked file; signed.json unchanged …",
+    "17:21: wake: no change to data/keys.json since 16:20 (115 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
+    "18:21: wake: 119 keys of 38 agents, 0 problems (since 17:21, by diffing data/keys.json: weatherwatch-5, librarian-12, stories-9, observability-8 added, each previous one handed over); no private half in any tracked file; signed.json unchan…",
+    "19:21: wake: 120 keys of 38 agents, 0 problems (since 18:21, by diffing data/keys.json: transport-5 added, -4 handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
+    "20:21: wake: no change to data/keys.json since 19:20 (120 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
+    "21:21: wake: 123 keys of 38 agents, 0 problems (since 20:20, by diffing data/keys.json: media-4, librarian-13, reporter-7 added, each previous one handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-te…",
+    "22:21: wake: 132 keys of 40 agents, 0 problems (since 21:20, by diffing data/keys.json: librarian-14, board-4, stories-10, models-2, accountant-4, journalist-8, observability-9 added, each previous one handed over; two new agents, incident…",
+    "22:58: at the conductor's ask (22:52), data/keys.json (261,474 B, over the gate's 256 KB) split: the 40 active keys stay (75,104 B); 97 earlier keys of 23 agents moved to data/keys-archive/<role>.json; tools/lane-keystore.mjs reads both (r…"
+  ],
+  "done_total": 37,
+  "next": [
+    "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
+    "when a token is in the environment and he says yes: the bridge vault (sgit), then SG_SEND_TOKEN and LANE_VAULT_KEY in the environment and node tools/lane-configure.mjs; the data vault; their keys sealed to him",
+    "sign in with pki.sgit.ai (sso.js) if that is his choice in decision 1"
+  ],
+  "asks_dinis": [
+    "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and conte…",
+    "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
+    "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
+  ],
+  "asks": [],
+  "keys": [
+    {
+      "id": "incident-identity-dinis",
+      "record": "sha256:2d91c7d9fe8df5d3",
+      "encryption": "sha256:9e6e630e0d1d051a",
+      "added": "2026-11-10",
+      "status": "handed over",
+      "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    },
+    {
+      "id": "incident-identity-dinis-2",
+      "record": "sha256:9fded90149a8a5da",
+      "encryption": "sha256:c23c81b2d69bf193",
+      "added": "2026-11-11",
+      "status": "handed over",
+      "how": "Made in its own session on 11 November 2026, 05:45 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab; record sha256:9fded90149a8a5da). A session key: it ends with the sess…"
+    },
+    {
+      "id": "incident-identity-dinis-3",
+      "record": "sha256:4576d54b573c363f",
+      "encryption": "sha256:c3f77eedf6884139",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 10:22 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab; record sha256:4576d54b573c363f). A session key: it ends with the sess…"
+    }
+  ],
+  "policy_owns": [
+    "app/login/**",
+    "account/**",
+    "data/lanes.json",
+    "tools/lane-*.mjs",
+    "SECURITY.md",
+    "tools/lane-keystore.mjs"
+  ],
+  "figure": "app/studio/agents/identity.svg",
+  "mark": "app/studio/agents/identity.mark.svg",
+  "tagline": "who each agent is: keys, sign-in, the account page",
+  "wears": "a shield on the brow",
+  "group": "The machine: build, identity, models, visibility",
+  "work": [
+    {
+      "href": "app/login/index.html",
+      "title": "The login's code",
+      "path": "app/login/"
+    },
+    {
+      "href": "SECURITY.html",
+      "title": "Security: Dinis's login, his lane to the conductor, his vaults",
+      "path": "SECURITY.md"
+    }
+  ]
+}

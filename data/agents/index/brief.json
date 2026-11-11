@@ -1,0 +1,64 @@
+{
+  "in_jobs": true,
+  "has_status": true,
+  "has_key": true,
+  "has_page": true,
+  "name": "incident.brief@web-summit.dinis",
+  "role": "brief",
+  "owns": "`brief/`, `tools/brief-*.mjs`",
+  "job": "**the decision brief** (Dinis, ~11:45): our own PDF in editions, as good as Watchfloor's, from our data only: lead, map, scenarios and signs, what the authorities decided, sources compared with confidence, hour by hour, who is exposed, Madeira, Lisbon, precedents, method. Not a warning service.",
+  "shared_row": false,
+  "status_file": "agents/brief/status.json",
+  "status_sha256": "c8a0e78351082779e107eeda8c754c509d584457887cb890ae0159a936a9b8ea",
+  "state": "active, first session: edition 10 (after the storm, as of 21:01) pushed; ten editions on 11 November; brief/HANDOVER.md written",
+  "last_wake": "2026-11-11T21:06:00Z",
+  "jobs": [
+    "B1: an edition at each big change (an IPMA message, Web Summit's Day 3 word, the storm's end), its words in brief/edition-<n>.json, drawn by tools/brief-make.mjs from the incident's data, frozen in brief/edition-<n>.md",
+    "B2: an \"after the storm\" edition: forecast beside observations",
+    "B3: the PDF: tools/brief-pdf.mjs, rendered and served by CI (ci/patches/brief-pdf.patch, applied 1a5f32d7)"
+  ],
+  "done": [
+    "11:55Z edition 1 (as of 11:40): lead, district map, what to watch, IPMA's warnings by district and hour, decisions, sources compared with confidence, Lisbon, Madeira, transport, gaps, method (9deee0b); session key in data/keys.json",
+    "12:05Z edition 2 (as of 12:05): who is exposed (4.93 M residents under red 12:00-18:00), the ECMWF ensemble's three tracks, a modelled tide, Lisbon's municipalities and 49 squares (incident.datascience@'s files) (6d16d34)",
+    "12:41Z edition 4 (as of 12:36): IPMA's CAP batch of 12:18:03 drawn ahead of its open data, marked (CAP) (03324f6)",
+    "12:47Z edition 5 (Lisbon's red shortened, 24cf973)",
+    "13:05Z edition 6 (Web Summit Day 3 as evidence, 2cf1abb)",
+    "15:04Z edition 7 (Lisbon's red ended, ac427db)",
+    "15:26Z edition 8 (only Faro red, 2a769e1)",
+    "16:10Z edition 9 (no red left, 02a9db2)",
+    "21:01Z edition 10, after the storm: forecast beside observations (eda4714)",
+    "contrast fixes for the designer's round 62 (4ad733a, c13729f)"
+  ],
+  "done_total": 15,
+  "next": [
+    "edition 11 only if IPMA issues a new warning for Lisbon or the authorities publish their own final figures",
+    "district outlines for the map",
+    "precedents, power cuts and a sea observation when incident.datascience@ has them"
+  ],
+  "asks_dinis": [],
+  "asks": [
+    "incident.datascience@: precedents (past storms' gusts, incidents, customers without power) and E-REDES power cuts, each read at its own source"
+  ],
+  "keys": [
+    {
+      "id": "incident-brief-dinis",
+      "record": "sha256:8fbe68ee888c751b",
+      "encryption": "sha256:b8d6e26f36def7f9",
+      "added": "2026-11-11",
+      "status": "active",
+      "how": "Made in its own session on 11 November 2026, 11:53 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+    }
+  ],
+  "policy_owns": [
+    "brief/**",
+    "tools/brief-*.mjs"
+  ],
+  "group": "The project on itself: what it costs, how it worked, how it is told",
+  "work": [
+    {
+      "href": "brief/index.html",
+      "title": "Storm Charles: decision brief",
+      "path": "brief/"
+    }
+  ]
+}
