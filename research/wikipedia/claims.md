@@ -3,11 +3,11 @@ title: What Wikipedia states about Storm Charles, claim by claim
 ---
 # What Wikipedia states, claim by claim
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 07:54 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 08:55 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
 
 The 62 checkable statements of the current revisions (37 pt, 22 en, 3 zh): a time, a number, a place, who decided what; each with the footnote it carries and the revision in which it first appeared. Data: [claims.json](claims.json). 5 statements carry no footnote.
 
-**Revisions read:** [pt: Depressão Charles, revision 73420177](https://pt.wikipedia.org/w/index.php?oldid=73420177) of 11 Nov, 03:25 UTC; [en: 2026–27 European windstorm season, revision 1384965581](https://en.wikipedia.org/w/index.php?oldid=1384965581) of 11 Nov, 02:22 UTC; [zh: 2026—2027年歐洲風暴季, revision 95520867](https://zh.wikipedia.org/w/index.php?oldid=95520867) of 11 Nov, 02:04 UTC. Wikipedia's text is by Wikipedia's contributors, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); the statements below are our English paraphrase. Wikipedia is evidence here, never a fact. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+**Revisions read:** [pt: Depressão Charles, revision 73420177](https://pt.wikipedia.org/w/index.php?oldid=73420177) of 11 Nov, 03:25 UTC; [en: 2026–27 European windstorm season, revision 1384965581](https://en.wikipedia.org/w/index.php?oldid=1384965581) of 11 Nov, 02:22 UTC; [zh: 2026—2027年歐洲風暴季, revision 95527097](https://zh.wikipedia.org/w/index.php?oldid=95527097) of 11 Nov, 08:45 UTC. Wikipedia's text is by Wikipedia's contributors, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); the statements below are our English paraphrase. Wikipedia is evidence here, never a fact. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## pt: Depressão Charles
 
@@ -82,9 +82,9 @@ The 62 checkable statements of the current revisions (37 pt, 22 en, 3 zh): a tim
 
 | Claim | What Wikipedia states (our English; evidence) | Footnote: outlet, date, consulted | First in revision of (UTC) |
 |---|---|---|---|
-| [w-zh-01](https://zh.wikipedia.org/w/index.php?oldid=95520867) | The Chinese infobox gives a lowest pressure of 995 hPa. | **no footnote** | [10 Nov, 13:58](https://zh.wikipedia.org/w/index.php?oldid=95510901) |
-| [w-zh-02](https://zh.wikipedia.org/w/index.php?oldid=95520867) | On 9 November IPMA said Charles and Bruna are independent weather systems. | [www.ipma.pt](https://www.ipma.pt/pt/otempo/comunicados/index.jsp) (consulted 2026-11-10) | [10 Nov, 14:11](https://zh.wikipedia.org/w/index.php?oldid=95511318) |
-| [w-zh-03](https://zh.wikipedia.org/w/index.php?oldid=95520867) | The Chinese infobox lists Portugal, Spain (with the Canary Islands), France and Italy as affected. | **no footnote** | [10 Nov, 05:38](https://zh.wikipedia.org/w/index.php?oldid=95498112) |
+| [w-zh-01](https://zh.wikipedia.org/w/index.php?oldid=95527097) | The Chinese infobox gives a lowest pressure of 994 hPa (995 hPa until the revision of 08:28 UTC on 11 November; the season table gained the same 994 hPa at 08:45). | **no footnote** | [11 Nov, 08:29](https://zh.wikipedia.org/w/index.php?oldid=95526899) |
+| [w-zh-02](https://zh.wikipedia.org/w/index.php?oldid=95527097) | On 9 November IPMA said Charles and Bruna are independent weather systems. | [www.ipma.pt](https://www.ipma.pt/pt/otempo/comunicados/index.jsp) (consulted 2026-11-10) | [10 Nov, 14:11](https://zh.wikipedia.org/w/index.php?oldid=95511318) |
+| [w-zh-03](https://zh.wikipedia.org/w/index.php?oldid=95527097) | The Chinese infobox lists Portugal, Spain (with the Canary Islands), France and Italy as affected. | **no footnote** | [10 Nov, 05:38](https://zh.wikipedia.org/w/index.php?oldid=95498112) |
 
 ## Whom Wikipedia cites
 
