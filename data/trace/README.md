@@ -1,4 +1,4 @@
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:11 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:14 UTC
 
 # The swarm's trace, as data
 
@@ -10,9 +10,14 @@ What the Storm Charles team did, from 10 November to now, as one event per line:
 |---|---|
 | [index.json](index.json) | every trace file in time order: path, lines, bytes, first and last time, sha256 |
 | [units.json](units.json) | every unit that appears: the person, the swarm (A4), each agent (A3) with its keys and sessions in order, the CI (A0), and agents in other accounts |
-| `<YYYY-MM-DD>/<HH>.jsonl` | the events of one UTC hour, sorted by `seq`; past 240 KB an hour continues in `<HH>-2.jsonl`, `-3`, ... |
+| `<YYYY-MM-DD>/<HH>.json` | the backfilled events of one UTC hour, sorted by `seq`; past 240 KB an hour continues in `<HH>-2.json`, `-3`, ... |
+| `<YYYY-MM-DD>/<HH>.<role>.json` | the events an agent wrote live in that hour (one file per agent, so no two agents edit one file) |
 
-Served as they are: `https://storm-charles.promptugal.news/data/trace/index.json`, then each `path` in it. Replay: read the files in `index.json`'s order and each file's lines in order (`seq` rises).
+Each file is one JSON object: `{"elastic_feed": {...}, "by", "updated", "flow", "count", "docs": [ ...one event per line... ]}`. Served as they are: `https://storm-charles.promptugal.news/data/trace/index.json`, then each `path` in it. Replay: merge the `docs` of an hour's files by `seq` (it rises with time), hour after hour.
+
+## Into Elastic
+
+Every trace file and units.json carries a top-level `elastic_feed` block in the shape of the fringe repository's `admin/tools/elastic-feeds.mjs`: events go to index **`ptnews-storm-trace`** (id `seq`, time `at`), units to **`ptnews-storm-units`** (id `unit_id`); the `owner` is the agent that last commits the file. (The fringe's Elastic library accepts only indexes named `fringe-`, `ptnews-`, `websummit-`, `swarm-` or `agents-`, so `ptnews-`.) Every doc passes that library's privacy check (`findings()`: no address that is not an agent's, no phone number, nothing key-shaped), checked before each push.
 
 ## The schema: the fringe repository's, unchanged
 
@@ -69,4 +74,4 @@ AGENT=... node tools/trace.mjs write --path incidents/<id>/timeline.md
 AGENT=... node tools/trace.mjs ev    --unit <role> --phase step --name "what"
 ```
 
-Commit the changed `data/trace/` files with your work. Never a private person's name, a session's secret, a vault key, a prompt or a model's words in a line; free text is cut to one line of 160 characters, and addresses that are not agents' names are taken out.
+Your lines go to `data/trace/<date>/<HH>.<role>.json`; commit them with your work. Never a private person's name, a session's secret, a vault key, a prompt or a model's words in a line; free text is cut to one line of 160 characters, and addresses that are not agents' names are taken out.

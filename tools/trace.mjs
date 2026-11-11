@@ -2,7 +2,8 @@
 // The swarm's trace as data (Dinis, 11 November 2026, ~22:00 UTC, BRIEF.md item 4: "All of these needs to be JSON files", replayable
 // back to 10 November; the visualization is built in the fringe repository). Kept by incident.observability@web-summit.dinis.
 //
-// One line per event in data/trace/<YYYY-MM-DD>/<HH>.jsonl (a part over 240 KB continues in <HH>-2.jsonl, -3, ...), in the fringe
+// One doc per event in data/trace/<YYYY-MM-DD>/<HH>.json (backfill) and <HH>.<role>.json (written live by that agent); a part over
+// 240 KB continues in -2, -3. Each file carries an "elastic_feed" block (the fringe's admin/tools/elastic-feeds.mjs), docs one per line, in the fringe
 // repository's swarm-flows schema (PrompTugal__News__Fringe, abp/tools/flow.mjs and data/elastic-export-swarm-flows.json), so its
 // Elastic, Grafana and gravity views read ours unchanged: every field is one its strict mapping accepts, and trace_id and span_id are
 // computed exactly as flow.mjs computes them (sha256('trace:'+flow)[0:32], sha256('span:'+unit_id)[0:16]). The kind of event
@@ -91,14 +92,27 @@ export function event({ at, unit, altitude, phase, name, parent, runner, environ
   for (const k of Object.keys(e)) if (e[k] === undefined || e[k] === null || e[k] === '') delete e[k];
   return e;
 }
-const fileOf = (at, part = 1) => path.join(DIR, at.slice(0, 10), at.slice(11, 13) + (part > 1 ? `-${part}` : '') + '.jsonl');
-function appendLive(e) {
-  let part = 1, f;
-  for (;;) { f = fileOf(e.at, part); const nf = fileOf(e.at, part + 1); if (fs.existsSync(nf)) { part++; continue; } break; }
-  const line = JSON.stringify(e) + '\n';
-  if (fs.existsSync(f) && fs.statSync(f).size + line.length > PART_MAX) f = fileOf(e.at, part + 1);
+// <date>/<HH>.json (the backfill, kept by this role), <date>/<HH>.<role>.json (lines an agent writes live: one file per agent, so
+// no two agents edit the same file and the Elastic feed's owner is the file's last committer); past PART_MAX, -2, -3 before .json.
+const fileOf = (at, part = 1, role = '') => path.join(DIR, at.slice(0, 10), at.slice(11, 13) + (role ? '.' + role : '') + (part > 1 ? `-${part}` : '') + '.json');
+export const INDEX_EVENTS = 'ptnews-storm-trace', INDEX_UNITS = 'ptnews-storm-units';   // the fringe's Elastic takes only fringe|ptnews|websummit|swarm|agents-*
+const feed = (owner) => ({ index: INDEX_EVENTS, owner, id: 'seq', time: 'at', docs: 'docs',
+  about: "The Storm Charles team's trace (WS-214), in the fringe swarm-flows schema: storm-charles.promptugal.news/data/trace/README.html" });
+const roleOf = (agent) => (/^incident\.([^@]+)@/.exec(agent) || [, agent.replace(/[^a-z0-9.-]/gi, '-')])[1];
+export function writeFeed(f, docs, owner) {
+  const head = { elastic_feed: feed(owner), by: owner, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), flow: docs[0]?.flow, count: docs.length };
   fs.mkdirSync(path.dirname(f), { recursive: true });
-  fs.appendFileSync(f, line);
+  const body = JSON.stringify(head).slice(0, -1) + ',"docs":[\n' + docs.map(d => JSON.stringify(d)).join(',\n') + '\n]}\n';
+  fs.writeFileSync(f, body);
+  return body.length;
+}
+const readDocs = (f) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')).docs || []; } catch { return []; } };
+function appendLive(e) {
+  const owner = e.runner; const role = roleOf(owner);
+  let part = 1; while (fs.existsSync(fileOf(e.at, part + 1, role))) part++;
+  let f = fileOf(e.at, part, role); let docs = readDocs(f);
+  if (fs.existsSync(f) && fs.statSync(f).size + JSON.stringify(e).length + 2 > PART_MAX) { f = fileOf(e.at, part + 1, role); docs = []; }
+  docs.push(e); writeFeed(f, docs, owner);
   return path.relative(ROOT, f);
 }
 
@@ -109,6 +123,7 @@ const arg = (n, d) => { const i = argv.indexOf('--' + n); return i > 0 && argv[i
 const need = (n) => { const v = arg(n); if (!v) { console.error(`trace: --${n} is needed (node tools/trace.mjs for the usage)`); process.exit(2); } return v; };
 
 function live() {
+  seqLast = Date.now() * 1000 + 500 + Math.floor(Math.random() * 400);   // live seqs sit above the backfill's in the same millisecond
   const keys = loadKeys();
   const now = Date.now();
   const at = iso(now);
@@ -179,7 +194,8 @@ function units(knownAgents = new Set()) {
   list.push({ unit_id: 'A0-ci', altitude: 'A0', role: 'compute', name: 'CI: build, gate, deploy (each run is a unit A0-ci-<run>)', account: 'PrompTugal (GitHub Actions)', environment: ENV.ci,
     about: 'started by a push; its runs are recorded by incident.ci@ in data/ci/runs/' });
   for (const l of list) for (const k of Object.keys(l)) if (l[k] === undefined) delete l[k];
-  const out = { about: 'Every unit that appears in data/trace/*/*.jsonl: the person, the swarm (A4), each agent (A3) with its keys and its sessions in order, and the compute (A0). Altitudes and runtimes as in the fringe repository\'s docs/where-agents-run.md §2-3. io_level: L5 for the conductor (git, vaults, lanes, wakes, spawns), L4 for the team (git behind the gate; most also use vaults and lanes). Sessions: from data/agents/sessions.json (by Claude-Session trailers) and agents/conductor/sessions.json (spawns from 20:47 UTC on 11 November); "started_at" only where someone wrote it down.',
+  const out = { elastic_feed: { index: INDEX_UNITS, owner: BY, id: 'unit_id', docs: 'units', about: 'The units of the Storm Charles team\'s trace (WS-214): person, swarm, agents, compute' },
+    about: 'Every unit that appears in data/trace/*/*.json: the person, the swarm (A4), each agent (A3) with its keys and its sessions in order, and the compute (A0). Altitudes and runtimes as in the fringe repository\'s docs/where-agents-run.md §2-3. io_level: L5 for the conductor (git, vaults, lanes, wakes, spawns), L4 for the team (git behind the gate; most also use vaults and lanes). Sessions: from data/agents/sessions.json (by Claude-Session trailers) and agents/conductor/sessions.json (spawns from 20:47 UTC on 11 November); "started_at" only where someone wrote it down.',
     by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), sources: ['data/keys.json', 'data/agents/sessions.json', 'agents/conductor/sessions.json', 'data/agents/index.json'], count: list.length, units: list };
   fs.mkdirSync(DIR, { recursive: true });
   fs.writeFileSync(path.join(DIR, 'units.json'), JSON.stringify(out, null, 1) + '\n');
@@ -276,36 +292,35 @@ function backfill() {
   // Write: every hour's backfilled lines, with the live lines (source tools/trace.mjs) kept as they were.
   ev.sort((a, b) => a.at < b.at ? -1 : a.at > b.at ? 1 : a.seq - b.seq);
   seqLast = 0; for (const e of ev) e.seq = nextSeq(Date.parse(e.at));
-  const liveLines = [];
-  if (fs.existsSync(DIR)) for (const d of fs.readdirSync(DIR)) {
-    const dd = path.join(DIR, d); if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) continue;
-    for (const f of fs.readdirSync(dd)) { for (const l of fs.readFileSync(path.join(dd, f), 'utf8').split('\n')) { try { const j = JSON.parse(l); if (!String(j.source || '').startsWith('backfill:')) liveLines.push(j); } catch {} } fs.unlinkSync(path.join(dd, f)); }
-    fs.rmdirSync(dd);
+  // Rewrite this role's backfill files (<HH>.json, <HH>-<n>.json); agents' live files (<HH>.<role>.json) are left as they are.
+  const mine = /^\d{2}(-\d+)?\.json$/;
+  if (fs.existsSync(DIR)) for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))) {
+    for (const f of fs.readdirSync(path.join(DIR, d))) if (mine.test(f) || f.endsWith('.jsonl')) fs.unlinkSync(path.join(DIR, d, f));
   }
-  const all = [...ev, ...liveLines].sort((a, b) => a.seq - b.seq);
-  const byHour = {}; for (const e of all) (byHour[e.at.slice(0, 13)] ||= []).push(e);
+  const byHour = {}; for (const e of ev) (byHour[e.at.slice(0, 13)] ||= []).push(e);
   let files = 0, bytes = 0;
   for (const [h, list] of Object.entries(byHour)) {
-    let part = 1, buf = '';
-    const flush = () => { const f = fileOf(h + ':00:00Z', part); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, buf); files++; bytes += buf.length; buf = ''; part++; };
-    for (const e of list) { const l = JSON.stringify(e) + '\n'; if (buf.length + l.length > PART_MAX) flush(); buf += l; }
-    if (buf) flush();
+    let part = 1, cur = [], size = 400;
+    const flush = () => { bytes += writeFeed(fileOf(h + ':00:00Z', part), cur, BY); files++; cur = []; size = 400; part++; };
+    for (const e of list) { const l = JSON.stringify(e).length + 2; if (size + l > PART_MAX) flush(); cur.push(e); size += l; }
+    if (cur.length) flush();
   }
+  const liveLines = { length: 0 };
   const u = units(agents);
-  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nSpawns} spawns; ${liveLines.length} live lines kept; ${all.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
+  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
 }
 
 // ---------- index.json: every file, its lines, first and last time, sha256 (so a visualizer fetches only what it needs) ----------
 function writeIndex() {
   const files = [];
   for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort())
-    for (const f of fs.readdirSync(path.join(DIR, d)).filter(f => f.endsWith('.jsonl')).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))) {
-      const buf = fs.readFileSync(path.join(DIR, d, f)); const lines = buf.toString().split('\n').filter(Boolean);
-      const first = JSON.parse(lines[0]).at, last = JSON.parse(lines[lines.length - 1]).at;
-      files.push({ path: `data/trace/${d}/${f}`, lines: lines.length, bytes: buf.length, first, last, sha256: crypto.createHash('sha256').update(buf).digest('hex') });
+    for (const f of fs.readdirSync(path.join(DIR, d)).filter(f => f.endsWith('.json')).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))) {
+      const buf = fs.readFileSync(path.join(DIR, d, f)); const docs = JSON.parse(buf).docs || []; if (!docs.length) continue;
+      const first = docs[0].at, last = docs[docs.length - 1].at;
+      files.push({ path: `data/trace/${d}/${f}`, owner: JSON.parse(buf).elastic_feed?.owner, lines: docs.length, bytes: buf.length, first, last, sha256: crypto.createHash('sha256').update(buf).digest('hex') });
     }
-  const out = { about: 'The trace files in time order (data/trace/README.md). Each line is one event in the fringe repository\'s swarm-flows schema; replay by reading the files in this order and each file\'s lines in seq order.',
-    by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), units: 'data/trace/units.json', count: files.length, lines: files.reduce((n, f) => n + f.lines, 0), files };
+  const out = { about: 'The trace files in time order (data/trace/README.md). Each file is {elastic_feed, by, updated, flow, count, docs[]}: each doc one event in the fringe repository\'s swarm-flows schema. Replay: merge the docs of the files in this order by seq (an hour\'s live files, <HH>.<role>.json, interleave with its backfill file).',
+    by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), units: 'data/trace/units.json', count: files.length, indexes: { events: INDEX_EVENTS, units: INDEX_UNITS }, lines: files.reduce((n, f) => n + f.lines, 0), files };
   fs.writeFileSync(path.join(DIR, 'index.json'), JSON.stringify(out, null, 1) + '\n');
 }
 
