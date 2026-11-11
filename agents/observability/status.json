@@ -1,13 +1,14 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T01:23:26Z",
-  "state": "active: /agents/ now opens with pipeline health, what Dinis can unblock (asks grouped) and the night as it happened (a strip per agent); an agent's own page works at /agents/observability/, the other eleven wait on a one-file ask to the conductor",
-  "last_wake": "2026-11-11T01:23Z",
+  "updated": "2026-11-11T02:14:45Z",
+  "state": "active: round two from Dinis's 02:10 direction (BRIEF.md): 1 of 4 done (Stop stops; push-by-push stepping; agents on the map are links); now the commit and file views and the fuller agent page, then data/agents/sessions.json, then Jobs as a visual page",
+  "last_wake": "2026-11-11T02:14Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
-    "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger."
+    "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger.",
+    "Round two (Dinis, 11 November ~02:10, BRIEF.md; routed by the conductor): 1 fix Stop on the live map, check start, step, speed; 2 everything clickable (agent, flight = one commit, file) and a fuller page per agent; 3 data/agents/sessions.json, every by and Kept-by resolving to an agent's page; 4 Jobs as a visual page generated from JOBS.md, policy.json and the status files."
   ],
   "done": [
     "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
@@ -30,7 +31,8 @@
     "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed",
     "'The night as it happened' on /agents/#night: a strip per agent, ten-minute cells from 21:00 UTC on 10 November: pushes, wakes, and the cells where an ask for Dinis was open or work sent For: an agent had not been picked up; tools/agents-commits.mjs now keeps each status file's history for it",
     "'What Dinis can unblock' at the top of /agents/: the open asks grouped by what is asked (the SG/Send token and vaults, repository access, branch protection, the policies, models, keys, outreach, other decisions), each row with the agents it unblocks, their words, and what each would do next",
-    "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/"
+    "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/",
+    "round two, 1: Stop stops. The engine's pause held its clock but left its background flow flying; now pausing it (or 'Stop all motion') closes a gate on the page's animation frames, so the map, its 3D view and the Universe hold still, and play or the dial opens it. New under the map: previous push, next push, play push by push (one every three seconds), back to live, with a caption naming each push (who, for whom, what, linked); events carry seconds, so two pushes in a minute fly apart; an agent's dot and name on the map link to its page. Checked: the engine's 1 h/s and 6 h/s play advance its clock and pause holds it."
   ],
   "next": [
     "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",

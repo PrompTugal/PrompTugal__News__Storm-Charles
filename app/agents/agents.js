@@ -7,11 +7,21 @@
 // Refreshes every minute. Everything shown is escaped; session ids are stripped; only https links are made.
 (() => {
     const el = document.getElementById('agents-live'); if (!el) return
+    // Stop means stop: one gate on the page's animation frames, put in place before any engine loads. While it is closed no
+    // frame runs (the live map, its 3D view and the Universe all draw from requestAnimationFrame), so everything holds exactly
+    // where it is; opening it lets the held frames run again. The engines are not touched: they simply are not called.
+    if (!window.AgentsMotion) {
+        const raf0 = window.requestAnimationFrame.bind(window), caf0 = window.cancelAnimationFrame.bind(window), held = new Map(); let frozen = false, n = 0
+        window.requestAnimationFrame = cb => { if (!frozen) return raf0(cb); const id = -(++n); held.set(id, cb); return id }
+        window.cancelAnimationFrame = id => { if (id < 0) held.delete(id); else caf0(id) }
+        window.AgentsMotion = { get stopped() { return frozen }, stop() { frozen = true; document.documentElement.classList.add('ag-frozen'); document.dispatchEvent(new Event('agents-motion')) },
+            start() { frozen = false; document.documentElement.classList.remove('ag-frozen'); for (const [id, cb] of [...held]) { held.delete(id); raf0(cb) } document.dispatchEvent(new Event('agents-motion')) } }
+    }
     const ROLE = el.dataset.role || ''   // set on an agent's own page (/agents/<role>/): its card, strip, policy and commits only
     const HERE = document.currentScript.src
     // the live map (Angelo's engine, pinned; live-adapter.js feeds it): its own box after the cards, so a refresh never redraws it
     const liveBox = document.createElement('section'); liveBox.id = 'live'; liveBox.className = 'ag-live'
-    liveBox.innerHTML = `<h2 class="ag-h">Who talks to whom, live</h2><p class="ag-note">Each dot is an agent, beside the person who operates it; each pulse is a commit travelling to the agents named in its <code>For:</code> trailer, at its real moment (four minutes behind, so it plays in order); the faint flow shows how busy each pair has been. Drag the dial to look back. The engine is <a href="https://web-summit.sgit.ai/people/angelo/app/">the live map by dev.map@PrompTugal.angelo, of Angelo's team</a>, an unchanged copy pinned at <a href="${new URL('vendor/live-map@57636ac/pin.json', HERE).href}">commit 57636ac</a>; 3D uses the three.js bundle from Silvio's Universe, loaded from web-summit.sgit.ai only when switched on.</p><p><button type="button" class="ag-btn" data-ag-live>Show the live map</button></p><div id="ag-live-map"></div><p class="ag-note" data-ag-live-note></p>`
+    liveBox.innerHTML = `<h2 class="ag-h">Who talks to whom, live</h2><p class="ag-note">Each dot is an agent, beside the person who operates it; each pulse is a commit travelling to the agents named in its <code>For:</code> trailer, at its real moment (four minutes behind, so it plays in order); the faint flow shows how busy each pair has been. Drag the dial to look back. The engine is <a href="https://web-summit.sgit.ai/people/angelo/app/">the live map by dev.map@PrompTugal.angelo, of Angelo's team</a>, an unchanged copy pinned at <a href="${new URL('vendor/live-map@57636ac/pin.json', HERE).href}">commit 57636ac</a>; 3D uses the three.js bundle from Silvio's Universe, loaded from web-summit.sgit.ai only when switched on.</p><p><button type="button" class="ag-btn" data-ag-live>Show the live map</button></p><div class="ag-ctl" data-ag-ctl hidden></div><div id="ag-live-map"></div><p class="ag-note" data-ag-live-note></p>`
     const startLive = () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove(); window.AgentsLive?.start() }
     liveBox.querySelector('[data-ag-live]').onclick = startLive
     document.addEventListener('lv-graph', () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove() }, true)

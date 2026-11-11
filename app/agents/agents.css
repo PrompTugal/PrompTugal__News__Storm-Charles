@@ -112,3 +112,11 @@ details.ag-fold .ag-h { display: none; }
 .ag-un ul { margin: 6px 0; padding-left: 20px; } .ag-un li { margin: 6px 0; overflow-wrap: anywhere; } .ag-un li.old { color: var(--ink-2); }
 .ag-un .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin: 10px 0 0; }
 .ag-policy { font-size: 14px; overflow-wrap: anywhere; } .ag-policy table { display: block; overflow-x: auto; font-size: 13px; } .ag-policy h1 { font-size: 18px; } .ag-policy h2 { font-size: 16px; }
+
+/* our controls under the live map: step push by push, and a Stop that stops (the engine's own animations pause with it) */
+.ag-ctl .row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.ag-ctl button { min-height: 36px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); font: 600 14px/1 var(--sans); cursor: pointer; }
+.ag-ctl button[aria-pressed="true"] { border-color: var(--focus); color: var(--focus); }
+.ag-ctl button:disabled { opacity: .45; cursor: default; }
+.ag-ctl .cap { font-size: 14px; margin: 6px 0 8px; overflow-wrap: anywhere; }
+html.ag-frozen .lv *, html.ag-frozen .bm * { animation-play-state: paused !important; }

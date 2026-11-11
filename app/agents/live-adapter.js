@@ -35,7 +35,8 @@
         const agents = [...new Set(evs.map(c => c.agent))], targets = [...new Set(evs.flatMap(c => c.to).filter(personOf))]
         const live = {
             built_at: new Date().toISOString(), version: 'from GitHub\'s public API, in this browser', from: new Date(from).toISOString(), repos: [REPO], agents, targets,
-            events: evs.map(c => [Math.floor((Date.parse(c.at) - from) / 6e4), agents.indexOf(c.agent), 'w', c.to.filter(personOf).map(t => targets.indexOf(t)), String(c.sha).slice(0, 8), 0])
+            events: evs.map(c => [(Date.parse(c.at) - from) / 6e4,   // minutes, with the seconds kept, so two pushes in one minute fly apart
+                 agents.indexOf(c.agent), 'w', c.to.filter(personOf).map(t => targets.indexOf(t)), String(c.sha).slice(0, 8), 0])
         }
         return { map, live }
     }
@@ -43,16 +44,62 @@
     // the engine's hook: where each node is, and a layer to draw in. We add the agents' short names, nothing else.
     function labels(ev) {
         const g = ev.detail; if (!g || !g.layer) return
-        const NS = 'http://www.w3.org/2000/svg'
+        graph = g; graphHost = ev.target
+        const NS = 'http://www.w3.org/2000/svg', el = (t, a, p) => { const e = g.doc.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e }
         for (const [id, p] of g.pos) {
             if (p.kind !== 'a') continue
-            const dx = p.x - g.C, dy = p.y - g.C, d = Math.hypot(dx, dy) || 1, t = g.doc.createElementNS(NS, 'text')
-            t.setAttribute('x', (p.x + 20 * dx / d).toFixed(1)); t.setAttribute('y', (p.y + 20 * dy / d + 5).toFixed(1))
-            t.setAttribute('text-anchor', Math.abs(dx) < 60 ? 'middle' : dx > 0 ? 'start' : 'end')
-            t.setAttribute('style', 'font:600 17px system-ui,sans-serif;fill:var(--rm-text-secondary);paint-order:stroke;stroke:var(--rm-bg);stroke-width:4px;pointer-events:none')
-            t.textContent = shortOf(id) + (/@web-summit\.dinis$/i.test(id) ? '' : '@' + personOf(id)); g.layer.appendChild(t)
+            const page = pages.get(id), box = page ? el('a', { href: page }, g.layer) : g.layer
+            if (page) { el('circle', { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: 16, fill: 'transparent', style: 'cursor:pointer' }, box); el('title', {}, box).textContent = id + ': open its page (what it is doing, its asks, its commits)' }
+            const dx = p.x - g.C, dy = p.y - g.C, d = Math.hypot(dx, dy) || 1
+            const t = el('text', { x: (p.x + 20 * dx / d).toFixed(1), y: (p.y + 20 * dy / d + 5).toFixed(1), 'text-anchor': Math.abs(dx) < 60 ? 'middle' : dx > 0 ? 'start' : 'end',
+                style: `font:600 17px system-ui,sans-serif;fill:var(--rm-text-secondary);paint-order:stroke;stroke:var(--rm-bg);stroke-width:4px;${page ? 'cursor:pointer;text-decoration:underline' : 'pointer-events:none'}` }, box)
+            t.textContent = shortOf(id) + (/@web-summit\.dinis$/i.test(id) ? '' : '@' + personOf(id))
+        }
+        controls()
+    }
+
+    // ---- our controls under the map: every push is a step you can take, read and open; and a Stop that stops ----
+    // They drive the engine only through what it offers: lvGraph.setBack(ms) (go to a moment) and its 'lv-time' event.
+    let graph = null, graphHost = null, list = [], at = -1, auto = null, delay = (+new URLSearchParams(location.search).get('livedelay') || 4) * 6e4
+    const pages = new Map()
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
+    const clean = s => String(s ?? '').replace(/https?:\/\/claude\.ai\/code\/session_[A-Za-z0-9]+/g, '[session]').replace(/\bsession_[A-Za-z0-9]{8,}\b/g, '[session]')
+    const BASE = new URL('../../', HERE).href
+    function go(i) {
+        if (!graph || !list.length) return
+        at = Math.max(0, Math.min(list.length - 1, i)); const c = list[at]
+        if (window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start()
+        graph.setBack(Date.now() - delay - (Date.parse(c.at) - 1200))   // the moment just before it: it flies about a second later
+        caption()
+    }
+    function caption() {
+        const box = document.querySelector('[data-ag-ctl]'); if (!box) return
+        const c = list[at], stopped = !!(window.AgentsMotion && window.AgentsMotion.stopped)
+        box.hidden = false
+        box.innerHTML = `<div class="row"><button type="button" data-a="prev" ${at === 0 ? 'disabled' : ''}>‹ Previous push</button><button type="button" data-a="next" ${at >= list.length - 1 ? 'disabled' : ''}>Next push ›</button><button type="button" data-a="auto" aria-pressed="${!!auto}">${auto ? '❚❚ Pause' : '▶ Play push by push'}</button><button type="button" data-a="stop" aria-pressed="${stopped}">${stopped ? '▶ Resume motion' : '■ Stop all motion'}</button><button type="button" data-a="live">Back to live</button></div>
+<p class="cap">${c ? `<b>Push ${at + 1} of ${list.length}</b> · ${esc(String(c.at).slice(11, 19))} UTC · <code>${esc(shortOf(c.agent))}</code>${c.to.length ? ` → ${c.to.map(t => `<code>${esc(shortOf(t) + (/@web-summit\.dinis$/i.test(t) ? '' : '@' + personOf(t)))}</code>`).join(', ')}` : ' (addressed to nobody)'}: <a href="${esc(/^https:/.test(c.url) ? c.url : "#")}">${esc(clean(c.what))}</a>` : `${list.length} pushes read. Step through them one at a time, or play them in order; each one flies along its line and can be opened.`}${stopped ? ' <b>Stopped: nothing moves until you resume.</b>' : ''}</p>`
+        for (const b of box.querySelectorAll('button')) b.onclick = () => {
+            const a = b.dataset.a
+            if (a === 'prev') { halt(); go(at < 0 ? list.length - 1 : at - 1) }
+            else if (a === 'next') { halt(); go(at + 1) }
+            else if (a === 'auto') { if (auto) halt(); else { if (at < 0 || at >= list.length - 1) at = -1; const tick = () => { if (at >= list.length - 1) { halt(); caption(); return } go(at + 1) }; auto = setInterval(tick, 3000); tick() } caption() }
+            else if (a === 'stop') { halt(); window.AgentsMotion && (stopped ? window.AgentsMotion.start() : window.AgentsMotion.stop()) }
+            else if (a === 'live') { halt(); at = -1; if (window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start(); graph.setBack(0); caption() }
         }
     }
+    const halt = () => { if (auto) { clearInterval(auto); auto = null } }
+    const controls = () => { caption() }
+    // the engine's own pause holds its clock but leaves its background flow flying, which reads as "Stop does not stop".
+    // So: pausing it also closes the gate (nothing moves); pressing play, or touching the dial, opens it again.
+    document.addEventListener('click', e => {
+        const b = e.target.closest && e.target.closest('[data-lv-play]'); if (!b || !window.AgentsMotion) return
+        const was = b.getAttribute('aria-pressed') === 'true'
+        if (window.AgentsMotion.stopped) window.AgentsMotion.start()
+        if (was) setTimeout(() => { if (b.getAttribute('aria-pressed') !== 'true') window.AgentsMotion.stop() }, 80)
+    }, true)
+    document.addEventListener('input', e => { if (e.target.matches && e.target.matches('[data-lv-dial] input') && window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start() }, true)
+    document.addEventListener('agents-motion', caption)
+    document.addEventListener('lv-time', e => { if (e.detail && e.detail.delay) delay = e.detail.delay }, true)
 
     async function show() {
         if (!host || !o || busy) return; busy = true
@@ -67,6 +114,8 @@
 
     document.addEventListener('agents-data', ev => {
         const { idx, commits } = ev.detail, { map, live } = shape(idx, commits)
+        list = commits.filter(c => personOf(c.agent) && isFinite(Date.parse(c.at))).sort((a, b) => Date.parse(a.at) - Date.parse(b.at))
+        pages.clear(); for (const a of idx.agents || []) if (a.has_page) pages.set(a.name, `${BASE}agents/${a.role}/index.html`)
         host = host || document.getElementById('ag-live-map'); if (!host) return
         const ms = JSON.stringify([map.people, map.agents.map(a => a.id)]), es = live.events.map(e => e[4]).join()
         if (es !== evSig || !o) {

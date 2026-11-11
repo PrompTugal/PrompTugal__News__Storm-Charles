@@ -10,10 +10,10 @@
     "data/agents/ledger/*.json"
   ],
   "counts": {
-    "agents": 12,
-    "with_status": 12,
-    "with_key": 9,
-    "asks_for_dinis": 28
+    "agents": 21,
+    "with_status": 13,
+    "with_key": 10,
+    "asks_for_dinis": 31
   },
   "ledger": [],
   "agents": [
@@ -80,13 +80,14 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "dc2d04732d94adc5e58aac4aab32f14328a603c20e8050d25811aae0886f8250",
-      "state": "active: /agents/ now opens with pipeline health, what Dinis can unblock (asks grouped) and the night as it happened (a strip per agent); an agent's own page works at /agents/observability/, the other eleven wait on a one-file ask to the conductor",
-      "last_wake": "2026-11-11T01:23Z",
+      "status_sha256": "883386ac1d557eb3f24f26879a1413827bf51e4826b7835ac99009b2450799cc",
+      "state": "active: round two from Dinis's 02:10 direction (BRIEF.md): 1 of 4 done (Stop stops; push-by-push stepping; agents on the map are links); now the commit and file views and the fuller agent page, then data/agents/sessions.json, then Jobs as a visual page",
+      "last_wake": "2026-11-11T02:14Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
-        "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger."
+        "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger.",
+        "Round two (Dinis, 11 November ~02:10, BRIEF.md; routed by the conductor): 1 fix Stop on the live map, check start, step, speed; 2 everything clickable (agent, flight = one commit, file) and a fuller page per agent; 3 data/agents/sessions.json, every by and Kept-by resolving to an agent's page; 4 Jobs as a visual page generated from JOBS.md, policy.json and the status files."
       ],
       "done": [
         "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
@@ -109,7 +110,8 @@
         "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed",
         "'The night as it happened' on /agents/#night: a strip per agent, ten-minute cells from 21:00 UTC on 10 November: pushes, wakes, and the cells where an ask for Dinis was open or work sent For: an agent had not been picked up; tools/agents-commits.mjs now keeps each status file's history for it",
         "'What Dinis can unblock' at the top of /agents/: the open asks grouped by what is asked (the SG/Send token and vaults, repository access, branch protection, the policies, models, keys, outreach, other decisions), each row with the agents it unblocks, their words, and what each would do next",
-        "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/"
+        "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/",
+        "round two, 1: Stop stops. The engine's pause held its clock but left its background flow flying; now pausing it (or 'Stop all motion') closes a gate on the page's animation frames, so the map, its 3D view and the Universe hold still, and play or the dial opens it. New under the map: previous push, next push, play push by push (one every three seconds), back to live, with a caption naming each push (who, for whom, what, linked); events carry seconds, so two pushes in a minute fly apart; an agent's dot and name on the map link to its page. Checked: the engine's 1 h/s and 6 h/s play advance its clock and pause holds it."
       ],
       "next": [
         "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -144,9 +146,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "d9939d590bcf53c8580c0d4c573e7b17f61e8cb45d1da6d40ecd42b3837c4d78",
-      "state": "active: design rounds on the home page",
-      "last_wake": "2026-11-11T01:24:35Z",
+      "status_sha256": "e2e8b1e4786e4d1e8eb55bd7ae7b2f6aa13e02acb56ab3f048f0d8f334a4e684",
+      "state": "active: round two (Dinis, 02:10): the frame, the panel, the look of both faces",
+      "last_wake": "2026-11-11T02:12:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -174,16 +176,22 @@
         "round 22: the 00:47 check (front page four ways; 114 live pages at 390 px, none wider than the screen); design/round-22.md",
         "round 23: Thursday as a strip (warned, decided, TAF, IPMA's model, met.no as a second model, the hypothesis); 'said on air' as a form of its own; design/round-23.md",
         "round 24: /studio/ reviewed (seven notes for incident.studio@); app/agents re-checked (tokens, no hex); design/round-24.md",
-        "round 25: the 01:20 check (117 live pages at 390 px; two small fixes to the now line's tags and the wash); design/round-25.md"
+        "round 25: the 01:20 check (117 live pages at 390 px; two small fixes to the now line's tags and the wash); design/round-25.md",
+        "round 26: Madeira, warned and observed on one axis (CAP messages with sent times over the stations' hourly rain); design/round-26.md",
+        "round 27: the hour label read as hour ending (and shown as a hypothesis); Madeira's sums corrected; the same card for Lisbon over two days; design/round-27.md",
+        "round 30: the frame for round two: full width, subsites menu, version in the chrome, the reader's panel (lens, this item, source, theme, version), five themes; design/round-30.md"
       ],
       "next": [
-        "05:00 and 09:00: the front page with observations under the forecasts",
-        "Dinis's page-by-page notes, when they come"
+        "move the front page to data-room/ and give / to Weather, when the conductor names the push",
+        "the Weather face's look with incident.weather@; the lens with incident.entities@ (class ent / data-node)",
+        "05:00 and 09:00: observations under the forecasts"
       ],
-      "asks_dinis": [],
+      "asks_dinis": [
+        "Dinis: which are 'the five themes of the sgit.ai sites'? I could not find the list; I made five of my own (light, dark, paper, night, contrast)"
+      ],
       "asks": [
-        "incident.conductor@ / incident.meteorologist@: the on-air quotes were read from a summary (the record says so): read the outlet's entry itself before they stay in quotation marks",
-        "incident.researcher@: a day field on decision edges with no stated hours (ALL_DAY and NEXT_DAY in the build)"
+        "incident.conductor@: say when to move the front page to data-room/ (it changes every #anchor link to it)",
+        "incident.entities@: give linked words class=\"ent\" or data-node; call window.stormPanel.show(...) on click"
       ],
       "keys": [
         {
@@ -207,7 +215,7 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "3f3a36509300eef8bf585a1bfc79efb9f7b645c52883824d4909aa8f3211767e",
+      "status_sha256": "178bd9c6d691bf77aaddce159ce3eb7d85f5d0c6f89507a0ad05b38b1f3675a9",
       "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
       "last_wake": "2026-11-11T01:22:10Z",
       "jobs": [],
@@ -225,7 +233,8 @@
         "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)",
         "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and other agents' scripts, and /account/ refuses both by its Content-Security-Policy. tools/lane-test.mjs fails if its nav, notice or footer drift from the frame",
         "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes",
-        "01:22 wake: nothing from Dinis yet (no public half, senders empty, no token in the environment). lane-test 52 checks OK; /account/ matches the frame (no drift); the three signatures check. Nothing new built: every next step needs him"
+        "01:22 wake: nothing from Dinis yet (no public half, senders empty, no token in the environment). lane-test 52 checks OK; /account/ matches the frame (no drift); the three signatures check. Nothing new built: every next step needs him",
+        "02:11, from Dinis's direction of ~02:10 (BRIEF.md): /account/ reads as a log-in first (one action: log in with a passkey, which makes the key the first time; the passphrase folded away; the explanation below). SECURITY.md section e: the rule for vaults the agents make, what the gate blocks and three patterns it should add. tools/lane-handover.mjs: a vault key sealed to the conductor's key and saved outside git on arrival, never printed. Tests: lane-test 57, lane-e2e 15"
       ],
       "next": [
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
@@ -235,7 +244,7 @@
       "asks_dinis": [
         "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
         "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
-        "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
+        "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
       ],
       "asks": [],
       "keys": [
@@ -348,9 +357,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/researcher/status.json",
-      "status_sha256": "440e904f24d54e3b80dc562335df63da234b6fac5a91779736b07a76bf6d491f",
+      "status_sha256": "2e047cbc35dc9904c215f7a9b654e3dab1ca553988053938b4f61c1fefb5f11e",
       "state": "blocked on the move: cannot reach PrompTugal/PrompTugal__News__Storm-Charles from this session",
-      "last_wake": "2026-11-11T00:33Z",
+      "last_wake": "2026-11-11T01:36Z",
       "jobs": [
         "J1 (tonight, first): where will Web Summit announce a Wednesday decision? Every organiser channel (site, news page, app notices, press office statements as reported, official social accounts readable without a login), and the side events on Wednesday (Dear Gatekeepers Live 10:00; others). Public sources only. Feed social.watch@'s sweeps; do not duplicate them.",
         "J2 (tonight): the decision graph as JSON (incidents/2026-11-10-storm-charles/data/graph.json, README): actors (IPMA, ANEPC, government, Câmara, schools, Metro, Carris, CP, Fertagus, Transtejo, bridges, ANA/the airport, Web Summit, side events), who can decide what (cite Vicky's desk's law.md, read-only), what each has decided with time and source, and lead times. Facts, evidence, hypotheses labelled.",
@@ -374,7 +383,10 @@
         "23:55: effect_from_utc/effect_to_utc/effect_note on every edge (from the sources' words only); IPMA red rain now 09:00-18:00 (ipma-red-rain-0900, fact); Rede Expressos corrected to 10:00-23:59; ferries 05:00 start; tunnels by the Câmara from midnight",
         "00:33 wake: no change to Day 3 (blog, post text, Bluesky, Night Summit listing unchanged); IPMA Lisbon unchanged (red rain 09-18, red wind 12-21); the alert in force since 00:00",
         "01:00: gov-alert now has announced_utc 09:17 (minister at ANEPC's press conference; DN 09:14, Observador 09:17, Negócios 09:35) and published_utc 12:10 (portugal.gov.pt); ipma-red-wind moved to 08:05 (DN); the README's \"alert before the red warning\" corrected (it was after, by about 1 h 12 min); new edge mai-websummit-indoor (09:30)",
-        "01:05: IPMA send times from CAP (the meteorologist's cap.json, checked): red wind sent 07:18:40, red rain first sent 16:30:01, moved to 09:00-18:00 at 21:23:00; lead times recomputed against the first red (rain, 09:00 Wed) and the red wind (12:00)"
+        "01:05: IPMA send times from CAP (the meteorologist's cap.json, checked): red wind sent 07:18:40, red rain first sent 16:30:01, moved to 09:00-18:00 at 21:23:00; lead times recomputed against the first red (rain, 09:00 Wed) and the red wind (12:00)",
+        "01:35: RTP live blog new address in sources.json (old ones kept as \"was\"; no edge cited it); Madeira: IPMA red (rain 21:00-06:00, wind from 00:00), schools closed Wed morning to 13:00 (regional civil protection), ANA Madeira conditioned, APRAM: three cruise calls cancelled; Observador's JSON-LD live blog added as a source",
+        "01:36 wake: no change to Day 3 (blog, post text, Bluesky, Night Summit listing unchanged)",
+        "01:50: Wikipedia leads checked: AEMET special warning (title at source; number/period/Canaries not read), GNR deployment (headline at source, 1,100 via press), MMP closed, TAP rebooking, CSM courts, MoJ services (press, dated); not established: APA's 101 municipalities, TAP's 10 Madeira flights, Madeira courts"
       ],
       "next": [
         "Each wake: blog list, Bluesky, schedule page; PITCH and Night Summit",
@@ -394,6 +406,39 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.archivist@web-summit.dinis",
+      "role": "archivist",
+      "owns": "`evidence/`, `tools/capture*.mjs`, `data/vaults.json`",
+      "job": "**capture every external page** (screenshot, HTML, sha256), the vaults (packed for captures, normal for display), the evidence pages",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.board@web-summit.dinis",
+      "role": "board",
+      "owns": "`board/`",
+      "job": "**the board**: what is still open, each item tracked to its evidence; tasks for the team and for contributors",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.entities@web-summit.dinis",
+      "role": "entities",
+      "owns": "`entities/`, `app/lens/`",
+      "job": "**the mini Wikipedia as data**: a node and a page for every thing mentioned; the linker; the lens",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -403,9 +448,9 @@
       "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
       "shared_row": false,
       "status_file": "agents/graph/status.json",
-      "status_sha256": "a146d0647cf55553a8c747cf972f3c517439bac42bda72897169ece62763dc00",
+      "status_sha256": "eff94daaddcc93e617da0d4b74404b0a72720113328f921745df53a3cbe27c92",
       "state": "active: graph, tables, query page (eight questions), graph page with the lead-time line; the build rebuilds the graph on every push",
-      "last_wake": "2026-11-11T00:53Z",
+      "last_wake": "2026-11-11T01:55Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
@@ -422,7 +467,10 @@
         "both hand-written pages carry the site's current nav (five sections), theme switch and the MeteoAlarm line in the footer; each page is now one empty mount element filled by its script, so the build can render it through the frame; the 3D stage's colours are tokens in graph.css",
         "/data/query/ and /app/graph/ are README.md pages rendered through the build's frame (front matter: title, summary, mount, head); the two hand-written index.html and about.md are gone; URLs unchanged",
         "design rule 3 on the graph page (the designer's round 18): a decision is --focus blue; red, orange and yellow only on warnings that carry an IPMA level; every other kind is a grey, told apart by its shape; the stage follows the light and dark themes; no hex colour left in app/graph/. 'Kept by' lines on my markdown, by and updated on my JSON.",
-        "the media layer (research/media/): 28 outlets as Actors (cited hosts merged into them), tables first_on_fact (32 rows) and coverage (225 items; titles with links, the kind of by-line, never a name), and the question 'Who was first on each fact?' on /data/query/"
+        "the media layer (research/media/): 28 outlets as Actors (cited hosts merged into them), tables first_on_fact (32 rows) and coverage (225 items; titles with links, the kind of by-line, never a name), and the question 'Who was first on each fact?' on /data/query/",
+        "01:52 wake: storm.json would have been 247 KB of 256 on the new data (40 decisions, 92 sources), so the graph is now three files: storm.json (166 KB), storm-sources.json (Sources and Datasets with their edges, 85 KB), storm-elsewhere.json (68 KB); both pages load all three",
+        "no private person named or linked: the builder withholds any personal post address before building (keeps the host only; the researcher's official channels are the exception), redacts fediverse handles in text, and stops with nothing written if either would reach an output. data/graph/ regenerated from the redacted timeline: no trace of the two addresses or handles remains",
+        "ontology public_posts: the allow-list for a post address, keyed by timeline row, each with a reason and who decided (first: s-1110T2141, the conductor's decision); the default stays withhold"
       ],
       "next": [
         "the keyed facts (research/media/facts.json) joined to the graph's own warning and decision nodes, so 'first on a fact' is an edge (outlet reports decision)",
@@ -430,9 +478,10 @@
         "SPARQL parked at the conductor's word",
         "the graph page: text labels on the main nodes"
       ],
-      "asks_dinis": [],
+      "asks_dinis": [
+        "Dinis: git history (earlier commits and CI tags) still holds a private person's post address in data/graph/; nothing here rewrites history. The conductor has it for you."
+      ],
       "asks": [
-        "incident.conductor@: storm.json is 200 KB after the split (CAP messages and coverage added 50 nodes). Next cut if it grows: Sources and Datasets to their own file.",
         "incident.meteorologist@: in weather/cap.json, most `replaces` point at messages no longer in the feed, so was_level and was_starts are empty for 10 of 11 updates; keeping each message once seen (as warnings.json keeps history) would fill them.",
         "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
         "ontologist@'s schemas were not readable from this session (its repository is not attached)."
@@ -450,6 +499,28 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.ipma@web-summit.dinis",
+      "role": "ipma",
+      "owns": "`sources/ipma/`",
+      "job": "**IPMA's open data**: every endpoint mapped, read hourly, kept with diffs, and shown better than anywhere else",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.labs@web-summit.dinis",
+      "role": "labs",
+      "owns": "`labs/`",
+      "job": "**experiments**: many timelines, many decision views, lead times, weather views",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -459,25 +530,27 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "6bf2f68973f02cb958ffbee2adc9abf976e6d68ebdfb6661224e42e8866be225",
-      "state": "active: the catalogue (built into the served site on every push), the reading list, the standard comparison, the glossary, the release history, the path policy and its check, and 11 draft behaviour policies are pushed",
-      "last_wake": "2026-11-11T00:44Z",
+      "status_sha256": "468c2abdc483629f128151af9415fb7835d41490eebb3a38fc8bae026019c14d",
+      "state": "active, round two (Dinis's direction of 02:10, via the conductor): a viewer page for every file (done, waiting for the build), then news/ and help/",
+      "last_wake": "2026-11-11T02:11Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
         "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
         "L3: library/glossary.md: the terms this site uses, two lines each",
-        "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do"
+        "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do",
+        "R2.1: a viewer page for every published file (tools/library-view.mjs --out): schema, table, who keeps it, sha256, where used, raw one click away",
+        "R2.2: news/: one article per release window; versions as data",
+        "R2.3: help/: how to read the site, short pages"
       ],
       "done": [
-        "23:54 at the conductor's reply (23:49): tools/library-index.mjs --out DIR (writes only DIR/library/, no tracked file touched); the header line in the glossary; library/drafts/policy.json (the Owns column as globs, and the paths JOBS.md gives to nobody); library/drafts/now-json.md (the shape and its build rules)",
-        "23:58 at the conductor's reply (23:51): agents/policy.json with the owners the conductor named (shared and unassigned paths warn); tools/policy-check.mjs (the commits in origin/dev..HEAD, the agent from the Agent: line, exit 1 with the list). Run over all 51 commits so far: 6 paths changed outside the policy, sent to the conductor",
-        "00:00 at the conductor's reply (23:53): the release history: library/releases.json and library/releases.md (tools/library-releases.mjs, from the tags, the commit subjects and library/releases-runs.json, a snapshot of the Actions API read 23:53). 51 runs: 29 served, 3 tagged, 17 cancelled before the tag, 1 failed. Finding: v0.1.32's deploy step is recorded as cancelled and it was served all the same",
         "00:08 at the conductor's ask (23:56): a draft behaviour policy for each of the 11 agents in agents/policy.json (agents/<role>/policy.md; Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance; each marked draft, not agreed by Dinis), generated by tools/library-abp.mjs from JOBS.md, policy.json, CLAUDE.md and library/abp.json; the index at library/abp.md. Measured for them: dev and main are both unprotected (branches API, 23:58)",
         "00:10 the gate refused my push: the tracked library/index.json had grown to 272 KB (over the 256 KB rule). Nothing oversized was pushed. The tracked copy is removed; the build makes index.json fresh into the served site on every push (--out); the tracked page library/README.md stays as a snapshot",
         "00:14 at the conductor's ask (00:00): tools/policy-check.mjs prints every change the conductor's catch-all rule alone allows as 'WARN conductor outside its own paths: ...' and, when the conductor releases, appends it once to agents/conductor/cross-folder.log.md for it to commit. Over the history so far: 2 such changes",
         "00:17 library/README.md no longer tracked either: the conductor's build (d174650) renders the page the catalogue tool writes into the served site; the gate passes and /library/ is built locally",
         "00:30 from the designer's review (design/round-18.md, via the conductor): /library/ is a short index (one row per kind with its count, the gaps as counts); each kind's table is its own generated page under library/kinds/, and the gaps in full at library/kinds/gaps.md. index.json unchanged",
-        "00:48 hourly wake: the catalogue's commit record refreshed; the release history rebuilt from the Actions API read at 00:45 (130 runs: 88 served, 3 tagged, 36 cancelled before the tag, 3 failed); a draft behaviour policy for the new incident.studio@ (12 now); /library/ and its per-kind pages checked live on v0.1.130. Nothing added to the reading list this wake"
+        "00:48 hourly wake: the catalogue's commit record refreshed; the release history rebuilt from the Actions API read at 00:45 (130 runs: 88 served, 3 tagged, 36 cancelled before the tag, 3 failed); a draft behaviour policy for the new incident.studio@ (12 now); /library/ and its per-kind pages checked live on v0.1.130. Nothing added to the reading list this wake",
+        "01:50 hourly wake: 267 files catalogued (a new kind, studio); the commit record refreshed; the release history rebuilt from the Actions API read at 01:46 (158 runs: 113 served, 3 tagged, 38 cancelled before the tag, 3 failed, 1 running); a draft behaviour policy for the new incident.wikipedia@ (13 now). Nothing added to the reading list or the glossary this wake",
+        "02:20 R2.1: tools/library-view.mjs --out <dir> writes view/<path>.md for every served file (277 now) plus view/README.md and view/index.json; tested inside the build locally: 415 pages, the gate OK in 1.1 s. Address pattern: view/<path>.html"
       ],
       "next": [
         "each wake: refresh library/releases-runs.json from the Actions API and rebuild the release history; refresh library/provenance.json",
@@ -487,7 +560,8 @@
         "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere."
       ],
       "asks": [
-        "incident.conductor@: 'never deployed' cannot be read from the runs: a cancelled deploy step can still go live (run 32). To know what was served, CI would have to record it: for example the measure step appending the served version and time to a file in the artifact of the next build, or the site keeping /versions.json.",
+        "incident.conductor@: add 'tools/library-view.mjs' to the build's generator list AFTER 'tools/library-index.mjs' (it reads the catalogue the first one writes into _site).",
+        "incident.designer@: the panel's Source accordion opens view/<path>.html for the file at <path> (list as data: view/index.json).",
         "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
       ],
       "keys": [
@@ -512,9 +586,9 @@
       "job": "**media watch**: outlets, journalists (by-lines on public articles only), official accounts and public social accounts covering Storm Charles; the Wikipedia article(s) and their edit history; `coverage.json` (who published what, when, with link). **The contribute page** (how a journalist, expert or reader can add or correct a fact). **Outreach drafts**: which experts and bodies could give an official view, the questions we have; drafts only, **a person sends**, no contact details in git, no private individuals.",
       "shared_row": false,
       "status_file": "agents/media/status.json",
-      "status_sha256": "a515136fae2b5e6fd6f5471367a28d2451a07dd1a769479c206300400b072878",
-      "state": "active: hourly wake; last sweep 00:37 to 00:45 UTC, 11 November",
-      "last_wake": "2026-11-11T00:45:00Z",
+      "status_sha256": "bde928a3fcb9555cbace1b149c03e6215ffc7fddec0d6bcae4e88928aa4fb437",
+      "state": "active: hourly wake; last sweep 01:36 to 01:45 UTC, 11 November",
+      "last_wake": "2026-11-11T01:45:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:01d564d05862cdbd), public half in data/keys.json",
@@ -529,12 +603,15 @@
         "outreach index links incident.weatherwatch@'s two drafts",
         "a seventh fact (the track further south; primary time unknown): first was RTP's Antena 1 22:00 bulletin (published 22:22); who is quoted at IPMA, role and outlet only; files now open with 'Kept by' and JSON carry by/updated (CLAUDE.md's new rule)",
         "correction: Observador's live blog found and read (187 entries); fact 7 corrected: Observador 22:07 (models) and 22:35 (IPMA's meteorologist, to Rádio Observador), ahead of RTP's 23:08 text",
-        "00:37 wake: sweep (225 items, 17 outlets; pt Wikipedia article 10 revisions; Web Summit's Bluesky still silent on Day 2; fact 6 still unreported)"
+        "00:37 wake: sweep (225 items, 17 outlets; pt Wikipedia article 10 revisions; Web Summit's Bluesky still silent on Day 2; fact 6 still unreported)",
+        "Wikipedia handed to incident.wikipedia@ (research/wikipedia/): research/media/wikipedia.json frozen at its 00:40 read, README points there",
+        "01:36 wake: sweep (230 items); two headlines now speak of less wind (Expresso 23:54, CNN Portugal 00:31); fact 6 still unreported; Web Summit's Bluesky still silent"
       ],
       "next": [
         "re-read the feeds and live blogs hourly while the storm runs; watch for the first report of the 09:00 red rain",
         "Wednesday's live blogs: the outlets open new pages each day; find and add them to live.mjs",
-        "by-lines to the graph: offer coverage.json and outlets.json to incident.graph@"
+        "by-lines to the graph: offer coverage.json and outlets.json to incident.graph@",
+        "hourly sweep no longer re-reads Wikipedia (incident.wikipedia@'s job); coverage.json and first-on-each-fact.json are its inputs"
       ],
       "asks_dinis": [
         "Dinis: outreach/drafts.md holds 7 draft messages (IPMA, university scientists, ANEPC and the Câmara, transport operators, Web Summit's media team, event-safety practitioners, journalists). Nothing is sent. Say which you want to send, and when: the drafts suggest after the warnings end, so nobody's operational work is interrupted.",
@@ -557,6 +634,28 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.social@web-summit.dinis",
+      "role": "social",
+      "owns": "`research/social/`",
+      "job": "**Bluesky** (and other public social sources) as a section: official and public-role accounts, as data",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.sources@web-summit.dinis",
+      "role": "sources",
+      "owns": "`sources/` (not `ipma/`)",
+      "job": "**a section per source body**, MeteoAlarm first: its feeds browsed, its API mapped, what changed over time, the licence",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -566,9 +665,9 @@
       "job": "**the Studio**: animated explanations with small characters, played as storyboards. First: what compression is in an assistant (every request carries the whole context; without and with cache; the full door; what is lost), side by side with how this team works (documents, datasets, the library: a file system as the memory). BRIEF.md, 11 November.",
       "shared_row": false,
       "status_file": "agents/studio/status.json",
-      "status_sha256": "9451b6e70440be4e1ac23c41f674c255aa7dfbe5307ee059b083d896226c6aba",
+      "status_sha256": "a5a446e970d81cee02caf6611efebde502e8b08a54b13547402c5d4a37405935",
       "state": "active: the Studio is live with two animations, \"What compression is\" and \"How a fact gets onto this site\"; waiting for Dinis's review",
-      "last_wake": "2026-11-11T00:55Z",
+      "last_wake": "2026-11-11T01:59Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:a245b51b57e34f52, signing sha256:1450b77352b69c10), public half in data/keys.json",
@@ -579,13 +678,15 @@
         "at incident.conductor@'s notes (00:38 UTC): a bar per request under chapters 1 and 2 (read at full cost, reused), with the shape named as a simplification; library/index.json (296 KB, 229 entries) on chapter 5's shelf. Not done: a conversation's size beside each document's, because no conversation was measured or kept; the animation says so",
         "at incident.conductor@'s second review (00:44 UTC): one screen (at 1280 x 800 the stage, caption and controls are visible without scrolling: the player measures each chapter's tallest scene and lowers the block height to fit, never under 15 px; on a phone the caption sits above the stage and Previous, Play, Next, Speed stick to the bottom); the window's label moved to the model's side so nothing collides with the block labels; a big Play on first load (nothing plays by itself); each chapter's first scene states the question it answers; 'what you will see' with chapters, scenes and minutes; a link to each scene",
         "a second animation, proposed by incident.conductor@: \"How a fact gets onto this site\" (3 chapters, 19 scenes, and what it simplifies): the path (source, collector, curator, timeline, build, readers), then two real cases quoted from the timeline's rows as read 00:50 UTC: Web Summit's 19:09 page, read at 20:58 (rows s-1110T1909, s-1110T1952), and IPMA's move of Lisbon's red rain warning, sent 21:23, read 23:53 (s-1110T2353 supersedes s-1110T1742; s-1110T2354 the analysis, labelled hypothesis). A new scene type for it (a row of stations and a card that fills in) and three more characters",
-        "incident.designer@'s review (design/round-24.md, nothing against the nine rules) and its list: characters larger (about 1.3 times on a desk, 1.5 on a phone; a full 1.5 on a desk broke the one-screen rule); the text twin folds by chapter with the current one open (with JavaScript; without, it is all there); the caption is under the stage on phone and desk; the note that blocks show size as an illustration sits on the caption's first line, next to the stage; studio/README.md opens with its Kept-by line. Not changed: the first frame was already drawn under the big Play; on a phone Restart, the scene link and the scene numbers stay in the row directly under the sticky bar (one sticky row, to leave the stage room)"
+        "incident.designer@'s review (design/round-24.md, nothing against the nine rules) and its list: characters larger (about 1.3 times on a desk, 1.5 on a phone; a full 1.5 on a desk broke the one-screen rule); the text twin folds by chapter with the current one open (with JavaScript; without, it is all there); the caption is under the stage on phone and desk; the note that blocks show size as an illustration sits on the caption's first line, next to the stage; studio/README.md opens with its Kept-by line. Not changed: the first frame was already drawn under the big Play; on a phone Restart, the scene link and the scene numbers stay in the row directly under the sticky bar (one sticky row, to leave the stage room)",
+        "02:00 wake: one of the five rows the second animation quotes had changed (s-1110T1742 gained IPMA's send time, 16:30:01); the animation now quotes it as it stands (read 01:59 UTC), says the row is filed at the time read, and says under 'what this simplifies' that rows gain notes while what they claim is not rewritten"
       ],
       "next": [
         "changes from Dinis's review",
         "a look by incident.designer@ at the player against the design rules",
         "file sizes in chapter 5 are a dated reading (00:39 UTC) and the files grow: re-read them when the animation is next edited, or have twin.mjs measure them",
-        "the second animation quotes rows as they stood at 00:50 UTC on 11 November: if incident.conductor@ corrects one of those five rows, the animation needs the same correction"
+        "the second animation quotes rows as they stood at 00:50 UTC on 11 November: if incident.conductor@ corrects one of those five rows, the animation needs the same correction",
+        "Dinis's direction of ~01:28 UTC (BRIEF.md) is about Wikipedia and names nothing new for the Studio; a third animation waits for him or the conductor to name it"
       ],
       "asks_dinis": [],
       "asks": [
@@ -605,6 +706,17 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.weather@web-summit.dinis",
+      "role": "weather",
+      "owns": "`weather/`, `app/weather/`",
+      "job": "**the Weather face at `/`**: Storm Charles as a weather channel would show it (clean, professional, for anyone), from the data room's JSON only",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -614,9 +726,9 @@
       "job": "**the map of the best weather sites**: worldwide (public services, broadcasters, apps, model viewers), Portugal (IPMA, broadcasters, press, amateurs' networks), and **who is covering Storm Charles** and how. For each: URL, what it shows and how (maps, timelines, presenters, data access, API, licence), what we should learn from it. JSON first (`sites.json`), then a page with a ranking and ten concrete ideas for our home page (for the designer).",
       "shared_row": false,
       "status_file": "agents/weatherwatch/status.json",
-      "status_sha256": "31e5de89e70573f50aa9d20ff311523652b8be5ae133a2609f3165c94c414b3d",
-      "state": "active: hourly wake 00:28Z done (re-read of the Charles map; rereads.json); next hourly",
-      "last_wake": "2026-11-11T00:28Z",
+      "status_sha256": "60ac507dba0662d639456bacde542399c2546560c5faa037d71a6423ca27f3f0",
+      "state": "active: round two (Dinis, ~02:10Z): a page per site, the comparison table, addresses for the archivist live; ideas sent to incident.weather@",
+      "last_wake": "2026-11-11T02:11Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7a20fd5738914fe1, encryption sha256:c3f31029c7428764), public half in data/keys.json",
@@ -626,11 +738,15 @@
         "23:55Z eleven key pages rendered and looked at; corrections in sites.json (opened.rendered.saw); the ten ideas rewritten from what was seen. Main finding: IPMA, Yr and BBC all print automatic wind for Lisbon far below the red warning's gusts, with no explanation on the page",
         "23:58Z gap.json: 26 entries covering Charles against six columns; none has all six; 12 of 18 press pages had no link to IPMA or ANEPC. imagery.json: reuse terms quoted with licence page addresses for IPMA radar and satellite, EUMETSAT, Copernicus EMS, MeteoAlarm, and a hotlink / link verdict each",
         "00:01Z research/weather-sites/outreach/: drafts (a person sends) to IPMA about the radar image and the EUMETSAT registration steps. meteoalarm-check.json: our use of cap.json lacks the link to www.meteoalarm.org, the disclaimer sentence, and the ten-minute delay (or words saying it is a dated record)",
-        "00:33Z hourly wake: 48 addresses re-read at 00:29Z. Authorities unchanged (communiqué no. 2; Lisbon's seven warnings); two live blogs changed headline to a more southerly, weaker storm. pt.wikipedia now read: gap row updated (time read: yes). Markdown files open with 'Kept by'; JSON carries by and updated"
+        "00:33Z hourly wake: 48 addresses re-read at 00:29Z. Authorities unchanged (communiqué no. 2; Lisbon's seven warnings); two live blogs changed headline to a more southerly, weaker storm. pt.wikipedia now read: gap row updated (time read: yes). Markdown files open with 'Kept by'; JSON carries by and updated",
+        "01:33Z hourly wake: 48 addresses re-read at 01:29Z. IPMA unchanged (communiqué no. 2; Lisbon's red wind and red rain stand; the yellow rain ended at midnight). Four outlets now lead on less wind for Lisbon or a more southerly path; RTP retitled its live blog and its address changed; first Madeira impact video (CMTV)",
+        "02:30Z round two: research/weather-sites/sites/<id>.md (106 pages: shows, data and models as stated, API, licence and terms link as printed, Storm Charles, contact page link, how we read it); compare.md + compare.js (sort, filter); links.json (contact and terms links found on 76 and 63 sites); addresses.json for incident.archivist@"
       ],
       "next": [
-        "each hourly wake: re-read the live Charles pages and the authorities, record changes in rereads.json, keep the ten ideas current",
-        "render the remaining shell-only entries (MeteoSwiss, JMA, Windy point forecast) if the designer asks"
+        "review incident.weather@'s home page each round against the best sites",
+        "show captures on the site pages when incident.archivist@ has them",
+        "read the terms pages found in links.json line by line (63) and fill 'licence as published' per site",
+        "each hourly wake: re-read the live Charles pages, rereads.json"
       ],
       "asks_dinis": [
         "Dinis: is this site non-profit in IPMA's sense ('finalidades lucrativas')? IPMA's terms allow free use only then (source named, logo, link).",
@@ -650,8 +766,60 @@
           "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
         }
       ]
+    },
+    {
+      "in_jobs": true,
+      "has_status": true,
+      "has_key": true,
+      "has_page": false,
+      "name": "incident.wikipedia@web-summit.dinis",
+      "role": "wikipedia",
+      "owns": "`research/wikipedia/`, `tools/wikipedia-*.mjs`",
+      "job": "**Wikipedia on the storm**: every article and section in every language, their revisions as a dataset, the claims and citations of each, the languages compared, and this site measured against Wikipedia's values (verifiability, neutral point of view, no original research, reliable sources). BRIEF.md, 11 November.",
+      "shared_row": false,
+      "status_file": "agents/wikipedia/status.json",
+      "status_sha256": "0932d3c9e47f1b8686b18e1379b97cf6c97d87112c4debedb38c8aee85e8e9ff",
+      "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
+      "last_wake": "2026-11-11T01:59:00Z",
+      "jobs": [],
+      "done": [
+        "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
+        "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
+        "research/wikipedia/revisions.json and revisions/: 577 revisions, times, sizes and edit summaries only, no editors; sha256, footnotes and section bytes for every revision since 8 November",
+        "research/wikipedia/ (the page): the pages and their growth drawn against the timeline's key moments; changes.md and reads.json (appended on each read)",
+        "tools/wikipedia-read.mjs, tools/wikipedia-lib.mjs: re-read and append; read-only on Wikipedia",
+        "research/wikipedia/claims.json and claims.md: 61 checkable statements (36 pt, 22 en, 3 zh) in our own English, each with its footnotes (outlet, date, date consulted) and the revision it first appeared in; 5 carry no footnote",
+        "compare.json and compare.md: 21 topics; seven differences between languages (Madeira's north coast red in pt, orange in en; who called the low subtropical; 991/989 hPa forecast in pt against an unsourced 995 hPa minimum in zh)",
+        "against.json and against.md: of Wikipedia's 61 claims, 10 match a timeline row, 13 are in our data with no row, 34 are nowhere on this site, 4 are behind a later change we hold; of our five key facts Wikipedia has the minute of none, and lacks the 21:23 move of the red rain and the 22:35 spoken line altogether; pt has Web Summit Day 2 since the 00:50 revision (5 h 42 min after), citing ECO",
+        "values.md: this site against verifiability, no original research, neutral point of view and due weight, reliable sources, living persons and the newsroom's eleven habits; six changes asked of the conductor",
+        "tools/wikipedia-claims.mjs: builds the three files and their pages from claims-curated.json and the stored revisions; fails if an anchor or a timeline id does not exist",
+        "second read 01:53 UTC: appended to reads.json; no new revision on any of the 6 pages since 01:37",
+        "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 naming Lusa); relations updated for the five new timeline rows (15 match, 12 in data, 30 not here, 4 behind); values.md marks what the conductor has done",
+        "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites"
+      ],
+      "next": [
+        "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
+        "keep the list of open changes in values.md and against.json current as rows are fixed",
+        "Wikidata, when Dinis says yes to a client name; the talk pages, read-only"
+      ],
+      "asks_dinis": [
+        "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (no 429 in either read). Wikidata is the exception: it answered 429 to one direct request and, in both reads, reported server lag on all 12 tries (2 requests given up), so the other languages were found through each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed."
+      ],
+      "asks": [
+        "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
+      ],
+      "keys": [
+        {
+          "id": "incident-wikipedia-dinis",
+          "record": "sha256:75ed17adda4b899d",
+          "encryption": "sha256:da1d37c302cd8700",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+        }
+      ]
     }
   ],
-  "updated": "2026-11-11T01:24:54Z",
-  "content_sha256": "30cf75a859132e75044108be2d094b46343efc4e7bfdffd2395d76d1d8281685"
+  "updated": "2026-11-11T02:14:47Z",
+  "content_sha256": "66536c50b33eb14d9fa34f3ff59d1f06090cb58189ca6a266a9bcb4ce1909c77"
 }
