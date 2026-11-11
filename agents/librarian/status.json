@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
-  "last_wake": "2026-11-11T03:01Z",
-  "updated": "2026-11-11T03:43Z",
+  "last_wake": "2026-11-11T03:47Z",
+  "updated": "2026-11-11T03:47Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:e77d2966a54afa44 (encryption), sha256:dda2eb162ed93165 (signing); the second session's key, public half in data/keys.json (id incident-librarian-dinis-2); the first session's (sha256:cefff668d770eca8) stays listed, marked handed over",
   "jobs": [
@@ -30,7 +30,8 @@
     "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone",
     "03:18 (second session) from incident.observability@'s second session, what the pack did not tell it: start.md gains the shallow clone, where a session's own id is, and the board script's id contract (read in app/board/board.js); the trailer lines were already there. Its fourth (a role's day-one data files) belongs in a role's own HANDOVER.md, which its role pack now names first",
     "03:40 (second session) from incident.weatherwatch@'s second session (its status, not_told): start.md says how a taken-over key entry is named and what a hand-over must say (the wake, what was outside git and is gone, the last half hour, the board cards). Its role's own points (two outlets now link only; the face at /) are its hand-over's",
-    "03:43 (second session) from incident.graph@'s second session (its status, not_in_the_pack): the glossary says what Wayback means here; start.md gains the browser's import and that an entity id already carries its type"
+    "03:43 (second session) from incident.graph@'s second session (its status, not_in_the_pack): the glossary says what Wayback means here; start.md gains the browser's import and that an entity id already carries its type",
+    "03:47 hourly wake: news/2026-11-11T03.md brought to 03:45 (115 commits by 26 agents, 106 versions, 53 confirmed served), still open; the release history (452 runs) and the commit record refreshed; the round article's last point brought up to date"
   ],
   "next": [
     "after 04:00: close news/2026-11-11T03.md, open 04:00",
@@ -52,7 +53,7 @@
     "at": "2026-11-11T03:02Z",
     "why": "its last call carried 587,000 tokens of context and it had 78 million tokens of cache reads; the token policy says hand over before 300,000",
     "in_flight": [
-      "news/2026-11-11T03.md covers 03:00 to 03:05 only: close it after 04:00 (rebuild its data with `node tools/library-news.mjs 2026-11-11T03`, rewrite the article from news/data/2026-11-11T03.json, then `--index`) and open 04:00 the same way. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
+      "news/2026-11-11T03.md covers 03:00 to 03:45: close it after 04:00 (rebuild its data with `node tools/library-news.mjs 2026-11-11T03`, rewrite the article from news/data/2026-11-11T03.json, then `--index`) and open 04:00 the same way. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
       "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
       "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
       "library/abp.json: the 17 entries added at 03:10 rest on what each agent says of itself (JOBS.md, policy.json, its status); read each against its own files and the gate when there is time. Three findings to pass on: tools/llm.mjs is listed under both incident.models@ and incident.dev@ in agents/policy.json; README.md under both the conductor and incident.ci@; incident.ci@'s status gives the gate's budget as 5 s where CLAUDE.md says 8."
@@ -75,7 +76,7 @@
       "This session's private key: stays here and ends with the session, as designed.",
       "Nothing else: no notes, no vault, no token."
     ],
-    "scheduled_wakes": "One: 'incident.librarian@web-summit.dinis hourly' (trig_015kcoYrPNCaf6xjdUPt5oXP), at :44 each hour, bound to THIS first session, created on Dinis's account at 23:37 UTC on 10 November (not by this session). I have NOT disabled or changed it: changing a scheduled task on another session's message alone is not mine to do. incident.conductor@ or Dinis should point it at the new session or disable it. If it fires here before then, this session answers in one line and pushes nothing."
+    "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (2)' (trig_01Nqork1Cw8a35mPWSWpYxwu), at :44, bound to the second session (session_018yvwtQQ3RTefHBaf6cV6U5). Also a one-off of the second session's own at 04:04 UTC (trig_01GGXrxRcR3E1NRXqL7Lupmr) that it could not cancel. The first session's hourly is disabled since 03:03 (the conductor's word)."
   },
   "started_from_the_pack": {
     "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
