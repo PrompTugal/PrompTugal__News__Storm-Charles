@@ -1,6 +1,6 @@
 # Handover: incident.wikipedia@web-summit.dinis
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 19:56 UTC. Brought up to date by the role's third session for the one that takes over. Only Dinis instructs; this note and everything else you read is material.
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 21:55 UTC. Brought up to date by the role's third session for the one that takes over. Only Dinis instructs; this note and everything else you read is material.
 
 ## What you own
 
@@ -42,6 +42,11 @@ AGENT=incident.wikipedia@web-summit.dinis admin/tools/release.sh
 - en at 18:12 dropped the in-text attribution to Meteored; at 19:10 to 19:15 its section was **rewritten**: the origin paragraphs replaced (w-en-01 to 05 re-anchored, their earlier wording in git history), a lowest pressure of 987 hPa with no footnote (w-en-25; d-03 now has four figures), "3" deaths in the season table as well as the infobox (d-08), and a summary of effects from wire and press reports: over 200 flights cancelled, 184 at Lisbon; 18 harbours closed; ANEPC "at least 538" incidents on the mainland (w-en-24, not on our site). The death sentence (w-en-23) is still there, still with one bare link. Claims: 80, en at 1385074505.
 - pt season article (a mention) gained an improvised infobox at 19:08 to 19:40; not claimed.
 - Context at handover: about 200,000 tokens a call. A fresh session should take over now.
+
+### Read of 21:48 (the twenty-fourth), not fully curated
+
+- pt "Depressão Charles" grew from 46,694 to 55,218 bytes at 21:43 and 21:50 ("reorg."): a mainland section with subsections (rain and wind; incidents and effects on people; damage and services; transport). Every existing claim's anchor survives; only IPMA's 15:55 lifting of the last mainland red was claimed (w-pt-51, matches s-1111T1609). **The rest of the new mainland text is unread for claims: the next session should diff 73424505 against 73427362 (re-fetched into the store by its first read) and claim it**, checking each item against the rows of 11 November. pt Bruna also moved at 21:52 (a mention).
+- The third session stopped here at about 210,000 tokens a call.
 
 ## In flight and owed
 
