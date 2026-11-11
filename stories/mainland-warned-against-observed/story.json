@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T10:58Z",
-  "updated": "2026-11-11T10:58Z",
-  "based_on_read_utc": "2026-11-11T10:22:42Z",
+  "updated": "2026-11-11T11:56Z",
+  "based_on_read_utc": "2026-11-11T11:26:40Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for the mainland's districts other than Lisbon (Lisbon's are in sentence n1), resolved from the data room when the page is built and read again in the reader's browser. Never a level of our own.",
     "title": "IPMA's red warnings for the other mainland districts",
@@ -63,7 +63,8 @@
         "n7",
         "n8",
         "n9",
-        "n10"
+        "n10",
+        "n12"
       ]
     },
     {
@@ -243,10 +244,10 @@
     },
     {
       "id": "n4",
-      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's three reports at 09:00, 09:30 and 10:00 have a south-south-east wind of 20 to 22 km/h with no gust reported, rain, and pressure falling from 1001 to 999 hPa. IPMA's newest station hour is the one labelled 09:00: six stations in and around Lisbon measured between 3.0 and 6.5 mm of rain in it, and the strongest mean wind among them was 18.7 km/h, at Barreiro. IPMA does not document whether that label is the hour ending or starting at 09:00, so it may lie wholly before the windows. This is too little to test any of the above.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's five reports from 09:00 to 11:00 have a wind of 17 to 22 km/h, backing from south-south-east to east-south-east, with no gust reported; rain, heavy at 10:30 and 11:00 with visibility down to 2 km; and pressure falling from 1001 to 998 hPa. IPMA's newest station hour is the one labelled 10:00, and it lies inside the windows whether the label is the hour ending or starting: seven stations in and around Lisbon measured between 3.8 and 5.9 mm of rain in it, and the strongest mean wind among them was 18.4 km/h, at Barreiro. No gust has been reported at the airport inside the windows, against gusts up to 120 km/h warned. That is not yet a test of the warnings, which run to 18:00 and 21:00.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T10:22:42Z",
+      "read_utc": "2026-11-11T11:26:40Z",
       "supports": [
         {
           "kind": "data",
@@ -269,14 +270,20 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T10:00Z].wind_kmh",
-          "expect": 20
+          "field": "metars[time_utc=2026-11-11T11:00Z].wind_kmh",
+          "expect": 17
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T10:00Z].wind_dir",
-          "expect": 150
+          "field": "metars[time_utc=2026-11-11T11:00Z].wind_dir",
+          "expect": 110
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T09:00Z].wind_dir",
+          "expect": 160
         },
         {
           "kind": "data",
@@ -287,56 +294,78 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T10:00Z].pressure_hpa",
-          "expect": 999
+          "field": "metars[time_utc=2026-11-11T11:00Z].pressure_hpa",
+          "expect": 998
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T11:00Z].raw",
+          "contains": [
+            "2000 +RA BR"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T10:30Z].raw",
+          "contains": [
+            "+RA"
+          ]
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
           "field": "latest_hour_utc",
-          "expect": "2026-11-11T09:00Z"
+          "expect": "2026-11-11T10:00Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
-          "expect": 3
+          "field": "stations[id=7240919].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 3.8
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
-          "expect": 6.5
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 5.9
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
-          "expect": 6.4
+          "field": "stations[id=1210773].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 5.6
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210762].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
-          "expect": 4.9
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 5.4
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=6215302].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "field": "stations[id=1210762].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 4.8
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 4.7
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=6215302].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
           "expect": 4.4
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=7240919].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
-          "expect": 3.6
-        },
-        {
-          "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T09:00Z].wind_mean_kmh",
-          "expect": 18.7
+          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T10:00Z].wind_mean_kmh",
+          "expect": 18.4
         },
         {
           "kind": "data",
@@ -347,13 +376,17 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T11:00Z]",
+          "field": "metars[time_utc=2026-11-11T12:00Z]",
           "absent": true,
-          "note": "A tripwire: when the airport's 11:00 report arrives, this sentence is behind the data and is retold."
+          "note": "A tripwire: when the airport's 12:00 report arrives, this sentence is behind the data and is retold."
         },
         {
           "kind": "row",
           "id": "s-1111T1028"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1128"
         }
       ]
     },
@@ -387,21 +420,25 @@
     },
     {
       "id": "n6",
-      "text": "The airport's own forecast for pilots was lowered at 10:08: at times between 10:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it.",
+      "text": "The airport's own forecast for pilots was lowered at 10:08, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T10:08Z",
-      "read_utc": "2026-11-11T10:22:42Z",
+      "at_utc": "2026-11-11T11:00Z",
+      "read_utc": "2026-11-11T11:26:40Z",
       "supports": [
         {
           "kind": "row",
           "id": "s-1111T1028"
         },
         {
+          "kind": "row",
+          "id": "s-1111T1128"
+        },
+        {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.issue_utc",
-          "expect": "2026-11-11T10:08Z"
+          "expect": "2026-11-11T11:00Z"
         },
         {
           "kind": "data",
@@ -419,11 +456,11 @@
     },
     {
       "id": "n7",
-      "text": "The counts of occurrences so far come from the press, not from civil protection's own site, and do not match. Lusa gave 66 on the mainland at 03:30 as civil protection's figure; CNN Portugal's live blog later gave 60 by 06:00, with Greater Lisbon the most affected at 26. The two do not cover the same period or source.",
+      "text": "The counts of occurrences so far come from the press, not from civil protection's own site, and they are not one series. Lusa gave 66 on the mainland at 03:30 as civil protection's figure; CNN Portugal's live blog later gave 60 by 06:00, with Greater Lisbon the most affected at 26; Observador's title, citing civil protection, has 189 on the mainland by 11:00. The counts do not cover the same period or come from the same report.",
       "label": "evidence",
       "said_by": "Lusa (via Notícias ao Minuto) and CNN Portugal's live blog; nothing read at ANEPC",
-      "at_utc": "2026-11-11T08:26Z",
-      "read_utc": "2026-11-11T08:51Z",
+      "at_utc": "2026-11-11T11:00Z",
+      "read_utc": "2026-11-11T11:35Z",
       "supports": [
         {
           "kind": "row",
@@ -432,6 +469,10 @@
         {
           "kind": "row",
           "id": "s-1111T0851"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1135"
         }
       ]
     },
@@ -508,6 +549,20 @@
       "said_by": "incident.stories@, comparing the sentences above",
       "read_utc": "2026-11-11T10:22:42Z",
       "supports": []
+    },
+    {
+      "id": "n12",
+      "text": "The government's crisis cabinet line leads the live pages late on Wednesday morning: \"O mais complicado ainda vai acontecer\" (RTP) and \"Governo insiste na prevenção e avisa que tempestade ainda não chegou\" (ECO). This is the press reporting the government; nothing was read at the government's own pages.",
+      "label": "evidence",
+      "said_by": "RTP and ECO, reporting the government",
+      "at_utc": "2026-11-11T11:35Z",
+      "read_utc": "2026-11-11T11:35Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T1135"
+        }
+      ]
     }
   ],
   "not_known": [
@@ -544,6 +599,16 @@
         "n9",
         "n10",
         "n11"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T11:56Z",
+      "what": "On the 11:26:40 read. n4 retold as Lisbon's o1 (five airport reports to 11:00; the station hour labelled 10:00, inside the windows; before: three reports and the hour labelled 09:00). n6: the 11:00 TAF repeats the 10:08 cut. n7: Observador's 189 occurrences by 11:00, citing civil protection (row s-1111T1135; before: 66 at 03:30 and 60 by 06:00 only). n12 added: the government's line, as the press has it.",
+      "claims_changed": [
+        "n4",
+        "n6",
+        "n7",
+        "n12"
       ]
     }
   ]
