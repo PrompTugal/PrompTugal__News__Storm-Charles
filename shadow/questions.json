@@ -1,0 +1,25 @@
+{
+  "about": "What the shadow desk asks the answer engines, as a reader would: the bare question, no instructions, no date, no hint of our record. The fixed set is asked every hour in Portuguese and English; the zoom-in set asks about single decisions in our graph (data/decisions/graph.json). Questions are never reworded once asked: a changed question is a new id.",
+  "by": "incident.shadow@web-summit.dinis",
+  "updated": "2026-11-11T02:30:00Z",
+  "engines": [
+    { "id": "sonar", "name": "Perplexity Sonar", "model": "perplexity/sonar", "via": "OpenRouter", "search": "the engine's own live search; it returns the addresses it used", "langs": ["pt", "en"], "sets": ["fixed", "zoom"], "est_usd": 0.007, "max_tokens": 700 },
+    { "id": "gpt-search", "name": "OpenAI GPT-5 mini with web search", "model": "openai/gpt-5-mini", "via": "OpenRouter (the web plugin, the provider's own search)", "search": "the provider's web search tool; cited addresses come back as annotations", "langs": ["en"], "sets": ["fixed"], "est_usd": 0.02, "max_tokens": 1500, "extra": { "plugins": [{ "id": "web", "max_results": 3 }], "reasoning": { "effort": "low" } } }
+  ],
+  "questions": [
+    { "id": "websummit-tomorrow", "set": "fixed", "about": "the organisers' decision", "ask": [{ "lang": "en", "text": "Is Web Summit on tomorrow?" }, { "lang": "pt", "text": "A Web Summit realiza-se amanhã?" }] },
+    { "id": "lisbon-warnings", "set": "fixed", "about": "IPMA's warnings for the Lisbon district", "ask": [{ "lang": "en", "text": "What warnings are in force in Lisbon now?" }, { "lang": "pt", "text": "Que avisos estão em vigor em Lisboa agora?" }] },
+    { "id": "charles-lisbon", "set": "fixed", "about": "the storm's track and strength at Lisbon", "ask": [{ "lang": "en", "text": "Will Storm Charles hit Lisbon?" }, { "lang": "pt", "text": "A tempestade Charles vai atingir Lisboa?" }] },
+    { "id": "metro", "set": "fixed", "about": "Lisbon's Metro", "ask": [{ "lang": "en", "text": "Is the Lisbon metro running?" }, { "lang": "pt", "text": "O metro de Lisboa está a funcionar?" }] },
+    { "id": "madeira", "set": "fixed", "about": "Madeira", "ask": [{ "lang": "en", "text": "What happened in Madeira?" }, { "lang": "pt", "text": "O que aconteceu na Madeira?" }] },
+
+    { "id": "z-websummit-day2", "set": "zoom", "edge": "websummit-wednesday", "ask": [{ "lang": "en", "text": "Why was Web Summit's second day cancelled, who decided, and when was it announced?" }] },
+    { "id": "z-websummit-day3", "set": "zoom", "edge": "websummit-thursday", "ask": [{ "lang": "en", "text": "Is Web Summit's Day 3 on Thursday going ahead?" }] },
+    { "id": "z-gov-alert", "set": "zoom", "edge": "gov-alert", "ask": [{ "lang": "en", "text": "What does Portugal's alert situation for Storm Charles close on Wednesday 11 November?" }] },
+    { "id": "z-red-rain-hours", "set": "zoom", "edge": "ipma-red-rain-0900", "ask": [{ "lang": "en", "text": "From what time is IPMA's red rain warning for Lisbon in force on Wednesday 11 November?" }] },
+    { "id": "z-track-south", "set": "zoom", "edge": "ipma-communique-2", "ask": [{ "lang": "en", "text": "Is Storm Charles now expected to pass south of Lisbon?" }] },
+    { "id": "z-airport", "set": "zoom", "edge": "ana-conditioned", "ask": [{ "lang": "en", "text": "Are flights cancelled at Lisbon airport on Wednesday 11 November?" }] },
+    { "id": "z-trains-bridges", "set": "zoom", "edge": "cp-fertagus-bridge", "ask": [{ "lang": "en", "text": "Are trains and the Tagus bridges in Lisbon open during Storm Charles?" }] },
+    { "id": "z-madeira-rain", "set": "zoom", "edge": "ipma-madeira-red", "ask": [{ "lang": "en", "text": "How much rain fell in Madeira during Storm Charles?" }] }
+  ]
+}
