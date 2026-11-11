@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 12:00 to 13:00 | [12:00 to 13:00, 11 November: IPMA's communiqué no. 3 and adjusted warnings (red rain stands in Lisboa); the brief reaches edition 4 and the guide version 13](2026-11-11T12.md) | v0.1.1016 to v0.1.1131 (57 served of 108) | 123 |
+| 2026-11-11 13:00 to 14:00 | [13:00 to 14:00, 11 November: Thursday reported confirmed by the press relaying the organisers' message](2026-11-11T13.md) | v0.1.1160 to v0.1.1160 (0 served of 1) | 2 |
+| 2026-11-11 12:00 to 13:00 | [12:00 to 13:00, 11 November: IPMA's communiqué no. 3 and adjusted warnings; at 12:33 IPMA shortens Lisbon's red rain to 15:00 and orange wind to 18:00; the brief reaches edition 5 and the guide version 13](2026-11-11T12.md) | v0.1.1016 to v0.1.1159 (57 served of 127) | 152 |
 | 2026-11-11 11:00 to 12:00 | [11:00 to 12:00, 11 November: Dinis asks for a decision brief, a contact desk and a site for people in Lisbon now; a day's flights counted only from what was seen; by the hour's end the brief, the guide and the contact desk are live](2026-11-11T11.md) | v0.1.932 to v0.1.1015 (58 served of 84) | 92 |
 | 2026-11-11 10:00 to 11:00 | [10:00 to 11:00, 11 November: the newcomers' page rewritten on what four invented visitors found, and Dinis asks for the wind-down](2026-11-11T10.md) | v0.1.801 to v0.1.931 (81 served of 131) | 143 |
 | 2026-11-11 09:00 to 10:00 | [09:00 to 10:00, 11 November: Lisbon's red rain warning begins, Dinis settles how vault keys are passed on, and the press reports the lowered wind](2026-11-11T09.md) | v0.1.718 to v0.1.800 (62 served of 83) | 98 |
