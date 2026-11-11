@@ -164,9 +164,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "e15e1abe7f7e45adccbfc91e253d7dffb3dc86a5ced632fb7b0b552f749fa116",
-      "state": "handing over at the conductor's word (about 242,000 tokens of context a call): agents/observability/HANDOVER.md, its first section, is the note for the third session; nothing is half-done; the pages keep running without a session",
-      "last_wake": "2026-11-11T08:16Z",
+      "status_sha256": "e4a3612969cedfa6cbf6301edd34e5dcdd4d99ac871b6a1f7eb96fbfe943384d",
+      "state": "third session (from 08:17 UTC on 11 November): the agents' map and session view, the snapshots, the live check; every home shows its agent's current session",
+      "last_wake": "2026-11-11T08:18Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -178,7 +178,6 @@
         "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
         "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
         "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
-        "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.…",
         "11 Nov 03:07 second session: its own key (incident-observability-dinis-2 in data/keys.json; the first marked handed over), its session object, the first session kept under earlier_sessions",
         "11 Nov 03:09 correction: my first two pushes regenerated data/agents/commits.json, detail-*.json and sessions.json from a shallow clone (60 commits), so for about three minutes the live snapshots held one hour instead of the night. Restored from the full history; tools/agents-commits.mjs and agents…",
         "11 Nov 03:09 correction: the commit 8494cb1 carries a Co-Authored-By trailer that names a model (the session's default trailer); CLAUDE.md forbids that. History is not rewritten here, so it stands; every commit since uses the plain trailer",
@@ -189,11 +188,12 @@
         "11 Nov 03:17 the conductor's statement (03:16) recorded in data/agents/starts.json: the three sessions that never push here (meteorologist, researcher, dev), so 33 sessions in all; /agents/#sessions marks every session over 300,000 tokens a call \"hand-over due\", ranked; the pack's five gaps sent to…",
         "11 Nov 04:16 wake: nothing routed, no commit For: this role in the hour (71 pushes read by subject only). Found on the live check and fixed: when GitHub's public API refuses the browser (60 calls an hour without a login) the error note carries an unbroken address and /agents/ grew to 447 px on a 39…",
         "11 Nov 05:16 wake: nothing routed. The gate refused this wake's first release (nothing went out): data/agents/commits.json had grown to 264 KB, over the 256 KB limit, because its budget was counted before the file was indented. Fixed in the tools, not round the gate: commits.json and the detail fil…",
-        "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")"
+        "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")",
+        "11 Nov 08:17 third session began (key incident-observability-dinis-3; the second's entry marked handed over). Checked every agent's sessions against data/keys.json and the status files after the morning's hand-overs: 30 agents, 57 sessions, each role's newest session is the one its status file name…"
       ],
-      "done_total": 44,
+      "done_total": 45,
       "next": [
-        "for the third session: read HANDOVER.md's first section; then, in order: the night's strip from incident.ci@'s commit files; the measured lines read live on each home; page views once Dinis answers"
+        "in order: the night's strip from incident.ci@'s commit files; the measured lines read live on each home; page views once Dinis answers"
       ],
       "asks_dinis": [
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
@@ -216,8 +216,16 @@
           "record": "sha256:54d0cd47d5c50299",
           "encryption": "sha256:e58744d5d343125b",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026, 03:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second observability session, started from the briefing pack (library/pack/) and agents/observability/HANDOVER.md. A session key: it ends with the session. That session handed over to a third at about 08:17 UTC on 11 November."
+        },
+        {
+          "id": "incident-observability-dinis-3",
+          "record": "sha256:a1d78f6a85208add",
+          "encryption": "sha256:a4019d26266d8cd5",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026, 03:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second observability session, started from the briefing pack (library/pack/) and agents/observability/HANDOVER.md. A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 08:18 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third observability session, started from the briefing pack (library/pack/) and agents/observability/HANDOVER.md. A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -827,9 +835,9 @@
       "job": "**the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance",
       "shared_row": false,
       "status_file": "agents/ci/status.json",
-      "status_sha256": "f79920e299132839d5f97e8a098e7c8e6f66e04b183ada65a2d863f9a71a69d3",
+      "status_sha256": "3caf7d13268f5ee2eb3890bb759b6c142ef2cb5d51aab0348646fd50549c2c16",
       "state": "second session (from 05:45 UTC), taking over from agents/ci/HANDOVER.md: watching the pipeline each hour at :17",
-      "last_wake": "2026-11-11T07:18:00Z",
+      "last_wake": "2026-11-11T08:18:00Z",
       "jobs": [
         "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
         "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
@@ -841,7 +849,6 @@
         "02:19Z session key made (record sha256:815a07d3a9d80692), public half in data/keys.json",
         "02:22Z tools/ci-read.mjs: 204 runs and 224 commits read (GitHub's Actions API and a full clone) into data/ci/ (day files, each under 256 KB; a finished run is never asked for twice)",
         "02:25Z ci/ (pipeline), ci/commits, ci/collaboration, ci/repository, ci/signing, drawn by app/ci/ci.js from data/ci/ only; the newest runs also live from GitHub's public API",
-        "02:36Z at the conductor's word: ci/patches/ (generators-timed.patch, ready; signed-release-record.patch, waiting for Dinis's yes) and tools/ci-release-record.mjs (sign and verify a release record with an agent's own key; tested: signed tree OK, one changed byte turns the gate red). Generators in-pr…",
         "02:36Z corrected: the times first written in this file and on the pages' Kept-by lines were estimates up to ten minutes ahead of the clock; they now give the clock's time",
         "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the …",
         "03:18Z wake: 414 runs and 457 commits read. Two new failures (runs 343, 344, 02:58: deploy-pages found no artifact, as 54, 55 and 205): ci/patches/deploy-retry.patch for the conductor (one more try after 8 s; a hypothesis, testable only on the runner). The gate's budget is now 8 s (the conductor, 9…",
@@ -852,9 +859,10 @@
         "05:44Z agents/ci/HANDOVER.md written for the next incident.ci@ session: what is owned, the wake step by step, the pipeline's state, the patches, what waits on Dinis, the routine",
         "05:55Z second session: key made; found that the deploy retry HAS fired (runs 459, 520, 587: first try \"No artifacts named github-pages\", second try passed each time) and that tools/ci-read.mjs missed it because GitHub reports a continue-on-error step as success; reader fixed, /ci/ now lists the ret…",
         "06:23Z wake: 607 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 16 runs since 05:48: 13 served, 3 replaced; gate on the runner median 5 s, one run at 12 s (over the 8 s budget once); push to served median 40 s, max 56 s; queue max 25 s; gate here 5.1 s at 1,971 pages; s…",
-        "07:18Z wake: 645 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 38 runs since 06:22: 35 served, 3 replaced; gate on the runner median 5 s, max 8 s; push to served median 37 s, max 61 s; queue max 30 s; gate here 5.3 s at 1,984 pages; signing patch still applies"
+        "07:18Z wake: 645 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 38 runs since 06:22: 35 served, 3 replaced; gate on the runner median 5 s, max 8 s; push to served median 37 s, max 61 s; queue max 30 s; gate here 5.3 s at 1,984 pages; signing patch still applies",
+        "08:18Z wake: 685 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 39 runs since 07:18: 37 served, 2 replaced; gate on the runner median 5 s, max 8 s; push to served median 41 s, max 103 s; queue max 42 s; gate here 5.1 s at 2,011 pages; signing patch still applies"
       ],
-      "done_total": 19,
+      "done_total": 20,
       "next": [
         "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
         "on Dinis's yes: the conductor applies ci/patches/signed-release-record.patch; /ci/ then shows signed or unsigned per push, verified in the reader's browser",
@@ -1178,15 +1186,14 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "ff44abe3f2617f0e340db5bf2907348af8f35abe67263c5d2e4905447503aef3",
-      "state": "active: the third session (from about 05:15 UTC); the journal is live with eleven pieces and a printable edition (153 pages, 2.6 MB, no images inside), every support resolving",
-      "last_wake": "2026-11-11T08:14:00Z",
+      "status_sha256": "0e0c1aedf337ff01dddad22ee21c40409e9cfe6b3924e3dd332b19c076aa8da0",
+      "state": "active: the fourth session (from 08:16 UTC); the journal is live with eleven pieces and a printable edition, every support resolving (492 supports)",
+      "last_wake": "2026-11-11T08:17:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
         "journal/README.md: the index, how to read a piece, how the journal differs from What's new",
         "journal/a-storm-one-person-one-night.md with its supports as data (journal/a-storm-one-person-one-night.json): 32 statements, 78 supports (commits, runs, sentences of the brief, board cards, data fields), 3 said to be not recorded, 1 waiting for a trace",
-        "pieces 1, 3 and 4 checked against the reporter's arc, corrections and escalations traces; a second correction of my own on piece 1 (two directions I said had no recording commit have one: ce7d8f3, 5b880fb), dated on the page and listed in the mistakes piece",
         "my session measured for the accountant (accounts/ledger/journalist.jsonl)",
         "the mistakes piece gains section 8 (the model name in the default commit trailer; the conductor's rule of 03:02; not counted); the menu carries Journal under About (seen in admin/build/build.mjs)",
         "04:05 round: journal/starting-again-is-cheaper-than-remembering.md from the reporter's seventh trace (the sentence, the pack, the test, six hand-overs, one mistake in the open); supports that had broken re-anchored (incident.ci@ split the 02:00 hour's file; the savings page was reworded); the clock…",
@@ -1197,13 +1204,13 @@
         "third session, 05:15 to 05:17 UTC: its own session key (the second session's entry marked handed over); a ninth piece, journal/an-explanation-that-is-data.md (14 statements, from the reporter's trace studio-a-spoken-idea-to-an-animation); the sixth piece carries the accountant's count of eight hand…",
         "06:20 UTC (the hourly wake, which fired into this session at 06:18): five supports re-anchored after the accountant's round 6 and the reporter's 06:06 log (What it cost k7 and k12c, the sixth piece r13c, An empty account e12), each with a dated line on its page; the new anchors are commits and the …",
         "07:15 UTC (hourly wake, fired 07:13): three supports that I had anchored at 06:20 on hourly sentences broke and now rest on commits only; dated lines for the accountant's round 7 (eighteen hand-overs, 1.71 billion tokens) on What it cost and the sixth piece, which also records the first limit of a …",
-        "08:14 UTC (hourly wake, fired 08:13): the check passed untouched (the commit anchors held through the accountant's round 8 and the reporter's 08:06 log); an eleventh piece, journal/nobody-asked.md (8 statements, from the reporter's trace signal-a-warning-lowered-to-the-front-page). Edition: 153 pag…"
+        "08:14 UTC (hourly wake, fired 08:13): the check passed untouched (the commit anchors held through the accountant's round 8 and the reporter's 08:06 log); an eleventh piece, journal/nobody-asked.md (8 statements, from the reporter's trace signal-a-warning-lowered-to-the-front-page). Edition: 153 pag…",
+        "fourth session, 08:16 to 08:17 UTC: its own session key (the third session's entry marked handed over); dated lines resting on commits for the accountant's round 8 (dc768fd) on What it cost and the sixth piece, and for the outage's sixth empty hour (2b480e6) on An empty account; noted on the page t…"
       ],
-      "done_total": 22,
+      "done_total": 23,
       "next": [
-        "not yet carried on the pages: the accountant's round 8 (dc768fd: nineteen hand-overs, the average call flat at about 200,000 tokens since 05:00) and the outage's sixth empty hour (2b480e6); add dated lines resting on those commits",
         "the tenth piece rests on the open card board/items/a-websummit-terms.json: when Dinis answers or the card is reworded, re-anchor and write the ending",
-        "What it cost: carries the books at 05:40 (round 6); a full round when they move again",
+        "What it cost: carries the books at 07:42 (round 8) in dated lines; a full rewrite of the page's body (still the books of 03:02) when Dinis or the conductor wants one",
         "the agents' marks from app/studio/agents/ on the lanes and the trace pictures",
         "Dinis's view of any of it, when it is on record: the pieces end where the record ends"
       ],
@@ -1235,8 +1242,16 @@
           "record": "sha256:40b45ae2ef721c7b",
           "encryption": "sha256:f5ff6a13d8fdd221",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026, 05:15 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). The third journalist session, started from the briefing pack (library/pack/) and the second session's hand-over. A session key: it ends with the session. That session handed over to a fourth at 08:17 UTC on 11 November."
+        },
+        {
+          "id": "incident-journalist-dinis-4",
+          "record": "sha256:b7a1a114b17768f8",
+          "encryption": "sha256:3a33f2da642fc656",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026, 05:15 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). The third journalist session, started from the briefing pack (library/pack/) and the second session's hand-over. A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 08:16 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). The fourth journalist session, started from the briefing pack (library/pack/) and the third session's hand-over. A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -2514,6 +2529,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T08:16:55Z",
-  "content_sha256": "2660b19bddc1abe0b08885162fc7dad47d61b98a4e1c7919f681cac1a5ccb541"
+  "updated": "2026-11-11T08:20:14Z",
+  "content_sha256": "0baabf4c7d763bacfaf70bdd63f51bad1ff5612d37523c5dbe08d823d58183b2"
 }
