@@ -37,4 +37,4 @@ The live https://promptugal.news (Vicky Wang's newsroom; brand identity v2.0, ne
 ## Not yet
 
 - **The faces.** The family hosts Newsreader, IBM Plex Sans and IBM Plex Mono as woff2 files (SIL OFL 1.1). Our gate refuses binaries in git and any outside request, so for now the stacks fall back (Georgia, the system sans, the system mono). Needs Dinis's word: fetch the three faces from promptugal.news (one outside host), or serve them from a vault.
-- The family's five themes (paper, ink, broadsheet, archive, azulejo) against ours (auto, light, dark, paper, night, contrast).
+- ~~The five themes~~: done in [round 61](round-61.md); this site now offers the family's five (paper, ink, broadsheet, archive, azulejo), auto and contrast.

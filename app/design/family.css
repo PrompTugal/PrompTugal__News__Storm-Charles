@@ -9,7 +9,7 @@
    (--focus), the states of things we run (--ok, --bad, --warn, --sent, --wait), the fact/evidence/hypothesis marks. */
 
 /* ---- the family palette (paper and ink; colour belongs to the name; links take the name's green) ---- */
-:root, :root[data-theme="light"] {
+:root, :root[data-theme="light"], :root[data-theme="paper"] {
   --fam-red: #c52830; --fam-green: #006600;
   --paper: #f6f3ec; --surface: #fffdf8; --surface-2: #ece7db;
   --ink: #121317; --ink-2: #3f424a; --ink-3: #595c64;
@@ -32,7 +32,7 @@
   --accent: #ff8f7d; --nav-bg: rgb(17 18 20 / .96);
   --shadow: 0 1px 2px rgb(0 0 0 / .4);
 } }
-:root[data-theme="dark"] {
+:root[data-theme="dark"], :root[data-theme="ink"] {
   --fam-red: #f07278; --fam-green: #6dbb7e;
   --paper: #111214; --surface: #1e1f23; --surface-2: #1a1b1e;
   --ink: #eceae4; --ink-2: #c3c0b7; --ink-3: #a6a39a;
@@ -41,8 +41,39 @@
   --accent: #ff8f7d; --nav-bg: rgb(17 18 20 / .96);
   --shadow: 0 1px 2px rgb(0 0 0 / .4);
 }
-:root[data-theme="paper"], :root[data-theme="night"], :root[data-theme="contrast"] { --radius: 3px; }
-:root[data-theme="paper"] { --serif: "Newsreader", Georgia, serif; }
+:root[data-theme="contrast"] { --radius: 3px; }
+/* Round 61: the family's other three themes, from promptugal.news assets/tokens.css (sha256 f387b4759cea, read 14:16 UTC 11 November);
+   their --paper/--panel/--paper-2/--ink/--hair/--rule-2/--brand/--live mapped to our tokens. IPMA's levels and the states stay ours (site.css). */
+:root[data-theme="broadsheet"] {
+  --fam-red: #c52830; --fam-green: #006600;
+  --paper: #ffffff; --surface: #ffffff; --surface-2: #f1f1ee;
+  --ink: #0b0c0f; --ink-2: #33363d; --ink-3: #575b63;
+  --line: #e3e3df; --line-2: #a6a6a1; --rule: #0b0c0f;
+  --link: #006600; --link-2: #004d00; --link-soft: #e3f0e3;
+  --accent: #b42318; --nav-bg: rgb(255 255 255 / .96);
+  --shadow: 0 1px 2px rgb(11 12 15 / .06);
+}
+:root[data-theme="archive"] {
+  --fam-red: #b0262d; --fam-green: #005c00;
+  --paper: #efe6d2; --surface: #f7f0e1; --surface-2: #e5d9bf;
+  --ink: #2a2119; --ink-2: #4a3d30; --ink-3: #5f5244;
+  --line: #d8caad; --line-2: #a8977a; --rule: #2a2119;
+  --link: #005c00; --link-2: #004400; --link-soft: #e0e3c8;
+  --accent: #a3201a; --nav-bg: rgb(239 230 210 / .96); --warm-line: #d8caad;
+  --shadow: 0 1px 2px rgb(60 44 24 / .08);
+}
+:root[data-theme="azulejo"] {
+  --fam-red: #f5848a; --fam-green: #7cc98c;
+  --paper: #0f1c36; --surface: #172a4d; --surface-2: #16274a;
+  --ink: #eef1f7; --ink-2: #c6cedd; --ink-3: #a3afc6;
+  --line: #233659; --line-2: #3d5179; --rule: #eef1f7;
+  --link: #7cc98c; --link-2: #a8dcb2; --link-soft: #173a33;
+  --accent: #ff9a8a; --nav-bg: rgb(15 28 54 / .96); --warm-line: #3d5179;
+  --shadow: 0 1px 2px rgb(0 0 0 / .45);
+}
+:root[data-theme="paper"], :root[data-theme="ink"], :root[data-theme="broadsheet"], :root[data-theme="archive"], :root[data-theme="azulejo"], :root[data-theme="contrast"] { --radius: 3px; }
+:root[data-theme="paper"], :root[data-theme="broadsheet"], :root[data-theme="archive"], :root[data-theme="contrast"] { color-scheme: light; }
+:root[data-theme="ink"], :root[data-theme="dark"], :root[data-theme="azulejo"] { color-scheme: dark; }
 
 /* ---- type: the family's faces (headings in the serif; the interface in the sans) ---- */
 body { font-family: var(--sans); }
@@ -58,8 +89,8 @@ header.top a.fam-mark { display: inline-flex; align-items: center; flex: 0 0 aut
 header.top .wordmark { display: block; width: 168px; height: auto; }
 header.top .wm-dark { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme]) header.top .wm-light, :root[data-theme="auto"] header.top .wm-light { display: none; } :root:not([data-theme]) header.top .wm-dark, :root[data-theme="auto"] header.top .wm-dark { display: block; } }
-:root[data-theme="dark"] .wm-light, :root[data-theme="night"] .wm-light { display: none !important; }
-:root[data-theme="dark"] .wm-dark, :root[data-theme="night"] .wm-dark { display: block !important; }
+:root[data-theme="dark"] .wm-light, :root[data-theme="ink"] .wm-light, :root[data-theme="azulejo"] .wm-light { display: none !important; }
+:root[data-theme="dark"] .wm-dark, :root[data-theme="ink"] .wm-dark, :root[data-theme="azulejo"] .wm-dark { display: block !important; }
 header.top a.brand { font: 600 21px/1 var(--serif); letter-spacing: -.015em; color: var(--ink); padding-left: 12px; border-left: 1px solid var(--line-2); }
 header.top a.brand b { color: inherit; font-weight: 600; }
 header.top a.brand .brand-org { display: none; }
