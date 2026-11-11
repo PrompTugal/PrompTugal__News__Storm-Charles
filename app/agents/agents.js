@@ -382,7 +382,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
             } catch { }
         }))
         if (!ROLE && !VIEW) { const w = new URLSearchParams(location.search).get('who'); if (w) { const a = idx.agents.find(x => x.name === w || x.name === w.replace(/@$/, '@web-summit.dinis') || x.role === w); if (a && a.has_page) { location.replace(`${BASE}agents/${a.role}/index.html`); return } whoMiss = w } }
-        const [gh, ver, R, led] = await Promise.all([commits(), getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), runs(), ledger(idx).catch(() => '')])
+        const [gh, ver, R, led, BD] = await Promise.all([commits(), getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), runs(), ledger(idx).catch(() => ''), idx.board && !ROLE && !VIEW ? getJSON(`${BASE}${idx.board.index}?t=${Math.floor(Date.now() / 6e4)}`).catch(() => null) : null])
         const X = R.items.length ? await exact(R) : {}
         const series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
         const by = new Map(); for (const c of gh.items) { if (!by.has(c.agent)) by.set(c.agent, []); by.get(c.agent).push(c) }
@@ -411,9 +411,17 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         el.innerHTML = `
 ${whoMiss ? `<p class="ag-draft">No page for <code>${T(whoMiss)}</code>: it is not an agent of this team (or has no page yet). It may be another team's agent, named in a commit's For: line.</p>` : ''}${health}
 <p class="ag-line"><span><b>${idx.agents.length}</b> agents</span><span><b>${n('now')}</b> active in the last 30 min</span><span><b>${n('blocked')}</b> blocked</span><span><b>${n('none')}</b> not started</span><span>last push <b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b></span><span>serving <b>${ver?.version ? esc(ver.version) : 'n/a'}</b></span></p>
-<section class="ag-asks" id="asks"><h2>What Dinis can unblock: ${asks.length ? `${fresh} open ask${fresh === 1 ? '' : 's'}${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}, in ${new Set(asks.map(q => (THEMES.find(([, rx]) => rx.test(q.x)) || ['x'])[0])).size} groups` : 'nothing is waiting for you'}</h2>
+${BD && (BD.for_dinis || []).length ? (() => { const items = new Map((BD.items || []).map(x => [x.id, x])), L = BD.for_dinis.map(id => items.get(id)).filter(Boolean), tagOf = n => { const ag = idx.agents.find(x => x.name === n); return ag ? `<a href="${esc(agentHref(n, idx) || '#' + ag.role)}">${T(ag.role)}</a>` : T(short(n)) }
+            return `<section class="ag-asks" id="asks"><h2>What Dinis can unblock: ${L.length} thing${L.length === 1 ? '' : 's'}, most blocking first</h2>
+${(() => { const row = (x, i) => `<details class="ag-un" data-k="bd-${esc(x.id)}"><summary><b>${i + 1}. ${T(x.title)}</b><span class="ag-note">${x.state && x.state !== 'open' ? T(x.state) + ' · ' : ''}unblocks ${(x.raised_by || []).map(tagOf).join(', ') || tagOf(x.owner)}</span></summary>
+${x.summary ? `<p>${T(x.summary)}</p>` : ''}${x.closes ? `<p><span class="lbl">What closes it</span>${T(x.closes)}</p>` : ''}${x.blocks ? `<p><span class="lbl">What it holds up</span>${T(x.blocks)}</p>` : ''}
+<p class="ag-note"><a href="${BASE}${esc(x.url || `board/items/${x.id}.html`)}">The card: its evidence and history</a></p></details>`
+                return L.slice(0, 8).map(row).join('') + (L.length > 8 ? `<details data-k="bd-more"><summary>${L.length - 8} more, less blocking</summary>${L.slice(8).map((x, i) => row(x, i + 8)).join('')}</details>` : '') })()}
+<p class="ag-note">From <a href="${BASE}board/for-dinis.html">the board's list for Dinis</a> (kept by incident.board@, written ${T(BD.updated || '')}): one card per ask, the same ask from several agents joined, ordered by what it holds up. ${asks.length} "Dinis:" line${asks.length === 1 ? '' : 's'} stand in the status files as served now${(BD.not_on_a_card_yet || []).length ? `; ${BD.not_on_a_card_yet.length} not on a card yet` : ''}.</p></section>
+` })() : `<section class="ag-asks" id="asks"><h2>What Dinis can unblock: ${asks.length ? `${fresh} open ask${fresh === 1 ? '' : 's'}${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}, in ${new Set(asks.map(q => (THEMES.find(([, rx]) => rx.test(q.x)) || ['x'])[0])).size} groups` : 'nothing is waiting for you'}</h2>
 ${unblock(asks, idx)}
 ${asks.length ? `<p class="ag-note">Grouped by what is asked (by keyword, so read a row before acting on it); each row opens to the agents' own words and what each would do next. "May be stale": from a status file synced from the old repository, by an agent that has pushed nothing here.</p>` : ''}</section>
+`}
 <h2 class="ag-h" id="night">The night as it happened</h2>
 ${night(N)}
 <h2 class="ag-h">The agents <span class="ag-note">one line each; open one for its state, asks, next, done, job and key</span></h2>

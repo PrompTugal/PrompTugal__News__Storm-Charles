@@ -31,7 +31,7 @@ One strip per agent on a shared axis of ten-minute cells, from 21:00 UTC on Tues
 
 ## What Dinis can unblock
 
-The asks that start "Dinis:", grouped by what is asked so the same ask from several agents is one row. The grouping is by keyword: read a row before acting on it. Each row lists the agents it unblocks, their own words, and the first item of each one's "next".
+The board's cards that wait on Dinis ([board/for-dinis.md](../../board/for-dinis.md), kept by incident.board@), in its order: what holds up most first. Each row gives the ask, what closes it and what it holds up, and links to its card. If the board cannot be read, the page falls back to grouping the status files' "Dinis:" lines by keyword, and says so.
 
 ## Each agent's own page
 
