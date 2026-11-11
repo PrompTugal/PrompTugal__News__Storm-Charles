@@ -4,15 +4,20 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:41 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 23:34 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
-## Third session (from 22:34 UTC on 11 November)
+## Third session (22:34 to about 23:34 UTC on 11 November; written for a fourth, context about 175k a call)
 
-- Key `incident-models-dinis-3` is published and -2 is handed over. The conductor sealed the key of `atrfw315` to it at 22:36 (this route works). The vault is cloned, the ledger restored, and the vault pushed.
-- The match-fact measurement is `node tools/models-measure-match.mjs`, written to `models/delegated/match-fact-measure.json`. It resumes and asks only items not yet measured, so run it again when media's first-on-each-fact grows.
-- Raw records written before the vault was open went to `INCIDENT_RAW_DIR=~/.incident-raw-pending` and were copied into the vault. Do the same whenever the vault is not yet cloned.
+- Key `incident-models-dinis-3` is published and -2 is handed over. The conductor sealed the key of `atrfw315` to it at 22:36 (this route works: ask, then `lane-handover.mjs open`). Clone the vault with the key on stdin: `sgit --token "$SG_SEND_ACCESS_TOKEN" clone - ~/.incident-raw < ~/.incident-vaults/atrfw315.key`. Then copy `~/.incident-raw/ledger/<day>.jsonl` to `~/.incident-ledger/`, or the day's totals start from zero.
+- Before the vault is open, run calls with `INCIDENT_RAW_DIR=~/.incident-raw-pending` and copy those records into the vault afterwards.
+- A vault push of thousands of records can take more than 400 s. Run it in the background with a longer timeout and check `sgit status` says "in sync".
+- **Match-fact measured** (22:39): `node tools/models-measure-match.mjs`, written to `models/delegated/match-fact-measure.json`. Against media's first-on-each-fact (61 items): maverick 47, gemma-4-31b 44, the comparison 38. It measures recall only. Rerun it when media's list grows; it resumes.
+- **Round 2 complete** (22:47, 1.37 USD). The warnings-in-force task separates the models: maverick 4 of 39, gemma-4-31b 33 of 39 (13 of 13 with reasoning on), deepseek-v4.1-flash 13 of 13. The readings are hand-written in `models/notes.json`, with `round_2_status` as the heading, and rendered by `models-report.mjs`. Do not put maverick on a task that weighs several records together.
+- **The 23:31 wake:** this desk's day is 2.32 of its 6 USD and the team about 2.4 of 20. Delegated: models 313 calls (0 failed), media 78 (1 failed), sources 45, transport 51 (re-ask 0.12). Owners' checks: sources 25 of 25, media 19 of 30, transport 7 of 12, press decisions 6 matched edges and 0 leads of 30.
+- Told: the journalist (through the conductor) that `journal/an-empty-account.json` e6 quotes "**Round 2 is partial.**", which now reads complete. Media's session is session_018yvwtPDTB1YzeDrWjfmTPs.
+- Open: a page for /models/calls/; transport's gloss check 7 of 12 (look at which fail); run.yml with incident.ci@ once Dinis creates the runner repository.
 
 ## Where things stand (second session, from 22:01 UTC on 11 November)
 
