@@ -95,9 +95,9 @@ const MENU = [
     ['Research', [['Media', 'research/media/index.html'], ['Media charts', 'research/media/charts.html'], ['Social', 'research/social/index.html'], ['Wikipedia', 'research/wikipedia/index.html'], ['Weather sites', 'research/weather-sites/index.html'], ['Studies', 'research/weather-sites/studies/index.html'], ['Perplexity', 'research/perplexity/index.html'], ['Shadow', 'shadow/index.html'], ['Models', 'models/index.html']]],
     ['Labs', [['Labs', 'labs/index.html']]],
     ['Studio', [['Studio', 'studio/index.html'], ['Cast', 'studio/cast/index.html']]],
-    ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'app/agents/jobs.html'], ['Jobs, the table', 'agents/JOBS.html'], ['Board', 'board/index.html'], ['For Dinis', 'board/for-dinis.html'], ['CI', 'ci/index.html'], ['Commits', 'ci/commits.html'], ['Repository', 'ci/repository.html'], ['Accounts', 'accounts/index.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html'], ['Launch draft', 'outreach/launch.html']]],
+    ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'app/agents/jobs.html'], ['Jobs, the table', 'agents/JOBS.html'], ['Board', 'board/index.html'], ['For Dinis', 'board/for-dinis.html'], ['Accounts', 'accounts/index.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html'], ['Launch draft', 'outreach/launch.html']]],
     ['Help', [['Help', 'help/index.html'], ["What's new", 'news/index.html']]],
-    ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
+    ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Journal', 'journal/index.html'], ['Reporter', 'reporter/index.html'], ['CI', 'ci/index.html'], ['Commits', 'ci/commits.html'], ['Repository', 'ci/repository.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
 ]
 const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles'
 let MENU_LIVE = null
