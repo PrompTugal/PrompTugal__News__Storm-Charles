@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # Browse the files
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:42 UTC
 
 [IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
@@ -14,7 +14,7 @@ Pick a file above: **Table** shows its rows, **Schema** its shape (keys and type
 
 | File | Bytes | What it is |
 |---|---|---|
-| [data/warnings.json](data/warnings.json) | 42395 | Every IPMA warning above green that we have read, each with the reads that bracket it: first_read_utc (the first of our reads that carried it) and last_read_utc; gone_read_utc is the first read that no longer carried it, and 'gone' says how: ended (its window  |
+| [data/warnings.json](data/warnings.json) | 48489 | Every IPMA warning above green that we have read, each with the reads that bracket it: first_read_utc (the first of our reads that carried it) and last_read_utc; gone_read_utc is the first read that no longer carried it, and 'gone' says how: ended (its window  |
 | [data/classes.json](data/classes.json) | 4529 | IPMA's own names for its codes, in Portuguese and English exactly as IPMA publishes them (its spelling kept, trailing spaces trimmed): idWeatherType (significant weather), classWindSpeed (wind strength of the day) and classPrecInt (precipitation intensity). -9 |
 | [data/places.json](data/places.json) | 31825 | IPMA's places: the 25 warning areas (districts, island groups, parts of Madeira), the places it forecasts for, the coastal places of the sea forecast, and a point for each mainland municipality (from the fire-risk files, with the risk class for today and the n |
 | [data/stations.json](data/stations.json) | 33440 | IPMA's weather stations (id, name, coordinates as IPMA gives them) and whether each reported in the last 24 hours read. 'region' is ours, from the longitude. |
