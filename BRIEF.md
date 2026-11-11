@@ -37,3 +37,11 @@
   - **why things get lost**, "where you feel that the agent loses memory": when it compresses, the agent is guessing which part of the prompt to remove, what matters for the user. We do that ourselves, on purpose, "by creating documents that are specific, that are hyperlinked, that contain what actually matters". "The compression still occurs, but there's no problem because we used almost a file system as our database."
 - **Look at storyboard.sgit.ai and the book for The Ultimate Insider**: the **mini characters** that explain. "Bring that to life in this studio."
 - **The UI**: "a number of actions and then buttons and then the characters ... you should see almost the storyboard play out"; **on the right, the LLM** that receives. "This should be a number of animations."
+
+## Dinis, 11 November 2026, ~01:28 UTC: Wikipedia (close to his words)
+
+"This is pretty cool ... we have a lot of good meat on this and good information to start going to the next level." Feedback on many pages follows; "another pass and multiple passes on how everything fits together".
+
+- **Start a Wikipedia agent.** "A complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm", as on the other sites (the newsroom's work on Wikipedia).
+- **Several languages, especially Portuguese: compare them**: "the facts, the materials", what one has that the other does not.
+- **Wikipedia's values**: "in the newsroom ... we also mapped the Wikipedia values, which is also what we should be doing here. We should be measuring ourselves into the whole evidence of Wikipedia."
