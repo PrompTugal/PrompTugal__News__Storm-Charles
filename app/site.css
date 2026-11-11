@@ -716,3 +716,32 @@ a.ver.repo { text-transform: none; }
 .doc article p, .doc article li, .doc article blockquote, .doc article h1, .doc article h2, .doc article h3, .card p, .panel { overflow-wrap: anywhere; }
 .doc article td, .doc article th { overflow-wrap: normal; word-break: normal; } .doc article td code { overflow-wrap: anywhere; }
 a.ent { white-space: normal; }
+
+/* ---- round 42 (incident.designer@): parts shared by the two faces; the masthead in two lines on a desk. design/round-42.md ---- */
+/* the level band: the level in force as the largest thing on a page. <div class="wx-level w-red"><span class="wx-word">Red</span> ...</div> */
+.wx-level { border-radius: var(--radius); padding: clamp(14px, 2vw, 28px) clamp(14px, 2.2vw, 32px); background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; }
+.wx-level.w-red { background: var(--red); color: var(--on-red); border-color: transparent; }
+.wx-level.w-orange { background: var(--orange); color: var(--on-orange); border-color: transparent; }
+.wx-level.w-yellow { background: var(--yellow); color: var(--on-yellow); border-color: transparent; }
+.wx-level a { color: inherit; }
+.wx-word { font-size: clamp(54px, 8vw, 132px); font-weight: 800; text-transform: uppercase; letter-spacing: -.03em; line-height: .9; }
+/* the warning line: a level's edge, then the level chip, the hazard, its status, and the authority's own sentence */
+.wx-warn { display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-left: 8px solid var(--line-2); border-radius: 8px; padding: 10px 14px; }
+.wx-warn.w-red { border-left-color: var(--red); } .wx-warn.w-orange { border-left-color: var(--orange); } .wx-warn.w-yellow { border-left-color: var(--yellow); }
+.wx-warn-h { font-size: clamp(17px, .5vw + 14px, 22px); line-height: 1.3; margin: 0; } .wx-warn-h .lvl { font-size: 13px; vertical-align: 2px; }
+.wx-warn-t { font-size: 14px; margin: 2px 0 0; }
+/* a section that folds: <details class="wx-sect"><summary><h2>Title</h2></summary> ... </details> */
+.wx-sect { border-bottom: 1px solid var(--line); }
+.wx-sect > summary { cursor: pointer; padding: 14px 0; list-style-position: inside; }
+.wx-sect > summary h2 { display: inline; font-size: clamp(18px, 1vw + 12px, 22px); margin: 0; }
+.wx-sect > summary:hover h2 { text-decoration: underline; }
+@media (max-width: 420px) { .wx-warn { padding: 8px 10px; gap: 8px; } }
+/* the masthead on a desk: the brand, the subsites and the chips on one line; the subsite's pages on the second */
+@media (min-width: 1100px) {
+  header.top .wrap { flex-wrap: wrap; align-items: center; column-gap: 14px; }
+  nav.sites { order: 2; flex: 1 1 0; width: auto; min-width: 0; padding-top: 0; margin-left: 10px; }
+  nav.sites a { padding: 12px 10px 13px; }
+  a.ver, #panel-btn { order: 3; } #panel-btn { margin-left: 0; }
+  nav.top { order: 4; }
+  header.top .wrap { padding-top: 0; }
+}
