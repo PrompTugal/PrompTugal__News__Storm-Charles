@@ -65,6 +65,7 @@ export function pretty (v, ind = '') {
   if (Array.isArray(v)) {
     if (!v.length) return '[]'
     if (v.every(prim) && v.every(x => typeof x !== 'string' || x.length < 40)) return '[' + v.map(x => JSON.stringify(x)).join(',') + ']'
+    if (v.every(o => o && typeof o === 'object' && !Array.isArray(o) && Object.values(o).every(prim))) return '[\n' + v.map(o => nx + JSON.stringify(o)).join(',\n') + '\n' + ind + ']'
     if (v.every(a => Array.isArray(a) && a.every(prim))) return '[\n' + v.map(a => nx + '[' + a.map(x => JSON.stringify(x)).join(',') + ']').join(',\n') + '\n' + ind + ']'
     return '[\n' + v.map(x => nx + pretty(x, nx)).join(',\n') + '\n' + ind + ']'
   }

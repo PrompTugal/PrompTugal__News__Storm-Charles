@@ -1,6 +1,6 @@
 # Flights and the wind: the data
 
-> Kept by incident.flights@web-summit.dinis, 11 November 2026, 22:11 UTC
+> Kept by incident.flights@web-summit.dinis, 11 November 2026, 22:20 UTC
 
 Flights on the map with the wind on top, as JSON that can be replayed (Dinis, ~22:00 UTC on 11 November, [BRIEF.md](../../../../BRIEF.md)). This folder holds the data; incident.designer@ draws the map. Every file is served at its path and at `api/v1/2026-11-10-storm-charles/flights/<file>`. The list, with sizes and sha256: [index.json](index.json). Kept by [incident.flights@](../../../../agents/flights/README.md).
 
@@ -13,6 +13,20 @@ Flights on the map with the wind on top, as JSON that can be replayed (Dinis, ~2
 | [crosswind.json](crosswind.json) | fact (one hypothesis, labelled) | LPPT and LPMA, every METAR from 10 November 18:00 UTC, grouped by hour: wind direction, speed, gust; on each runway end the headwind (negative: tailwind) and crosswind and its side, for the mean wind and the gust; `departures_seen` that hour (OpenSky, a floor; null where not covered); ANA's figures for the day | `airports[].runways[]`, `airports[].hours[] = {hour, departures_seen, max_gust_or_wind_kt, max_crosswind_kt, metars[] = {time, raw, wind_dir, wind_kt, gust_kt, runways: {<end>: {headwind_kt, crosswind_kt, crosswind_from, gust_headwind_kt, gust_crosswind_kt}}, favoured_end}}` |
 | `wind/<area>-<date>.json` (lisbon, madeira; 10, 11, 12 November) | evidence (model data) | Open-Meteo's hourly wind on a 0.25° lattice: 10 m speed, direction, gusts; 850 hPa speed and direction. Lisbon 37.5–40 N, 10.5–8 W (121 points); Madeira 32.5–33.25 N, 17.5–16.25 W (24 points); 10 November 12:00 to 12 November 12:00 UTC | `grid.lat[]`, `grid.lon[]` (point k = lat[k ÷ lon.length], lon[k mod lon.length]); `times[]`; `levels['10m'].speed_kt[hour][point]`, `.dir_deg`, `.gust_kt`; `levels['850hPa'].speed_kt`, `.dir_deg`; `forecast_from` |
 | `snapshots/<date>/<HH>.json` | fact | Airline aircraft in a box around Lisbon (38.3–39.2 N, 9.8–8.6 W, every 10 minutes) and Madeira (32.4–33.2 N, 17.4–16.2 W, every 20 minutes), from 11 November about 22:00 UTC | `snapshots[] = {area, time, request, aircraft[] = {callsign, airline, lat, lon, baro_alt_m, geo_alt_m, on_ground, ground_speed_ms, track_deg, vertical_rate_ms, time_position}, other_aircraft_dropped}`; `airlines` names each code |
+
+### The map's files (incident.designer@'s shapes, [design/round-65.md](../../../../design/round-65.md))
+
+Written by the build from the files above (`tools/flights-map.mjs`, a generator), so they are served here but not kept in git; `index.json` lists them for the app: `snapshots[] = {t, area, aircraft, file}`, `wind_hours[] = {t, area, forecast, file}`, `runways`, `crosswind`, `movements` (paths relative to the index).
+
+| File | Shape |
+|---|---|
+| `map/snapshots/<date>/<HHMM>-<area>.json` | `{t, area, source, read_utc, licence, label, method, aircraft[] = {id (the callsign), callsign, airline, lat, lon, track_deg, alt_ft, gs_kt, vrate_fpm, on_ground, time_position}}` |
+| `map/wind/<area>/<date>/<HH>.json` | `{t, area, model, source, read_utc, licence, label, forecast, method, points[] = {lat, lon, dir_from_deg, speed_kt, gust_kt, upper_dir_from_deg, upper_speed_kt}}` (upper: 850 hPa) |
+| `runways.json` | `runways[] = {airport, id, length_m, ends[] = {name, lat, lon, heading_deg, elevation_ft}}` |
+| `movements.json` | `hours[] = {t, departures, cancellations}` (LPPT), `hours_by_airport`, `ana_day`, `sources` (cancellations: null by hour; ANA gives the day) |
+| `crosswind.json` (above) | also `hours[] = {t, metar_time, wind_dir, wind_kt, gust_kt, by_runway_end: {<end>: {cross_kt, head_kt, gust_cross_kt}}}` (LPPT) and `hours_by_airport` |
+
+Each `snapshots/<date>/<HH>.json` snapshot also carries `near_airport.{LPPT|LPMA} = {box, on_ground, airborne_below_3000m, read}`, incident.transport@'s count in its own box, so it reads ours instead of calling OpenSky.
 
 Directions are degrees true, the direction the wind blows **from** (draw an arrow pointing to direction + 180°). Speeds in knots (1 kt = 1.852 km/h) except aircraft ground speed and vertical rate, in metres per second as OpenSky gives them.
 

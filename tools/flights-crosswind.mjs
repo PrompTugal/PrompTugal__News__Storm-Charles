@@ -31,7 +31,7 @@ if (!rwCache) {
     for (const l of lines.slice(1)) {
       const c = l.replace(/"/g, '').split(','); const r = Object.fromEntries(hdr.map((h, i) => [h, c[i]]))
       if (!AIRPORTS.some(a => a.icao === r.airport_ident) || r.closed === '1') continue
-      ;(runways[r.airport_ident] ||= []).push({ runway: `${r.le_ident}/${r.he_ident}`, length_m: Math.round(r.length_ft * 0.3048), ends: [{ end: r.le_ident, heading_true: Number(r.le_heading_degT) }, { end: r.he_ident, heading_true: Number(r.he_heading_degT) }] })
+      ;(runways[r.airport_ident] ||= []).push({ runway: `${r.le_ident}/${r.he_ident}`, length_m: Math.round(r.length_ft * 0.3048), ends: [{ end: r.le_ident, heading_true: Number(r.le_heading_degT), lat: Number(r.le_latitude_deg), lon: Number(r.le_longitude_deg), elevation_ft: Number(r.le_elevation_ft) }, { end: r.he_ident, heading_true: Number(r.he_heading_degT), lat: Number(r.he_latitude_deg), lon: Number(r.he_longitude_deg), elevation_ft: Number(r.he_elevation_ft) }] })
     }
     rwCache = { prov: rw.prov, runways }; fs.mkdirSync(RAW_DIR, { recursive: true }); fs.writeFileSync(RWC, JSON.stringify(rwCache))
   } else rwCache = { prov: rw.prov, runways }
@@ -96,5 +96,14 @@ for (const ap of AIRPORTS) {
     hours: hs
   })
 }
+// The map's form (incident.designer@, design/round-65.md): hours[] for LPPT, hours_by_airport for both; per hour the METAR
+// with the strongest gust (or wind) in that hour.
+const pick = H => H.metars.filter(m => m.runways).sort((a, b) => (b.gust_kt ?? b.wind_kt) - (a.gust_kt ?? a.wind_kt))[0]
+const form = a => a.hours.map(H => { const m = pick(H); return { t: H.hour, metar_time: m ? m.time : null, wind_dir: m ? m.wind_dir : null, wind_kt: m ? m.wind_kt : null, gust_kt: m ? m.gust_kt : null, by_runway_end: m ? Object.fromEntries(Object.entries(m.runways).map(([e, c]) => [e, { cross_kt: c.crosswind_kt, head_kt: c.headwind_kt, gust_cross_kt: c.gust_crosswind_kt ?? null }])) : null } })
+out.source = 'https://aviationweather.gov/api/data/metar (IPMA\'s METAR), with incident.meteorologist@\'s airport files; runways from OurAirports'
+out.read_utc = awc.prov.read
+out.method = 'For each METAR: headwind = wind x cos(wind direction - runway heading), crosswind = |wind x sin(...)|, true degrees; gust components the same with the gust. hours[] (LPPT) and hours_by_airport give, per hour, the METAR with the strongest gust or wind. Variable winds (VRB) have no components.'
+out.hours = form(out.airports.find(a => a.icao === 'LPPT'))
+out.hours_by_airport = Object.fromEntries(out.airports.map(a => [a.icao, form(a)]))
 const file = path.join(DATA, 'crosswind.json'); const s = writeJSON(file, out)
 console.log(`${file}: ${Buffer.byteLength(s)} bytes; ${out.airports.map(a => `${a.icao} ${a.hours.length} h`).join(', ')}; to ${out.window.to}`)

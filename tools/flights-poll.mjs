@@ -13,6 +13,7 @@ export const AREAS = {
   lisbon: { name: 'Lisbon area (around LPPT, Humberto Delgado)', lamin: 38.3, lamax: 39.2, lomin: -9.8, lomax: -8.6 },
   funchal: { name: 'Madeira (around LPMA, Funchal)', lamin: 32.4, lamax: 33.2, lomin: -17.4, lomax: -16.2 }
 }
+const NEAR = { lisbon: { icao: 'LPPT', box: [38.524, -9.384, 39.024, -8.884] }, funchal: { icao: 'LPMA', box: [32.448, -17.024, 32.948, -16.524] } }
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d }
 const area = arg('area'); const root = arg('root', '.')
 if (!AREAS[area]) { console.error('--area lisbon|funchal'); process.exit(2) }
@@ -34,6 +35,11 @@ if (ok) {
     snap.aircraft.push({ callsign: cs, airline: al, lat: s[6], lon: s[5], baro_alt_m: s[7], geo_alt_m: s[13], on_ground: s[8], ground_speed_ms: s[9], track_deg: s[10], vertical_rate_ms: s[11], time_position: s[3] ? iso(s[3] * 1000) : null })
   }
   snap.aircraft.sort((x, y) => x.callsign.localeCompare(y.callsign))
+  // incident.transport@'s count, so it can read ours instead of calling OpenSky itself (agreed 22:05): its exact box,
+  // airline aircraft on the ground or airborne below 3,000 m.
+  const ap = NEAR[area]; const inBox = a => a.lat >= ap.box[0] && a.lon >= ap.box[1] && a.lat <= ap.box[2] && a.lon <= ap.box[3]
+  const nb = snap.aircraft.filter(inBox)
+  snap.near_airport = { [ap.icao]: { box: ap.box, box_order: 'lamin, lomin, lamax, lomax', on_ground: nb.filter(a => a.on_ground).length, airborne_below_3000m: nb.filter(a => !a.on_ground && a.baro_alt_m != null && a.baro_alt_m < 3000).length, read: prov.read } }
   snap.other_aircraft_dropped = other
 }
 const t = snap.time || prov.read

@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T22:15:51Z",
+  "updated": "2026-11-11T22:18:32Z",
   "label": "fact",
   "about": "The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky's receivers saw and to ANA's own cancellation figures. Facts: the METAR (IPMA's observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -28,14 +28,8 @@
           "runway": "02/20",
           "length_m": 3810,
           "ends": [
-            {
-              "end": "02",
-              "heading_true": 22
-            },
-            {
-              "end": "20",
-              "heading_true": 202
-            }
+            {"end":"02","heading_true":22,"lat":38.765678,"lon":-9.144302,"elevation_ft":331},
+            {"end":"20","heading_true":202,"lat":38.797313,"lon":-9.127376,"elevation_ft":347}
           ]
         }
       ],
@@ -1694,14 +1688,8 @@
           "runway": "05/23",
           "length_m": 2777,
           "ends": [
-            {
-              "end": "05",
-              "heading_true": 44.7
-            },
-            {
-              "end": "23",
-              "heading_true": 224.7
-            }
+            {"end":"05","heading_true":44.7,"lat":32.68899917602539,"lon":-16.784799575805664,"elevation_ft":147},
+            {"end":"23","heading_true":224.7,"lat":32.7067985534668,"lon":-16.763999938964844,"elevation_ft":192}
           ]
         }
       ],
@@ -3322,22 +3310,8 @@
           "hour": "2026-11-11T21:00:00Z",
           "departures_seen": 1,
           "metars": [
-            {
-              "time": "2026-11-11T21:00:00Z",
-              "raw": "METAR LPMA 112100Z VRB01KT 9999 SCT015 20/15 Q1009",
-              "wind_dir": "VRB",
-              "wind_kt": 1,
-              "gust_kt": null,
-              "runways": null
-            },
-            {
-              "time": "2026-11-11T21:30:00Z",
-              "raw": "METAR LPMA 112130Z VRB02KT 9999 SCT015 20/15 Q1010",
-              "wind_dir": "VRB",
-              "wind_kt": 2,
-              "gust_kt": null,
-              "runways": null
-            }
+            {"time":"2026-11-11T21:00:00Z","raw":"METAR LPMA 112100Z VRB01KT 9999 SCT015 20/15 Q1009","wind_dir":"VRB","wind_kt":1,"gust_kt":null,"runways":null},
+            {"time":"2026-11-11T21:30:00Z","raw":"METAR LPMA 112130Z VRB02KT 9999 SCT015 20/15 Q1010","wind_dir":"VRB","wind_kt":2,"gust_kt":null,"runways":null}
           ],
           "max_gust_or_wind_kt": 2,
           "max_crosswind_kt": null
@@ -3378,46 +3352,1663 @@
     }
   ],
   "sources": [
+    {"what":"runway headings, degrees true (OurAirports, public domain; read once, cached)","url":"https://davidmegginson.github.io/ourairports-data/runways.csv","status":200,"bytes":3974055,"sha256":"a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9","read":"2026-11-11T22:18:31Z","response_ms":392,"raw":"flights vault: ourairports/2026-11-11/2026-11-11T221831Z-a39ff4071b14.body"},
+    {"what":"METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)","url":"https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json","status":200,"bytes":112410,"sha256":"e9b29a14b4088d36629a324e342a413dfa2f0409926a0e6a8f9bf88c559fa2c1","read":"2026-11-11T22:18:31Z","response_ms":769,"raw":"flights vault: awc-metar/2026-11-11/2026-11-11T221831Z-e9b29a14b408.body"},
+    {"path":"incidents/2026-11-10-storm-charles/data/transport/flights.json","what":"airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@","sha256":"93c17997074dfe881b32c7f5ec7c652a031ac767c2c8632410ebc0ffafc56895","bytes":16565,"read_utc":"2026-11-11T21:43:14Z"},
+    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport.json","what":"METAR history kept by incident.meteorologist@ (LPPT)","sha256":"e2c2f6793aab8e42aa76b47de9fa9d2345c4af60f8a9bfae4fd21ecd6d8dd601","bytes":53573,"read_utc":"2026-11-11T21:23:03Z"},
+    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json","what":"METAR history kept by incident.meteorologist@ (LPMA)","sha256":"918930c5892dd29d639ade88afa124a012926c840dc35330ac31e491f0b56724","bytes":43175,"read_utc":"2026-11-11T21:23:03Z"}
+  ],
+  "source": "https://aviationweather.gov/api/data/metar (IPMA's METAR), with incident.meteorologist@'s airport files; runways from OurAirports",
+  "read_utc": "2026-11-11T22:18:31Z",
+  "method": "For each METAR: headwind = wind x cos(wind direction - runway heading), crosswind = |wind x sin(...)|, true degrees; gust components the same with the gust. hours[] (LPPT) and hours_by_airport give, per hour, the METAR with the strongest gust or wind. Variable winds (VRB) have no components.",
+  "hours": [
     {
-      "what": "runway headings, degrees true (OurAirports, public domain; read once, cached)",
-      "url": "https://davidmegginson.github.io/ourairports-data/runways.csv",
-      "status": 200,
-      "bytes": 3974055,
-      "sha256": "a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9",
-      "read": "2026-11-11T22:13:10Z",
-      "response_ms": 314,
-      "raw": "flights vault: ourairports/2026-11-11/2026-11-11T221310Z-a39ff4071b14.body"
+      "t": "2026-11-10T18:00:00Z",
+      "metar_time": "2026-11-10T18:00:00Z",
+      "wind_dir": 230,
+      "wind_kt": 9,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 4.2,
+          "head_kt": 7.9,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 4.2,
+          "head_kt": -7.9,
+          "gust_cross_kt": null
+        }
+      }
     },
     {
-      "what": "METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)",
-      "url": "https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json",
-      "status": 200,
-      "bytes": 112410,
-      "sha256": "e9b29a14b4088d36629a324e342a413dfa2f0409926a0e6a8f9bf88c559fa2c1",
-      "read": "2026-11-11T22:15:50Z",
-      "response_ms": 289,
-      "raw": "flights vault: awc-metar/2026-11-11/2026-11-11T221550Z-e9b29a14b408.body"
+      "t": "2026-11-10T19:00:00Z",
+      "metar_time": "2026-11-10T19:30:00Z",
+      "wind_dir": 220,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 3.4,
+          "head_kt": 10.5,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 3.4,
+          "head_kt": -10.5,
+          "gust_cross_kt": null
+        }
+      }
     },
     {
-      "path": "incidents/2026-11-10-storm-charles/data/transport/flights.json",
-      "what": "airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@",
-      "sha256": "93c17997074dfe881b32c7f5ec7c652a031ac767c2c8632410ebc0ffafc56895",
-      "bytes": 16565,
-      "read_utc": "2026-11-11T21:43:14Z"
+      "t": "2026-11-10T20:00:00Z",
+      "metar_time": "2026-11-10T20:00:00Z",
+      "wind_dir": 210,
+      "wind_kt": 13,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 1.8,
+          "head_kt": 12.9,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 1.8,
+          "head_kt": -12.9,
+          "gust_cross_kt": null
+        }
+      }
     },
     {
-      "path": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-      "what": "METAR history kept by incident.meteorologist@ (LPPT)",
-      "sha256": "e2c2f6793aab8e42aa76b47de9fa9d2345c4af60f8a9bfae4fd21ecd6d8dd601",
-      "bytes": 53573,
-      "read_utc": "2026-11-11T21:23:03Z"
+      "t": "2026-11-10T21:00:00Z",
+      "metar_time": "2026-11-10T21:00:00Z",
+      "wind_dir": 200,
+      "wind_kt": 13,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 0.5,
+          "head_kt": 13,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 0.5,
+          "head_kt": -13,
+          "gust_cross_kt": null
+        }
+      }
     },
     {
-      "path": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
-      "what": "METAR history kept by incident.meteorologist@ (LPMA)",
-      "sha256": "918930c5892dd29d639ade88afa124a012926c840dc35330ac31e491f0b56724",
-      "bytes": 43175,
-      "read_utc": "2026-11-11T21:23:03Z"
+      "t": "2026-11-10T22:00:00Z",
+      "metar_time": "2026-11-10T22:00:00Z",
+      "wind_dir": 200,
+      "wind_kt": 13,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 0.5,
+          "head_kt": 13,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 0.5,
+          "head_kt": -13,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-10T23:00:00Z",
+      "metar_time": "2026-11-10T23:00:00Z",
+      "wind_dir": 220,
+      "wind_kt": 14,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 4.3,
+          "head_kt": 13.3,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 4.3,
+          "head_kt": -13.3,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T00:00:00Z",
+      "metar_time": "2026-11-11T00:00:00Z",
+      "wind_dir": 220,
+      "wind_kt": 14,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 4.3,
+          "head_kt": 13.3,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 4.3,
+          "head_kt": -13.3,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T01:00:00Z",
+      "metar_time": "2026-11-11T01:00:00Z",
+      "wind_dir": 250,
+      "wind_kt": 7,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 5.2,
+          "head_kt": 4.7,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 5.2,
+          "head_kt": -4.7,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T02:00:00Z",
+      "metar_time": "2026-11-11T02:30:00Z",
+      "wind_dir": 190,
+      "wind_kt": 8,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 1.7,
+          "head_kt": 7.8,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 1.7,
+          "head_kt": -7.8,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T03:00:00Z",
+      "metar_time": "2026-11-11T03:00:00Z",
+      "wind_dir": 180,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 4.1,
+          "head_kt": 10.2,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 4.1,
+          "head_kt": -10.2,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T04:00:00Z",
+      "metar_time": "2026-11-11T04:00:00Z",
+      "wind_dir": 180,
+      "wind_kt": 5,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 1.9,
+          "head_kt": 4.6,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 1.9,
+          "head_kt": -4.6,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T05:00:00Z",
+      "metar_time": "2026-11-11T05:30:00Z",
+      "wind_dir": 210,
+      "wind_kt": 7,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 1,
+          "head_kt": 6.9,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 1,
+          "head_kt": -6.9,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T06:00:00Z",
+      "metar_time": "2026-11-11T06:00:00Z",
+      "wind_dir": 200,
+      "wind_kt": 4,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 0.1,
+          "head_kt": 4,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 0.1,
+          "head_kt": -4,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T07:00:00Z",
+      "metar_time": "2026-11-11T07:00:00Z",
+      "wind_dir": 180,
+      "wind_kt": 5,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 1.9,
+          "head_kt": 4.6,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 1.9,
+          "head_kt": -4.6,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T08:00:00Z",
+      "metar_time": "2026-11-11T08:00:00Z",
+      "wind_dir": 160,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 7.4,
+          "head_kt": 8.2,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 7.4,
+          "head_kt": -8.2,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T09:00:00Z",
+      "metar_time": "2026-11-11T09:30:00Z",
+      "wind_dir": 160,
+      "wind_kt": 12,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 8,
+          "head_kt": 8.9,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 8,
+          "head_kt": -8.9,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T10:00:00Z",
+      "metar_time": "2026-11-11T10:00:00Z",
+      "wind_dir": 150,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 8.7,
+          "head_kt": 6.8,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 8.7,
+          "head_kt": -6.8,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T11:00:00Z",
+      "metar_time": "2026-11-11T11:30:00Z",
+      "wind_dir": 70,
+      "wind_kt": 13,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 9.7,
+          "head_kt": -8.7,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 9.7,
+          "head_kt": 8.7,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T12:00:00Z",
+      "metar_time": "2026-11-11T12:00:00Z",
+      "wind_dir": 80,
+      "wind_kt": 15,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 12.7,
+          "head_kt": -7.9,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 12.7,
+          "head_kt": 7.9,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T13:00:00Z",
+      "metar_time": "2026-11-11T13:00:00Z",
+      "wind_dir": 100,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 10.8,
+          "head_kt": -2.3,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 10.8,
+          "head_kt": 2.3,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T14:00:00Z",
+      "metar_time": "2026-11-11T14:00:00Z",
+      "wind_dir": 190,
+      "wind_kt": 29,
+      "gust_kt": 40,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 6,
+          "head_kt": 28.4,
+          "gust_cross_kt": 8.3
+        },
+        "02": {
+          "cross_kt": 6,
+          "head_kt": -28.4,
+          "gust_cross_kt": 8.3
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T15:00:00Z",
+      "metar_time": "2026-11-11T15:00:00Z",
+      "wind_dir": 210,
+      "wind_kt": 22,
+      "gust_kt": 33,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 3.1,
+          "head_kt": 21.8,
+          "gust_cross_kt": 4.6
+        },
+        "02": {
+          "cross_kt": 3.1,
+          "head_kt": -21.8,
+          "gust_cross_kt": 4.6
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T16:00:00Z",
+      "metar_time": "2026-11-11T16:00:00Z",
+      "wind_dir": 210,
+      "wind_kt": 21,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 2.9,
+          "head_kt": 20.8,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 2.9,
+          "head_kt": -20.8,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T17:00:00Z",
+      "metar_time": "2026-11-11T17:00:00Z",
+      "wind_dir": 290,
+      "wind_kt": 11,
+      "gust_kt": 23,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 11,
+          "head_kt": 0.4,
+          "gust_cross_kt": 23
+        },
+        "02": {
+          "cross_kt": 11,
+          "head_kt": -0.4,
+          "gust_cross_kt": 23
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T18:00:00Z",
+      "metar_time": "2026-11-11T18:00:00Z",
+      "wind_dir": 300,
+      "wind_kt": 13,
+      "gust_kt": 27,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 12.9,
+          "head_kt": -1.8,
+          "gust_cross_kt": 26.7
+        },
+        "02": {
+          "cross_kt": 12.9,
+          "head_kt": 1.8,
+          "gust_cross_kt": 26.7
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T19:00:00Z",
+      "metar_time": "2026-11-11T19:00:00Z",
+      "wind_dir": 290,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 11,
+          "head_kt": 0.4,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 11,
+          "head_kt": -0.4,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T20:00:00Z",
+      "metar_time": "2026-11-11T20:30:00Z",
+      "wind_dir": 280,
+      "wind_kt": 10,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 9.8,
+          "head_kt": 2.1,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 9.8,
+          "head_kt": -2.1,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T21:00:00Z",
+      "metar_time": "2026-11-11T21:00:00Z",
+      "wind_dir": 270,
+      "wind_kt": 11,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 10.2,
+          "head_kt": 4.1,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 10.2,
+          "head_kt": -4.1,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-11T22:00:00Z",
+      "metar_time": "2026-11-11T22:00:00Z",
+      "wind_dir": 270,
+      "wind_kt": 9,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 8.3,
+          "head_kt": 3.4,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 8.3,
+          "head_kt": -3.4,
+          "gust_cross_kt": null
+        }
+      }
     }
-  ]
+  ],
+  "hours_by_airport": {
+    "LPPT": [
+      {
+        "t": "2026-11-10T18:00:00Z",
+        "metar_time": "2026-11-10T18:00:00Z",
+        "wind_dir": 230,
+        "wind_kt": 9,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 4.2,
+            "head_kt": 7.9,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 4.2,
+            "head_kt": -7.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T19:00:00Z",
+        "metar_time": "2026-11-10T19:30:00Z",
+        "wind_dir": 220,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 3.4,
+            "head_kt": 10.5,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 3.4,
+            "head_kt": -10.5,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T20:00:00Z",
+        "metar_time": "2026-11-10T20:00:00Z",
+        "wind_dir": 210,
+        "wind_kt": 13,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 1.8,
+            "head_kt": 12.9,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 1.8,
+            "head_kt": -12.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T21:00:00Z",
+        "metar_time": "2026-11-10T21:00:00Z",
+        "wind_dir": 200,
+        "wind_kt": 13,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 0.5,
+            "head_kt": 13,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 0.5,
+            "head_kt": -13,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T22:00:00Z",
+        "metar_time": "2026-11-10T22:00:00Z",
+        "wind_dir": 200,
+        "wind_kt": 13,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 0.5,
+            "head_kt": 13,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 0.5,
+            "head_kt": -13,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T23:00:00Z",
+        "metar_time": "2026-11-10T23:00:00Z",
+        "wind_dir": 220,
+        "wind_kt": 14,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 4.3,
+            "head_kt": 13.3,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 4.3,
+            "head_kt": -13.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T00:00:00Z",
+        "metar_time": "2026-11-11T00:00:00Z",
+        "wind_dir": 220,
+        "wind_kt": 14,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 4.3,
+            "head_kt": 13.3,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 4.3,
+            "head_kt": -13.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T01:00:00Z",
+        "metar_time": "2026-11-11T01:00:00Z",
+        "wind_dir": 250,
+        "wind_kt": 7,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 5.2,
+            "head_kt": 4.7,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 5.2,
+            "head_kt": -4.7,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T02:00:00Z",
+        "metar_time": "2026-11-11T02:30:00Z",
+        "wind_dir": 190,
+        "wind_kt": 8,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 1.7,
+            "head_kt": 7.8,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 1.7,
+            "head_kt": -7.8,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T03:00:00Z",
+        "metar_time": "2026-11-11T03:00:00Z",
+        "wind_dir": 180,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 4.1,
+            "head_kt": 10.2,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 4.1,
+            "head_kt": -10.2,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T04:00:00Z",
+        "metar_time": "2026-11-11T04:00:00Z",
+        "wind_dir": 180,
+        "wind_kt": 5,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 1.9,
+            "head_kt": 4.6,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 1.9,
+            "head_kt": -4.6,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T05:00:00Z",
+        "metar_time": "2026-11-11T05:30:00Z",
+        "wind_dir": 210,
+        "wind_kt": 7,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 1,
+            "head_kt": 6.9,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 1,
+            "head_kt": -6.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T06:00:00Z",
+        "metar_time": "2026-11-11T06:00:00Z",
+        "wind_dir": 200,
+        "wind_kt": 4,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 0.1,
+            "head_kt": 4,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 0.1,
+            "head_kt": -4,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T07:00:00Z",
+        "metar_time": "2026-11-11T07:00:00Z",
+        "wind_dir": 180,
+        "wind_kt": 5,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 1.9,
+            "head_kt": 4.6,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 1.9,
+            "head_kt": -4.6,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T08:00:00Z",
+        "metar_time": "2026-11-11T08:00:00Z",
+        "wind_dir": 160,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 7.4,
+            "head_kt": 8.2,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 7.4,
+            "head_kt": -8.2,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T09:00:00Z",
+        "metar_time": "2026-11-11T09:30:00Z",
+        "wind_dir": 160,
+        "wind_kt": 12,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 8,
+            "head_kt": 8.9,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 8,
+            "head_kt": -8.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T10:00:00Z",
+        "metar_time": "2026-11-11T10:00:00Z",
+        "wind_dir": 150,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 8.7,
+            "head_kt": 6.8,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 8.7,
+            "head_kt": -6.8,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T11:00:00Z",
+        "metar_time": "2026-11-11T11:30:00Z",
+        "wind_dir": 70,
+        "wind_kt": 13,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 9.7,
+            "head_kt": -8.7,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 9.7,
+            "head_kt": 8.7,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T12:00:00Z",
+        "metar_time": "2026-11-11T12:00:00Z",
+        "wind_dir": 80,
+        "wind_kt": 15,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 12.7,
+            "head_kt": -7.9,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 12.7,
+            "head_kt": 7.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T13:00:00Z",
+        "metar_time": "2026-11-11T13:00:00Z",
+        "wind_dir": 100,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 10.8,
+            "head_kt": -2.3,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 10.8,
+            "head_kt": 2.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T14:00:00Z",
+        "metar_time": "2026-11-11T14:00:00Z",
+        "wind_dir": 190,
+        "wind_kt": 29,
+        "gust_kt": 40,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 6,
+            "head_kt": 28.4,
+            "gust_cross_kt": 8.3
+          },
+          "02": {
+            "cross_kt": 6,
+            "head_kt": -28.4,
+            "gust_cross_kt": 8.3
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T15:00:00Z",
+        "metar_time": "2026-11-11T15:00:00Z",
+        "wind_dir": 210,
+        "wind_kt": 22,
+        "gust_kt": 33,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 3.1,
+            "head_kt": 21.8,
+            "gust_cross_kt": 4.6
+          },
+          "02": {
+            "cross_kt": 3.1,
+            "head_kt": -21.8,
+            "gust_cross_kt": 4.6
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T16:00:00Z",
+        "metar_time": "2026-11-11T16:00:00Z",
+        "wind_dir": 210,
+        "wind_kt": 21,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 2.9,
+            "head_kt": 20.8,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 2.9,
+            "head_kt": -20.8,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T17:00:00Z",
+        "metar_time": "2026-11-11T17:00:00Z",
+        "wind_dir": 290,
+        "wind_kt": 11,
+        "gust_kt": 23,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 11,
+            "head_kt": 0.4,
+            "gust_cross_kt": 23
+          },
+          "02": {
+            "cross_kt": 11,
+            "head_kt": -0.4,
+            "gust_cross_kt": 23
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T18:00:00Z",
+        "metar_time": "2026-11-11T18:00:00Z",
+        "wind_dir": 300,
+        "wind_kt": 13,
+        "gust_kt": 27,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 12.9,
+            "head_kt": -1.8,
+            "gust_cross_kt": 26.7
+          },
+          "02": {
+            "cross_kt": 12.9,
+            "head_kt": 1.8,
+            "gust_cross_kt": 26.7
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T19:00:00Z",
+        "metar_time": "2026-11-11T19:00:00Z",
+        "wind_dir": 290,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 11,
+            "head_kt": 0.4,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 11,
+            "head_kt": -0.4,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T20:00:00Z",
+        "metar_time": "2026-11-11T20:30:00Z",
+        "wind_dir": 280,
+        "wind_kt": 10,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 9.8,
+            "head_kt": 2.1,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 9.8,
+            "head_kt": -2.1,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T21:00:00Z",
+        "metar_time": "2026-11-11T21:00:00Z",
+        "wind_dir": 270,
+        "wind_kt": 11,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 10.2,
+            "head_kt": 4.1,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 10.2,
+            "head_kt": -4.1,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T22:00:00Z",
+        "metar_time": "2026-11-11T22:00:00Z",
+        "wind_dir": 270,
+        "wind_kt": 9,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 8.3,
+            "head_kt": 3.4,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 8.3,
+            "head_kt": -3.4,
+            "gust_cross_kt": null
+          }
+        }
+      }
+    ],
+    "LPMA": [
+      {
+        "t": "2026-11-10T18:00:00Z",
+        "metar_time": "2026-11-10T18:30:00Z",
+        "wind_dir": 210,
+        "wind_kt": 16,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 4.1,
+            "head_kt": 15.5,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 4.1,
+            "head_kt": -15.5,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T19:00:00Z",
+        "metar_time": "2026-11-10T19:30:00Z",
+        "wind_dir": 210,
+        "wind_kt": 21,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 5.3,
+            "head_kt": 20.3,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 5.3,
+            "head_kt": -20.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T20:00:00Z",
+        "metar_time": "2026-11-10T20:30:00Z",
+        "wind_dir": 200,
+        "wind_kt": 25,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 10.4,
+            "head_kt": 22.7,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 10.4,
+            "head_kt": -22.7,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T21:00:00Z",
+        "metar_time": "2026-11-10T21:30:00Z",
+        "wind_dir": 200,
+        "wind_kt": 30,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 12.5,
+            "head_kt": 27.3,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 12.5,
+            "head_kt": -27.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T22:00:00Z",
+        "metar_time": "2026-11-10T22:00:00Z",
+        "wind_dir": 200,
+        "wind_kt": 31,
+        "gust_kt": 42,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 13,
+            "head_kt": 28.2,
+            "gust_cross_kt": 17.6
+          },
+          "05": {
+            "cross_kt": 13,
+            "head_kt": -28.2,
+            "gust_cross_kt": 17.6
+          }
+        }
+      },
+      {
+        "t": "2026-11-10T23:00:00Z",
+        "metar_time": "2026-11-10T23:00:00Z",
+        "wind_dir": 210,
+        "wind_kt": 32,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8.1,
+            "head_kt": 31,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 8.1,
+            "head_kt": -31,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T00:00:00Z",
+        "metar_time": "2026-11-11T00:30:00Z",
+        "wind_dir": 200,
+        "wind_kt": 31,
+        "gust_kt": 41,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 13,
+            "head_kt": 28.2,
+            "gust_cross_kt": 17.1
+          },
+          "05": {
+            "cross_kt": 13,
+            "head_kt": -28.2,
+            "gust_cross_kt": 17.1
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T01:00:00Z",
+        "metar_time": "2026-11-11T01:00:00Z",
+        "wind_dir": 200,
+        "wind_kt": 32,
+        "gust_kt": 42,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 13.4,
+            "head_kt": 29.1,
+            "gust_cross_kt": 17.6
+          },
+          "05": {
+            "cross_kt": 13.4,
+            "head_kt": -29.1,
+            "gust_cross_kt": 17.6
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T02:00:00Z",
+        "metar_time": "2026-11-11T02:30:00Z",
+        "wind_dir": 220,
+        "wind_kt": 36,
+        "gust_kt": 53,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 2.9,
+            "head_kt": 35.9,
+            "gust_cross_kt": 4.3
+          },
+          "05": {
+            "cross_kt": 2.9,
+            "head_kt": -35.9,
+            "gust_cross_kt": 4.3
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T03:00:00Z",
+        "metar_time": "2026-11-11T03:30:00Z",
+        "wind_dir": 220,
+        "wind_kt": 37,
+        "gust_kt": 47,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 3,
+            "head_kt": 36.9,
+            "gust_cross_kt": 3.9
+          },
+          "05": {
+            "cross_kt": 3,
+            "head_kt": -36.9,
+            "gust_cross_kt": 3.9
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T04:00:00Z",
+        "metar_time": "2026-11-11T04:30:00Z",
+        "wind_dir": 210,
+        "wind_kt": 35,
+        "gust_kt": 45,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8.9,
+            "head_kt": 33.9,
+            "gust_cross_kt": 11.4
+          },
+          "05": {
+            "cross_kt": 8.9,
+            "head_kt": -33.9,
+            "gust_cross_kt": 11.4
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T05:00:00Z",
+        "metar_time": "2026-11-11T05:30:00Z",
+        "wind_dir": 210,
+        "wind_kt": 33,
+        "gust_kt": 44,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8.4,
+            "head_kt": 31.9,
+            "gust_cross_kt": 11.2
+          },
+          "05": {
+            "cross_kt": 8.4,
+            "head_kt": -31.9,
+            "gust_cross_kt": 11.2
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T06:00:00Z",
+        "metar_time": "2026-11-11T06:30:00Z",
+        "wind_dir": 200,
+        "wind_kt": 32,
+        "gust_kt": 43,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 13.4,
+            "head_kt": 29.1,
+            "gust_cross_kt": 18
+          },
+          "05": {
+            "cross_kt": 13.4,
+            "head_kt": -29.1,
+            "gust_cross_kt": 18
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T07:00:00Z",
+        "metar_time": "2026-11-11T07:00:00Z",
+        "wind_dir": 220,
+        "wind_kt": 37,
+        "gust_kt": 48,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 3,
+            "head_kt": 36.9,
+            "gust_cross_kt": 3.9
+          },
+          "05": {
+            "cross_kt": 3,
+            "head_kt": -36.9,
+            "gust_cross_kt": 3.9
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T08:00:00Z",
+        "metar_time": "2026-11-11T08:30:00Z",
+        "wind_dir": 350,
+        "wind_kt": 12,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 9.8,
+            "head_kt": -6.9,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 9.8,
+            "head_kt": 6.9,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T09:00:00Z",
+        "metar_time": "2026-11-11T09:30:00Z",
+        "wind_dir": 350,
+        "wind_kt": 22,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 18,
+            "head_kt": -12.7,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 18,
+            "head_kt": 12.7,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T10:00:00Z",
+        "metar_time": "2026-11-11T10:00:00Z",
+        "wind_dir": 340,
+        "wind_kt": 19,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 17.2,
+            "head_kt": -8.1,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 17.2,
+            "head_kt": 8.1,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T11:00:00Z",
+        "metar_time": "2026-11-11T11:30:00Z",
+        "wind_dir": 330,
+        "wind_kt": 20,
+        "gust_kt": 32,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 19.3,
+            "head_kt": -5.3,
+            "gust_cross_kt": 30.9
+          },
+          "05": {
+            "cross_kt": 19.3,
+            "head_kt": 5.3,
+            "gust_cross_kt": 30.9
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T12:00:00Z",
+        "metar_time": "2026-11-11T12:30:00Z",
+        "wind_dir": 340,
+        "wind_kt": 15,
+        "gust_kt": 25,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 13.6,
+            "head_kt": -6.4,
+            "gust_cross_kt": 22.6
+          },
+          "05": {
+            "cross_kt": 13.6,
+            "head_kt": 6.4,
+            "gust_cross_kt": 22.6
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T13:00:00Z",
+        "metar_time": "2026-11-11T13:00:00Z",
+        "wind_dir": 350,
+        "wind_kt": 18,
+        "gust_kt": 29,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 14.7,
+            "head_kt": -10.4,
+            "gust_cross_kt": 23.7
+          },
+          "05": {
+            "cross_kt": 14.7,
+            "head_kt": 10.4,
+            "gust_cross_kt": 23.7
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T14:00:00Z",
+        "metar_time": "2026-11-11T14:00:00Z",
+        "wind_dir": 330,
+        "wind_kt": 16,
+        "gust_kt": 28,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 15.4,
+            "head_kt": -4.2,
+            "gust_cross_kt": 27
+          },
+          "05": {
+            "cross_kt": 15.4,
+            "head_kt": 4.2,
+            "gust_cross_kt": 27
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T15:00:00Z",
+        "metar_time": "2026-11-11T15:00:00Z",
+        "wind_dir": 310,
+        "wind_kt": 11,
+        "gust_kt": 21,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 11,
+            "head_kt": 0.9,
+            "gust_cross_kt": 20.9
+          },
+          "05": {
+            "cross_kt": 11,
+            "head_kt": -0.9,
+            "gust_cross_kt": 20.9
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T16:00:00Z",
+        "metar_time": "2026-11-11T16:00:00Z",
+        "wind_dir": 330,
+        "wind_kt": 9,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8.7,
+            "head_kt": -2.4,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 8.7,
+            "head_kt": 2.4,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T17:00:00Z",
+        "metar_time": "2026-11-11T17:00:00Z",
+        "wind_dir": 320,
+        "wind_kt": 8,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8,
+            "head_kt": -0.7,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 8,
+            "head_kt": 0.7,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T18:00:00Z",
+        "metar_time": "2026-11-11T18:30:00Z",
+        "wind_dir": 340,
+        "wind_kt": 9,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 8.1,
+            "head_kt": -3.8,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 8.1,
+            "head_kt": 3.8,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T19:00:00Z",
+        "metar_time": "2026-11-11T19:00:00Z",
+        "wind_dir": 300,
+        "wind_kt": 8,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 7.7,
+            "head_kt": 2,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 7.7,
+            "head_kt": -2,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T20:00:00Z",
+        "metar_time": "2026-11-11T20:00:00Z",
+        "wind_dir": 310,
+        "wind_kt": 6,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 6,
+            "head_kt": 0.5,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 6,
+            "head_kt": -0.5,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-11T21:00:00Z",
+        "metar_time": null,
+        "wind_dir": null,
+        "wind_kt": null,
+        "gust_kt": null,
+        "by_runway_end": null
+      },
+      {
+        "t": "2026-11-11T22:00:00Z",
+        "metar_time": "2026-11-11T22:00:00Z",
+        "wind_dir": 240,
+        "wind_kt": 3,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 0.8,
+            "head_kt": 2.9,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 0.8,
+            "head_kt": -2.9,
+            "gust_cross_kt": null
+          }
+        }
+      }
+    ]
+  }
 }
