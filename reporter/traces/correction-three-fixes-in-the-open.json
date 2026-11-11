@@ -1,0 +1,536 @@
+{
+ "id": "correction-three-fixes-in-the-open",
+ "schema": "sc-trace/1",
+ "size": "correction",
+ "title": "Corrections: a private address withheld, facts relabelled evidence, a hypothesis re-weighed",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "Three mistakes of three kinds, each found by an agent other than the one that made it, each fixed in a commit that says what was wrong.",
+  "Privacy: a timeline row linked a public post by a private person, and the address carried the account's handle. incident.wikipedia@'s values check found it (01:52:47); the conductor withheld it 71 s later and wrote the rule into CLAUDE.md; the graph agent regenerated its tables and made its builder refuse such addresses (01:55:05).",
+  "Labels: when the researcher supplied the missing addresses, eight rows turned out to rest on the press, not on the body that decides; the conductor relabelled them evidence (02:18:38). Eighteen minutes later one row went the other way: the alert's legal text, read in the official journal, is a fact (02:36:40).",
+  "Analysis: the meteorologist's hypothesis that the centre would pass \"just south\" of Lisbon (labelled a hypothesis from 00:00:27) was re-weighed by the meteorologist itself on newer model data (02:29:19): the side is unsettled. The conductor carried it across in 48 s; the story built on it was retold six minutes later.",
+  "What a correction cannot undo: the withheld address is still in git history, because history is never rewritten here. That is a card waiting on Dinis (a-private-address-history)."
+ ],
+ "rests_on": [
+  "CLAUDE.md",
+  "research/wikipedia/values.md",
+  "incidents/2026-11-10-storm-charles/timeline.md",
+  "incidents/2026-11-10-storm-charles/data/signals.json",
+  "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+  "stories/README.md",
+  "board/items/a-private-address-history.json",
+  "board/items/a-model-names-history.json"
+ ],
+ "privacy": "This trace does not repeat the withheld handle or address, and the reporter did not search history for them.",
+ "input": {
+  "kind": "three mistakes",
+  "what": "a private person's post address in a row; rows labelled fact that rested on press reports; a hypothesis whose reasons moved"
+ },
+ "output": {
+  "kind": "corrected rows, a rule, a refusing builder, a retold story",
+  "what": "each fix is a commit on dev, served within a minute",
+  "url": "https://storm-charles.promptugal.news/data-room/"
+ },
+ "status": "captured; one residue open (git history), waiting on Dinis",
+ "duration": {
+  "from": "2026-11-11T01:52:47Z",
+  "to": "2026-11-11T02:36:40Z",
+  "note": "privacy: found to withheld 71 s, to the builder's refusal 2 min 18 s. Hypothesis: re-weighed to carried across 48 s, to the story retold 6 min 52 s."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "before 01:52 UTC; the reporter did not look for the commit that first carried the row's address",
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "mistake",
+   "in": "a public post by a private person, used as an unofficial signal in row s-1110T1806",
+   "out": "the row linked the post; the address carried the account's handle",
+   "handoff": {
+    "to": "the graph and its tables (built from the rows)",
+    "via": "signals.json",
+    "evidence_of_handoff": "graph's caf3181 says the graph and its tables had to be regenerated"
+   },
+   "evidence": [],
+   "evidence_note": "no evidence gathered for when it entered: finding it would mean searching history for the withheld text",
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.wikipedia@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "found",
+   "sha": "25c74678124b8a32f227d2463b4688442c70a705",
+   "in": "its job: this site measured against Wikipedia's values",
+   "out": "research/wikipedia/values.md: the row named among \"weak sources in rows\", and under living persons: a private attendee's post linked with the account's handle",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.conductor@, incident.researcher@, incident.media@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/wikipedia/values.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/wikipedia/values.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "25c74678124b8a32f227d2463b4688442c70a705",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/25c74678124b8a32f227d2463b4688442c70a705"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.162",
+     "run": 162,
+     "own_run": true,
+     "served_by": "2026-11-11T01:53:16Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T01:52:47Z",
+   "agent_trailer": "incident.wikipedia@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.researcher@web-summit.dinis",
+    "incident.media@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "correction",
+   "sha": "1dec01684fecdc43a9fdc0c83977096b2c16e297",
+   "in": "the finding",
+   "out": "the handle and address withheld from the row and from signals.json; the row keeps its permanent id; a new rule in CLAUDE.md: \"A private person is never named or linked, in a row or a data file ... A permanent row id stays when its text is redacted\"",
+   "handoff": {
+    "to": "incident.graph@ and incident.wikipedia@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "For: incident.graph@, incident.wikipedia@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "CLAUDE.md",
+     "section": "Content rules: People",
+     "url": "https://storm-charles.promptugal.news/view/?path=CLAUDE.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "1dec01684fecdc43a9fdc0c83977096b2c16e297",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1dec01684fecdc43a9fdc0c83977096b2c16e297"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.166",
+     "run": 166,
+     "own_run": true,
+     "served_by": "2026-11-11T01:54:26Z",
+     "push_to_served_s": 25
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T01:53:58Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.graph@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.graph@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "correction",
+   "sha": "caf3181264cef0b6da7bb9917bdd2e0fe961f020",
+   "in": "the conductor's correction",
+   "out": "\"no personal post address or handle in the graph or its tables: regenerated, and the builder now refuses them\"; a minute later (9a4f082) an allow-list keyed by row, \"each with its reason and who decided\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.conductor@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/graph-build.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/graph-build.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "caf3181264cef0b6da7bb9917bdd2e0fe961f020",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/caf3181264cef0b6da7bb9917bdd2e0fe961f020"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.169",
+     "run": 169,
+     "own_run": true,
+     "served_by": "2026-11-11T01:55:46Z",
+     "push_to_served_s": 39
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T01:55:05Z",
+   "agent_trailer": "incident.graph@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "card opened_utc 01:55 as the board read it; the board itself began at 02:20",
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "residue",
+   "in": "the rule \"never force-push, rewrite history\"",
+   "out": "a card: \"A private person's post address is still in git history\", rank 9 of what waits on Dinis",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "board/for-dinis",
+    "evidence_of_handoff": "the card: state open, waiting_on Dinis"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-private-address-history.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-private-address-history.json"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/board/for-dinis.html",
+     "read_utc": "2026-11-11T02:53:00Z"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "at": "2026-11-11T02:13:00Z",
+   "actor": {
+    "name": "incident.researcher@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "found",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "36155b7",
+   "in": "Dinis's \"every word needs a reference\"",
+   "out": "\"every timeline row without an address now has one (or the reason)\": with the address in hand, which rows rest on the press becomes visible",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "a commit in the other repository, synced",
+    "evidence_of_handoff": "the conductor's commit says \"found by the researcher\""
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "36155b7",
+     "at": "2026-11-11T02:13:00Z",
+     "what": "addresses for every row",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/36155b7"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "correction",
+   "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+   "in": "the addresses",
+   "out": "\"eight rows that rest on the press are now labelled evidence, not fact\". (Since 23:41:36, bf037ed, the timeline tool already forced analysis rows to \"hypothesis, never fact\".)",
+   "handoff": {
+    "to": "incident.entities@, incident.archivist@, incident.wikipedia@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "For: trailers"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/timeline.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "type": "file",
+     "path": "tools/timeline.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/timeline.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4577806b72673568733c9a77187b29e0a323ee2c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.196",
+     "run": 196,
+     "own_run": true,
+     "served_by": "2026-11-11T02:19:11Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T02:18:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.entities@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "correction",
+   "sha": "feecc6cdfc27360d4efdbd5bc9149954fe84dd2f",
+   "in": "the researcher's read of the alert's legal text at source (ws 928937b, 02:29:47)",
+   "out": "the other direction: the official journal, civil protection's and the maritime authority's own sites count as primary sources, so \"the despacho row is a fact\"",
+   "handoff": {
+    "to": "readers",
+    "via": "the timeline",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "928937b",
+     "at": "2026-11-11T02:29:47Z",
+     "what": "the legal text read at source",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/928937b"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "feecc6cdfc27360d4efdbd5bc9149954fe84dd2f",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/feecc6cdfc27360d4efdbd5bc9149954fe84dd2f"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.290",
+     "run": 290,
+     "own_run": false,
+     "served_by": "2026-11-11T02:37:18Z",
+     "push_to_served_s": 32
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T02:36:40Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hypothesis",
+   "sha": "6253e1f51cc54ec00165bdd7ebec850566bcd503",
+   "in": "the meteorologist's analysis, written in the other repository",
+   "out": "a labelled hypothesis in the timeline: the centre very close to Lisbon, \"more likely just south\"",
+   "handoff": {
+    "to": "the pages and, later, incident.stories@",
+    "via": "analysis.json and the timeline",
+    "evidence_of_handoff": "the first story, d2a5832 (02:26:45), is \"Less wind for Lisbon?\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6253e1f51cc54ec00165bdd7ebec850566bcd503",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6253e1f51cc54ec00165bdd7ebec850566bcd503"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.78",
+     "run": 78,
+     "own_run": true,
+     "served_by": "2026-11-11T00:01:08Z",
+     "push_to_served_s": 38
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T00:00:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.meteorologist@web-summit.dinis"
+   ]
+  },
+  {
+   "at": "2026-11-11T02:29:19Z",
+   "actor": {
+    "name": "incident.meteorologist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "re-weighed",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "5ccc21c",
+   "in": "a newer run of a second model",
+   "out": "its own hypothesis re-weighed: which side of Lisbon the centre passes is unsettled; \"just south\" down to low confidence. Analysis, labelled; IPMA's warnings are the authority and did not change.",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "a commit in the other repository, synced",
+    "evidence_of_handoff": "the next step"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "5ccc21c",
+     "at": "2026-11-11T02:29:19Z",
+     "what": "hypothesis re-weighed (7b)",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/5ccc21c"
+    }
+   ],
+   "n": 10
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "sync",
+   "sha": "10d91459d4e7152aa9c1ccd0771a27a2fa4ce1dc",
+   "in": "the re-weighing",
+   "out": "carried across 48 s later, with a timeline row",
+   "handoff": {
+    "to": "incident.stories@, incident.weather@, incident.labs@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "For: trailers"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "10d91459d4e7152aa9c1ccd0771a27a2fa4ce1dc",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/10d91459d4e7152aa9c1ccd0771a27a2fa4ce1dc"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.250",
+     "run": 250,
+     "own_run": true,
+     "served_by": "2026-11-11T02:30:41Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 11,
+   "at": "2026-11-11T02:30:07Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.stories@web-summit.dinis",
+    "incident.weather@web-summit.dinis",
+    "incident.labs@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.stories@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "retold",
+   "sha": "67dc6d684ff510dee7116c59034a41bee7bfd10b",
+   "in": "the re-weighed hypothesis",
+   "out": "\"Less wind for Lisbon?\" retold: \"less wind for Lisbon\" is not supported; the red warnings stand. (The Weather face, a6de525 at 02:33:29: \"the reading follows the newest dated update and says which of IPMA's warnings stand\".)",
+   "handoff": {
+    "to": "readers",
+    "via": "the story page",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "stories/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=stories/README.md"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/stories/",
+     "read_utc": null,
+     "note": "not opened by the reporter this wake"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "67dc6d684ff510dee7116c59034a41bee7bfd10b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/67dc6d684ff510dee7116c59034a41bee7bfd10b"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.287",
+     "run": 287,
+     "own_run": false,
+     "served_by": "2026-11-11T02:36:56Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-11T02:36:11Z",
+   "agent_trailer": "incident.stories@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.archivist@web-summit.dinis"
+   ]
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 12,
+  "steps_with_no_evidence": 1,
+  "person_steps": 0,
+  "agent_steps": 12
+ },
+ "people_acted": [],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.wikipedia@web-summit.dinis",
+  "incident.graph@web-summit.dinis",
+  "incident.board@web-summit.dinis",
+  "incident.researcher@web-summit.dinis",
+  "incident.meteorologist@web-summit.dinis",
+  "incident.stories@web-summit.dinis"
+ ]
+}

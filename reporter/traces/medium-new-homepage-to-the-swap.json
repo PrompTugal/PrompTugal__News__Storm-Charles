@@ -1,0 +1,547 @@
+{
+ "id": "medium-new-homepage-to-the-swap",
+ "schema": "sc-trace/1",
+ "size": "medium",
+ "title": "Medium: \"create a complete new homepage right now\" to the swap, 12 minutes later",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "Dinis (~02:10): \"Create a complete new homepage right now ... like BBC Weather ... only focused on Storm Charles.\" At 02:19:08 the designer's commit made / the Weather face: 12 min 26 s after the commit that records the sentence.",
+  "Three agents in a relay: the conductor (the contract and a new agent), incident.weather@ (the face, seven rounds in 15 minutes), incident.designer@ (the frame, a bar to pass, then the swap). Two more improved it: weatherwatch (a review) and studio (found a rule the gate did not enforce).",
+  "The decision to swap was an agent's: \"the conductor left the minute to me\" (design/round-32.md). The designer measured the new page against four tests before moving it to /.",
+  "The rule \"the visual face uses only data from the data section\" was a promise at 02:19 and a gate check at 02:32:33, after incident.studio@ found it missing.",
+  "Not evidenced: the bar as sent and weather@'s proposal for the swap (messages); the designer's round note and weather@'s status file say they happened. weather@'s status times ran ahead of its commits (round 1 dated 02:55Z, committed 02:16:19); it corrected them itself at 03:01:09 (002ed61)."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "RESTRUCTURE.md",
+  "design/round-30.md",
+  "design/round-32.md",
+  "design/round-35.md",
+  "agents/weather/status.json",
+  "agents/weatherwatch/status.json",
+  "weather/index.md",
+  "admin/build/validate.mjs"
+ ],
+ "input": {
+  "kind": "a spoken direction",
+  "what": "\"Create a complete new homepage right now ... a more user-friendly page ... This should literally look like a weather channel ... like BBC Weather ... very clean, very professional, a set of data. But only focused on Storm Charles.\""
+ },
+ "output": {
+  "kind": "live page",
+  "what": "the Weather face at /, reading only the data room's JSON; the former front page at data-room/",
+  "url": "https://storm-charles.promptugal.news/"
+ },
+ "status": "captured to the swap and the rounds that followed it, to 02:34 UTC",
+ "duration": {
+  "from": "2026-11-11T02:06:42Z",
+  "to": "2026-11-11T02:19:08Z",
+  "note": "12 min 26 s to the swap; the face went on changing (rounds 3 to 7 by 02:31:54, the investor-pack look at 02:34:02)"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:10\" in BRIEF.md; recorded at 02:06:42",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the technical front page",
+   "out": "a new home page as a weather channel; what exists becomes \"the data room\"; \"the visual face uses only data from the data section\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~02:10 UTC, \"Two faces\"",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "contract",
+   "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+   "in": "the direction (in BRIEF.md at 02:06:42, 659dd79)",
+   "out": "RESTRUCTURE.md: Weather at / and weather/, \"reads only the data room's published JSON; fetches nothing external; states no forecast of its own\"; incident.weather@ in JOBS and the path policy; order of work: \"the front page moves to data-room/ and Weather takes /\"",
+   "handoff": {
+    "to": "incident.weather@ (a new session) and incident.designer@",
+    "via": "a new session; a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/weather/status.json started_by; agents/JOBS.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "RESTRUCTURE.md",
+     "section": "The two faces",
+     "url": "https://storm-charles.promptugal.news/view/?path=RESTRUCTURE.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f8297d80256b5c9dbe48088a540c49a8f812dc28"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.178",
+     "run": 178,
+     "own_run": true,
+     "served_by": "2026-11-11T02:07:55Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:07:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "frame",
+   "sha": "6186c29b8eafba579ea104d9f3fc40461256e99e",
+   "in": "the direction",
+   "out": "design round 30: the frame for round two (the whole width, subsites in the menu, the version in the chrome, the reader's panel)",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "design/round-32.md: \"I held it to the bar I had sent\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-30.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-30.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6186c29b8eafba579ea104d9f3fc40461256e99e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6186c29b8eafba579ea104d9f3fc40461256e99e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.180",
+     "run": 180,
+     "own_run": true,
+     "served_by": "2026-11-11T02:12:38Z",
+     "push_to_served_s": 22
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T02:12:14Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "between 02:07 and 02:16; no timestamp",
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the bar",
+   "in": "the rule for the Weather face",
+   "out": "a bar for the new page to pass: nothing overflows and no script error at 390 and 1280 px, light and dark; a source and the time read on every figure; only this site's own JSON; IPMA's level and hours for Lisbon in the first screen",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "only the designer's later note (design/round-32.md, the table \"The bar\")"
+   },
+   "evidence": [],
+   "evidence_note": "no evidence of the bar as sent; it is known from the designer's round-32 note, written after",
+   "n": 4
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "a92c425221a420fefefb4805c9333404a764aa45",
+   "in": "the contract, the bar, the data room's JSON",
+   "out": "the Weather face, round 1, at weather/: now, today hour by hour, the reading as a hypothesis, closed and running, Madeira, Thursday. Its key in the same second (82fa4e5).",
+   "handoff": {
+    "to": "incident.designer@ and incident.conductor@",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/weather/status.json: \"the conductor and incident.designer@ told by session message, with a proposal for the swap of /\" (the file dated this 02:55Z; the commit is 02:16:19; weather@ corrected its times at 03:01:09, 002ed61)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/weather/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/weather/status.json"
+    },
+    {
+     "type": "file",
+     "path": "weather/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=weather/index.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a92c425221a420fefefb4805c9333404a764aa45",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a92c425221a420fefefb4805c9333404a764aa45"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.190",
+     "run": 190,
+     "own_run": false,
+     "served_by": "2026-11-11T02:16:52Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T02:16:19Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round",
+   "sha": "52da7d95c55020dc6ec647431ef416e701cee4fc",
+   "in": "its own next list",
+   "out": "round 2: wind today, measured against warned, on one axis",
+   "handoff": {
+    "to": "incident.designer@web-summit.dinis",
+    "via": "the live page",
+    "evidence_of_handoff": "none beyond the commit"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "52da7d95c55020dc6ec647431ef416e701cee4fc",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/52da7d95c55020dc6ec647431ef416e701cee4fc"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.195",
+     "run": 195,
+     "own_run": true,
+     "served_by": "2026-11-11T02:18:50Z",
+     "push_to_served_s": 22
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T02:18:26Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the swap",
+   "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+   "in": "the page at weather/, built from dev at 02:17",
+   "out": "measured against the bar (0 px over at four sizes; 50 source lines; no request left the site; IPMA's levels in the first screen), then the swap: / is the Weather face, data-room/index.html the technical page; the menu, the 404 and the dashboard's links follow",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.weather@; design/round-32.md: \"the conductor left the minute to me\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-32.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-32.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.197",
+     "run": 197,
+     "own_run": true,
+     "served_by": "2026-11-11T02:19:40Z",
+     "push_to_served_s": 28
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T02:19:08Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weatherwatch@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "review",
+   "sha": "8fb6af075cf5650794210d51d487b458e739bf8e",
+   "in": "its map of 106 weather sites and ten studies",
+   "out": "a first review of the Weather face",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "its status commit: \"first review of the weather face sent to incident.weather@\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/weatherwatch/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/weatherwatch/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8fb6af075cf5650794210d51d487b458e739bf8e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8fb6af075cf5650794210d51d487b458e739bf8e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.222",
+     "run": 222,
+     "own_run": false,
+     "served_by": "2026-11-11T02:25:00Z",
+     "push_to_served_s": 43
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T02:23:38Z",
+   "agent_trailer": "incident.weatherwatch@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round",
+   "sha": "5c9f623dcb7cadb79734a8d65cb096bd1d8f4348",
+   "in": "the review",
+   "out": "round 6, \"from incident.weatherwatch@'s review\": one composed sentence and today's highest level first; ages on what is observed (rounds 3 to 5 at 02:19:40, 02:21:26, 02:24:39)",
+   "handoff": {
+    "to": "incident.designer@web-summit.dinis",
+    "via": "the live page",
+    "evidence_of_handoff": "the next step names the designer's art direction"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5c9f623dcb7cadb79734a8d65cb096bd1d8f4348",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5c9f623dcb7cadb79734a8d65cb096bd1d8f4348"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.234",
+     "run": 234,
+     "own_run": true,
+     "served_by": "2026-11-11T02:27:06Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T02:26:38Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.weatherwatch@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round",
+   "sha": "8db6a8d03cb65b0eb60bf4f850e94c1156759acf",
+   "in": "the designer's art direction",
+   "out": "round 7 (\"the designer's art direction\"): the level is the largest thing; one row of equal tiles; about two screens, the rest folded",
+   "handoff": {
+    "to": "readers",
+    "via": "the live page",
+    "evidence_of_handoff": "the art direction itself was a message: not in the repository"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8db6a8d03cb65b0eb60bf4f850e94c1156759acf",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8db6a8d03cb65b0eb60bf4f850e94c1156759acf"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.261",
+     "run": 261,
+     "own_run": true,
+     "served_by": "2026-11-11T02:32:29Z",
+     "push_to_served_s": 33
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-11T02:31:54Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "gate",
+   "sha": "10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646",
+   "in": "incident.studio@'s finding that nothing enforced the rule",
+   "out": "the gate refuses any outside address in the Weather face's code (\"found missing by incident.studio@\"); weather@ adds tools/weather-check.mjs a minute later (a6de525)",
+   "handoff": {
+    "to": "incident.weather@ and incident.studio@",
+    "via": "the gate",
+    "evidence_of_handoff": "studio's b93e923 (02:42:23): \"the rule is enforced by the gate now\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "admin/build/validate.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/build/validate.mjs"
+    },
+    {
+     "type": "file",
+     "path": "tools/weather-check.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/weather-check.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.267",
+     "run": 267,
+     "own_run": false,
+     "served_by": "2026-11-11T02:33:15Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 11,
+   "at": "2026-11-11T02:32:33Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "look",
+   "sha": "565abcdd8d85e4b77dd346a3aa6dd385c98dde10",
+   "in": "Dinis, ~02:20: \"I really like the work that was done in the investor pack ... can you make this site look a lot like that?\"",
+   "out": "design round 35: warm paper, white cards, a light masthead, on both faces",
+   "handoff": {
+    "to": "readers",
+    "via": "the live site",
+    "evidence_of_handoff": "design/round-35.md quotes the direction"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-35.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-35.md"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/",
+     "read_utc": "2026-11-11T02:53:00Z",
+     "note": "/ answered 200 at v0.1.324"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "565abcdd8d85e4b77dd346a3aa6dd385c98dde10",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/565abcdd8d85e4b77dd346a3aa6dd385c98dde10"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.277",
+     "run": 277,
+     "own_run": false,
+     "served_by": "2026-11-11T02:34:55Z",
+     "push_to_served_s": 35
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-11T02:34:02Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 12,
+  "steps_with_no_evidence": 1,
+  "person_steps": 1,
+  "agent_steps": 11
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.designer@web-summit.dinis",
+  "incident.weather@web-summit.dinis",
+  "incident.weatherwatch@web-summit.dinis"
+ ]
+}

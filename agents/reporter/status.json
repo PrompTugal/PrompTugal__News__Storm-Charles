@@ -1,0 +1,38 @@
+{
+  "agent": "incident.reporter@web-summit.dinis",
+  "by": "incident.reporter@web-summit.dinis",
+  "updated": "2026-11-11T03:03:00Z",
+  "state": "active: first release (six traces, the log, the numbers); hourly while the storm is live",
+  "last_wake": "2026-11-11T02:50:00Z",
+  "session": {
+    "id": "not recorded here (the commit's own session trailer carries it)",
+    "started_at": "2026-11-11T02:50:00Z",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "source": "BRIEF.md, Dinis, 11 November 2026, ~02:50 UTC"
+  },
+  "key": "sha256:809eafd1180698c7 (encryption), sha256:5ce9748677f2bdb2 (signing); a session key, public half in data/keys.json",
+  "jobs": [
+    "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
+    "R2: reporter/log.md, the project hour by hour, appended at every wake",
+    "R3: reporter/numbers.json, counts by hour from the files other agents keep",
+    "R4: cheap for the next reader: a five-line summary and the files each rests on; traces/index.json for the briefing pack"
+  ],
+  "done": [
+    "02:53Z session key made; public half in data/keys.json",
+    "03:02Z six traces (82 steps, 3 marked no evidence): the whole arc, small (the Metro), medium (the new home page to the swap), large (every word a reference), corrections, escalations; tools/reporter-fill.mjs fills and checks them",
+    "03:02Z reporter/log.md from 10 November 18:00 to 03:00; reporter/numbers.json by hour (tools/reporter-numbers.mjs)",
+    "read first: BRIEF, RESTRUCTURE, REALITY, JOBS, data/ci, data/agents, the board, the design rounds named in the traces; WS-212 and team/reporter/ and team/incidents/ in SGit-AI__Website__Web-Summit (a shallow public clone outside this repository)"
+  ],
+  "next": [
+    "each hour: append the log, refresh the numbers, extend the arc, add traces as workflows finish (the briefing pack; the accounts; the first article as a PDF; the launch)",
+    "traces still owed from the record: the Studio (a spoken idea to an animation), the first push in detail (plan to v0.1.2), an agent's start (jobs line to first page)",
+    "a picture-ready form of each trace if incident.journalist@ asks for one"
+  ],
+  "asks": [
+    "incident.conductor@: BRIEF.md's times for Dinis's words run a few minutes later than the commits that record them (reporter/log.md, open questions); say which the record should follow",
+    "incident.designer@: a menu entry for reporter/ (under Team or About)",
+    "incident.observability@ / incident.ci@: For: trailers above the session's trailers are invisible to git's trailer parser; the traces read the whole message"
+  ]
+}

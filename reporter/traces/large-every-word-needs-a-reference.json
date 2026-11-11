@@ -1,0 +1,731 @@
+{
+ "id": "large-every-word-needs-a-reference",
+ "schema": "sc-trace/1",
+ "size": "large",
+ "title": "Large: \"every word here needs to have a reference\" to entities, the linker, Wayback and the panel",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "Dinis (~02:10): \"Every word here needs to have a reference ... I should be able to connect until I arrive at the last source. And the last source should be a page about the evidence that we have.\" Thirty minutes later a reader could walk word, entity, row, our capture, outside address.",
+  "One contract (RESTRUCTURE.md, 02:07:27) split it into owned parts: entities and the linker (incident.entities@), captures and vaults (incident.archivist@), the panel (incident.designer@), a viewer for every file (incident.librarian@); the graph and the timeline joined them.",
+  "The parts met through files, not meetings: a generators list any agent adds a line to; rows.json from the archivist read by the conductor's timeline; entities/index.json joined by the graph builder; the panel's hooks filled by the lens.",
+  "Three mistakes were pushed and fixed in the open within minutes: a missing semicolon stopped the lens (02:28:01, fixed 02:28:25); 23 captures of cut-short addresses (removed 02:40:57); the linker took a quarter of the gate's budget (620 ms to 230 ms, 02:37:11).",
+  "Coverage came last: REALITY.md at 02:45 said \"most timeline addresses are not captured yet\"; at 02:51:52 the archivist recorded every address the timeline and decisions cite as captured (79; press kept privately). Still open: vault write keys for three vaults exist only in their agents' sessions (an ask to Dinis)."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "RESTRUCTURE.md",
+  "REALITY.md",
+  "admin/build/generators.json",
+  "entities/ontology.json",
+  "evidence/README.md",
+  "evidence/index.json",
+  "data/vaults.json",
+  "design/round-30.md",
+  "design/round-31.md",
+  "agents/entities/status.json",
+  "agents/archivist/status.json",
+  "board/items/a-vault-keys-handover.json"
+ ],
+ "input": {
+  "kind": "a spoken direction",
+  "what": "\"Every word here needs to have a reference.\" \"Graphs of graphs of graphs of graphs.\" \"Every time we go to an external website, you need to capture the screenshot of that website and the hash.\" \"A settings on the right-hand side ... where I get to choose what I see.\""
+ },
+ "output": {
+  "kind": "live sections",
+  "what": "entities/ (a node and a page per thing), the linker on every built page, evidence/ (Wayback: captures with hash and time), the reader's panel, view/?path= for every file",
+  "url": "https://storm-charles.promptugal.news/entities/"
+ },
+ "status": "open: the chain exists end to end for the first rows; coverage is partial and said so",
+ "duration": {
+  "from": "2026-11-11T02:06:42Z",
+  "to": "2026-11-11T02:51:52Z",
+  "note": "45 min from the recorded direction to every cited address captured; the work goes on in rounds"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:10\" in BRIEF.md; recorded at 02:06:42",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "pages where \"evidence\", \"Web Summit\", \"ANEPC and PSP\" were plain words",
+   "out": "everything linked, \"a mini Wikipedia\" as data; fractal down to \"a page about the evidence that we have\"; capture every external page; two vaults; a panel on the right",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~02:10 UTC: \"Everything is linked\", \"Use the whole width\", \"Evidence: capture every external page; vaults\"",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "contract",
+   "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+   "in": "the direction, and the reading he named (thinking in graphs, fractal semantic graphs)",
+   "out": "RESTRUCTURE.md: one grammar (entity, evidence, source, data set, agent provenance), \"the chain a reader can always walk\", three kinds of vault and their key rules, the panel's five accordions; owners named",
+   "handoff": {
+    "to": "incident.entities@, incident.archivist@ (new sessions), incident.designer@, incident.librarian@, incident.graph@",
+    "via": "new sessions; a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/JOBS.md round two; data/agents/starts.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "RESTRUCTURE.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=RESTRUCTURE.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f8297d80256b5c9dbe48088a540c49a8f812dc28"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.178",
+     "run": 178,
+     "own_run": true,
+     "served_by": "2026-11-11T02:07:55Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:07:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "frame",
+   "sha": "6186c29b8eafba579ea104d9f3fc40461256e99e",
+   "in": "the contract's panel",
+   "out": "round 30: the whole width and the reader's panel shell (lens, this item, source, theme, version); round 31 (fb7bc0d, 02:16:05) adds the hooks other agents fill: slot, show, openItem, openSource",
+   "handoff": {
+    "to": "incident.entities@ and incident.librarian@",
+    "via": "the hooks in the frame",
+    "evidence_of_handoff": "design/round-31.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-30.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-30.md"
+    },
+    {
+     "type": "file",
+     "path": "design/round-31.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-31.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6186c29b8eafba579ea104d9f3fc40461256e99e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6186c29b8eafba579ea104d9f3fc40461256e99e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.180",
+     "run": 180,
+     "own_run": true,
+     "served_by": "2026-11-11T02:12:38Z",
+     "push_to_served_s": 22
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T02:12:14Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "build",
+   "sha": "c418f28144a628d411b8639817c2d927a6da1fb1",
+   "in": "several agents each needing a build step",
+   "out": "admin/build/generators.json: a list any agent adds its own line to (\"board and entities generators expected\")",
+   "handoff": {
+    "to": "every agent",
+    "via": "the file",
+    "evidence_of_handoff": "the list now names eight generators and the linker"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "admin/build/generators.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/build/generators.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c418f28144a628d411b8639817c2d927a6da1fb1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c418f28144a628d411b8639817c2d927a6da1fb1"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.181",
+     "run": 181,
+     "own_run": true,
+     "served_by": "2026-11-11T02:13:38Z",
+     "push_to_served_s": 25
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T02:13:10Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.board@web-summit.dinis",
+    "incident.entities@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "viewer",
+   "sha": "d211ccec8c81173e4265583fddd380ad4709cc7c",
+   "in": "\"every link to a markdown or JSON file opens a page that shows it, never the bare file\"",
+   "out": "a viewer for every served file; reduced to one page that reads the file in the browser (view/?path=) at 02:25:37 (fc5d963) when a page per file cost the gate its budget",
+   "handoff": {
+    "to": "incident.designer@ (the panel's Source) and every page",
+    "via": "the address pattern",
+    "evidence_of_handoff": "board/items/a-librarian-4.json: \"met by the librarian's one-page viewer (the gate at 2.0 s at v0.1.231)\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-librarian-4.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-librarian-4.json"
+    },
+    {
+     "type": "file",
+     "path": "tools/library-view.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/library-view.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d211ccec8c81173e4265583fddd380ad4709cc7c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d211ccec8c81173e4265583fddd380ad4709cc7c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.182",
+     "run": 182,
+     "own_run": false,
+     "served_by": "2026-11-11T02:14:34Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T02:14:05Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "data",
+   "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+   "in": "the researcher's addresses for rows that had none",
+   "out": "22 timeline rows gain their source addresses; eight rows resting on the press relabelled evidence; a file per service: the raw material for nodes and captures",
+   "handoff": {
+    "to": "incident.entities@, incident.archivist@, incident.wikipedia@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "For: trailers"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/decisions/addresses.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/decisions/addresses.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4577806b72673568733c9a77187b29e0a323ee2c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.196",
+     "run": 196,
+     "own_run": true,
+     "served_by": "2026-11-11T02:19:11Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T02:18:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.entities@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
+   "in": "the rows and decisions the site holds",
+   "out": "the ontology (every verb with an inverse), 124 nodes and 249 edges, the page generator, the linker, the lens's first script",
+   "handoff": {
+    "to": "incident.graph@ and the build",
+    "via": "entities/index.json; the generators list",
+    "evidence_of_handoff": "graph's 129a0f7 (02:17:07, For: incident.entities@): \"the builder joins entities/index.json when it exists\": pushed three minutes before the first release of incident.entities@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "entities/ontology.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=entities/ontology.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.204",
+     "run": 204,
+     "own_run": true,
+     "served_by": "2026-11-11T02:21:23Z",
+     "push_to_served_s": 51
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T02:20:30Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.archivist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "b708dbed2ceaaf66a9c6d3d27fffab5379744083",
+   "in": "the contract's evidence shape and vault rules",
+   "out": "the capture tool, two vaults, the first six captures of the primary sources and their pages; named Wayback at 02:26:58 (ce3f7c3); Wayback for data at 02:29:34 (c804301)",
+   "handoff": {
+    "to": "incident.conductor@ (the timeline) and incident.entities@ (the nodes' sources)",
+    "via": "evidence/rows.json and evidence ids",
+    "evidence_of_handoff": "the next step reads it"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "evidence/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=evidence/README.md"
+    },
+    {
+     "type": "file",
+     "path": "data/vaults.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/vaults.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "b708dbed2ceaaf66a9c6d3d27fffab5379744083",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b708dbed2ceaaf66a9c6d3d27fffab5379744083"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.213",
+     "run": 213,
+     "own_run": true,
+     "served_by": "2026-11-11T02:23:37Z",
+     "push_to_served_s": 64
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T02:22:31Z",
+   "agent_trailer": "incident.archivist@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "join",
+   "sha": "7ef2ebc116711733259fa70589a49d7bf32099d0",
+   "in": "the archivist's rows.json",
+   "out": "timeline rows and the headline point at our own capture of their source",
+   "handoff": {
+    "to": "readers",
+    "via": "signals.json",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/signals.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/signals.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7ef2ebc116711733259fa70589a49d7bf32099d0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7ef2ebc116711733259fa70589a49d7bf32099d0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.222",
+     "run": 222,
+     "own_run": false,
+     "served_by": "2026-11-11T02:25:00Z",
+     "push_to_served_s": 43
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T02:23:33Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.entities@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "join",
+   "sha": "6c7cb2415abb085f3a609f8244609865c127d1bb",
+   "in": "the designer's panel hooks",
+   "out": "the linker runs as the build's after step; a clicked name opens its node in the panel's \"This item\"",
+   "handoff": {
+    "to": "incident.designer@web-summit.dinis",
+    "via": "the panel",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "admin/build/generators.json",
+     "section": "after",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/build/generators.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6c7cb2415abb085f3a609f8244609865c127d1bb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6c7cb2415abb085f3a609f8244609865c127d1bb"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.222",
+     "run": 222,
+     "own_run": false,
+     "served_by": "2026-11-11T02:25:00Z",
+     "push_to_served_s": 43
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-11T02:23:46Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "mistake and fix",
+   "sha": "d2adc44af0ed25bdcfb885709120e4e98f281c20",
+   "in": "round 2 (a5360ae, 02:28:01) pushed with a missing semicolon in app/lens/lens.js: the script stopped",
+   "out": "fixed 24 s later, \"checked in a browser, no console error\"; at 02:39:12 a check (tools/entities-check.mjs: every lens script must parse before a release)",
+   "handoff": {
+    "to": "incident.designer@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.designer@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/entities-check.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/entities-check.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d2adc44af0ed25bdcfb885709120e4e98f281c20",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d2adc44af0ed25bdcfb885709120e4e98f281c20"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.242",
+     "run": 242,
+     "own_run": true,
+     "served_by": "2026-11-11T02:28:59Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 11,
+   "at": "2026-11-11T02:28:25Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round",
+   "sha": "69f59e7408012555f1fb363163f68339ea03bca2",
+   "in": "the captures",
+   "out": "round 3: \"outside links go to our capture first\": the last link of the chain; 179 nodes, 341 edges, 36 nodes with capture ids",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.conductor@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/entities/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/entities/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "69f59e7408012555f1fb363163f68339ea03bca2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/69f59e7408012555f1fb363163f68339ea03bca2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.252",
+     "run": 252,
+     "own_run": false,
+     "served_by": "2026-11-11T02:31:10Z",
+     "push_to_served_s": 39
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-11T02:30:13Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "speed",
+   "sha": "2f45e6282765e65d81f68eb7187d562a9e8fc48f",
+   "in": "incident.ci@'s measure: the linker was a quarter of the gate's 5 s budget",
+   "out": "the linker in about 230 ms (was about 620); it prints its own time on each build",
+   "handoff": {
+    "to": "incident.ci@web-summit.dinis",
+    "via": "the build's timings",
+    "evidence_of_handoff": "agents/ci/status.json: \"the linker is a quarter of it\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/entities-link.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/entities-link.mjs"
+    },
+    {
+     "type": "file",
+     "path": "agents/ci/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/ci/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2f45e6282765e65d81f68eb7187d562a9e8fc48f",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2f45e6282765e65d81f68eb7187d562a9e8fc48f"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.296",
+     "run": 296,
+     "own_run": false,
+     "served_by": "2026-11-11T02:38:09Z",
+     "push_to_served_s": 38
+    }
+   ],
+   "n": 13,
+   "at": "2026-11-11T02:37:11Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.archivist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "mistake and fix",
+   "sha": "97f63e190559cdb71d425ba38ebd20546a329415",
+   "in": "its own pattern, which cut addresses short",
+   "out": "\"23 captures of mis-extracted addresses removed (my faulty pattern cut addresses short); the correct captures of the round recorded\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.conductor@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "evidence/index.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=evidence/index.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "97f63e190559cdb71d425ba38ebd20546a329415",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/97f63e190559cdb71d425ba38ebd20546a329415"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.308",
+     "run": 308,
+     "own_run": true,
+     "served_by": "2026-11-11T02:41:33Z",
+     "push_to_served_s": 34
+    }
+   ],
+   "n": 14,
+   "at": "2026-11-11T02:40:57Z",
+   "agent_trailer": "incident.archivist@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.archivist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "coverage",
+   "sha": "df4d45b00c498da431b35c08e673b32b86eebf99",
+   "in": "REALITY.md at 02:45: Wayback \"began 11 November 02:16; most timeline addresses are not captured yet\"",
+   "out": "\"every address the timeline and decisions cite, captured (79 addresses; press kept privately); what could not be read is in the status\". Of the vaults made, the conductor holds one key; the others exist only in their agents' sessions.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the board",
+    "evidence_of_handoff": "board/items/a-vault-keys-handover.json: open, waiting on Dinis"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "REALITY.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=REALITY.md"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-vault-keys-handover.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-vault-keys-handover.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "df4d45b00c498da431b35c08e673b32b86eebf99",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/df4d45b00c498da431b35c08e673b32b86eebf99"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.324",
+     "run": 324,
+     "own_run": true,
+     "served_by": "2026-11-11T02:52:21Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 15,
+   "at": "2026-11-11T02:51:52Z",
+   "agent_trailer": "incident.archivist@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 15,
+  "steps_with_no_evidence": 0,
+  "person_steps": 1,
+  "agent_steps": 14
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.designer@web-summit.dinis",
+  "incident.librarian@web-summit.dinis",
+  "incident.entities@web-summit.dinis",
+  "incident.archivist@web-summit.dinis"
+ ]
+}

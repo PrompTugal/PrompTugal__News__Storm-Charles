@@ -1,0 +1,351 @@
+{
+ "id": "small-metro-sentence-to-entity-page",
+ "schema": "sc-trace/1",
+ "size": "small",
+ "title": "Small: \"where's everything about the Metro?\" to a page that holds it",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "In his ~02:10 review Dinis asked \"where's everything about the Metro?\"; 24 minutes after the commit that records the sentence, entities/service/metro.html carried the researcher's whole file on the Metro.",
+  "Four agents touched it: the conductor (wrote the sentence down, set the grammar, carried the file across), the researcher (made the file, in another repository), entities (made the node and the page), the archivist (the captures the node cites).",
+  "The hand-off that cost time is the one a person could remove: the researcher cannot push here, so its file waited 5 min 38 s for the conductor to copy it (the ask to attach the repository has been open since 21:20).",
+  "First page with a Metro node: v0.1.204 (commit 02:20:30). The page with the researcher's file: commit 02:30:13, served in v0.1.252.",
+  "Not evidenced: how the conductor told the researcher (a message); the only trace is the researcher's status line \"02:20 (Dinis's direction via incident.conductor@)\", whose time is later than its own commit (02:13:00)."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "RESTRUCTURE.md",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+  "entities/service/metro.json",
+  "agents/researcher/status.json",
+  "agents/entities/status.json",
+  "board/items/a-attach-repo.json"
+ ],
+ "input": {
+  "kind": "a spoken sentence",
+  "what": "\"The Vasco da Gama bridge, the Metro: where's everything about the Metro?\" (BRIEF.md, ~02:10, as the conductor wrote it down)"
+ },
+ "output": {
+  "kind": "live page",
+  "what": "the Metro as a node with its decisions, what is open, each try at the operator's own page, and our captures",
+  "url": "https://storm-charles.promptugal.news/entities/service/metro.html"
+ },
+ "status": "captured to live; the node's label is \"evidence\" (its summary rests on a press page), which the page says",
+ "duration": {
+  "from": "2026-11-11T02:06:42Z",
+  "to": "2026-11-11T02:30:13Z",
+  "note": "23 min 31 s from the commit that records the sentence to the commit of the page that answers it; 13 min 48 s to the first Metro node"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:10\" in BRIEF.md; recorded at 02:06:42",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the front page, where the Metro was a word in a sentence",
+   "out": "\"where's everything about the Metro?\" and \"all of that should be JSON files\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~02:10 UTC, \"Everything is linked\"",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief",
+   "sha": "659dd792206cfa6d6c7ebbc69065e708edd807b8",
+   "in": "the sentence",
+   "out": "the sentence in BRIEF.md",
+   "handoff": {
+    "to": "incident.conductor@ (itself: the contract next)",
+    "via": "the file",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "659dd792206cfa6d6c7ebbc69065e708edd807b8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/659dd792206cfa6d6c7ebbc69065e708edd807b8"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.178",
+     "run": 178,
+     "own_run": false,
+     "served_by": "2026-11-11T02:07:55Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:06:42Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "contract",
+   "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+   "in": "the direction",
+   "out": "RESTRUCTURE.md: an entity is entities/<type>/<id>.json; the types to start include \"service (Metro, CP, Rede Expressos, TAP, the port)\"; incident.entities@ owns it",
+   "handoff": {
+    "to": "incident.researcher@ and incident.entities@",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/researcher/status.json: \"02:20 (Dinis's direction via incident.conductor@): ... entities/*.json for 11 services and places\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "RESTRUCTURE.md",
+     "section": "One grammar for every linked thing",
+     "url": "https://storm-charles.promptugal.news/view/?path=RESTRUCTURE.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/researcher/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/researcher/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f8297d80256b5c9dbe48088a540c49a8f812dc28"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.178",
+     "run": 178,
+     "own_run": true,
+     "served_by": "2026-11-11T02:07:55Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T02:07:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "at": "2026-11-11T02:13:00Z",
+   "actor": {
+    "name": "incident.researcher@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "research",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "36155b7",
+   "in": "the decision graph it already kept, and the direction",
+   "out": "one file per service and place with exact addresses, among them the Metro: every decision, what is open, each try at the primary page. Written in SGit-AI__Website__Web-Summit, because its session cannot push here.",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "a commit in the other repository; the conductor reads it at its next sync",
+    "evidence_of_handoff": "REALITY.md: the researcher \"still write[s] in SGit-AI__Website__Web-Summit; the conductor syncs\""
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "36155b7",
+     "at": "2026-11-11T02:13:00Z",
+     "what": "one file per service and place",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/36155b7"
+    },
+    {
+     "type": "file",
+     "path": "REALITY.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=REALITY.md"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-attach-repo.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-attach-repo.json"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "sync",
+   "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+   "in": "the researcher's files",
+   "out": "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json here (58 lines), with ten other services, 5 min 38 s after the researcher's commit",
+   "handoff": {
+    "to": "incident.entities@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.entities@, incident.archivist@, incident.wikipedia@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4577806b72673568733c9a77187b29e0a323ee2c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.196",
+     "run": 196,
+     "own_run": true,
+     "served_by": "2026-11-11T02:19:11Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T02:18:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.entities@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first page",
+   "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
+   "in": "the rows and decisions the site holds",
+   "out": "the mini Wikipedia, round 1: 124 nodes, among them entities/service/metro.json, a page per node, the linker that turns the word \"Metro\" on any page into a link to it",
+   "handoff": {
+    "to": "every page",
+    "via": "the linker, run by the build",
+    "evidence_of_handoff": "admin/build/generators.json lists tools/entities-build.mjs and tools/entities-link.mjs"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "entities/service/metro.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=entities/service/metro.json"
+    },
+    {
+     "type": "file",
+     "path": "admin/build/generators.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/build/generators.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.204",
+     "run": 204,
+     "own_run": true,
+     "served_by": "2026-11-11T02:21:23Z",
+     "push_to_served_s": 51
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T02:20:30Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.entities@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "page",
+   "sha": "69f59e7408012555f1fb363163f68339ea03bca2",
+   "in": "the researcher's file, now in this repository",
+   "out": "round 3: \"the service pages carry the researcher's file (every decision, what is open, each try at the primary page); outside links go to our capture first\". The node names its dossier and two of the archivist's captures.",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.conductor@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "entities/service/metro.json",
+     "section": "dossier, sources",
+     "url": "https://storm-charles.promptugal.news/view/?path=entities/service/metro.json"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/entities/service/metro.html",
+     "read_utc": "2026-11-11T02:53:00Z",
+     "note": "answered 200 at v0.1.324"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "69f59e7408012555f1fb363163f68339ea03bca2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/69f59e7408012555f1fb363163f68339ea03bca2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.252",
+     "run": 252,
+     "own_run": false,
+     "served_by": "2026-11-11T02:31:10Z",
+     "push_to_served_s": 39
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T02:30:13Z",
+   "agent_trailer": "incident.entities@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 7,
+  "steps_with_no_evidence": 0,
+  "person_steps": 1,
+  "agent_steps": 6
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.researcher@web-summit.dinis",
+  "incident.entities@web-summit.dinis"
+ ]
+}

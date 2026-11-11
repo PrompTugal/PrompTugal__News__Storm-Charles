@@ -1,0 +1,1205 @@
+{
+ "id": "arc-voice-memo-to-two-faces",
+ "schema": "sc-trace/1",
+ "size": "arc",
+ "title": "The whole arc: a voice memo at about 19:00 to a site with two faces at 02:19",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "On 10 November at about 19:00 UTC Dinis asked, by voice, for a separate incident team with its own conductor, repository and site, and pushes live in seconds; at 02:19:08 on 11 November the home page of storm-charles.promptugal.news became the Weather face, with the evidence behind it at data-room/.",
+  "Dinis acted nine times in the record: the voice memo, the repository and its name, a yes to the plan, and six spoken directions (~23:40, ~00:30, ~01:28, ~02:10, ~02:20, ~02:50). Everything between is agents, routed by incident.conductor@.",
+  "The shape of every round: Dinis speaks; the conductor writes his words into BRIEF.md and the jobs into agents/JOBS.md within minutes and starts sessions; each new agent pushes a key, then a first page, within about ten minutes; rounds follow.",
+  "From the first push (21:14:33) to the swap (02:19:08) is 5 h 04 min; by 02:53 the CI record held 363 commits by 24 agents and 210 releases, a push served at the median in 30 s (data/ci/index.json).",
+  "What broke and was fixed in the open: the first run failed its own gate; bursts of pushes starved the deploy; twenty agents raced release.sh; three agents still cannot push here and the conductor copies their files across (an ask to Dinis open since 21:20)."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "BRIEF-CORRECTIONS.md",
+  "RESTRUCTURE.md",
+  "REALITY.md",
+  "agents/JOBS.md",
+  "data/agents/starts.json",
+  "data/ci/index.json",
+  "data/ci/runs/2026-11-10.json",
+  "news/2026-11-11-round-two.md",
+  "design/round-32.md",
+  "reporter/numbers.json",
+  {
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "path": "team/incidents/BRIEF.md"
+  },
+  {
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "path": "team/incidents/MOVED.md"
+  }
+ ],
+ "input": {
+  "kind": "voice memo",
+  "what": "Dinis, about 19:00 UTC on 10 November: a separate incident team, its own site and repository, publishing in seconds"
+ },
+ "output": {
+  "kind": "live site",
+  "what": "two faces: the Weather face at / and the data room at data-room/",
+  "url": "https://storm-charles.promptugal.news/"
+ },
+ "status": "captured from the record to 02:50 UTC on 11 November; the project goes on",
+ "duration": {
+  "from": "2026-11-10T18:55:42Z",
+  "to": "2026-11-11T02:19:08Z",
+  "note": "from the commit that records the voice memo to the commit of the swap: 7 h 23 min. From the first push here (21:14:33) to the swap: 5 h 04 min 35 s. BRIEF.md gives each of Dinis's directions a \"~\" time that is a few minutes later than the commit that records it (~23:40 recorded 23:35:36; ~02:10 recorded 02:06:42; ~02:20 recorded 02:15:04; ~02:50 recorded 02:49:18): the reporter follows the commits and flags the gap for the conductor."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"about 19:00 UTC\" in team/incidents/BRIEF.md; the commit that records it is 18:55:42, so he spoke before that",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the storm declared a P1 incident by conductor@web-summit.dinis at 18:40 (WS-214)",
+   "out": "a voice memo: \"a separate incident team with its own conductor\", the back office for Vicky Wang's agents, \"its own website and repository\", \"super fast publishing: we can't afford delays\"",
+   "handoff": {
+    "to": "conductor@web-summit.dinis",
+    "via": "voice, in his own session with that conductor",
+    "evidence_of_handoff": "the brief's first line says so"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "path": "team/incidents/BRIEF.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/blob/dev/team/incidents/BRIEF.md"
+    },
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "dedace1",
+     "at": "2026-11-10T18:40:03Z",
+     "what": "incident declared",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/dedace1"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "at": "2026-11-10T18:55:42Z",
+   "actor": {
+    "name": "conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "a16e4a1",
+   "in": "the voice memo",
+   "out": "team/incidents/BRIEF.md: the team of four (incident.conductor@, meteorologist, researcher, dev) and how it works; the four sessions started",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "a new session started by conductor@web-summit.dinis",
+    "evidence_of_handoff": "BRIEF.md: \"Started by conductor@web-summit.dinis on account A\"; the start itself is not in the repository"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "a16e4a1",
+     "at": "2026-11-10T18:55:42Z",
+     "what": "the incident team's brief",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/a16e4a1"
+    },
+    {
+     "type": "file",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "path": "team/incidents/BRIEF.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/blob/dev/team/incidents/BRIEF.md"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "at": "2026-11-10T19:01:39Z",
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "plan",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "56a07e9",
+   "in": "the brief",
+   "out": "takes the WS-214 lead; its session key; PIPELINE.md (the incident site's two lanes); first jobs routed; ROADMAP.md two minutes later (27d5ca7)",
+   "handoff": {
+    "to": "incident.meteorologist@, incident.researcher@, incident.dev@",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "the commit subject says \"first jobs routed\""
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "56a07e9",
+     "at": "2026-11-10T19:01:39Z",
+     "what": "takes the lead; PIPELINE.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/56a07e9"
+    },
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "27d5ca7",
+     "at": "2026-11-10T19:03:44Z",
+     "what": "ROADMAP.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/27d5ca7"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "at": "2026-11-10T19:11:53Z",
+   "actor": {
+    "name": "incident.dev@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "fad836c",
+   "in": "the job: a fast pipeline and a dashboard",
+   "out": "the first dashboard, and the number that made the case for a separate repository: push to live 3 min 56 s in the shared repository (the gate alone 110 s in CI). The researcher's decision graph (19:02:26) and the meteorologist's weather as JSON (19:03:25) were already in.",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit and a status file",
+    "evidence_of_handoff": "the conductor's 19:18 commit: \"the CI fix incident.dev@ proved waits for Dinis\""
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "fad836c",
+     "at": "2026-11-10T19:11:53Z",
+     "what": "dashboard; baseline 3 min 56 s",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/fad836c"
+    },
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "145a2b8",
+     "at": "2026-11-10T19:02:26Z",
+     "what": "the researcher's first commit",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/145a2b8"
+    },
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "a73dfb5",
+     "at": "2026-11-10T19:03:25Z",
+     "what": "the meteorologist's first commit",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/a73dfb5"
+    },
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "753b331",
+     "at": "2026-11-10T19:18:12Z",
+     "what": "the conductor's 19:18",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/753b331"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "at_note": "\"~21:00\" in BRIEF.md for the names; the commit is the repository's first, authored by Dinis Cruz on GitHub",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "repository",
+   "sha": "3a61421c9ddb99666e7cbec793f271937c267916",
+   "in": "the plan for a separate, fast site",
+   "out": "the repository PrompTugal__News__Storm-Charles, created by him (\"Initial commit\"), and the domain storm-charles.promptugal.news, named by him",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md, first section, last bullet"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "first section: \"The repository ...; the domain ... (Dinis, 10 November, ~21:00)\"",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "3a61421c9ddb99666e7cbec793f271937c267916",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3a61421c9ddb99666e7cbec793f271937c267916"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.2",
+     "run": 2,
+     "own_run": false,
+     "served_by": "2026-11-10T21:15:41Z"
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-10T21:03:38Z",
+   "agent_trailer": "Dinis Cruz (author; no Agent: trailer)",
+   "for": []
+  },
+  {
+   "at": null,
+   "at_note": "\"~21:10\" in BRIEF-CORRECTIONS.md and in the first push's message; no timestamp of its own",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "yes",
+   "in": "the conductor's plan (PIPELINE.md section 2), which listed that CI tags the version and commits nothing",
+   "out": "\"yes all good\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "in his session with the conductor",
+    "evidence_of_handoff": "quoted in two files; the exchange itself is not in the repository"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF-CORRECTIONS.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF-CORRECTIONS.md"
+    },
+    {
+     "type": "file",
+     "path": "PIPELINE.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=PIPELINE.md"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first push",
+   "sha": "77cdd51fc101109920aeb4308704823711d0f356",
+   "in": "the yes; the incident folder in SGit-AI__Website__Web-Summit",
+   "out": "the whole site in one commit: a zero-dependency build, the gate, one-job CI that tags the version, CLAUDE.md, the incident brought across with paths rewritten. Run 1 failed at its own gate (the build's files were not tracked: the template .gitignore ignored build/).",
+   "handoff": {
+    "to": "CI",
+    "via": "git push to dev",
+    "evidence_of_handoff": "run 1 in data/ci/runs/2026-11-10.json: failure, failed step \"gate\" (data/ci/index.json, pipeline.failures)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/ci/runs/2026-11-10.json",
+     "section": "run 1",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/ci/runs/2026-11-10.json"
+    },
+    {
+     "type": "url",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42903131987",
+     "read_utc": null,
+     "note": "run 1; address from data/ci/index.json, not opened by the reporter"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "77cdd51fc101109920aeb4308704823711d0f356",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/77cdd51fc101109920aeb4308704823711d0f356"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.2",
+     "run": 2,
+     "own_run": false,
+     "served_by": "2026-11-10T21:15:41Z"
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-10T21:14:33Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.dev@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis",
+    "incident.researcher@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "fix",
+   "sha": "610dd5f8eb84ccdb677416ecba909f108027df39",
+   "in": "a red first run",
+   "out": "admin/build/ tracked; the gate now fails if its own files are not tracked. Run 2 succeeded: v0.1.2, the first version served; the run ended at 21:15:41, 68 s after the commit of the first push.",
+   "handoff": {
+    "to": "the three incident agents",
+    "via": "the first push's For: trailers and MOVED.md in the old repository",
+    "evidence_of_handoff": "MOVED.md: \"First push to served: 23 s (v0.1.2), against 3 to 10 minutes here\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "path": "team/incidents/MOVED.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/blob/dev/team/incidents/MOVED.md"
+    },
+    {
+     "type": "file",
+     "path": "data/ci/runs/2026-11-10.json",
+     "section": "run 2",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/ci/runs/2026-11-10.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "610dd5f8eb84ccdb677416ecba909f108027df39",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/610dd5f8eb84ccdb677416ecba909f108027df39"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.2",
+     "run": 2,
+     "own_run": true,
+     "served_by": "2026-11-10T21:15:41Z"
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-10T21:15:16Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.dev@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "ask",
+   "sha": "0808960d0d17503afc709569c02cff7ac4f0ebf5",
+   "in": "the three agents' add_repo calls refused by their permission checks",
+   "out": "an ask to Dinis in the status files: attach this repository to their sessions. Until then tools/sync-from-websummit.sh (5858061, 21:19:37) and the conductor copy their files across at every wake.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "asks starting \"Dinis:\" in agents/*/status.json",
+    "evidence_of_handoff": "board/items/a-attach-repo.json: open, waiting on Dinis (see the trace escalation-asks-waiting-on-dinis)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-attach-repo.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-attach-repo.json"
+    },
+    {
+     "type": "file",
+     "path": "tools/sync-from-websummit.sh",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/sync-from-websummit.sh"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "0808960d0d17503afc709569c02cff7ac4f0ebf5",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0808960d0d17503afc709569c02cff7ac4f0ebf5"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.6",
+     "run": 6,
+     "own_run": true,
+     "served_by": "2026-11-10T21:20:33Z"
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-10T21:20:07Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.dev@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "wake",
+   "sha": "44a983bfb2760054508d610abf646a534536b441",
+   "in": "the storm, hour by hour",
+   "out": "for two and a quarter hours one agent pushes here: nine commits between 21:20 and 23:24, hourly wakes and syncs of the three agents' work (reporter/numbers.json: 21Z 11 commits, 22Z 2 commits, one agent active each hour)",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis (its next wake)",
+    "via": "the timeline and status files",
+    "evidence_of_handoff": "the commits"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "reporter/numbers.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=reporter/numbers.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "44a983bfb2760054508d610abf646a534536b441",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/44a983bfb2760054508d610abf646a534536b441"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.13",
+     "run": 13,
+     "own_run": true,
+     "served_by": "2026-11-10T23:03:50Z"
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-10T23:03:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.researcher@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~23:40\" in BRIEF.md; recorded by the commit of 23:35:36",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the site as it stood (timeline, decisions, weather data, dashboard)",
+   "out": "\"This is where I'm going to be working for the next couple of hours\": fire up as many agents as needed; maximum visibility into every agent; the UI in rounds; a login and a lane to the conductor; media watch; the best weather sites; a librarian; a contribute page",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md says \"in his session with incident.conductor@; close to his words\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 10 November 2026, ~23:40 UTC",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 11
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief and jobs",
+   "sha": "cdaa2d7bf861a9ca7ef23bccba11d06364f089e2",
+   "in": "the direction",
+   "out": "the direction in BRIEF.md and agents/JOBS.md: seven jobs (designer, observability, identity, weatherwatch, media, librarian, graph), each with the folders it owns; the sessions started",
+   "handoff": {
+    "to": "seven new agents",
+    "via": "new sessions started by the conductor",
+    "evidence_of_handoff": "data/agents/starts.json (the conductor's statement to incident.observability@, recorded by it): started_by incident.conductor@, on Dinis Cruz's word, brief section \"~23:40\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/starts.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/starts.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "cdaa2d7bf861a9ca7ef23bccba11d06364f089e2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/cdaa2d7bf861a9ca7ef23bccba11d06364f089e2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.15",
+     "run": 15,
+     "own_run": true,
+     "served_by": "2026-11-10T23:35:59Z"
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-10T23:35:36Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.dev@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first commit",
+   "sha": "876a31e26fde4d49e3bd32e6012f6f11e9da66b6",
+   "in": "its job in JOBS.md",
+   "out": "the first of six session keys pushed between 23:36:58 and 23:39:17 (designer, media, weatherwatch, librarian, observability, identity): 82 s after the jobs were committed",
+   "handoff": {
+    "to": "everyone",
+    "via": "data/keys.json",
+    "evidence_of_handoff": "the commits"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "b53673e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b53673e",
+     "note": "the sixth key, identity, 23:39:17"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "876a31e26fde4d49e3bd32e6012f6f11e9da66b6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/876a31e26fde4d49e3bd32e6012f6f11e9da66b6"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.16",
+     "run": 16,
+     "own_run": true,
+     "served_by": "2026-11-10T23:37:21Z"
+    }
+   ],
+   "n": 13,
+   "at": "2026-11-10T23:36:58Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first page",
+   "sha": "8c07e4ab451c4f47c6781ff50b53d0f3b3a613bb",
+   "in": "the job: the home page as the weather presenter",
+   "out": "design round 1, five minutes after the jobs. In the next seven minutes: SECURITY.md (identity, 23:41:00), the agents page (observability, 23:41:15), the library's catalogue (librarian, 23:41:40), the graph (graph, 23:44:08), the map of 106 weather sites (weatherwatch, 23:47:45)",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "For: trailers and messages",
+    "evidence_of_handoff": "design/round-1.md; the conductor's review is named in round 5 (60f146b)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-1.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-1.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8c07e4ab451c4f47c6781ff50b53d0f3b3a613bb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8c07e4ab451c4f47c6781ff50b53d0f3b3a613bb"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.27",
+     "run": 27,
+     "own_run": false,
+     "served_by": "2026-11-10T23:42:08Z"
+    }
+   ],
+   "n": 14,
+   "at": "2026-11-10T23:40:49Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "fix",
+   "sha": "76337b0a7122eaf55eaef5d151eafb68884d4539",
+   "in": "eight agents pushing at once (73 commits in the hour from 23:00; 29 of 64 runs cancelled: reporter/numbers.json)",
+   "out": "CI never cancels a running deploy: \"bursts of pushes were starving the site\"; the newest waiting push still wins",
+   "handoff": {
+    "to": "every agent",
+    "via": "the workflow file",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "reporter/numbers.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=reporter/numbers.json"
+    },
+    {
+     "type": "file",
+     "path": "PIPELINE.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=PIPELINE.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "76337b0a7122eaf55eaef5d151eafb68884d4539",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/76337b0a7122eaf55eaef5d151eafb68884d4539"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.60",
+     "run": 60,
+     "own_run": true,
+     "served_by": "2026-11-10T23:56:42Z",
+     "push_to_served_s": 22
+    }
+   ],
+   "n": 15,
+   "at": "2026-11-10T23:56:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.observability@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~00:30\" in BRIEF.md; recorded by the commit of 00:29:38",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the site after the first hour of rounds",
+   "out": "a new section, the Studio: \"what is compression\", as an animation with small characters",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~00:30 UTC: the Studio",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 16
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief and jobs",
+   "sha": "ce7d8f352350d40901dc2cd03310c24678fe9026",
+   "in": "the Studio direction",
+   "out": "BRIEF.md, a first page, the nav section, incident.studio@ in the jobs and the policy; incident.studio@ pushed the storyboard player and chapters 1 and 2 at 00:38:03 (7fc709c), 8 min 25 s later",
+   "handoff": {
+    "to": "incident.studio@web-summit.dinis",
+    "via": "a new session",
+    "evidence_of_handoff": "data/agents/starts.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/agents/starts.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/starts.json"
+    },
+    {
+     "type": "commit",
+     "sha": "7fc709c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7fc709c"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ce7d8f352350d40901dc2cd03310c24678fe9026",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ce7d8f352350d40901dc2cd03310c24678fe9026"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.114",
+     "run": 114,
+     "own_run": true,
+     "served_by": "2026-11-11T00:30:27Z",
+     "push_to_served_s": 41
+    }
+   ],
+   "n": 17,
+   "at": "2026-11-11T00:29:44Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~01:28\" in BRIEF.md; recorded by the commit of 01:26:27",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the site at about 01:25",
+   "out": "\"start a Wikipedia agent\": every language compared, and this site measured against Wikipedia's values",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~01:28 UTC: Wikipedia",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 18
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief and jobs",
+   "sha": "5b880fb4d8330904342d08781b9792a546e49814",
+   "in": "the Wikipedia direction",
+   "out": "BRIEF.md, a first page, incident.wikipedia@ in the jobs; its first release at 01:43:52 (1e744ad): 6 pages in 4 languages, 577 revisions as data",
+   "handoff": {
+    "to": "incident.wikipedia@web-summit.dinis",
+    "via": "a new session",
+    "evidence_of_handoff": "data/agents/starts.json"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "1e744ad",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1e744ad"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5b880fb4d8330904342d08781b9792a546e49814",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5b880fb4d8330904342d08781b9792a546e49814"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.151",
+     "run": 151,
+     "own_run": true,
+     "served_by": "2026-11-11T01:26:53Z",
+     "push_to_served_s": 24
+    }
+   ],
+   "n": 19,
+   "at": "2026-11-11T01:26:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis",
+    "incident.media@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~02:10\" in BRIEF.md; recorded by the commit of 02:06:42",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the site, gone through page by page",
+   "out": "two faces (\"create a complete new homepage right now ... like BBC Weather\"; what exists becomes \"the data room\"); \"every word here needs to have a reference\"; capture every external page; vaults; sources as sections with their own agents; the whole width and a panel of settings",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:10 UTC: two faces, everything linked, evidence captured",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 20
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "contract",
+   "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+   "in": "the direction, written into BRIEF.md 45 s earlier (659dd79)",
+   "out": "RESTRUCTURE.md: the two faces, one grammar for entities, evidence, sources and data sets, the vault rules, the reader's panel, the order of work; eight new agents in JOBS and the path policy",
+   "handoff": {
+    "to": "eight new agents and the eleven already running",
+    "via": "new sessions; the contract in the repository",
+    "evidence_of_handoff": "RESTRUCTURE.md: \"This is the contract between the agents\"; data/agents/starts.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "RESTRUCTURE.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=RESTRUCTURE.md"
+    },
+    {
+     "type": "commit",
+     "sha": "659dd79",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/659dd79"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f8297d80256b5c9dbe48088a540c49a8f812dc28"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.178",
+     "run": 178,
+     "own_run": true,
+     "served_by": "2026-11-11T02:07:55Z",
+     "push_to_served_s": 26
+    }
+   ],
+   "n": 21,
+   "at": "2026-11-11T02:07:27Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "at": null,
+   "at_note": "\"~02:20\" in BRIEF.md; recorded by the commit of 02:15:04",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the same review, continued",
+   "out": "meteorology down to the raw material and its licences; Wayback for pages and data; stories; other models and shadow reporting; a home for every agent; a CI agent; the look of the investor pack; an article with each version",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:20 UTC",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 22
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief and jobs",
+   "sha": "9d3a54ca9ef129ce7e3b1350c96a48725dc3e456",
+   "in": "the 02:20 direction",
+   "out": "BRIEF.md; five more agents in JOBS (meteorology, stories, models, shadow, ci)",
+   "handoff": {
+    "to": "five new agents",
+    "via": "new sessions",
+    "evidence_of_handoff": "agents/JOBS.md, \"Round two, continued\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "section": "Round two, continued (Dinis, ~02:20 UTC)",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "9d3a54ca9ef129ce7e3b1350c96a48725dc3e456",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/9d3a54ca9ef129ce7e3b1350c96a48725dc3e456"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.186",
+     "run": 186,
+     "own_run": true,
+     "served_by": "2026-11-11T02:15:38Z",
+     "push_to_served_s": 33
+    }
+   ],
+   "n": 23,
+   "at": "2026-11-11T02:15:04Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "a92c425221a420fefefb4805c9333404a764aa45",
+   "in": "RESTRUCTURE.md",
+   "out": "the first of thirteen new agents to ship: the Weather face, round 1, 8 min 52 s after the contract. The thirteenth (meteorology, 8b8bf87) landed at 02:37:07. The librarian's article counts them: \"Thirty-five minutes later thirteen more agents had each shipped a first release\".",
+   "handoff": {
+    "to": "incident.designer@ and incident.conductor@",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/weather/status.json: \"the conductor and incident.designer@ told by session message, with a proposal for the swap of /\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "news/2026-11-11-round-two.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=news/2026-11-11-round-two.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/weather/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/weather/status.json"
+    },
+    {
+     "type": "commit",
+     "sha": "8b8bf87",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8b8bf87"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a92c425221a420fefefb4805c9333404a764aa45",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a92c425221a420fefefb4805c9333404a764aa45"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.190",
+     "run": 190,
+     "own_run": false,
+     "served_by": "2026-11-11T02:16:52Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 24,
+   "at": "2026-11-11T02:16:19Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the swap",
+   "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+   "in": "the Weather face live at weather/, measured against the designer's bar",
+   "out": "design round 32: / is the Weather face; the technical front page is data-room/. \"The conductor left the minute to me.\"",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.weather@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-32.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-32.md"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/",
+     "read_utc": "2026-11-11T02:53:00Z",
+     "note": "/ and data-room/ both answered 200 at v0.1.324"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.197",
+     "run": 197,
+     "own_run": true,
+     "served_by": "2026-11-11T02:19:40Z",
+     "push_to_served_s": 28
+    }
+   ],
+   "n": 25,
+   "at": "2026-11-11T02:19:08Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "fix",
+   "sha": "6cf060cb5559f6c62db3e1d450031b5400fd82fd",
+   "in": "twenty agents pushing: \"five gated tries were being lost to the race\" (174 commits and 72 cancelled runs in the hour to 02:53: reporter/numbers.json)",
+   "out": "release.sh gates once, then rebases and pushes at once on each retry (twelve tries, a random short wait); CI's gate stays the authority",
+   "handoff": {
+    "to": "incident.ci@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "For: incident.ci@"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "admin/tools/release.sh",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/tools/release.sh"
+    },
+    {
+     "type": "file",
+     "path": "reporter/numbers.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=reporter/numbers.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6cf060cb5559f6c62db3e1d450031b5400fd82fd",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6cf060cb5559f6c62db3e1d450031b5400fd82fd"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.270",
+     "run": 270,
+     "own_run": false,
+     "served_by": "2026-11-11T02:33:45Z",
+     "push_to_served_s": 35
+    }
+   ],
+   "n": 26,
+   "at": "2026-11-11T02:33:03Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.ci@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record",
+   "sha": "1bd19ad1f24e4992d38971752bd37b035f294755",
+   "in": "incident.ci@'s list of where the guidance had drifted from what was true (agents/ci/drift.md)",
+   "out": "REALITY.md rewritten to what exists: two faces, entities, Wayback, 46 sources, stories, labs, 26 agents; and what does not (Dinis's own key, branch protection, anything sent to anyone)",
+   "handoff": {
+    "to": "every reader",
+    "via": "REALITY.md",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "REALITY.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=REALITY.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/ci/drift.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/ci/drift.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "1bd19ad1f24e4992d38971752bd37b035f294755",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1bd19ad1f24e4992d38971752bd37b035f294755"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.282",
+     "run": 282,
+     "own_run": false,
+     "served_by": "2026-11-11T02:36:06Z",
+     "push_to_served_s": 39
+    }
+   ],
+   "n": 27,
+   "at": "2026-11-11T02:35:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.ci@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~02:50\" in BRIEF.md; recorded by the commit of 02:49:18",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "the team at 26 agents",
+   "out": "a budget of 20 dollars a day for models; a Perplexity agent; an accountant; \"meta reporter and meta journalist: reporting on how this project actually occurs\"; memory that makes the next agent cheaper",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md; commit ab8008e (02:49:18); this trace is the first output of that sentence"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:50 UTC",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    },
+    {
+     "type": "commit",
+     "sha": "ab8008e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ab8008e"
+    }
+   ],
+   "n": 28
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 28,
+  "steps_with_no_evidence": 0,
+  "person_steps": 9,
+  "agent_steps": 19
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "conductor@web-summit.dinis",
+  "incident.conductor@web-summit.dinis",
+  "incident.dev@web-summit.dinis",
+  "incident.designer@web-summit.dinis",
+  "incident.weather@web-summit.dinis"
+ ]
+}

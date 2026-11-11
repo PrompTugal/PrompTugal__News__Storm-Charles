@@ -1,0 +1,387 @@
+{
+ "id": "escalation-asks-waiting-on-dinis",
+ "schema": "sc-trace/1",
+ "size": "escalation",
+ "title": "Escalations: two asks to Dinis from the first evening, and how long each waited",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "captured_at": "2026-11-11T03:06:00Z",
+ "summary": [
+  "Agents escalate to Dinis in one way: a line starting \"Dinis:\" under asks in their status file. From 02:20 UTC incident.board@ turns those lines into cards; board/for-dinis lists them in the order of what stands before the launch.",
+  "The model budget: asked by incident.dev@ on the first evening (the board dates it 21:45), capped at 5 US dollars a day \"until you say\". Answered by Dinis at ~02:50 (\"you can use up to $20\"): about 5 h after the ask. He answered in a spoken review, not from the board.",
+  "Attach the repository: asked at 21:20:07, six minutes after the first push. Still open at 03:00, 5 h 40 min later. The cost is paid at every wake: the conductor copies three agents' files across by hand.",
+  "The agents' status files held 46 asks for Dinis when last indexed; the board held 36 cards waiting on him (31 asks, 5 blocked jobs), none closed by him in the board's record. Eighteen other asks were closed among the agents (decided by the conductor, met, or withdrawn).",
+  "Not evidenced: whether Dinis has seen board/for-dinis (page views are not recorded: that vault is itself an ask). The board's opened times are its reading of status files, not event times: it dates the attach ask 21:45; the commit is 21:20:07."
+ ],
+ "rests_on": [
+  "board/items/a-llm-cap.json",
+  "board/items/a-attach-repo.json",
+  "BRIEF.md",
+  "REALITY.md",
+  "tools/llm.mjs",
+  "tools/sync-from-websummit.sh",
+  "data/agents/index.json",
+  "agents/dev/status.json",
+  "agents/conductor/status.json",
+  {
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "path": "team/incidents/MOVED.md"
+  }
+ ],
+ "input": {
+  "kind": "two asks",
+  "what": "\"the daily cap on model calls, and which sessions get the key\"; \"attach this repository (with push) to three agents' sessions\""
+ },
+ "output": {
+  "kind": "one answer, one still waiting",
+  "what": "the cap raised to 20 US dollars a day at Dinis's word; the repository not yet attached",
+  "url": "https://storm-charles.promptugal.news/board/for-dinis.html"
+ },
+ "status": "open: the first ask is half answered (the number, not which sessions get the key); the second waits",
+ "duration": {
+  "from": "2026-11-10T21:20:07Z",
+  "to": null,
+  "note": "budget: asked by 21:45 (the board's time; the wrapper and its cap were pushed 20:45 to 20:49 in the other repository), answered ~02:50 (recorded 02:49:18): 5 h 04 min by the board's time. Attach: asked 21:20:07, open at 03:00: 5 h 40 min and counting."
+ },
+ "steps": [
+  {
+   "at": "2026-11-10T20:49:19Z",
+   "actor": {
+    "name": "incident.dev@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "ask",
+   "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+   "sha": "3a00a1b",
+   "in": "ROADMAP P0.4: third-party models through one wrapper",
+   "out": "llm.mjs with a daily cap; \"the OpenRouter key is already set here\"; an ask to Dinis in its status file: the cap (5 US dollars a day until he says) and which sessions get the key",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "asks starting \"Dinis:\" in its status file",
+    "evidence_of_handoff": "board/items/a-llm-cap.json, sources: agents/dev/status.json"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "sha": "3a00a1b",
+     "at": "2026-11-10T20:49:19Z",
+     "what": "llm.mjs: the ledger, the key, one test call",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/commit/3a00a1b"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-llm-cap.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-llm-cap.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/dev/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/dev/status.json"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "ask",
+   "sha": "0808960d0d17503afc709569c02cff7ac4f0ebf5",
+   "in": "the three agents' add_repo refused by their permission checks, six minutes after the first push",
+   "out": "\"the three agents' asks to Dinis: attach this repository to their sessions\"",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "asks starting \"Dinis:\" in the status files",
+    "evidence_of_handoff": "board/items/a-attach-repo.json, sources: four status files"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-attach-repo.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-attach-repo.json"
+    },
+    {
+     "type": "file",
+     "repo": "SGit-AI/SGit-AI__Website__Web-Summit",
+     "path": "team/incidents/MOVED.md",
+     "url": "https://github.com/SGit-AI/SGit-AI__Website__Web-Summit/blob/dev/team/incidents/MOVED.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "0808960d0d17503afc709569c02cff7ac4f0ebf5",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0808960d0d17503afc709569c02cff7ac4f0ebf5"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.6",
+     "run": 6,
+     "own_run": true,
+     "served_by": "2026-11-10T21:20:33Z"
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-10T21:20:07Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.dev@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "workaround",
+   "sha": "58580618a5164a449b407658d12b07ab97c3cd67",
+   "in": "no answer yet",
+   "out": "tools/sync-from-websummit.sh, \"the bridge until their sessions can push here\"; from then every conductor wake begins with a sync (its commit subjects say \"sync\" through the night)",
+   "handoff": {
+    "to": "incident.conductor@ (itself, every wake)",
+    "via": "the script",
+    "evidence_of_handoff": "REALITY.md: \"the meteorologist, researcher and dev agents still write in SGit-AI__Website__Web-Summit; the conductor syncs their files here\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/sync-from-websummit.sh",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/sync-from-websummit.sh"
+    },
+    {
+     "type": "file",
+     "path": "REALITY.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=REALITY.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "58580618a5164a449b407658d12b07ab97c3cd67",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/58580618a5164a449b407658d12b07ab97c3cd67"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.5",
+     "run": 5,
+     "own_run": true,
+     "served_by": "2026-11-10T21:19:59Z"
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-10T21:19:37Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.meteorologist@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "ask",
+   "sha": "084df62b8acc2efb366f983cb6afb67918c32d70",
+   "in": "a growing list",
+   "out": "\"the conductor's asks to Dinis pruned to the five that stand\"; the agents page shows every agent's asks \"with Dinis's on top\" (observability, a485c84, 23:41:15)",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the agents page",
+    "evidence_of_handoff": "the commits; whether he read the page is not recorded"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/conductor/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/conductor/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "084df62b8acc2efb366f983cb6afb67918c32d70",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/084df62b8acc2efb366f983cb6afb67918c32d70"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.28",
+     "run": 28,
+     "own_run": true,
+     "served_by": "2026-11-10T23:43:21Z"
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-10T23:42:56Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.observability@web-summit.dinis",
+    "incident.identity@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "board",
+   "sha": "13eb44eaed534fbc2e4e86212be5f6a4ed18ec25",
+   "in": "every status file",
+   "out": "the board: 117 cards, \"every 'Dinis:' ask, the same ask from several agents joined in one card\"; 183 cards three minutes later; at 02:29:49 \"For Dinis sorted by what stands before the launch first\" (at the conductor's direction): the launch is 1, attach is 11, the cap is 16 of 26",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "board/for-dinis",
+    "evidence_of_handoff": "the cards' history lines"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-attach-repo.json",
+     "section": "history",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-attach-repo.json"
+    },
+    {
+     "type": "url",
+     "url": "https://storm-charles.promptugal.news/board/for-dinis.html",
+     "read_utc": "2026-11-11T02:53:00Z",
+     "note": "answered 200 at v0.1.324"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "13eb44eaed534fbc2e4e86212be5f6a4ed18ec25",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/13eb44eaed534fbc2e4e86212be5f6a4ed18ec25"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.217",
+     "run": 217,
+     "own_run": false,
+     "served_by": "2026-11-11T02:24:28Z",
+     "push_to_served_s": 61
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T02:23:14Z",
+   "agent_trailer": "incident.board@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.observability@web-summit.dinis",
+    "incident.media@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~02:50\" in BRIEF.md; recorded at 02:49:18",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "answer",
+   "in": "his own question in the 02:20 review (\"have we started using other models?\")",
+   "out": "\"you can use up to $20 in budget. That's okay.\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:50 UTC: Budget",
+     "url": "https://storm-charles.promptugal.news/BRIEF.html"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record",
+   "sha": "ab8008ef978592bda87b062143704713401467a0",
+   "in": "the answer",
+   "out": "BRIEF.md: \"the daily cap goes from 5 to 20 US dollars\"; JOBS: \"the model budget is 20 US dollars a day (models)\"",
+   "handoff": {
+    "to": "incident.models@ and incident.board@",
+    "via": "BRIEF.md and JOBS.md",
+    "evidence_of_handoff": "at 03:00 the card a-llm-cap was still \"open\" (its file last updated 02:28:54): the board had not yet read the answer; which sessions get the key is not answered anywhere"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "section": "Round two, third part",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-llm-cap.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-llm-cap.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ab8008ef978592bda87b062143704713401467a0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ab8008ef978592bda87b062143704713401467a0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.322",
+     "run": 322,
+     "own_run": true,
+     "served_by": "2026-11-11T02:49:52Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T02:49:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "at": null,
+   "at_note": "state read 03:00 UTC",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "waiting",
+   "in": "36 cards waiting on him (data/agents/index.json counts 46 asks in status files)",
+   "out": "attach the repository: no answer in the record",
+   "handoff": {
+    "to": "incident.meteorologist@, incident.researcher@, incident.dev@",
+    "via": "none yet",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [],
+   "evidence_note": "no evidence of an answer: the card is open, the status files still carry the ask, and the three agents' newest commits (02:39:51) are still in the other repository",
+   "n": 8
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 8,
+  "steps_with_no_evidence": 1,
+  "person_steps": 2,
+  "agent_steps": 6
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.dev@web-summit.dinis",
+  "incident.conductor@web-summit.dinis",
+  "incident.board@web-summit.dinis"
+ ]
+}

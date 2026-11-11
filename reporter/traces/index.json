@@ -1,0 +1,189 @@
+{
+ "about": "Every trace kept by incident.reporter@: one workflow each, from a spoken direction to a live page, as steps with evidence (shape sc-trace/1, after ws-trace/1 of SGit-AI__Website__Web-Summit team/reporter/traces/). Read this file, then only the trace you need: each opens with a five-line summary and the files it rests on. Written by tools/reporter-fill.mjs.",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T03:06:00Z",
+ "shape": "reporter/traces/README.md",
+ "traces": [
+  {
+   "id": "arc-voice-memo-to-two-faces",
+   "file": "reporter/traces/arc-voice-memo-to-two-faces.json",
+   "size": "arc",
+   "title": "The whole arc: a voice memo at about 19:00 to a site with two faces at 02:19",
+   "status": "captured from the record to 02:50 UTC on 11 November; the project goes on",
+   "from": "2026-11-10T18:55:42Z",
+   "to": "2026-11-11T02:19:08Z",
+   "steps": 28,
+   "steps_with_no_evidence": 0,
+   "person_steps": 9,
+   "agent_steps": 19,
+   "people_acted": [
+    "Dinis Cruz"
+   ],
+   "agents_acted": [
+    "conductor@web-summit.dinis",
+    "incident.conductor@web-summit.dinis",
+    "incident.dev@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.weather@web-summit.dinis"
+   ],
+   "summary": [
+    "On 10 November at about 19:00 UTC Dinis asked, by voice, for a separate incident team with its own conductor, repository and site, and pushes live in seconds; at 02:19:08 on 11 November the home page of storm-charles.promptugal.news became the Weather face, with the evidence behind it at data-room/.",
+    "Dinis acted nine times in the record: the voice memo, the repository and its name, a yes to the plan, and six spoken directions (~23:40, ~00:30, ~01:28, ~02:10, ~02:20, ~02:50). Everything between is agents, routed by incident.conductor@.",
+    "The shape of every round: Dinis speaks; the conductor writes his words into BRIEF.md and the jobs into agents/JOBS.md within minutes and starts sessions; each new agent pushes a key, then a first page, within about ten minutes; rounds follow.",
+    "From the first push (21:14:33) to the swap (02:19:08) is 5 h 04 min; by 02:53 the CI record held 363 commits by 24 agents and 210 releases, a push served at the median in 30 s (data/ci/index.json).",
+    "What broke and was fixed in the open: the first run failed its own gate; bursts of pushes starved the deploy; twenty agents raced release.sh; three agents still cannot push here and the conductor copies their files across (an ask to Dinis open since 21:20)."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  },
+  {
+   "id": "correction-three-fixes-in-the-open",
+   "file": "reporter/traces/correction-three-fixes-in-the-open.json",
+   "size": "correction",
+   "title": "Corrections: a private address withheld, facts relabelled evidence, a hypothesis re-weighed",
+   "status": "captured; one residue open (git history), waiting on Dinis",
+   "from": "2026-11-11T01:52:47Z",
+   "to": "2026-11-11T02:36:40Z",
+   "steps": 12,
+   "steps_with_no_evidence": 1,
+   "person_steps": 0,
+   "agent_steps": 12,
+   "people_acted": [],
+   "agents_acted": [
+    "incident.conductor@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis",
+    "incident.graph@web-summit.dinis",
+    "incident.board@web-summit.dinis",
+    "incident.researcher@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis",
+    "incident.stories@web-summit.dinis"
+   ],
+   "summary": [
+    "Three mistakes of three kinds, each found by an agent other than the one that made it, each fixed in a commit that says what was wrong.",
+    "Privacy: a timeline row linked a public post by a private person, and the address carried the account's handle. incident.wikipedia@'s values check found it (01:52:47); the conductor withheld it 71 s later and wrote the rule into CLAUDE.md; the graph agent regenerated its tables and made its builder refuse such addresses (01:55:05).",
+    "Labels: when the researcher supplied the missing addresses, eight rows turned out to rest on the press, not on the body that decides; the conductor relabelled them evidence (02:18:38). Eighteen minutes later one row went the other way: the alert's legal text, read in the official journal, is a fact (02:36:40).",
+    "Analysis: the meteorologist's hypothesis that the centre would pass \"just south\" of Lisbon (labelled a hypothesis from 00:00:27) was re-weighed by the meteorologist itself on newer model data (02:29:19): the side is unsettled. The conductor carried it across in 48 s; the story built on it was retold six minutes later.",
+    "What a correction cannot undo: the withheld address is still in git history, because history is never rewritten here. That is a card waiting on Dinis (a-private-address-history)."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  },
+  {
+   "id": "escalation-asks-waiting-on-dinis",
+   "file": "reporter/traces/escalation-asks-waiting-on-dinis.json",
+   "size": "escalation",
+   "title": "Escalations: two asks to Dinis from the first evening, and how long each waited",
+   "status": "open: the first ask is half answered (the number, not which sessions get the key); the second waits",
+   "from": "2026-11-10T21:20:07Z",
+   "to": null,
+   "steps": 8,
+   "steps_with_no_evidence": 1,
+   "person_steps": 2,
+   "agent_steps": 6,
+   "people_acted": [
+    "Dinis Cruz"
+   ],
+   "agents_acted": [
+    "incident.dev@web-summit.dinis",
+    "incident.conductor@web-summit.dinis",
+    "incident.board@web-summit.dinis"
+   ],
+   "summary": [
+    "Agents escalate to Dinis in one way: a line starting \"Dinis:\" under asks in their status file. From 02:20 UTC incident.board@ turns those lines into cards; board/for-dinis lists them in the order of what stands before the launch.",
+    "The model budget: asked by incident.dev@ on the first evening (the board dates it 21:45), capped at 5 US dollars a day \"until you say\". Answered by Dinis at ~02:50 (\"you can use up to $20\"): about 5 h after the ask. He answered in a spoken review, not from the board.",
+    "Attach the repository: asked at 21:20:07, six minutes after the first push. Still open at 03:00, 5 h 40 min later. The cost is paid at every wake: the conductor copies three agents' files across by hand.",
+    "The agents' status files held 46 asks for Dinis when last indexed; the board held 36 cards waiting on him (31 asks, 5 blocked jobs), none closed by him in the board's record. Eighteen other asks were closed among the agents (decided by the conductor, met, or withdrawn).",
+    "Not evidenced: whether Dinis has seen board/for-dinis (page views are not recorded: that vault is itself an ask). The board's opened times are its reading of status files, not event times: it dates the attach ask 21:45; the commit is 21:20:07."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  },
+  {
+   "id": "large-every-word-needs-a-reference",
+   "file": "reporter/traces/large-every-word-needs-a-reference.json",
+   "size": "large",
+   "title": "Large: \"every word here needs to have a reference\" to entities, the linker, Wayback and the panel",
+   "status": "open: the chain exists end to end for the first rows; coverage is partial and said so",
+   "from": "2026-11-11T02:06:42Z",
+   "to": "2026-11-11T02:51:52Z",
+   "steps": 15,
+   "steps_with_no_evidence": 0,
+   "person_steps": 1,
+   "agent_steps": 14,
+   "people_acted": [
+    "Dinis Cruz"
+   ],
+   "agents_acted": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.librarian@web-summit.dinis",
+    "incident.entities@web-summit.dinis",
+    "incident.archivist@web-summit.dinis"
+   ],
+   "summary": [
+    "Dinis (~02:10): \"Every word here needs to have a reference ... I should be able to connect until I arrive at the last source. And the last source should be a page about the evidence that we have.\" Thirty minutes later a reader could walk word, entity, row, our capture, outside address.",
+    "One contract (RESTRUCTURE.md, 02:07:27) split it into owned parts: entities and the linker (incident.entities@), captures and vaults (incident.archivist@), the panel (incident.designer@), a viewer for every file (incident.librarian@); the graph and the timeline joined them.",
+    "The parts met through files, not meetings: a generators list any agent adds a line to; rows.json from the archivist read by the conductor's timeline; entities/index.json joined by the graph builder; the panel's hooks filled by the lens.",
+    "Three mistakes were pushed and fixed in the open within minutes: a missing semicolon stopped the lens (02:28:01, fixed 02:28:25); 23 captures of cut-short addresses (removed 02:40:57); the linker took a quarter of the gate's budget (620 ms to 230 ms, 02:37:11).",
+    "Coverage came last: REALITY.md at 02:45 said \"most timeline addresses are not captured yet\"; at 02:51:52 the archivist recorded every address the timeline and decisions cite as captured (79; press kept privately). Still open: vault write keys for three vaults exist only in their agents' sessions (an ask to Dinis)."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  },
+  {
+   "id": "medium-new-homepage-to-the-swap",
+   "file": "reporter/traces/medium-new-homepage-to-the-swap.json",
+   "size": "medium",
+   "title": "Medium: \"create a complete new homepage right now\" to the swap, 12 minutes later",
+   "status": "captured to the swap and the rounds that followed it, to 02:34 UTC",
+   "from": "2026-11-11T02:06:42Z",
+   "to": "2026-11-11T02:19:08Z",
+   "steps": 12,
+   "steps_with_no_evidence": 1,
+   "person_steps": 1,
+   "agent_steps": 11,
+   "people_acted": [
+    "Dinis Cruz"
+   ],
+   "agents_acted": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.weather@web-summit.dinis",
+    "incident.weatherwatch@web-summit.dinis"
+   ],
+   "summary": [
+    "Dinis (~02:10): \"Create a complete new homepage right now ... like BBC Weather ... only focused on Storm Charles.\" At 02:19:08 the designer's commit made / the Weather face: 12 min 26 s after the commit that records the sentence.",
+    "Three agents in a relay: the conductor (the contract and a new agent), incident.weather@ (the face, seven rounds in 15 minutes), incident.designer@ (the frame, a bar to pass, then the swap). Two more improved it: weatherwatch (a review) and studio (found a rule the gate did not enforce).",
+    "The decision to swap was an agent's: \"the conductor left the minute to me\" (design/round-32.md). The designer measured the new page against four tests before moving it to /.",
+    "The rule \"the visual face uses only data from the data section\" was a promise at 02:19 and a gate check at 02:32:33, after incident.studio@ found it missing.",
+    "Not evidenced: the bar as sent and weather@'s proposal for the swap (messages); the designer's round note and weather@'s status file say they happened. weather@'s status times ran ahead of its commits (round 1 dated 02:55Z, committed 02:16:19); it corrected them itself at 03:01:09 (002ed61)."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  },
+  {
+   "id": "small-metro-sentence-to-entity-page",
+   "file": "reporter/traces/small-metro-sentence-to-entity-page.json",
+   "size": "small",
+   "title": "Small: \"where's everything about the Metro?\" to a page that holds it",
+   "status": "captured to live; the node's label is \"evidence\" (its summary rests on a press page), which the page says",
+   "from": "2026-11-11T02:06:42Z",
+   "to": "2026-11-11T02:30:13Z",
+   "steps": 7,
+   "steps_with_no_evidence": 0,
+   "person_steps": 1,
+   "agent_steps": 6,
+   "people_acted": [
+    "Dinis Cruz"
+   ],
+   "agents_acted": [
+    "incident.conductor@web-summit.dinis",
+    "incident.researcher@web-summit.dinis",
+    "incident.entities@web-summit.dinis"
+   ],
+   "summary": [
+    "In his ~02:10 review Dinis asked \"where's everything about the Metro?\"; 24 minutes after the commit that records the sentence, entities/service/metro.html carried the researcher's whole file on the Metro.",
+    "Four agents touched it: the conductor (wrote the sentence down, set the grammar, carried the file across), the researcher (made the file, in another repository), entities (made the node and the page), the archivist (the captures the node cites).",
+    "The hand-off that cost time is the one a person could remove: the researcher cannot push here, so its file waited 5 min 38 s for the conductor to copy it (the ask to attach the repository has been open since 21:20).",
+    "First page with a Metro node: v0.1.204 (commit 02:20:30). The page with the researcher's file: commit 02:30:13, served in v0.1.252.",
+    "Not evidenced: how the conductor told the researcher (a message); the only trace is the researcher's status line \"02:20 (Dinis's direction via incident.conductor@)\", whose time is later than its own commit (02:13:00)."
+   ],
+   "updated": "2026-11-11T03:06:00Z"
+  }
+ ]
+}

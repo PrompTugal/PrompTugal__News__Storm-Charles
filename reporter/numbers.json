@@ -1,0 +1,239 @@
+{
+ "about": "The project counted by hour (UTC), from the data other agents keep: commits, agents active and hand-offs (incident.ci@), runs and releases (incident.ci@), cards opened and closed (incident.board@). Each figure's source file and that file's own time are in sources: a figure knows nothing after its source's as_of, so the last hour is always short. Pages by hour are not recorded anywhere (not_recorded); now holds the latest whole-site counts. Written by tools/reporter-numbers.mjs; nothing here is counted by hand.",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T02:54:11Z",
+ "updated_note": "the newest of the sources' own times (the tool reads no clock, so the same sources always give the same file)",
+ "sources": [
+  {
+   "figures": [
+    "commits",
+    "agents_active",
+    "handoffs_for"
+   ],
+   "file": "data/ci/commits/*.json",
+   "by": "incident.ci@web-summit.dinis",
+   "as_of": "2026-11-11T02:54:11Z",
+   "note": "agents_active: distinct Agent: trailers on the hour's commits (agents that write in another repository and are synced by the conductor do not count); handoffs_for: For: trailers"
+  },
+  {
+   "figures": [
+    "runs",
+    "releases",
+    "runs_cancelled",
+    "runs_failed",
+    "push_to_served_median_s"
+   ],
+   "file": "data/ci/runs/*.json",
+   "by": "incident.ci@web-summit.dinis",
+   "as_of": "2026-11-11T02:54:11Z",
+   "note": "a release is a run that succeeded (it deployed and tagged a version); cancelled: a newer push replaced it while it waited; by the hour the run was queued"
+  },
+  {
+   "figures": [
+    "cards_opened",
+    "cards_closed"
+   ],
+   "file": "board/items/*.json",
+   "by": "incident.board@web-summit.dinis",
+   "as_of": "2026-11-11T02:31:49Z",
+   "note": "opened: the card's opened_utc, which is when the ask or job was first written down as the board read it, not when the card was made (the board began at 02:20 UTC on 11 November); closed: the history line that moved it to done or answered"
+  },
+  {
+   "figures": [
+    "now.files",
+    "now.bytes"
+   ],
+   "file": "data/ci/tree.json",
+   "by": "incident.ci@web-summit.dinis",
+   "as_of": "2026-11-11T02:54:11Z"
+  },
+  {
+   "figures": [
+    "now.agents",
+    "now.asks_for_dinis"
+   ],
+   "file": "data/agents/index.json",
+   "by": "incident.observability@web-summit.dinis",
+   "as_of": "2026-11-11T03:00:49Z"
+  },
+  {
+   "figures": [
+    "now.sessions"
+   ],
+   "file": "data/agents/sessions.json",
+   "by": "incident.observability@web-summit.dinis",
+   "as_of": "2026-11-11T03:00:51Z"
+  },
+  {
+   "figures": [
+    "now.totals",
+    "now.push_to_served_s"
+   ],
+   "file": "data/ci/index.json",
+   "by": "incident.ci@web-summit.dinis",
+   "as_of": "2026-11-11T02:54:11Z"
+  }
+ ],
+ "by_hour": [
+  {
+   "hour": "2026-11-10T18Z",
+   "commits": 0,
+   "agents_active": 0,
+   "handoffs_for": 0,
+   "runs": 0,
+   "releases": 0,
+   "runs_cancelled": 0,
+   "runs_failed": 0,
+   "push_to_served_median_s": null,
+   "cards_opened": 1,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-10T19Z",
+   "commits": 0,
+   "agents_active": 0,
+   "handoffs_for": 0,
+   "runs": 0,
+   "releases": 0,
+   "runs_cancelled": 0,
+   "runs_failed": 0,
+   "push_to_served_median_s": null,
+   "cards_opened": 2,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-10T20Z",
+   "commits": 0,
+   "agents_active": 0,
+   "handoffs_for": 0,
+   "runs": 0,
+   "releases": 0,
+   "runs_cancelled": 0,
+   "runs_failed": 0,
+   "push_to_served_median_s": null,
+   "cards_opened": 4,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-10T21Z",
+   "commits": 11,
+   "agents_active": 1,
+   "handoffs_for": 12,
+   "runs": 10,
+   "releases": 6,
+   "runs_cancelled": 3,
+   "runs_failed": 1,
+   "push_to_served_median_s": null,
+   "cards_opened": 12,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-10T22Z",
+   "commits": 2,
+   "agents_active": 1,
+   "handoffs_for": 2,
+   "runs": 2,
+   "releases": 2,
+   "runs_cancelled": 0,
+   "runs_failed": 0,
+   "push_to_served_median_s": null,
+   "cards_opened": 1,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-10T23Z",
+   "commits": 73,
+   "agents_active": 8,
+   "handoffs_for": 85,
+   "runs": 64,
+   "releases": 33,
+   "runs_cancelled": 29,
+   "runs_failed": 2,
+   "push_to_served_median_s": 29,
+   "cards_opened": 1,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-11T00Z",
+   "commits": 69,
+   "agents_active": 9,
+   "handoffs_for": 87,
+   "runs": 65,
+   "releases": 57,
+   "runs_cancelled": 8,
+   "runs_failed": 0,
+   "push_to_served_median_s": 25,
+   "cards_opened": 0,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-11T01Z",
+   "commits": 34,
+   "agents_active": 9,
+   "handoffs_for": 41,
+   "runs": 34,
+   "releases": 31,
+   "runs_cancelled": 3,
+   "runs_failed": 0,
+   "push_to_served_median_s": 25,
+   "cards_opened": 53,
+   "cards_closed": 0
+  },
+  {
+   "hour": "2026-11-11T02Z",
+   "commits": 174,
+   "agents_active": 23,
+   "handoffs_for": 249,
+   "runs": 154,
+   "releases": 81,
+   "runs_cancelled": 72,
+   "runs_failed": 1,
+   "push_to_served_median_s": 33,
+   "cards_opened": 177,
+   "cards_closed": 53
+  }
+ ],
+ "now": {
+  "files": 1478,
+  "bytes": 13559061,
+  "agents": 30,
+  "asks_for_dinis": 46,
+  "sessions": 25,
+  "totals": {
+   "commits": 363,
+   "first_commit": "2026-11-10T21:03:38Z",
+   "last_commit": "2026-11-11T02:52:48Z",
+   "runs": 329,
+   "by_result": {
+    "failure": 4,
+    "success": 210,
+    "cancelled": 115
+   },
+   "agents": 24,
+   "tags": 213,
+   "github_releases": 0
+  },
+  "push_to_served_s": {
+   "runs": 179,
+   "median": 30,
+   "p90": 44,
+   "max": 161,
+   "min": 21,
+   "source": "each successful run's own notice"
+  },
+  "cards": 251,
+  "cards_by_state": {
+   "done": 52,
+   "open": 169,
+   "blocked": 8,
+   "watching": 21,
+   "answered": 1
+  }
+ },
+ "not_recorded": [
+  "pages served, by hour: no file keeps it (data/ci/tree.json counts tracked files at one moment; the build counts pages only in its own output)",
+  "agents started, by hour: only each agent knows when its session began (data/agents/starts.json says so); a first commit is the earliest trace",
+  "messages between sessions: not in the repository at all",
+  "the three agents that write in SGit-AI__Website__Web-Summit (meteorologist, researcher, dev): their commits there are not in data/ci/"
+ ]
+}
