@@ -4,13 +4,13 @@
  "updated": "2026-11-11T18:38Z",
  "incident": "2026-11-10-storm-charles",
  "counts": {
-  "nodes": 259,
-  "edges": 604,
+  "nodes": 262,
+  "edges": 620,
   "by_type": {
    "agent": 38,
    "body": 18,
    "day": 4,
-   "decision": 81,
+   "decision": 83,
    "hazard": 5,
    "organisation": 8,
    "outlet": 32,
@@ -19,7 +19,7 @@
    "role": 6,
    "service": 16,
    "term": 14,
-   "warning": 11
+   "warning": 12
   }
  },
  "nodes": [
@@ -45,7 +45,7 @@
    "label": "ours",
    "graph": "agent:incident.archivist@web-summit.dinis",
    "edges": 1,
-   "rows": 2
+   "rows": 3
   },
   {
    "id": "agent/board",
@@ -590,7 +590,7 @@
    "label": "fact",
    "graph": "actor:government",
    "edges": 2,
-   "rows": 15
+   "rows": 16
   },
   {
    "id": "body/ifcn-madeira",
@@ -613,8 +613,8 @@
    ],
    "label": "fact",
    "graph": "actor:ipma",
-   "edges": 11,
-   "rows": 69
+   "edges": 12,
+   "rows": 71
   },
   {
    "id": "body/madeira-gov",
@@ -714,7 +714,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 3
+   "rows": 4
   },
   {
    "id": "day/2026-11-10",
@@ -729,7 +729,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 21
+   "rows": 22
   },
   {
    "id": "day/2026-11-11",
@@ -746,7 +746,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 40
+   "rows": 41
   },
   {
    "id": "day/2026-11-12",
@@ -763,7 +763,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 19
+   "rows": 21
   },
   {
    "id": "decision/a1-vialonga",
@@ -821,7 +821,7 @@
    "name": "Close to 400 flights cancelled at Lisbon, Porto, Faro and Madeira, counting those cancelled up to 18:30 and…",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:ana-cancellations-1830",
    "edges": 2,
    "rows": 0
   },
@@ -851,7 +851,7 @@
    "name": "ANEPC 19:00 briefing: 1,630 occurrences on the mainland, 781 floods; most affected Greater Lisbon, the…",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:anepc-briefing-1900",
    "edges": 2,
    "rows": 0
   },
@@ -933,6 +933,16 @@
    "label": "evidence",
    "graph": "decision:bridges-lifted",
    "edges": 3,
+   "rows": 0
+  },
+  {
+   "id": "decision/bridges-normal-wed",
+   "type": "decision",
+   "name": "Traffic on the Vasco da Gama and 25 de Abril bridges back to normal in the late afternoon: usual limits…",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 2,
    "rows": 0
   },
   {
@@ -1065,7 +1075,7 @@
    "label": "fact",
    "graph": "decision:gov-alert",
    "edges": 12,
-   "rows": 0
+   "rows": 1
   },
   {
    "id": "decision/gov-council-sao-bento",
@@ -1292,12 +1302,22 @@
    "rows": 0
   },
   {
+   "id": "decision/pm-alert-not-extended",
+   "type": "decision",
+   "name": "The alert situation will not be extended beyond the end of Wednesday; the government's crisis centre will be…",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 3,
+   "rows": 0
+  },
+  {
    "id": "decision/pm-at-anepc-1927",
    "type": "decision",
    "name": "The Prime Minister at ANEPC: \"os momentos de maior dificuldade ... estão praticamente ultrapassados\";…",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:pm-at-anepc-1927",
    "edges": 2,
    "rows": 0
   },
@@ -1427,7 +1447,7 @@
    "name": "Occurrence count, Madeira: 328 to 18:40 (since 20:00 Tuesday); 813 responders, 341 vehicles",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:srpc-madeira-count-1840",
    "edges": 4,
    "rows": 0
   },
@@ -1595,7 +1615,7 @@
    "label": "ours",
    "graph": null,
    "edges": 4,
-   "rows": 36
+   "rows": 37
   },
   {
    "id": "hazard/high-winds",
@@ -1685,8 +1705,8 @@
    "also": [],
    "label": "evidence",
    "graph": "actor:lusoponte",
-   "edges": 6,
-   "rows": 4
+   "edges": 7,
+   "rows": 5
   },
   {
    "id": "organisation/night-summit",
@@ -1787,7 +1807,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:cnn-portugal",
-   "edges": 27,
+   "edges": 30,
    "rows": 11
   },
   {
@@ -1886,7 +1906,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:iol",
-   "edges": 27,
+   "edges": 30,
    "rows": 0
   },
   {
@@ -1913,7 +1933,7 @@
    "label": "ours",
    "graph": "actor:outlet:jornal-economico",
    "edges": 3,
-   "rows": 0
+   "rows": 1
   },
   {
    "id": "outlet/lusa",
@@ -1925,7 +1945,7 @@
    "label": "ours",
    "graph": "actor:outlet:lusa",
    "edges": 1,
-   "rows": 18
+   "rows": 19
   },
   {
    "id": "outlet/madeira-island-news",
@@ -2084,7 +2104,7 @@
    "label": "ours",
    "graph": "actor:outlet:sic-noticias",
    "edges": 0,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "outlet/techcrunch",
@@ -2222,7 +2242,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 67
+   "rows": 69
   },
   {
    "id": "place/lisbon-district",
@@ -2254,7 +2274,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 21
+   "rows": 22
   },
   {
    "id": "place/mainland-portugal",
@@ -2268,7 +2288,7 @@
    "label": "ours",
    "graph": "place:PT-mainland",
    "edges": 0,
-   "rows": 12
+   "rows": 14
   },
   {
    "id": "place/oriente",
@@ -2488,8 +2508,8 @@
    ],
    "label": "evidence",
    "graph": "actor:pm",
-   "edges": 3,
-   "rows": 1
+   "edges": 4,
+   "rows": 2
   },
   {
    "id": "role/websummit-chief-executive",
@@ -2526,7 +2546,7 @@
    "label": "fact",
    "graph": "actor:carris",
    "edges": 3,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "service/carris-metropolitana",
@@ -2548,7 +2568,7 @@
    "label": "fact",
    "graph": "actor:cp",
    "edges": 5,
-   "rows": 5
+   "rows": 6
   },
   {
    "id": "service/ferries",
@@ -2571,7 +2591,7 @@
    "label": "evidence",
    "graph": "actor:fertagus",
    "edges": 2,
-   "rows": 3
+   "rows": 4
   },
   {
    "id": "service/flixbus",
@@ -2705,7 +2725,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 4
+   "rows": 5
   },
   {
    "id": "term/cap",
@@ -2718,7 +2738,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 26
+   "rows": 27
   },
   {
    "id": "term/communique",
@@ -2753,7 +2773,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 21
+   "rows": 22
   },
   {
    "id": "term/fact",
@@ -2766,7 +2786,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 17
+   "rows": 19
   },
   {
    "id": "term/hypothesis",
@@ -2882,6 +2902,16 @@
    "graph": "warning:anepc-aviso-21",
    "edges": 3,
    "rows": 1
+  },
+  {
+   "id": "warning/ipma-all-lifted-2005",
+   "type": "warning",
+   "name": "All rain and wind warnings lifted on the mainland; only coastal (sea) warnings remain, orange",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 2,
+   "rows": 0
   },
   {
    "id": "warning/ipma-communique-1",
