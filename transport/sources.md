@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:12 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:13 UTC
 
 Not a warning service. No advice of ours: **check with your airline or operator.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -31,7 +31,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 |---|---|---|---|---|---|
 | Metro de Lisboa's site (news, notices) | Public WordPress API | Yes with our client name (curl's default name got 403 at 10:25); [robots.txt](https://www.metrolisboa.pt/robots.txt) is empty | [Its terms](https://www.metrolisboa.pt/termos-e-condicoes-de-utilizacao/), clause 3: content "só podem ser utilizados para informação pessoal"; none of it may be "publicado … sem o prévio consentimento escrito do ML" | Its notices | **terms**: stopped at 12:08; Metro's consent is a question for Dinis |
 | Metro de Lisboa's live line status | Loaded by its page from an internal site endpoint; the published API (api.metrolisboa.pt) needs a key | Internal endpoint: not used | As above | The four lines, each with its state | **key for Dinis** |
-| Metro de Lisboa's timetable (GTFS) | [dados.gov.pt](https://dados.gov.pt/datasets/?q=gtfs) "GTFS do Metropolitano de Lisboa", updated 26 Oct 2026 | Yes | **CC BY** (dados.gov.pt) | Trains scheduled per hour per line today: the normal day to set beside the reports | **next** |
+| Metro de Lisboa's timetable (GTFS) | [dados.gov.pt](https://dados.gov.pt/datasets/?q=gtfs) "GTFS do Metropolitano de Lisboa", updated 26 Oct 2026 | Yes | **CC BY** (dados.gov.pt) | Trains scheduled per hour per line today: the normal day to set beside the reports | **live** (12:13): [metro-schedule.json](../incidents/2026-11-10-storm-charles/data/transport/metro-schedule.json), from the zip in the raw store (sha256 in the file); [tools/transport-gtfs.mjs](../tools/transport-gtfs.mjs) |
 | Metro do Porto | Its news pages (server-rendered) | Yes; robots.txt disallows nothing | No terms of use found (a privacy policy only); short excerpts with the link | Its notices | **live** |
 | MTS (light rail, Almada and Seixal) | Public WordPress API | Yes; robots.txt disallows nothing | No terms of use found (a privacy policy only); short excerpts with the link | Its notices | **live** |
 

@@ -10,7 +10,7 @@
   var MODES = [
     { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (OpenSky Network)' },
     { id: 'trains', name: 'Trains', page: 'trains', file: null, ents: ['cp'], ops: 'CP, Fertagus' },
-    { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
+    { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', sched: 'metro-schedule.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
     { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (next)' },
     { id: 'ferries', name: 'Ferries and the port', page: 'ferries', file: 'ferries.json', ents: ['ferries', 'port'], ops: 'Transtejo Soflusa' },
     { id: 'coaches', name: 'Coaches', page: 'coaches', file: null, ents: ['rede-expressos', 'flixbus'], ops: 'Rede Expressos, FlixBus' },
@@ -93,16 +93,32 @@
     })
   }
 
+  function sched(j) {
+    if (!j || !j.days || !j.days.length) return ''
+    var today = new Date().toISOString().slice(0, 10), day = j.days.filter(function (x) { return x.day === today })[0] || j.days[0]
+    var gt = function (t) { var h = +String(t).slice(0, 2); return h >= 24 ? String(h - 24).padStart(2, '0') + String(t).slice(2) + ' after midnight' : t }
+    var row = function (l) {
+      var max = Math.max.apply(null, l.per_hour.concat([1]))
+      return '<section class="card tr-ap"><h3>' + esc(l.line) + ' line <span class="meta">' + l.trips + ' trips, first ' + esc(gt(l.first)) + ', last ' + esc(gt(l.last)) + '</span></h3><div class="tr-bars" role="img" aria-label="' + esc(l.line) + ' line, trips scheduled to start by hour, Lisbon time: ' + l.per_hour.map(function (n, i) { return i + 'h ' + n }).join(', ') + (l.after_midnight ? ', after midnight ' + l.after_midnight : '') + '">' +
+        l.per_hour.map(function (n, i) { return '<span class="tr-bar" title="' + String(i).padStart(2, '0') + ':00: ' + n + ' scheduled"><i style="height:' + Math.round(100 * n / max) + '%"></i><b>' + (n || '') + '</b><small>' + String(i).padStart(2, '0') + '</small></span>' }).join('') + '</div>' +
+        (l.after_midnight ? '<p class="meta">And ' + l.after_midnight + ' more start after midnight, the last at ' + esc(gt(l.last).slice(0, 5)) + '.</p>' : '') + '</section>'
+    }
+    return '<section class="tr-sched"><h2>Metro de Lisboa: the timetable for ' + esc(day.weekday.charAt(0).toUpperCase() + day.weekday.slice(1)) + ' ' + esc(day.day.slice(8)) + ' November ' + lbl('fact') + '</h2>' +
+      '<p class="meta">Trips scheduled to start each hour, both directions, Lisbon time (the same as UTC in November). <b>The plan, not what ran</b>: a normal day to set beside the operator’s and the authorities’ reports. ' + prov(j.source.name + ', ' + j.source.publisher + ', ' + j.source.licence, j.source.url, j.source.read) + ', feed version ' + esc(j.source.feed_version) + '.</p>' +
+      '<div class="tr-grid">' + day.lines.map(row).join('') + '</div></section>'
+  }
+
   function page() {
-    Promise.all([M.file ? get(room + 'transport/' + M.file) : Promise.resolve(null)].concat(M.ents.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
-      var d = r[0], ents = r.slice(1), h = note
+    Promise.all([M.file ? get(room + 'transport/' + M.file) : Promise.resolve(null), M.sched ? get(room + 'transport/' + M.sched) : Promise.resolve(null)].concat(M.ents.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
+      var d = r[0], ents = r.slice(2), h = note
       if (M.id === 'flights') {
         h += d ? '<p class="meta">Updated ' + tm(d.updated) + ' UTC. ' + esc(d.attribution) + '. Airline flights only; nothing per aircraft is shown. Cancellations and diversions: the airports’ own boards show a bot check to automated readers, which we do not get round; the counts reported in the press are in the decisions below.</p><div class="tr-grid">' + d.airports.map(airport).join('') + '</div>' : '<p>' + lbl('none') + ' flights.json did not load.</p>'
       } else if (d) {
         h += '<p class="meta">Updated ' + tm(d.updated) + ' UTC, from each operator’s own site, feed or open API. Short excerpts; the notice is one click away.</p><div class="tr-grid">' + d.operators.map(operator).join('') + '</div>'
       } else h += '<p>' + lbl('none') + ' Own sources for this mode: not read yet (' + esc(M.ops) + '). Until then, the decisions recorded by our researcher, below.</p>'
+      if (M.sched) h += sched(r[1])
       h += decisions(ents, M.ents)
-      if (M.file) h += dataLine([M.file])
+      if (M.file) h += dataLine([M.file].concat(M.sched ? [M.sched] : []))
       h += '<p class="meta"><a href="index.html">All transport</a></p>'
       el.innerHTML = h
     })
