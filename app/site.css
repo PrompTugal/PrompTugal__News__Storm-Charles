@@ -711,3 +711,8 @@ a.ver.repo { text-transform: none; }
 .ag-mark .ag-p { fill: var(--surface); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
 .ag-mark .ag-a { fill: var(--focus); stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
 .ag-mark .ag-t { font: 700 9px var(--mono); fill: var(--ink); }
+
+/* round 41: long unbroken strings (paths, addresses, ids) in prose wrap instead of widening the page on a phone; table cells break between words */
+.doc article p, .doc article li, .doc article blockquote, .doc article h1, .doc article h2, .doc article h3, .card p, .panel { overflow-wrap: anywhere; }
+.doc article td, .doc article th { overflow-wrap: normal; word-break: normal; } .doc article td code { overflow-wrap: anywhere; }
+a.ent { white-space: normal; }
