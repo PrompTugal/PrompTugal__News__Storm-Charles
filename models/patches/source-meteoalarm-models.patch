@@ -1,0 +1,68 @@
+diff --git a/tools/source-meteoalarm-models.mjs b/tools/source-meteoalarm-models.mjs
+new file mode 100644
+index 0000000..5e06491
+--- /dev/null
++++ b/tools/source-meteoalarm-models.mjs
+@@ -0,0 +1,62 @@
++#!/usr/bin/env node
++// A second reader of each new CAP message: open-weight models through OpenRouter extract its fields from the raw message, compared with
++// this desk's own parser (proposed by incident.models@web-summit.dinis for incident.sources@web-summit.dinis, 11 November 2026, WS-214;
++// Dinis ~22:00 UTC, BRIEF.md: collectors through OpenRouter, open-source models). Run after tools/source-meteoalarm.mjs:
++//   node tools/source-meteoalarm-models.mjs [--country portugal] [--from FEED.json] [--max 10] [--dry] [--wake "hourly HH:MM"]
++// The raw feed: --from, else the data vault's latest copy (SOURCE_VAULT_DIR/<country>/latest/feeds-<country>.json), never fetched here.
++// For each CAP message in latest.json not yet checked (newest sent first, at most --max), the national-language info block as the CAP
++// message writes it (identifier, sent, msgType, event, severity, onset, expires, areaDesc, description) goes to tools/models-delegate.mjs
++// (task extract-warning: two open-weight models, plus one commercial model for comparison). The parser's line is the fact; the models'
++// answer is evidence, labelled with their names. Written to sources/meteoalarm/data/<country>/models-check.json: per message, each
++// field the parser and the models agree or differ on, and the trace id. Fields only: no message text, no model text.
++// Every call is in the ledger and published text-free in agents/sources/calls/ (tools/models-calls.mjs).
++import fs from 'node:fs'
++import os from 'node:os'
++import path from 'node:path'
++import { fileURLToPath } from 'node:url'
++import { delegate } from './models-delegate.mjs'
++
++const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
++const AGENT = process.env.CHECK_AGENT || 'incident.sources@web-summit.dinis'
++const args = process.argv.slice(2), opt = (k, d) => { const i = args.indexOf(k); return i < 0 ? d : args[i + 1] }
++const COUNTRY = opt('--country', 'portugal'), MAX = +opt('--max', 10), DRY = args.includes('--dry'), WAKE = opt('--wake', process.env.INCIDENT_WAKE || null)
++const DIR = path.join(ROOT, 'sources/meteoalarm/data', COUNTRY), OUT = path.join(DIR, 'models-check.json')
++const VAULT = process.env.SOURCE_VAULT_DIR || path.join(os.homedir(), 'vaults/storm-charles-source-meteoalarm')
++const feedFile = opt('--from', path.join(VAULT, COUNTRY, 'latest', `feeds-${COUNTRY}.json`))
++if (!fs.existsSync(feedFile)) { console.error(`no raw feed at ${feedFile}: give --from FILE or SOURCE_VAULT_DIR`); process.exit(2) }
++
++const latest = JSON.parse(fs.readFileSync(path.join(DIR, 'latest.json'), 'utf8'))
++const raw = new Map(JSON.parse(fs.readFileSync(feedFile, 'utf8')).warnings.map(w => [w.alert?.identifier, w.alert]))
++let out; try { out = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { out = null }
++out = out || { about: "Each CAP message of MeteoAlarm's feed read a second time by open-weight models through OpenRouter (tools/source-meteoalarm-models.mjs, task extract-warning of models/delegate.json), compared field by field with this desk's parser (latest.json). The parser's value is the fact; the models' answer is evidence, labelled with their names. Fields only: no message text and no model text here.", by: AGENT, updated: null, checked: {} }
++
++// the parser's line in the task's terms
++const TYPE = { rain: 'rain', wind: 'wind', coastalevent: 'coastal_event', thunderstorm: 'thunderstorm', fog: 'fog', snow: 'snow', 'snow-ice': 'snow', 'low-temperature': 'cold', 'high-temperature': 'heat' }
++const parserFields = m => ({ type: TYPE[String(m.hazard || '').toLowerCase()] || String(m.hazard || '').toLowerCase(), level: m.level, area: m.area, start_utc: m.onset_utc, end_utc: m.expires_utc })
++const z = v => typeof v === 'string' ? (isNaN(Date.parse(v)) ? v : new Date(v).toISOString().replace(/\.\d+Z$/, 'Z')) : v
++const capText = a => { const i = (a.info || []).find(x => !/^en/i.test(x.language || '')) || a.info?.[0] || {}
++    return [`identifier: ${a.identifier}`, `sent: ${a.sent}`, `msgType: ${a.msgType}`, `event: ${i.event}`, `severity: ${i.severity}`, `onset: ${i.onset}`, `expires: ${i.expires}`, `areaDesc: ${(i.area || []).map(x => x.areaDesc).join('; ')}`, i.description ? `description: ${i.description}` : null].filter(Boolean).join('\n') }
++
++const todo = latest.messages.filter(m => !out.checked[m.id] && raw.has(m.id)).sort((a, b) => b.sent_utc.localeCompare(a.sent_utc)).slice(0, MAX)
++let cost = 0, agreeAll = 0
++for (const m of todo) {
++    const r = await delegate({ task: 'extract-warning', input: { id: m.id, input: capText(raw.get(m.id)) }, agent: AGENT, wake: WAKE })
++    cost += r.cost_usd
++    const p = parserFields(m), open = r.models.filter(x => !x.comparison && x.valid), cmp = r.models.find(x => x.comparison)
++    const fields = {}
++    for (const k of Object.keys(p)) {
++        const said = open.map(x => k === 'level' || k === 'type' ? String(x.answer[k]).toLowerCase() : k.endsWith('_utc') ? z(x.answer[k]) : String(x.answer[k]).trim())
++        fields[k] = { parser: p[k], models_agree_with_parser: said.length ? said.filter(v => v === p[k]).length + ' of ' + said.length : null, ...(said.some(v => v !== p[k]) ? { models_said: [...new Set(said)] } : {}) }
++    }
++    const agree = open.length >= 2 && Object.values(fields).every(f => f.models_agree_with_parser === `${open.length} of ${open.length}`)
++    if (agree) agreeAll++
++    out.checked[m.id] = { sent_utc: m.sent_utc, area: m.area, at: r.at, trace_id: r.trace_id, label: 'evidence', models: open.map(x => x.model), agree_with_parser: agree, fields,
++        comparison: cmp ? { model: cmp.model, label: 'commercial, for comparison', valid: !!cmp.valid, agrees_with_parser: !!cmp.valid && Object.keys(p).every(k => (k.endsWith('_utc') ? z(cmp.answer[k]) : String(cmp.answer[k]).trim().toLowerCase()) === (k === 'area' ? String(p[k]).toLowerCase() : p[k])) } : null,
++        cost_usd: r.cost_usd, calls: r.calls }
++}
++out.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
++const all = Object.values(out.checked)
++out.totals = { checked: all.length, agree_with_parser: all.filter(c => c.agree_with_parser).length, differ: all.filter(c => !c.agree_with_parser).length, cost_usd: +all.reduce((s, c) => s + (c.cost_usd || 0), 0).toFixed(6) }
++if (!DRY) fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n')
++else console.error(JSON.stringify(Object.fromEntries(todo.map(m => [m.id, out.checked[m.id]])), null, 1))
++console.log(JSON.stringify({ agent: AGENT, checked_now: todo.length, agree_with_parser: agreeAll, cost_usd: +cost.toFixed(6), dry: DRY }))
