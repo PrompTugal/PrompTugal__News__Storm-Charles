@@ -155,8 +155,11 @@
     edges.forEach(function (e) { var a = e.at && typeof e.at === 'object' ? e.at.at : e.at; var k = String(e.decision).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48); if (typeof a === 'string' && a.slice(0, 10) === today && /T/.test(a) && kind(e.label) !== 'hypothesis' && !seen[k] && (seen[k] = 1)) ch.push({ t: a, d: e }) })
     var mins = {}; ch.forEach(function (c) { mins[iso(c.t).slice(0, 16)] = 1 })
     ;((W && W.history) || []).forEach(function (h) { if (String(h.at_utc).slice(0, 10) === today && !mins[iso(h.at_utc).slice(0, 16)]) ch.push({ w: 1, t: h.at_utc, d: { decision: h.event, label: h.kind, source: h.source, read: h.read_utc, published_utc: h.at_utc } }) })
+    var words = function (t) { var w = {}; String(t || '').toLowerCase().replace(/[^a-z0-9à-ú ]/g, ' ').split(/\s+/).forEach(function (x) { if (x.length > 3 || /^\d+$/.test(x)) w[x] = 1 }); return w }
+    var alike = function (a, b) { var A = words(a), B = words(b), n = 0, na = Object.keys(A).length, nb = Object.keys(B).length; for (var k in A) if (B[k]) n++; return n / Math.max(1, Math.min(na, nb)) >= 0.5 }
     var rank = function (c) { return /^ipma/.test(c.d.id || '') || c.d.by === 'ipma' || c.w ? 0 : kind(c.d.label) === 'fact' ? 1 : 2 }
     ch.sort(function (a, b) { return (rank(a) - rank(b)) || (T(b.t) - T(a.t)) })
+    ch = ch.filter(function (c, i) { for (var j = 0; j < i; j++) if (Math.abs(T(ch[j].t) - T(c.t)) < 36e5 * 6 && alike(ch[j].d.decision, c.d.decision)) return false; return true })
     var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA\'s warning changes first, then other facts, then reports; newest first in each)</span></h2><ul class="gd-rows">' +
       ch.slice(0, 3).map(function (c) { return rowCut(c.d, 140).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
       (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + '</section>'
@@ -197,7 +200,7 @@
     var ops = lisOps(MT, ['metro-lisboa']).concat(lisOps(BU, ['carris-metropolitana']), lisOps(TR, ['fertagus']), lisOps(FE))
     if (!ops.length) ops = (S && S.operators) || []
     var opLine = function (o) {
-      if (o.label === 'none') return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> <span class="lbl gd-l-not-stated">not read</span></div><span class="meta">' + esc(cut(o.note || o.state || 'not read', 100)) + '</span></li>'
+      if (o.label === 'none') return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> <span class="gd-ns">we do not read this site</span></div><span class="gd-c-t">Its own word is not shown here; what was reported about its service is below. <span class="gd-c-r">' + (o.read ? 'checked ' + shortT(o.read) : '') + '</span></span><details class="gd-src"><summary>Why</summary><p class="meta">' + esc(o.note || o.state || '') + '</p></details></li>'
       var n = (o.notices || [])[0], t = n && (n.updated || n.published || n.from)
       return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> ' + lbl(o.label) + '</div>' +
         (n ? '<span class="gd-c-t">“' + esc(cut(n.title || n.header, 72)) + '” <span class="gd-c-r">' + (t && !/^\d{4}-\d\d-\d\d$/.test(t) ? shortT(t) + ' · ' : '') + 'read ' + shortT(o.read) + '</span></span>' : '<span class="gd-c-t">' + esc(o.state || 'no notice') + ' <span class="gd-c-r">read ' + shortT(o.read) + '</span></span>') +
@@ -250,10 +253,10 @@
     LINES.madeira = mDec[0] ? mDec[0].decision : ''
     out += sect('madeira', '6 · Madeira',
       (mDec[0] ? '<p class="gd-big">' + stateChip(stateOf(mDec[0])) + ' <b>' + esc(mDec[0].decision) + '</b> ' + lbl(mDec[0].label) + ' ' + prov(host(mDec[0].address), mDec[0].address, mDec[0].read, mDec[0].published_utc, kind(mDec[0].label)) + '</p>' : '') +
-      '<h4>Decisions stated, newest first</h4><ul class="gd-rows">' + mDec.slice(1, 8).map(row).join('') + '</ul>' +
-      (mCount[0] ? '<h4>Occurrences, the latest count</h4><ul class="gd-rows">' + row(mCount[0]) + '</ul>' : '') +
       '<h4>IPMA\'s warnings for Madeira</h4><ul class="gd-ws">' + (mw.length ? mw.map(function (w) { return warnLine(w).replace('<b>', '<b>' + esc(AREA[w.area] || w.area) + ': ') }).join('') : '<li>No orange or red IPMA warning for Madeira in force or ahead, in the feed as we last read it.</li>') + '</ul>' +
       '<p class="meta">' + prov('IPMA open data', W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.source, W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.read_utc) + ' (orange and red only)</p>' +
+      '<h4>Decisions stated, newest first</h4><ul class="gd-rows">' + mDec.slice(1, 8).map(row).join('') + '</ul>' +
+      (mCount[0] ? '<h4>Occurrences, the latest count</h4><ul class="gd-rows">' + row(mCount[0]) + '</ul>' : '') +
       '<p class="gd-ns-line">The government\'s alert situation covers mainland Portugal (its own words); Madeira\'s measures are the regional authorities\'. Anything not listed here (roads, buses, the Porto Santo ferry, shops, Funchal\'s centre since this morning): <span class="gd-ns">not stated</span> in what we have read.</p>' +
       '<p class="meta">Madeira\'s civil protection: <a href="https://www.procivmadeira.pt/" rel="noopener">procivmadeira.pt</a>.</p>',
       entityBlock(E.madeira, 'Everything we hold on Madeira'))
