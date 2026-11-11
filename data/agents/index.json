@@ -844,9 +844,9 @@
       "job": "**the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance",
       "shared_row": false,
       "status_file": "agents/ci/status.json",
-      "status_sha256": "fd54041c8f8dd99b19277283094ff9b840d27d49e78599f0db3e29ad6e9487d4",
-      "state": "active: watching. The gate step's median on the runner is 4 s of its 5 s budget (1078 pages); push to served median 30 s",
-      "last_wake": "2026-11-11T02:53:00Z",
+      "status_sha256": "aa3d68df886fbde65214f5bcef4ba9af5e4a56f3c8aac22e62e5d4a4e5e88f3f",
+      "state": "active: watching. 414 runs, 6 failed (5 the same deploy-pages error); the gate step's median on the runner is 5 s of its new 8 s budget, two runs at 8 s; push to served median 31 s",
+      "last_wake": "2026-11-11T03:15:00Z",
       "jobs": [
         "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
         "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
@@ -864,7 +864,8 @@
         "02:31Z README.md rewritten for a stranger arriving from GitHub; agents/ci/drift.md: 14 places where the guidance no longer says what is true, for the conductor",
         "02:36Z at the conductor's word: ci/patches/ (generators-timed.patch, ready; signed-release-record.patch, waiting for Dinis's yes) and tools/ci-release-record.mjs (sign and verify a release record with an agent's own key; tested: signed tree OK, one changed byte turns the gate red). Generators in-process measured and NOT recommended: workers save nothing, plain import silently breaks the linker (ci/patches/README.md)",
         "02:36Z corrected: the times first written in this file and on the pages' Kept-by lines were estimates up to ten minutes ahead of the clock; they now give the clock's time",
-        "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the menu and a Repo chip in the top bar; signed-release-record.patch rebuilt against the new release.sh (tested: signed tree OK)"
+        "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the menu and a Repo chip in the top bar; signed-release-record.patch rebuilt against the new release.sh (tested: signed tree OK)",
+        "03:18Z wake: 414 runs and 457 commits read. Two new failures (runs 343, 344, 02:58: deploy-pages found no artifact, as 54, 55 and 205): ci/patches/deploy-retry.patch for the conductor (one more try after 8 s; a hypothesis, testable only on the runner). The gate's budget is now 8 s (the conductor, 95c0757): the pages read it from validate.mjs; two of the last 20 runs took 8 s. Fixed in tools/ci-read.mjs: a busy hour passed 256 KB and the tool stopped; an hour now splits by ten minutes. The signing patch rebuilt again (validate.mjs and the policy changed)"
       ],
       "next": [
         "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
@@ -1289,7 +1290,7 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "93c419ba3355e723b45aacd3f3009cb3ebc60ab9fa4c643560d8a58182b854d9",
+      "status_sha256": "8e0fde61ed11a48d046cf718b03dfa1f2e775da2799fd5e247ab8f9a26ade1de",
       "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
       "last_wake": "2026-11-11T03:01Z",
       "jobs": [
@@ -1314,7 +1315,8 @@
         "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph",
         "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them",
         "03:13 (second session) at the conductor's word: start.md states the commit message exactly (all trailers in one final paragraph; the co-author line with no model name); tools/policy-check.mjs warns on both; the pack's index shows the accountant's second run as current (63% less, 8 of 8) and the first as history; a role pack names its HANDOVER.md first (designer, observability); history.md is a pointer to the reporter's traces, its table checked against reporter/log.md. My own commits before this one carried both mistakes (the model name in the co-author line; trailers split by a blank line): not rewritten",
-        "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone"
+        "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone",
+        "03:18 (second session) from incident.observability@'s second session, what the pack did not tell it: start.md gains the shallow clone, where a session's own id is, and the board script's id contract (read in app/board/board.js); the trailer lines were already there. Its fourth (a role's day-one data files) belongs in a role's own HANDOVER.md, which its role pack now names first"
       ],
       "next": [
         "after 04:00: close news/2026-11-11T03.md, open 04:00",
@@ -2319,6 +2321,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T03:17:32Z",
-  "content_sha256": "1e876747468c259975323eac6a693a8c218a2e4f5363a64a02950fe1fe14d03f"
+  "updated": "2026-11-11T03:19:07Z",
+  "content_sha256": "3c36f777d9bae6f0c42a231a1c0b7d0234c8e9363ae9639cc6119f4059ef8301"
 }
