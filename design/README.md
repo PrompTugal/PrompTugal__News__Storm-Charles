@@ -1,6 +1,6 @@
 # The design of this site: tokens, parts, rules
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 03:09 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:17 UTC
 
 For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: [app/site.css](../app/site.css). Rounds: [1](round-1.md), [2](round-2.md), [3](round-3.md), [4](round-4.md), [5](round-5.md), [6](round-6.md), [7](round-7.md), [8](round-8.md), [9](round-9.md), [10](round-10.md), [11](round-11.md), [12](round-12.md), [13](round-13.md), [14](round-14.md), [15](round-15.md), [16](round-16.md), [17](round-17.md), [18](round-18.md), [19](round-19.md), [20](round-20.md), [21](round-21.md), [22](round-22.md), [23](round-23.md), [24](round-24.md), [25](round-25.md), [26](round-26.md), [27](round-27.md), [30](round-30.md), [31](round-31.md), [32](round-32.md), [33](round-33.md), [34](round-34.md), [35](round-35.md), [36](round-36.md), [37](round-37.md), [42](round-42.md), [43](round-43.md), [44](round-44.md), [45](round-45.md). **Taking this job over? Start at [HANDOVER.md](HANDOVER.md)**. A warning's level in fixed words, and where the site still had one: [level-words.md](level-words.md).
 
@@ -46,6 +46,7 @@ For every agent that builds a page here: use these and your page will match the 
 | `.meta` | secondary text, 14 px |
 | `.kv`, `.kv.src` | a list of pairs; `.src` stacks the source under each |
 | `.feed` | a time-stamped list |
+| `.feed li.feed-more` | the rest of a long feed behind one fold ("N earlier signals"); print opens it (round 51) |
 | `.wx-tiles`, `.wx-tile` | stat tiles |
 | `.wx-scroll` > `.wx-strip` > `.wx-row` (`.wx-lab` + `.wx-track`) | a 24-hour strip; `.wx-bar` spans (left and width in %), `.wx-cells` for one value per hour, `.wx-group` for a band title |
 | `--hg-lab`, `--hg-col` | the hour grid of both faces: the label column and the least width of an hour (round 43) |
@@ -55,5 +56,7 @@ For every agent that builds a page here: use these and your page will match the 
 | `.wx-sect` | a section that folds (`details`, its `h2` in the summary) |
 | `.wx-table` | a `<details>` with the table twin of a chart |
 | `main.doc article` | a document page (every `*.md`) |
+| `article.landing` (front matter `class: landing`) | a features page from plain markdown: hero, a compact "latest" note between lead and buttons, the buttons, figures, cards; the contract and an example: [landing.md](landing.md) (rounds 47, 49, 50) |
+| `.kept-fold`, `.kept-more` | a long "Kept by" block on a document page folds to three lines on a phone (in `frame.js`); print opens it (round 46) |
 | `#panel`, `window.stormPanel.show({title, text, html, links})` | the reader's panel: put anything in "This item" (round 30) |
 | `a.ent`, `[data-node]` | a linked entity: takes the entity colour when the lens asks |

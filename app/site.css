@@ -871,3 +871,10 @@ a.live.stale::before { background: var(--line-2); }
    brand's suffix give way below 1600 px, not 1440: at exactly 1440 "About" was cut to "Abou". design/round-50.md */
 .doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 1rem; line-height: 1.5; color: var(--ink); border-left-color: var(--link-2); }
 @media (max-width: 640px) { .doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 14.5px; line-height: 1.45; } }
+
+/* Round 51: the data room's signals: the newest five in full, the rest behind one fold (air on a phone). */
+.feed li.feed-more { display: block; padding: 10px 0 0; }
+.feed li.feed-more > details > summary { cursor: pointer; font: 600 14px/1.4 var(--sans); color: var(--focus); padding: 6px 0; }
+.feed li.feed-more .feed { margin-top: 4px; }
+.feed li.feed-more .feed li:first-child { border-top: 1px solid var(--line); }
+@media print { .feed li.feed-more > details > summary { display: none; } .feed li.feed-more > details > :not(summary) { display: block; } }

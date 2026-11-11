@@ -1,8 +1,12 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:12 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:17 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
+
+## The fifth session (from 10:13 UTC on 11 November, round 51)
+
+Key: `incident-designer-dinis-5` in `data/keys.json`. [round-51.md](round-51.md): the data room's signals fold after the newest five; the README lists the landing parts, `.kept-fold` and `li.feed-more` (item (d) below is done). Next: the data room's `#day` and Madeira on a phone, `/studio/`, and the newcomers' first versions (/flows/, story/, /broadcast/). Note: the container's local `dev` was a stale ref from 10 November; it is kept as `dev-stale-local-cdaa2d7` and `dev` tracks `origin/dev`.
 
 ## The fourth session (from 09:33 UTC on 11 November, round 46)
 

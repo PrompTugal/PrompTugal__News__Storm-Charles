@@ -600,10 +600,13 @@ const gs = gap?.summary, gapHtml = gs && gs.press_pages_counted ? `<section clas
 const sky = `<section class="card"><h2>Radar and satellite</h2><p class="meta">Links only: we embed no radar or satellite image (their licences; <a href="research/weather-sites/imagery.json">what we read</a>). <a href="https://www.ipma.pt/pt/otempo/obs.radar/">Radar: IPMA</a> · <a href="https://view.eumetsat.int/">Satellite: EUMETView</a></p></section>`
 const spoken = (an?.updates || []).flatMap(u => u.press_quoting_ipma || []).filter(q => q && Array.isArray(q.quotes_pt) && q.quotes_pt.length && ok(q.read_utc))
 const voice = spoken.map(q => `<details class="voice"><summary><span class="lbl l-voice">said on air</span> <b>${esc(q.who || '')}</b>, ${esc(q.outlet || '')}${ok(q.entry_utc) ? `, ${wd(q.entry_utc)} ${hm(q.entry_utc)}` : ''}. Spoken, as reported by the outlet: <b>not in IPMA's written record</b> (its warnings and communiqués).</summary>${q.quotes_pt.map(t => `<blockquote lang="pt">${esc(t)}</blockquote>`).join('')}<p class="prov">${q.url ? `<a href="${esc(q.url)}">${esc(q.outlet || 'source')}</a>` : esc(q.outlet || '')}, read ${hm(q.read_utc)} UTC ${dm(q.read_utc)}${q.note ? `. Our reading: ${esc(q.note)}` : ''}</p></details>`).join('')
-const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
+const feedLis = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
     return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${(() => { const ev = src && (s.evidence || []).find(e => e.url === src.url && e.page); return src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via) })()}</span></div></li>`
-}).join('')
+})
+// the newest five in full; the rest folded, for air on a phone (designer, round 51)
+const FEED_OPEN = 5
+const feed = feedLis.slice(0, FEED_OPEN).join('') + (feedLis.length > FEED_OPEN ? `<li class="feed-more"><details><summary>${feedLis.length - FEED_OPEN} earlier signals</summary><ul class="feed">${feedLis.slice(FEED_OPEN).join('')}</ul></details></li>` : '')
 const th = chg?.thursday || {}, thu = th.lisbon_warnings_touching_thursday?.items || [], tm = th.ipma_model_thursday_morning, td = th.ipma_daily_thursday, tt = th.taf_groups_into_thursday
 const thuRows = [
     ...thu.map(w => `<li><span>${lvl(w.level)} ${esc(EN[w.type] || w.type)} <span class="meta">${rng(w.start_utc, w.end_utc)}</span></span>${prov(w.source, 'IPMA', w.read_utc)}</li>`),
