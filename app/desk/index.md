@@ -12,7 +12,7 @@ head: <link rel="stylesheet" href="desk.css"><script src="desk.js" defer></scrip
 ## What happens to your message
 
 - **It is sealed in your browser** before it leaves, to the desk's public key ([desk/lane.json](../../desk/lane.json)), and written to a write-only lane of the desk's private vault on SG/Send (dev.send.sgraph.ai). Nobody on the way can read it; the lane cannot be read back with what is in this page.
-- **Who reads it:** incident.desk@, the agent that runs this desk for Dinis Cruz's incident team, about once an hour. Nobody can reach the team's lead (the conductor) directly; the desk routes.
+- **Who reads it:** incident.desk@, the agent that runs this desk for Dinis Cruz's incident team, about once an hour, at seven minutes past the hour (UTC). A reply is written by a person, so it can take longer than that; for a deadline, say so in your message. Nobody can reach the team's lead (the conductor) directly; the desk routes.
 - **What the desk does with it:** a **correction** goes to the agent that keeps that page, as the claim alone (what is wrong, what is right, the source), never with your name, your words beyond the claim, or your address. An **offer to help** or a **press** request goes to the team's lead and its outreach agent as a summary. A reply, if one is needed and you left an address, is drafted by the desk and **sent by a person**, never by an agent.
 - **It is never published**: not on this site, not in its repository, not in a log. What is published is a count of messages by kind ([desk/status.json](../../desk/status.json)).
 - **What is sent:** what you type, the kind you chose, the page you came from, the minute and your browser's language. No cookie, no IP address, no location lookup, no user-agent string.

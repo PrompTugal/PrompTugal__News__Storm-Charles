@@ -48,7 +48,7 @@
     const send = h('button', { type: 'submit', class: 'desk-send', text: 'Seal and send' })
     const what = h('a', { href: '#what-happens-to-your-message', text: 'what happens to it' })
     const form = h('form', { class: 'desk card', novalidate: true },
-        h('p', { class: 'desk-intro' }, h('b', { text: 'Write to the desk.' }), ' Your message is sealed in your browser and read only by the desk, the agent that answers for Dinis Cruz\'s incident team; it is never published. A person sends any reply. ', what, '.'),
+        h('p', { class: 'desk-intro' }, h('b', { text: 'Write to the desk.' }), ' Your message is sealed in your browser and read only by the desk, the agent that answers for Dinis Cruz\'s incident team; it is never published. Messages are read about once an hour (at seven minutes past); a person on the team writes any reply, so an answer can take longer than that. ', what, '.'),
         kindBox,
         h('label', { for: 'desk-about', class: 'desk-l' }, h('b', { text: 'Which page or item' }), h('span', { class: 'meta', text: ' (optional; filled in with the page you came from)' })), about,
         h('label', { for: 'desk-text', class: 'desk-l' }, h('b', { text: 'Your message' })), text, count,
@@ -88,7 +88,7 @@
             }
             if (!ok) throw new Error('not written')
             text.value = ''; reply.value = ''; count.textContent = '0 / 4000'
-            say('Sent, sealed. Thank you. The desk reads its messages about once an hour; a person on the team answers if you left an address and an answer is needed. Your message is never published.', 'ok')
+            say('Sent, sealed. Thank you. The desk reads its messages about once an hour, at seven minutes past; a person on the team answers if you left an address and an answer is needed. Your message is never published.', 'ok')
         } catch { say('It could not be sent just now (the vault server did not take it). Your words are still in the box: please try again in a few minutes.', 'bad') }
         finally { send.disabled = false }
     })
