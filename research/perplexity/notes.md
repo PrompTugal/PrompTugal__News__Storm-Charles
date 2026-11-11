@@ -27,6 +27,6 @@ Three leads read at primary addresses for 0.033 US dollars of model spend: about
 
 ## What is next
 
-- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked at 02:54 UTC: OpenRouter answered that the key had too little credit for them.
+- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked since 02:54 UTC: OpenRouter answered that the key had too little credit for them, and at 03:02 that it had none.
 - More of the team's open questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations.
 - The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?

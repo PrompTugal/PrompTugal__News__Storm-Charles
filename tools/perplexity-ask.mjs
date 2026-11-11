@@ -65,14 +65,16 @@ if (o.from && !run.from.includes(o.from)) run.from.push(o.from)
 
 const messages = [...(system ? [{ role: 'system', content: system }] : []), { role: 'user', content: question }]
 const { text, line, response } = await call({ task: `WS-214/perplexity/${o.id}`, agent: AGENT, model: o.model, messages, max_tokens, budget_usd: CAP, extra })
-const k = run.asks.length + 1
+const k = Math.max(0, ...run.asks.map(x => x.k)) + 1
 const ask = {
     k, at: line.at, lang: o.lang, question, model: o.model, model_served: line.model_served || null,
     settings: { brief: o.plain ? 'none (the bare question)' : 'the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking', max_tokens, search_context: o.context || 'the engine\'s default' },
     status: line.status, ...(line.error ? { error: line.error } : {}), cost_usd: line.cost_usd, tokens_in: line.tokens_in, tokens_out: line.tokens_out, latency_ms: line.latency_ms,
     raw: line.raw || null, raw_sha256: line.raw_sha256 || null, cited: response ? cited(response, text || '') : [], statements: [],
 }
-run.asks.push(ask); run.updated = new Date().toISOString().slice(0, 19) + 'Z'
+if (line.status !== 'ok') (run.refused = run.refused || []).push({ at: line.at, model: o.model, lang: o.lang, status: line.status, why: /credit/i.test(line.error || '') ? 'OpenRouter: the key had too little credit left for this call' : String(line.error || line.status).replace(/https?:\S+/g, '').slice(0, 120) })   // a refused call is recorded apart: it is not an answer
+else run.asks.push(ask)
+run.updated = new Date().toISOString().slice(0, 19) + 'Z'
 fs.mkdirSync(path.dirname(runFile), { recursive: true }); fs.writeFileSync(runFile, JSON.stringify(run, null, 1) + '\n')
 if (text) {
     const dir = path.join(process.env.PERPLEXITY_WORK_DIR || path.join(os.homedir(), '.incident-perplexity'), date); fs.mkdirSync(dir, { recursive: true, mode: 0o700 })

@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 ---
 # Perplexity as a research tool
 
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 03:02 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
@@ -43,7 +43,7 @@ So far: **3** runs, **6** answers, **19** statements checked: **7** confirmed at
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `perplexity/sonar` | 6 | 19 | 7 | 8 | 4 | 0 | 10 | 90 | 28 | 0.0331 | 4.9 s |
 
-Not yet compared: `perplexity/sonar-pro`, `perplexity/sonar-reasoning-pro`. 6 calls were refused by OpenRouter (HTTP 402 at 02:53 UTC: the key had too little credit left for these models); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the key is topped up.
+Not yet compared: `perplexity/sonar-pro`, `perplexity/sonar-reasoning-pro`. 7 calls were refused by OpenRouter (HTTP 402 at 02:53 UTC: the key had too little credit left for these models); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the key is topped up.
 
 ### By language of the question
 
@@ -87,7 +87,7 @@ Three leads read at primary addresses for 0.033 US dollars of model spend: about
 
 ## What is next
 
-- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked at 02:54 UTC: OpenRouter answered that the key had too little credit for them.
+- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked since 02:54 UTC: OpenRouter answered that the key had too little credit for them, and at 03:02 that it had none.
 - More of the team's open questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations.
 - The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?
 

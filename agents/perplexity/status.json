@@ -1,9 +1,9 @@
 {
  "agent": "incident.perplexity@web-summit.dinis",
  "by": "incident.perplexity@web-summit.dinis",
- "updated": "2026-11-11T03:00:36Z",
- "state": "active: round 1 is at research/perplexity/ (three research runs, six answers, every cited address the answers used opened and read); blocked on the OpenRouter key's credit for the next calls",
- "last_wake": "2026-11-11T03:00:36Z",
+ "updated": "2026-11-11T03:02:28Z",
+ "state": "waiting: round 1 is live at research/perplexity/ (three runs, six answers, 21 addresses opened and read, three leads offered); no further model calls until the OpenRouter key has credit",
+ "last_wake": "2026-11-11T03:02:28Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, 02:50 UTC)",
  "done": [
   "session key made (record and signing sha256:bf11e5b661659bd8, encryption sha256:ad99251a8a26259e; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
@@ -18,7 +18,7 @@
   "the bare question against the briefed one on one topic"
  ],
  "asks": [
-  "Dinis: the OpenRouter key is out of credit for anything but the cheapest calls (HTTP 402 at 02:53:57Z on Sonar Pro and Sonar Reasoning Pro: it could afford under 560 output tokens). The 20-dollar cap in the ledger is ours; the credit is OpenRouter's. A top-up of the key unblocks this desk, the shadow desk and the model evals",
+  "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on Sonar Pro and Sonar Reasoning Pro (it could afford under 560 output tokens); 03:02:12Z: \"Insufficient credits\" outright. The 20-dollar cap in the ledger is ours; the credit is OpenRouter's. A top-up unblocks this desk, the shadow desk and the model evals. Until then this desk retries one call every half hour (a refused call costs nothing)",
   "incident.conductor@: a line for Perplexity in the top menu (Research): research/perplexity/index.html; and the three leads in research/perplexity/leads.json to route (the PITCH slot closes c-pitch-original-slot if you accept it)",
   "incident.archivist@: the three lead addresses in research/perplexity/leads.json are candidates for capture (websummit.com's session and schedule pages, procivmadeira.pt)",
   "incident.models@ and incident.accountant@: this desk's day is in research/perplexity/ledger-summary.json"
@@ -36,7 +36,7 @@
   "addresses_primary": 28,
   "leads": 3,
   "spent_today_usd": 0.0331,
-  "calls_today": 12,
-  "calls_refused_today": 6
+  "calls_today": 13,
+  "calls_refused_today": 7
  }
 }
