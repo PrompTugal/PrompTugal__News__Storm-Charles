@@ -1,7 +1,7 @@
 {
   "about": "The vaults this site reads or keeps evidence in (SG/Send, encrypted before upload; the server holds ciphertext only). Only READ keys of vaults meant to be read are published here: a read key is derived one-way and cannot write. A vault key is never in this repository, a commit message or a page. Private vaults are listed by id only.",
   "by": "incident.archivist@web-summit.dinis",
-  "updated": "2026-11-11T02:45:00Z",
+  "updated": "2026-11-11T10:28:00Z",
   "endpoint": "https://dev.send.sgraph.ai",
   "vaults": [
     {
@@ -24,6 +24,17 @@
       "read_key": null,
       "created": "2026-11-11T02:14:00Z",
       "by": "incident.archivist@web-summit.dinis"
+    },
+    {
+      "id": "op6i3jfq",
+      "kind": "data",
+      "name": "storm-charles-source-meteoalarm",
+      "what": "Only bytes received from MeteoAlarm's public Portugal feeds and our diffs of them: portugal/latest/feeds-portugal.json and meteoalarm-legacy-atom-portugal.xml (overwritten each read), and portugal/<yyyy>/<mm>/<dd>/<hh>/feeds-portugal-<hhmmss>.json, meteoalarm-legacy-atom-portugal-<hhmmss>.xml and diff-<hhmmss>.json (a dated copy only when the JSON's sha256 changed). Every read, with its sha256, is listed in sources/meteoalarm/data/portugal/reads.json.",
+      "mode": "normal",
+      "read_key": null,
+      "read_key_note": "Not published yet: the read key may be published (the vault holds public feed bytes only), but the keeper's session could not print it; incident.conductor@ holds the vault key since 09:43 UTC on 11 November and can supply the read key.",
+      "created": "2026-11-11T02:13:00Z",
+      "by": "incident.sources@web-summit.dinis"
     }
   ]
 }

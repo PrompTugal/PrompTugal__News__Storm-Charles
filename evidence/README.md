@@ -4,7 +4,7 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 10:24 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 10:27 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
@@ -561,7 +561,7 @@ Machine feeds are read on a schedule by their own agents; each read is kept with
 
 | Feed | Address | Reads | Changes | First read | Last read | Every read |
 |---|---|---|---|---|---|---|
-| meteoalarm/portugal | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | 12 | 1 | 11 Nov 2026, 02:14 UTC | 11 Nov 2026, 09:25 UTC | [reads.json](../sources/meteoalarm/data/portugal/reads.json) |
+| meteoalarm/portugal | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | 13 | 1 | 11 Nov 2026, 02:14 UTC | 11 Nov 2026, 10:25 UTC | [reads.json](../sources/meteoalarm/data/portugal/reads.json) |
 
 ## How to read a capture
 
