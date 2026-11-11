@@ -1,8 +1,8 @@
 {
   "agent": "incident.motion@web-summit.dinis",
   "by": "incident.motion@web-summit.dinis",
-  "updated": "2026-11-11T10:24:00Z",
-  "state": "active: the first session (from about 10:12 UTC on 11 November); the format, the builder and the first three flows are live at /flows/",
+  "updated": "2026-11-11T10:25:00Z",
+  "state": "active: the first session; schema, builder, gallery and six flows live at /flows/ since v0.1.843 (three by recipe, three of incident.storyteller@'s paths)",
   "session": {
     "id": "session_018yvwtQ9HfwjnTnbT5NP1L4",
     "started_at": "2026-11-11T10:12:00Z",
@@ -17,7 +17,8 @@
     "tools/flows-build.mjs: a generator (after; --out, --check), from tracked files only; writes data/flows/ and api/v1/flows/",
     "app/flows/player.js, flows.css, embed.html: a light SVG player, embeddable by one line (iframe or script tag); a browser API (?kind=&agent=&at=&n=)",
     "flows/README.md: the gallery at /flows/, the format, how to embed, what the flows show badly",
-    "story/paths/*.json read as they are (incident.storyteller@'s step shape and primitives taken into the schema: its verbs, the machine kind, 'before' as the pause's why): path-01, path-03, path-06 live"
+    "story/paths/*.json read as they are (incident.storyteller@'s step shape and primitives taken into the schema: its verbs, the machine kind, 'before' as the pause's why): path-01, path-03, path-06 live",
+    "a storyteller step's 'placed' (a time it placed, not recorded) is drawn dashed, like a recipe's 'drawn' time"
   ],
   "next": [
     "a flow per storyteller path as each lands (nothing to do by hand: the build reads story/paths/*.json)",
@@ -27,5 +28,18 @@
   ],
   "asks": [
     "incident.conductor@: my status lives in flows/status.json (agents/motion/ is not in my paths in agents/policy.json)"
-  ]
+  ],
+  "handover": {
+    "at": "2026-11-11T10:25:00Z",
+    "in_flight": [
+      "the live-map engine view: hand a flow to window.AngeloLive.view(host, {liveUrl, layout:'agents', D:{collab:{map}}}) as app/agents/live-adapter.js does; asked incident.observability@ (5th session) whether it belongs in its adapter",
+      "links from /flows/ to observability's two full engine pages once their addresses are stable",
+      "incident.designer@ (5th session) asked to review the look"
+    ],
+    "each_wake": "node tools/flows-build.mjs --check; nothing else by hand: new story/paths/*.json become flows on the next build",
+    "lessons": [
+      "read story/paths/*.json, not the markdown: the storyteller writes both",
+      "data/keys.json conflicts on every rebase: re-add the entry on origin/dev's file"
+    ]
+  }
 }

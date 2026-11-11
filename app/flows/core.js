@@ -177,7 +177,7 @@
             const to = [].concat(st.to || []).filter(Boolean)
             for (const x of [st.actor, ...to]) if (!actors.some(a => a.id === idOf(x))) actors.push(actorOf(x))
             if (prev && st.before) pauses.push({ from: prev, to: st.t, minutes: Math.round((ms(st.t) - ms(prev)) / 6e4), why: st.before })
-            steps.push({ t: st.t, actor: idOf(st.actor), verb: st.verb, object: clip(st.what, 160), ...(to.length ? { to: to.map(idOf) } : {}), evidence: ev })
+            steps.push({ t: st.t, ...(st.placed ? { drawn: String(st.placed) } : {}), actor: idOf(st.actor), verb: st.verb, object: clip(st.what, 160), ...(to.length ? { to: to.map(idOf) } : {}), evidence: ev })
             prev = st.t
         }
         if (!steps.length) return null
