@@ -86,7 +86,7 @@
     if (el.getAttribute('data-open') === 'yes') open = true
     var m = /^(\d) · (.*)$/.exec(q); if (m) q = '<span class="gd-n">' + m[1] + '</span>' + m[2]
     var body = '<div class="gd-simple">' + simple + '</div>' +
-      '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + '<p class="gd-up"><a href="#gd-q">↑ The seven questions</a></p>'
+      '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + (focus.length ? '<p class="gd-up"><a href="#now">↑ Top</a> · <a href="#gd-q">All seven questions ↓</a></p>' : '<p class="gd-up"><a href="#gd-q">↑ The seven questions</a></p>')
     // on "Start here" each question is a fold of its own, opened by a tap or a jump (designer@ note 3; synthetic@ run 2): the page stays short
     if (!focus.length) return '<details class="gd-case gd-fold card" id="' + id + '"><summary><h2>' + q + '</h2></summary>' + body + '</details>'
     return '<section class="gd-case card" id="' + id + '"><h2>' + q + '</h2>' + body + '</section>'
@@ -146,9 +146,10 @@
     ENT.forEach(function (n) { ((E[n] && E[n].decisions) || []).forEach(function (d) { var k = String(d.decision).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48); if (seen[k] || String(d.published_utc || '').slice(0, 10) !== today || !/T/.test(d.published_utc)) return; seen[k] = 1; ch.push({ t: d.published_utc, d: d }) }) })
     edges.forEach(function (e) { var a = e.at && typeof e.at === 'object' ? e.at.at : e.at; var k = String(e.decision).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48); if (typeof a === 'string' && a.slice(0, 10) === today && /T/.test(a) && kind(e.label) !== 'hypothesis' && !seen[k] && (seen[k] = 1)) ch.push({ t: a, d: e }) })
     var mins = {}; ch.forEach(function (c) { mins[iso(c.t).slice(0, 16)] = 1 })
-    ;((W && W.history) || []).forEach(function (h) { if (String(h.at_utc).slice(0, 10) === today && !mins[iso(h.at_utc).slice(0, 16)]) ch.push({ t: h.at_utc, d: { decision: h.event, label: h.kind, source: h.source, read: h.read_utc, published_utc: h.at_utc } }) })
-    ch.sort(function (a, b) { return T(b.t) - T(a.t) })
-    var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; newest first)</span></h2><ul class="gd-rows">' +
+    ;((W && W.history) || []).forEach(function (h) { if (String(h.at_utc).slice(0, 10) === today && !mins[iso(h.at_utc).slice(0, 16)]) ch.push({ w: 1, t: h.at_utc, d: { decision: h.event, label: h.kind, source: h.source, read: h.read_utc, published_utc: h.at_utc } }) })
+    var rank = function (c) { return /^ipma/.test(c.d.id || '') || c.d.by === 'ipma' || c.w ? 0 : kind(c.d.label) === 'fact' ? 1 : 2 }
+    ch.sort(function (a, b) { return (rank(a) - rank(b)) || (T(b.t) - T(a.t)) })
+    var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA\'s warning changes first, then other facts, then reports; newest first in each)</span></h2><ul class="gd-rows">' +
       ch.slice(0, 3).map(function (c) { return rowCut(c.d, 140).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
       (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + '</section>'
 
@@ -210,7 +211,7 @@
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
       short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
       '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed: whether a place is open is the place\'s own word.</div>' +
-      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(row).join('') + '</ul>' : '') + hospFold(),
+      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(function (d) { return row(d).replace(/<span class="gd-st[^"]*">[^<]*<\/span>/, '<span class="gd-st">shelter at night</span>') }).join('') + '</ul>' : '') + hospFold(),
       (govAlert ? '<h4>The government\'s measures for Wednesday</h4><ul class="gd-rows">' + row(govAlert) + '</ul>' : '') +
       entityBlock(E.retail, 'Shops') + entityBlock(E.museums, 'Museums and monuments') + entityBlock(E.schools, 'Schools') + entityBlock(E.courts, 'Courts') + entityBlock(E.hospitals, 'Hospitals') + entityBlock(E.parliament, 'Parliament') +
       '<p>Every decision and who made it: <a href="' + base + 'incidents/' + inc + '/decisions.html">the decisions</a>.</p>')
@@ -244,6 +245,7 @@
     // (7) journalists
     out += sect('press', '7 · I\'m a journalist',
       (I && I.headline ? '<div class="gd-lead"><p class="meta">The incident\'s headline, as our lead keeps it</p><p><b>' + esc(I.headline.text) + '</b> ' + lbl(I.headline.label) + '</p>' + prov(I.headline.source, I.headline.url, null) + '<p class="meta">Published: ' + esc(I.headline.at) + '</p>' + (I.standfirst ? '<p>' + esc(I.standfirst) + '</p><p class="meta">Kept by ' + esc(I.lead) + ', updated ' + tm(I.updated) + ' UTC</p>' : '') + '</div>' : '') +
+      '<p class="gd-key">' + lbl('fact') + ' read at the body that decides or warns · ' + lbl('evidence') + ' reported by others, named · ' + lbl('hypothesis') + ' our analysis, never a fact · <span class="gd-st">closed</span> the state the source gives · <span class="gd-ns">not stated</span> we do not know</p>' +
       '<p>Who we are, how this is made, and how to reach us: <a href="' + base + 'welcome/index.html">the newcomers\' page</a> (incident.envoy@, with its media section). Every claim here links to its source; cite the source, and us for the record.</p>',
       '<ul class="gd-links"><li><a href="' + base + 'incidents/' + inc + '/timeline.html">The timeline</a>: every warning and decision, with its permanent row id</li>' +
       '<li><a href="' + base + 'incidents/' + inc + '/decisions.html">The decisions</a>: who decided what, labelled fact, evidence or hypothesis</li>' +
