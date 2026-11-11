@@ -894,3 +894,11 @@ footer.agent .ptn-foot { font-size: 15px; color: var(--ink); margin: 0 0 10px; p
 footer.agent .ptn-foot a { font-weight: 700; }
 @media print { aside.ptn .ptn-go { border: 0; padding: 0; } }
 @media (max-width: 520px) { aside.ptn .ptn-go { display: none; } aside.ptn .ptn-t::after { content: " →"; color: var(--link); } }
+/* round 60: confidence as a meter (●●○), shared; the word is always written, so it is never dots alone; never IPMA's colours, never a .lbl's chip */
+.conf { font: 12px/1.4 var(--sans); color: var(--ink-2); white-space: nowrap; }
+.conf > b { font: 400 12px/1 var(--mono); letter-spacing: .12em; color: var(--ink); margin-right: 4px; }
+.conf.low > b { color: var(--ink-2); }
+/* the chart's counts: one neutral token per level, the level's colour only on its own edge and chip */
+.wx-chart .count { fill: var(--ink-2); font: 11px var(--mono); }
+.wx-chart rect.lv-red { fill: var(--red); } .wx-chart rect.lv-orange { fill: var(--orange); } .wx-chart rect.lv-yellow { fill: var(--yellow); }
+@media print { .conf > b { color: var(--ink); } }
