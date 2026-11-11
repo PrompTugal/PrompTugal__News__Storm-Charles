@@ -358,3 +358,41 @@ footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin
   .grid { grid-template-columns: 1fr; }
 }
 @media print { .prov { white-space: normal; overflow-wrap: anywhere; } .wx-group .wx-track span:first-child { position: static; max-width: none; } .wx-lab { position: static; } .wx-where .wx-strip { --lab: 110px; } .wx-table table { display: table; } .wx-gridwrap { grid-template-columns: 1fr; } }
+
+/* ---- round 14 (incident.designer@): the timeline as a page. design/round-14.md ---- */
+.tl article > table { display: table; width: 100%; table-layout: fixed; overflow: visible; }
+.tl article > table th:first-child { width: 148px; } .tl article > table th:last-child { width: 27%; }
+.tl thead th { position: sticky; top: 0; z-index: 2; }
+.tl td { overflow-wrap: anywhere; }
+.tl tr.tl-day th { background: var(--ink); color: var(--paper); font-size: 13px; letter-spacing: .04em; text-transform: none; padding: 5px 8px; position: sticky; top: 30px; z-index: 1; }
+.tl td.tl-t { font-family: var(--sans); white-space: normal; }
+.tl td.tl-t time { font: 700 15px/1.2 var(--mono); color: var(--ink); }
+.tl td.tl-t a { text-decoration: none; } .tl td.tl-t a:hover time { text-decoration: underline; }
+.tl td.tl-t small { display: block; font-size: 11px; color: var(--ink-2); line-height: 1.5; }
+.tl td.tl-t .lbl { display: inline-block; font: 600 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 5px; border-radius: 3px; margin: 3px 4px 1px 0; }
+.tl .lbl.dec { background: var(--ink); color: var(--paper); }
+.tl tr.key td:first-child { box-shadow: inset 4px 0 0 var(--accent); }
+.tl tr.decision td { background: color-mix(in srgb, var(--warn-soft) 70%, transparent) !important; }
+.tl tr.superseded td:nth-child(2) { color: var(--ink-2); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--ink-2) 50%, transparent); }
+.tl tr:target td { outline: 2px solid var(--focus); outline-offset: -2px; }
+.tl tr.tl-row { scroll-margin-top: 70px; }
+.tl-filter { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; margin: 0 0 12px; padding: 8px 12px; background: var(--surface-2); border-radius: 6px; font-size: 13.5px; position: sticky; top: 0; z-index: 3; }
+.tl-filter[hidden] { display: none; }
+.tl-filter fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.tl-filter legend { float: left; font: 700 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin-right: 8px; padding: 0; }
+.tl-filter label { white-space: nowrap; cursor: pointer; } .tl-filter label i { font-style: normal; font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); }
+.tl-filter output { margin-left: auto; font: 600 12.5px/1 var(--mono); color: var(--ink-2); }
+.tl-filter:not([hidden]) ~ table thead th { top: 44px; } .tl-filter:not([hidden]) ~ table tr.tl-day th { top: 74px; }
+@media (max-width: 760px) {
+  .tl article > table, .tl article > table tbody, .tl article > table tr, .tl article > table td { display: block; width: auto; }
+  .tl article > table thead { display: none; }
+  .tl article > table tr.tl-row { border-top: 1px solid var(--line-2); padding: 8px 0; }
+  .tl article > table tr.tl-row[hidden] { display: none; }
+  .tl article > table td { border: 0; padding: 2px 0; background: none !important; }
+  .tl td.tl-t small { display: inline; margin-left: 6px; } .tl td.tl-t time { margin-right: 2px; }
+  .tl article > table td:last-child { font-size: 12.5px; color: var(--ink-2); }
+  .tl tr.tl-day th { display: block; position: static; }
+  .tl-filter { position: static; }
+  .tl tr.key td:first-child { box-shadow: none; } .tl tr.key { box-shadow: inset 4px 0 0 var(--accent); padding-left: 10px !important; }
+}
+@media (max-width: 760px) { .tl article > table tr.tl-day { display: block; margin-top: 10px; } .tl tr.tl-day th { width: auto; box-sizing: border-box; } .tl article > table tr[hidden] { display: none; } .tl td.tl-t .lbl { margin-left: 6px; } }

@@ -140,6 +140,30 @@ for (const rel of walkOut(OUT).sort()) {
 <main class="doc"><div class="wrap"><div class="incident" id="incident" data-dir="data/"><p class="meta">The dashboard needs JavaScript: it reads <a href="data/README.md">data/</a> and draws it here.</p></div></div></main>${body}`
         extraHead = `<script src="../../app/storm.js" defer></script>`
     }
+    // the timeline as a page (incident.designer@, design/round-14.md): the markdown table stays the source and keeps its row anchors;
+    // each row is dressed from data/signals.json (label, kind, decision, key, supersedes) at build time, so it reads without JavaScript;
+    // app/design/timeline.js only filters.
+    const tlm = rel.match(/^incidents\/([^/]+)\/timeline\.md$/)
+    if (tlm) {
+        let sg = null; try { sg = JSON.parse(fs.readFileSync(path.join(ROOT, 'incidents', tlm[1], 'data/signals.json'), 'utf8')) } catch { }
+        const byId = Object.fromEntries((sg?.items || []).map(x => [x.id, x])), supBy = {}
+        for (const x of sg?.items || []) if (x.supersedes) supBy[x.supersedes] = x.id
+        let lastDay = '', n = 0
+        const html = markdown(md).replace(/<tr id="(s-[^"]+)"><td>([^<]*)<\/td>/g, (all, id, when) => {
+            const x = byId[id]; if (!x) return all
+            n++
+            const d = String(x.at).slice(0, 10), t = String(x.at).slice(11, 16), dayRow = d !== lastDay ? `<tr class="tl-day"><th colspan="3">${esc(new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }))}</th></tr>` : ''
+            lastDay = d
+            return `${dayRow}<tr id="${esc(id)}" class="tl-row${x.key ? ' key' : ''}${x.decision ? ' decision' : ''}${supBy[id] ? ' superseded' : ''}" data-label="${esc(x.label || '')}" data-kind="${esc(x.kind || '')}"><td class="tl-t"><a href="#${esc(id)}" title="Link to this row"><time datetime="${esc(x.at)}">${x.approx ? '~' : ''}${esc(t)}</time></a><small>${esc(when.split(',')[0])}</small><span class="lbl l-${esc(x.label || '')}">${esc(x.label || '')}</span>${x.decision ? '<span class="lbl dec">decision</span>' : ''}<small class="tl-kind">${esc(x.kind || '')}</small>${x.supersedes ? `<small class="tl-sup">supersedes <a href="#${esc(x.supersedes)}">${esc(x.supersedes)}</a></small>` : ''}${supBy[id] ? `<small class="tl-sup">superseded by <a href="#${esc(supBy[id])}">${esc(supBy[id])}</a></small>` : ''}</td>`
+        })
+        const count = k => f => (sg?.items || []).filter(x => x[k] === f).length
+        const box = (k, v) => `<label><input type="checkbox" data-f="${k}" value="${esc(v)}" checked> ${esc(v)} <i>${count(k)(v)}</i></label>`
+        body = `<main class="doc tl"><div class="wrap"><article>
+<form class="tl-filter" id="tl-filter" hidden><fieldset><legend>Label</legend>${[...new Set((sg?.items || []).map(x => x.label).filter(Boolean))].map(v => box('label', v)).join('')}</fieldset><fieldset><legend>Kind</legend>${[...new Set((sg?.items || []).map(x => x.kind).filter(Boolean))].map(v => box('kind', v)).join('')}</fieldset><fieldset><legend>Only</legend><label><input type="checkbox" data-f="only" value="decision"> decisions</label><label><input type="checkbox" data-f="only" value="key"> key rows</label></fieldset><output id="tl-count">${n} rows</output></form>
+${html}
+<p class="meta">Every row's label, kind and id are in <a href="data/signals.json">data/signals.json</a> (made ${esc(String(sg?.made_at || '').replace('T', ' ').slice(0, 16))} UTC from this table). A row's time links to itself: copy it to cite the row.</p></article></div></main>`
+        extraHead += `<script src="../../app/design/timeline.js" defer></script>`
+    }
     // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text) and
     // `head:` (its stylesheet and script tags, one line). The page then always has the site's nav, notice and footer
     if (fm.mount) { body = `<main class="doc"><div class="wrap">${fm.mount}</div></main>` + body; extraHead += fm.head || '' }
