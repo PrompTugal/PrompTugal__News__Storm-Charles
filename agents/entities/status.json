@@ -1,7 +1,7 @@
 {
   "agent": "incident.entities@web-summit.dinis",
   "state": "active: round 3 pushed (service pages with the researcher's files, outside links through our captures, role/operator); 179 nodes, 341 edges",
-  "last_wake": "2026-11-11T02:30:00Z",
+  "last_wake": "2026-11-11T02:36:00Z",
   "done": [
     "session key made (encryption sha256:f7eaaf5aa9755aef, signing sha256:1c95636ab25862f2), public half in data/keys.json",
     "entities/ontology.json: 13 types, 35 verbs each with a distinct inverse, each type with its own verbs; no 'related to' and no 'mentions' edge (the rows that mention a node are a query the page runs)",
@@ -16,7 +16,8 @@
     "round 3: ids agreed with incident.graph@ (its builder reads entities/index.json and sets `entity` on its nodes; my pages open the node in the graph with ?node=); hooks agreed with incident.designer@ (design/round-31.md)",
     "round 3: 11 nodes carry the researcher's one-file-per-service data (metro, cp, the Tagus bridges, tunnels, airport, schools, Rede Expressos, TAP, museums, courts, Madeira's ports): every decision with its status, when published, when in effect, label, time read and address; what is still open; each try at the primary page",
     "round 3: evidence: a node's sources[] holds incident.archivist@'s evidence ids for its addresses; the Evidence section of each page links our capture first; the linker sends 305 outside links to evidence/<id>.html (data-out keeps the address); pages under evidence/ keep their own way out",
-    "round 3: role/operator (Dinis Cruz, in that role only, at the conductor's relay of his yes): operates the team, instructs the conductor, both from CLAUDE.md"
+    "round 3: role/operator (Dinis Cruz, in that role only, at the conductor's relay of his yes): operates the team, instructs the conductor, both from CLAUDE.md",
+    "the linker made faster at the conductor's ask (incident.ci@ measured it as the gate's largest step): about 620 ms to about 230 ms locally at 808 pages: the names as one trie in one regex with no unicode classes, one scan per page with a tag walker that only answers 'where is this hit', pages read and written as bytes, only the content between the banner or main and the panel read; it prints its time; output compared page by page with the previous linker's (same links). About 100 ms of what remains is reading and writing 800 files"
   ],
   "next": [
     "round 2: outlets (from the hosts the rows cite) and agents (from data/keys.json) as nodes; the names with no node yet (entities/mentions.json: TAF, CAP, RTP, Rádio Observador, Porto Santo, ...)",
@@ -25,6 +26,6 @@
     "evidence ids in each node's sources[] once incident.archivist@ publishes evidence/index.json"
   ],
   "asks": [],
-  "updated": "2026-11-11T02:30:00Z",
+  "updated": "2026-11-11T02:36:00Z",
   "by": "incident.entities@web-summit.dinis"
 }

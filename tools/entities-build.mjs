@@ -94,72 +94,92 @@ function pages() {
 
 // ------------------------------------------------------------------------------------------------ the linker
 function link() {
-    const M = matcher(nodes, { html: true })
+    const t0 = Date.now()
+    // Pages are read and written as bytes (latin1): nothing is decoded or re-encoded, and what is not changed is copied as it was.
+    // The names are matched in their UTF-8 bytes (matcher's `bytes`), so an accented name is found the same.
+    const dec = s => Buffer.from(s, 'latin1').toString('utf8')
+    const M = matcher(nodes, { html: true, bytes: true })
     const SKIP = new Set(['a', 'code', 'pre', 'svg', 'button', 'nav', 'header', 'footer', 'form', 'select', 'label', 'summary', 'time', 'kbd', 'samp', 'output', 'noscript', 'template'])
     const RAW = new Set(['script', 'style', 'textarea', 'title'])
     const VOID = new Set(['br', 'hr', 'img', 'input', 'meta', 'link', 'wbr', 'source', 'col', 'area', 'base', 'embed', 'track'])
     const BLOCK = new Set(['p', 'li', 'td', 'th', 'dd', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'figcaption', 'div', 'section', 'article', 'aside', 'main'])
+    const CLOSE = Object.fromEntries([...RAW].map(n => [n, new RegExp('</' + n, 'gi')]))
     const TAG = /<(\/?)([a-zA-Z][\w:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/y
     const CAP = loadCaptures()
     const stats = { pages: 0, pages_linked: 0, linked: 0, outside_marked: 0, outside_to_evidence: 0, by_node: {}, by_page: {} }
-    const gaps = new Map()
+    const gaps = new Map(), known = new Set([...M.names.keys()])
     const CAND = /(?<![\p{L}\p{N}])(?:[A-ZÀ-Ý][\p{L}\p{N}]+(?:\s+(?:de|da|do|dos|das|of)(?=\s+[A-ZÀ-Ý]))?(?:\s+(?=[A-ZÀ-Ý]))?){2,5}|(?<![\p{L}\p{N}.@/-])[A-Z]{3,}(?![\p{L}\p{N}])/gu
     const files = []; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : e.name.endsWith('.html') && files.push(f) } })(OUT)
     for (const f of files) {
         const rel = path.relative(OUT, f).split(path.sep).join('/')
         if (rel.startsWith('view/')) continue   // the librarian's file viewers show a file as it is: its text is not linked
-        const html = fs.readFileSync(f, 'utf8')
+        const html = fs.readFileSync(f, 'latin1')
         const up = rel === '404.html' ? '/' : '../'.repeat(rel.split('/').length - 1)
         const self = rel.startsWith('entities/') ? rel.slice(9).replace(/\.html$/, '') : null
         const wantGaps = rel === 'index.html' || rel.startsWith('data-room/') || (rel.startsWith(INC) && !rel.includes('/data/'))
-        let i = 0, out = '', n = 0, inBody = false, skip = 0
-        const stack = [], seen = new Set()
-        const text = s => {
-            if (!inBody || skip || !/\S/.test(s)) return s
-            const hits = M.find(s); let o = '', at = 0, plain = ''
-            for (const h of hits) {
-                plain += s.slice(at, h.index) + ' '
-                if (seen.has(h.id) || h.id === self) { o += s.slice(at, h.index + h.length); at = h.index + h.length; continue }
-                seen.add(h.id); n++; stats.by_node[h.id] = (stats.by_node[h.id] || 0) + 1
-                o += s.slice(at, h.index) + `<a class="ent ent-${h.type}" data-kind="entity" data-ent="${h.id}" href="${up}entities/${h.id}.html">${h.text}</a>`
-                at = h.index + h.length
-            }
-            if (wantGaps) for (const m of (plain + s.slice(at)).replace(/&#39;|&quot;|&amp;/g, ' ').matchAll(CAND)) { const k = m[0].trim().replace(/\s+/g, ' '); gaps.set(k, (gaps.get(k) || 0) + 1) }
-            return o + s.slice(at)
-        }
-        while (i < html.length) {
-            const lt = html.indexOf('<', i)
-            if (lt < 0) { out += text(html.slice(i)); break }
-            if (lt > i) out += text(html.slice(i, lt))
-            if (html.startsWith('<!--', lt)) { const e = html.indexOf('-->', lt); const end = e < 0 ? html.length : e + 3; out += html.slice(lt, end); i = end; continue }
-            TAG.lastIndex = lt
-            const m = TAG.exec(html)
-            if (!m) { out += '<'; i = lt + 1; continue }
-            let tag = m[0]; const name = m[2].toLowerCase(), attrs = m[3]
-            i = lt + tag.length
-            if (m[1]) { const k = stack.map(x => x.name).lastIndexOf(name); if (k >= 0) for (const x of stack.splice(k)) if (x.skip) skip-- ; if (BLOCK.has(name)) seen.clear(); out += tag; continue }
-            if (name === 'body') inBody = true
-            if (RAW.has(name)) { const e = html.toLowerCase().indexOf('</' + name, i); const end = e < 0 ? html.length : e; out += tag + html.slice(i, end); i = end; continue }
-            if (BLOCK.has(name)) seen.clear()
-            if (name === 'a' && inBody && !skip) {
-                const href = (attrs.match(/\shref="(https?:\/\/[^"]+)"/) || [])[1]
-                if (href && !href.startsWith('https://storm-charles.promptugal.news/')) {
-                    const cap = rel.startsWith('evidence/') ? null : CAP.get(href.replace(/&amp;/g, '&'))
-                    tag = /\sclass="/.test(tag) ? tag.replace(/\sclass="/, ' class="out ') : tag.replace(/^<a/i, '<a class="out"')
-                    tag = tag.replace(/^<a/i, '<a data-kind="out"')
-                    if (cap) { tag = tag.replace(/\shref="[^"]+"/, ` href="${up}evidence/${cap}.html" data-out="${href}"`); stats.outside_to_evidence++ }
-                    stats.outside_marked++
+        // only the page's own content is read: from the banner or <main> to the panel or the footer (the head, the menu, the
+        // notice, the reader's panel and the footer are the frame's and are never linked); one pass, pieces joined once
+        const a0 = html.indexOf('<section class="banner"'), a1 = html.indexOf('<main'), from = a0 >= 0 && (a1 < 0 || a0 < a1) ? a0 : a1
+        let to = html.indexOf('<aside class="panel"'); if (to < 0) to = html.indexOf('<footer'); if (to < 0) to = html.indexOf('</body>')
+        stats.pages++
+        if (from < 0 || to < from) continue
+        let i = from, n = 0, skip = 0, last = 0
+        const parts = [], stack = [], seen = new Set()
+        const put = (a, b, s) => { parts.push(html.slice(last, a), s); last = b }   // only what changes is cut; the rest is copied in runs
+        // The walker reads the tags up to a given place and keeps what the place is inside of (a link, code, a form ...; which
+        // block). The names are found in one scan of the page's content; each hit asks the walker where it is.
+        let inTag = false, textFrom = from
+        const walk = upTo => {
+            if (upTo < i) { inTag = true; return }   // still inside the tag, comment or script the walker last read
+            inTag = false
+            while (i <= upTo) {
+                const lt = html.indexOf('<', i); if (lt < 0 || lt > upTo || lt >= to) { i = upTo + 1; return }
+                if (wantGaps && lt > textFrom && !skip) gapText(textFrom, lt)
+                const c = html.charCodeAt(lt + 1)
+                if (c === 33) { const e = html.indexOf('-->', lt); i = e < 0 ? to : e + 3; textFrom = i; if (i > upTo) inTag = true; continue }
+                let gt = html.indexOf('>', lt); if (gt < 0) { i = to; return }
+                if (c === 47) {
+                    const name = html.slice(lt + 2, gt).trim().toLowerCase(); i = textFrom = gt + 1
+                    let k = stack.length - 1; while (k >= 0 && stack[k].name !== name) k--
+                    if (k >= 0) for (const x of stack.splice(k)) if (x.skip) skip--
+                    if (BLOCK.has(name)) seen.clear()
+                    if (gt > upTo) inTag = true
+                    continue
                 }
+                if (!((c >= 65 && c <= 90) || (c >= 97 && c <= 122))) { i = lt + 1; continue }
+                let tag = html.slice(lt, gt + 1)
+                if (tag.indexOf('"') >= 0 || tag.indexOf("'") >= 0) { TAG.lastIndex = lt; const m = TAG.exec(html); if (m) { tag = m[0]; gt = lt + tag.length - 1 } }
+                let sp = 1; while (sp < tag.length - 1) { const ch = tag.charCodeAt(sp); if (ch === 32 || ch === 10 || ch === 9 || ch === 47) break; sp++ }
+                const name = tag.slice(1, sp).toLowerCase(), attrs = tag.slice(sp, -1)
+                i = textFrom = gt + 1
+                if (RAW.has(name)) { CLOSE[name].lastIndex = i; const e = CLOSE[name].exec(html); i = textFrom = e ? e.index : to; if (i > upTo) inTag = true; continue }
+                if (BLOCK.has(name)) seen.clear()
+                if (name === 'a' && !skip) {
+                    const href = (attrs.match(/\shref="(https?:\/\/[^"]+)"/) || [])[1]
+                    if (href && !href.startsWith('https://storm-charles.promptugal.news/')) {
+                        const cap = rel.startsWith('evidence/') ? null : CAP.get(dec(href).replace(/&amp;/g, '&'))
+                        let nt = /\sclass="/.test(tag) ? tag.replace(/\sclass="/, ' class="out ') : tag.replace(/^<a/i, '<a class="out"')
+                        nt = nt.replace(/^<a/i, '<a data-kind="out"')
+                        if (cap) { nt = nt.replace(/\shref="[^"]+"/, ` href="${up}evidence/${cap}.html" data-out="${href}"`); stats.outside_to_evidence++ }
+                        stats.outside_marked++; put(lt, gt + 1, nt)
+                    }
+                }
+                if (!VOID.has(name) && attrs.charCodeAt(attrs.length - 1) !== 47) { const sk = SKIP.has(name) || (attrs.length > 5 && /\sclass="(?:[^"]* )?notice(?: [^"]*)?"|\sdata-nolink|\shidden(?=[\s=]|$)/.test(attrs)); stack.push({ name, skip: sk }); if (sk) skip++ }
+                if (gt > upTo) inTag = true
             }
-            if (!VOID.has(name) && !/\/\s*$/.test(attrs)) { const sk = SKIP.has(name) || /\sclass="(?:[^"]* )?notice(?: [^"]*)?"|\sdata-nolink|\shidden(?=[\s=]|$)/.test(attrs); stack.push({ name, skip: sk }); if (sk) skip++ }
-            out += tag
         }
-        if (!out.includes('app/lens/lens.')) out = out.replace('</head>', `<link rel="stylesheet" href="${up}app/lens/lens.css">\n<script src="${up}app/lens/lens.js" defer></script>\n</head>`)
-        stats.pages++; if (n) { stats.pages_linked++; stats.by_page[rel] = n; stats.linked += n }
-        if (out !== html) fs.writeFileSync(f, out)
+        const gapText = (a, b) => { const s = html.slice(a, b); let plain = '', at = 0; for (const h of M.find(s)) { plain += s.slice(at, h.index) + ' '; at = h.index + h.length } for (const m of dec(plain + s.slice(at)).replace(/&#39;|&quot;|&amp;/g, ' ').matchAll(CAND)) { const k = m[0].trim().replace(/\s+/g, ' '); if (!known.has(k.toLowerCase())) gaps.set(k, (gaps.get(k) || 0) + 1) } }
+        M.scan(html, from, to, (at, txt, h) => {
+            walk(at)
+            if (inTag || skip || at < last || seen.has(h.id) || h.id === self) return
+            seen.add(h.id); n++; stats.by_node[h.id] = (stats.by_node[h.id] || 0) + 1
+            put(at, at + txt.length, `<a class="ent ent-${h.type}" data-kind="entity" data-ent="${h.id}" href="${up}entities/${h.id}.html">${txt}</a>`)
+        })
+        walk(to - 1)
+        if (n) { stats.pages_linked++; stats.by_page[rel] = n; stats.linked += n }
+        if (parts.length) { parts.push(html.slice(last)); fs.writeFileSync(f, parts.join(''), 'latin1') }
     }
-    const known = new Set([...M.names.keys()])
-    const noNode = [...gaps].filter(([k]) => !known.has(k.toLowerCase())).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 150).map(([text, count]) => ({ text, count }))
+    const noNode = [...gaps].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 150).map(([text, count]) => ({ text, count }))
     write('entities/mentions.json', JSON.stringify({ about: 'What the linker did on this build: mentions of known names linked (the first in each paragraph), by node and by page; outside links marked; and capitalised names on the front page and the incident\'s pages that no node has yet (a rough list: sentence openings are in it too). Made by tools/entities-build.mjs --link; not a tracked file.', by: 'incident.entities@web-summit.dinis', updated: index.updated, nodes: nodes.length, edges: index.counts.edges, ...stats, no_node_yet: { distinct: noNode.length, mentions: noNode.reduce((s, x) => s + x.count, 0), items: noNode } }, null, 1) + '\n')
-    console.log(`entities-build --link: ${stats.linked} mentions linked on ${stats.pages_linked} of ${stats.pages} pages; ${stats.outside_marked} outside links marked; ${noNode.length} names with no node yet`)
+    console.log(`entities-build --link: ${stats.linked} mentions linked on ${stats.pages_linked} of ${stats.pages} pages; ${stats.outside_marked} outside links marked; ${noNode.length} names with no node yet; ${Date.now() - t0} ms`)
 }
