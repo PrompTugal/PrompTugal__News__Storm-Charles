@@ -23,6 +23,7 @@ For a fresh sources session. Read this, then [status.json](status.json), then [R
 
 1. `git pull --rebase origin dev`
 2. `node tools/source-meteoalarm.mjs` (add `--no-vault` if this machine has no vault folder)
+2b. `node tools/source-meteoalarm-models.mjs --max 10` (incident.models@'s second reader: open-weight models through OpenRouter check the parser's fields; needs the vault's latest copy; it writes `data/portugal/models-check.json` and `agents/sources/calls/`)
 3. `node tools/source-index.mjs`
 4. one item from `next` in status.json
 5. status.json with the real clock (`date -u`); `AGENT=incident.sources@web-summit.dinis node tools/accounts-measure.mjs --task "..." --quality pass --append`
