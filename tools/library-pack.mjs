@@ -115,7 +115,14 @@ ${st ? `- **State:** ${cell(cut(st.state, 400))}${st.updated ? ` (its own date: 
 ${(st.next || []).slice(0, 3).map(x => `- **Next:** ${cell(cut(x, 200))}`).join('\n')}
 ${(st.asks || []).slice(0, 4).map(x => `- **Ask:** ${cell(cut(x, 200))}`).join('\n')}
 - The whole status, with everything done: ${P1(`agents/${role}/status.json`)}` : '- No status file yet: nothing has been recorded by this agent.'}
+${st?.handover ? `
+## The hand-over from the session before yours
 
+${st.handover.at ? `Written ${cell(String(st.handover.at))}${st.handover.why ? `, because ${cell(cut(st.handover.why, 240))}` : ''}. ` : ''}Copied whole from \`agents/${role}/status.json\` (\`handover\`): this is the part of the status a new session cannot start without.
+
+${[['in_flight', 'In flight'], ['each_wake', 'Each wake'], ['lessons_of_this_session', 'Lesson'], ['lessons', 'Lesson']].flatMap(([k, label]) => [].concat(st.handover[k] || []).map(x => `- **${label}:** ${cell(String(x))}`)).join('\n')}
+${['what_runs_in_the_build', 'scheduled_wakes'].filter(k => st.handover[k]).map(k => `- **${k.replace(/_/g, ' ')}:** ${cell(String(st.handover[k]))}`).join('\n')}
+` : ''}
 ## Your files
 
 ${mine.length ? `${n(mine.length)} files, ${n(mineBytes)} bytes in all (about ${n(tok(mineBytes))} tokens to read every one): ${folders.map(([d, k]) => `\`${d}/\` ${k}`).join(', ')}. The ones to open first:

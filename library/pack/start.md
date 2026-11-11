@@ -1,6 +1,8 @@
 # Start here: what a new agent on this site needs to know
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:59 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 03:03 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
+
+**Where the pack is.** Only this page and `history.md` are kept in git. `state.json` and your role's pack (`<role>.md`) are written by the build, so they are not in your clone: read them from the live site (`https://storm-charles.promptugal.news/library/pack/state.json` and `.../library/pack/<role>.md`), or run `node admin/build/build.mjs` (3 seconds) and read `_site/library/pack/`. Read the three, then your `agents/<role>/status.json` only if the role pack says it holds a hand-over.
 
 ## What this is
 
@@ -27,7 +29,10 @@ What exists, and what does not yet: [[file:REALITY.md]]. What Dinis asked, close
 
 ## How to work
 
-- **First**: make a session key (`pki-agent.mjs keygen --session`, the pinned copy) and add only its public half to `data/keys.json`. Keep `agents/<role>/status.json`: state, done, next, asks (an ask that needs Dinis starts "Dinis:").
+- **Your clone** may start on a detached commit with an old local `dev`: `git fetch origin dev && git checkout -B dev origin/dev` before anything else.
+- **First**: make a session key. Download `https://pki.sgit.ai/agents/pki-agent.mjs` to a folder outside the repository, check its sha256 against `agent_tool.sha256` in [[file:app/login/pki/PIN.json]] (it begins `fcb28a1c`), then `node pki-agent.mjs keygen --name "<your agent name>" --session`. Add only the public half to `data/keys.json`: copy the shape of any entry there (`id`, `agent`, `role`, `how`, `added`, `status`, and `bundle` with the two public PEMs from `~/.sg-send/keys/<fingerprint>/public_key.pem` and `signing_public.pem`, and the two fingerprints the tool printed). If you take over a role, the earlier session's entry stays, with `status` "handed over". Nothing else from that folder is ever committed.
+- **Keep `agents/<role>/status.json`**: state, done, next, asks (an ask that needs Dinis starts "Dinis:"). If you will hand over, add `handover` (in flight, what to run each wake, lessons): the next session's role pack shows it.
+- **Measure your session** at the end of every wake: two lines, in [[file:accounts/measure.md]] (`tools/accounts-measure.mjs --append`, then commit `accounts/ledger/<role>.jsonl`, which is yours to append to).
 - **Every markdown file opens** with `> Kept by <agent>, <date>, <time> UTC` under its title; every JSON carries `by` and `updated`. Use the real clock (`date -u`), not a guess.
 - **A page that is computed is written by a generator**: a small tool that takes `--out <dir>`, writes only there, reads no git history and runs in milliseconds. Add it with one line to `admin/build/generators.json`. Never commit generated output.
 - **Anything that grows with the site must not cost a page per item**: draw it in the browser from JSON. The gate has 5 seconds for the whole site.
@@ -43,6 +48,9 @@ The team's rule, from the Web Summit team's [token-efficiency policy](https://we
 - **Start fresh** for each scheduled wake where you can: every call re-reads the whole conversation, so a long session pays for its history again on every step.
 - **Few calls, few sub-agents; say less.** Batch reads into one command; no narration.
 - **Run the gate once.** `release.sh` already runs it.
+- **A report to the conductor is a few numbered lines with a link** (to your status file or the page), never the whole account. The reports agents sent were the largest thing the conductor's session read: 968,742 characters in 180 messages (measured, [[file:accounts/savings.md]]). Agent-to-agent asks go in a commit addressed `For:`, which costs the conductor nothing.
+- **When your context passes about 300,000 tokens, say so** and ask the conductor for a fresh session started from your pack; write the hand-over in your status file first. The measure step prints the number (`context_per_call.last`). Every measured session started near 84,000 tokens and the long ones carried 300,000 to 780,000 on every call.
+- **Quiet commands.** What a command prints is read again on every later call: `| head`, `| cut -c1-200`, `| tail -3`, a JSON's keys before its body. Never `cat` a file you have not sized (`wc -c`).
 - **Needing more is allowed**: say so in your status, and your work decides.
 
 ## How to release
@@ -52,9 +60,9 @@ git add <your files> && git commit      # subject "<agent>: <what>"; lines "Agen
 AGENT=<your full name> admin/tools/release.sh
 ```
 
-It rebases on `dev`, runs the gate (`node admin/build/validate.mjs`, must print OK) and the path check, and pushes. CI numbers the version, deploys it, and fails unless the live site serves it. You never write a version number. A push is public in about a minute, with no second reader: check your own work before it goes. Small pushes, often. Then tell the conductor in a few lines what is live.
+It rebases on `dev`, runs the gate (`node admin/build/validate.mjs`, must print OK) and the path check, and pushes. CI numbers the version, deploys it, and fails unless the live site serves it. You never write a version number. A push is public in about a minute, with no second reader: check your own work before it goes. Small pushes, often. Then tell the conductor in a few numbered lines what is live (a message to its session, whose id is in your start prompt).
 
-If the gate refuses your push, nothing went out: fix the cause; never work round the gate.
+If the gate refuses your push, nothing went out: fix the cause; never work round the gate. If `release.sh` says "conflict with dev", someone else wrote the same file (often another session of your own role): it has already undone the rebase; `git reset --hard origin/dev` after saving your change aside, make the change again on top, commit, release. "Pushed" is not "live": the live site's `version.json` names the commit it serves.
 
 ## Where things are
 

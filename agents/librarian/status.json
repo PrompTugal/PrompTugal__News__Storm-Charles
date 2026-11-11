@@ -1,10 +1,10 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
-  "state": "HANDED OVER at 03:02 UTC on 11 November to a fresh session, 'incident.librarian@web-summit.dinis (2)', started by the conductor from library/pack/ as the measured test. This first session (23:38 on 10 November to 03:02) makes no further pushes unless the conductor asks. Read 'handover' below.",
-  "last_wake": "2026-11-11T02:45Z",
-  "updated": "2026-11-11T03:02Z",
+  "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
+  "last_wake": "2026-11-11T03:01Z",
+  "updated": "2026-11-11T03:03Z",
   "by": "incident.librarian@web-summit.dinis",
-  "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
+  "key": "sha256:e77d2966a54afa44 (encryption), sha256:dda2eb162ed93165 (signing); the second session's key, public half in data/keys.json (id incident-librarian-dinis-2); the first session's (sha256:cefff668d770eca8) stays listed, marked handed over",
   "jobs": [
     "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
     "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -22,14 +22,19 @@
     "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain",
     "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
     "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
-    "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line"
+    "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
+    "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)"
   ],
   "next": [
-    "none in this session: see handover.in_flight for the new session"
+    "close news/2026-11-11T02.md and write news/2026-11-11T03.md",
+    "the round article kept true to the live site",
+    "library/abp.json: what is particular to the 17 newer agents' policies",
+    "the reporter's traces in place of history.md's paragraphs as they land",
+    "the measure step at the end of each wake; say so when the context passes about 300,000 tokens"
   ],
   "asks": [
     "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
-    "Dinis: whether to archive the first librarian session.",
+    "Dinis: whether to archive the first librarian session (it has handed over).",
     "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
     "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
   ],
@@ -62,5 +67,19 @@
       "Nothing else: no notes, no vault, no token."
     ],
     "scheduled_wakes": "One: 'incident.librarian@web-summit.dinis hourly' (trig_015kcoYrPNCaf6xjdUPt5oXP), at :44 each hour, bound to THIS first session, created on Dinis's account at 23:37 UTC on 10 November (not by this session). I have NOT disabled or changed it: changing a scheduled task on another session's message alone is not mine to do. incident.conductor@ or Dinis should point it at the new session or disable it. If it fires here before then, this session answers in one line and pushes nothing."
+  },
+  "started_from_the_pack": {
+    "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
+    "what_the_pack_did_not_tell_me": [
+      "state.json and librarian.md are not in a clone: the build writes them. I looked for them in git, then built the site to read them. FIXED: start.md says where they are (the live site, or _site/ after a build)",
+      "my clone started on a detached commit with a local dev 52 commits behind. FIXED: start.md gives the one command",
+      "the key: the address of pki-agent.mjs, where its full pinned sha256 is (app/login/pki/PIN.json, agent_tool), that keygen needs --name, and the shape of an entry in data/keys.json. I found each by grep. FIXED in start.md",
+      "the measure step was not in start.md at all (only in accounts/measure.md, which the start prompt named). FIXED: one line with the pointer",
+      "the hand-over lived only in status.json, so the role pack's 'where the work stands' (three 'next' cut at 200 characters) was not enough to carry on and I read the whole status file. FIXED: tools/library-pack.mjs copies a status file's 'handover' whole into the role pack",
+      "release.sh stopped on a conflict: the first session had committed accounts/ledger/librarian.jsonl a minute before me. Nothing said what to do. FIXED: two lines under 'How to release'",
+      "how to report to the conductor (a message to its session; the id comes in the start prompt). FIXED: said in start.md",
+      "my own waste, not the pack's: I printed all of accounts/savings.md (10 KB) where its headings would have done. The 'quiet commands' rule is now in start.md"
+    ],
+    "what_it_did_tell_me": "the rules, my paths, the release command, my neighbours and the open cards: I opened CLAUDE.md, BRIEF.md, RESTRUCTURE.md, REALITY.md, JOBS.md and policy.json not at all"
   }
 }
