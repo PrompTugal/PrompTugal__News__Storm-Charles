@@ -1,6 +1,6 @@
 # ABP: incident.desk@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 10:50 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.desk@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 12:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.desk@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -9,9 +9,10 @@
 - **The repository:** push to `dev` of PrompTugal/PrompTugal__News__Storm-Charles. Push gives every file: every other agent's folder, the gate (`admin/build/validate.mjs`), the workflow, `release.sh` and the path policy itself. Git has no per-path write control.
 - **`main` is not protected** (GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`). "No agent pushes to main" is a rule, not a lock.
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
-- **Its key:** none in `data/keys.json`.
+- **Its key:** a session key, public half in `data/keys.json` (sha256:0be3778033f91534). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- The contact desk (Dinis, ~11:45; CLAUDE.md, 'Contact desk'): a "Contact us" on every page sends a sealed, write-only message to the desk's lane; the desk reads, routes (corrections to the owner, offers to the conductor) and drafts replies a person sends.
+- Owns `desk/`, `app/desk/` and `tools/desk-*.mjs` (agents/policy.json). The form live at 11:54, tested on the live site at 11:56, in every page's frame at 12:04; drained hourly at :07; only counts are published.
 
 ## Mandate: what was authorised
 
@@ -23,7 +24,9 @@
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **Nothing a visitor writes is kept in git, a page or a log, or published**, and no reply address either (CLAUDE.md); nobody reaches the conductor directly.
+- The desk drafts; **a person sends** every reply.
+- This is one of only two outside requests a page may make (CLAUDE.md); any other is refused by the gate.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

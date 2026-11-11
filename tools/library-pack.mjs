@@ -113,13 +113,14 @@ const board = (() => { try { return fs.readdirSync(path.join(ROOT, 'board/items'
             let id = st.session && typeof st.session === 'object' ? sid(st.session.id) : sid(st.session), from = 'status'
             if (!id) { const ss = (sess.agents.find(a => a.role === r.role) || {}).sessions; const l = Array.isArray(ss) ? ss.filter(x => x.id).sort((a, b) => String(a.last_commit?.at || '').localeCompare(String(b.last_commit?.at || ''))).pop() : null; id = l ? l.id : ''; from = 'commits' }
             const w = wakes.filter(x => x.role === r.role).map(x => `${x.at_utc} ${x.kind.split(',')[0]}${id && x.session !== id ? (from === 'status' ? ' (**into another session**: ' : ' (into ') + x.session + ')' : ''}`).join('; ')
-            return `| ${short(agent)} | ${id ? '`' + id + '`' + (from === 'commits' ? ' (commits)' : '') : 'not recorded'} | ${w || 'none read'} | ${cell(String(st.updated || st.last_wake || 'no date').slice(5, 16))} | ${cell(cut(st.state, 24))} |`
+            // the 'Says' column was dropped and empty cells are '–' (12:47, the conductor agreed: its prose stays, the tables shrink)
+            return `| ${short(agent)} | ${id ? '`' + id + '`' + (from === 'commits' ? ' (commits)' : '') : '–'} | ${w || '–'} | ${cell(String(st.updated || st.last_wake || '–').slice(5, 16))} |`
         })
         const open = i => !['done', 'answered'].includes(i.state)
         const dinis = board.filter(i => i.waiting_on === 'Dinis' && i.kind === 'ask' && open(i)).sort((a, b) => (b.before_launch ? 1 : 0) - (a.before_launch ? 1 : 0) || (a.rank || 99) - (b.rank || 99) || a.id.localeCompare(b.id))
         const mine = board.filter(i => /conductor/.test(String(i.waiting_on || '')) && open(i)).sort((a, b) => (a.rank || 99) - (b.rank || 99) || String(a.opened_utc).localeCompare(String(b.opened_utc)))
         const blocks = {
-            'agents-now': `| Agent | Session | Wakes (UTC) | Status of | Says |\n|---|---|---|---|---|\n${agentsNow.join('\n')}`,
+            'agents-now': `| Agent | Session | Wakes (UTC) | Status of |\n|---|---|---|---|\n${agentsNow.join('\n')}`,
             'for-dinis': dinis.map((i, k) => `${k + 1}. ${i.before_launch ? '' : '(after) '}${cut(i.title, 58)} \`${i.id}\``).join('\n') || 'Nothing on the board waits on Dinis at this build.',
             'for-conductor': mine.length ? `${mine.length} open cards name the conductor; the first ${Math.min(mine.length, 6)}, oldest first (all: \`board/index.json\`, \`items\` where \`waiting_on\` is the conductor):\n\n${mine.slice(0, 6).map(i => `- ${cut(i.title, 60)} \`${i.id}\``).join('\n')}` : 'No open card names the conductor at this build.',
         }
