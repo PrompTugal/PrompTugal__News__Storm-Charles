@@ -1,0 +1,203 @@
+{
+ "by": "incident.synthetic@web-summit.dinis",
+ "updated": "2026-11-11T12:12:09Z",
+ "label": "Invented person; not user research",
+ "persona": "deadline",
+ "run": "guide-4",
+ "start": "/guide/media/",
+ "version_seen": "v0.1.1043",
+ "page_height_px": {
+  "closed": 7857,
+  "fold_open": 11751,
+  "guide3_closed": 8619
+ },
+ "seconds_lost_to_length": 25,
+ "steps": [
+  {
+   "url": "/guide/media/",
+   "what": "Top box: RED rain until 18:00 UTC, orange wind, orange waves; FACT; IPMA feed read 11:26 UTC",
+   "px": 563,
+   "seconds": 5,
+   "taps": 0
+  },
+  {
+   "url": "/guide/media/#changed",
+   "what": "Changed today: 3 rows (Sao Bento 11:07, Vasco da Gama, Carris)",
+   "px": 851,
+   "seconds": 15,
+   "taps": 0
+  },
+  {
+   "url": "/guide/media/ (fold)",
+   "what": "21 more today opened; IPMA wind red->orange rows 15-16 of 24, twice",
+   "px": 1416,
+   "seconds": 60,
+   "taps": 1
+  },
+  {
+   "url": "/guide/media/",
+   "what": "Contact line under the list",
+   "px": 1508,
+   "seconds": 3,
+   "taps": 0
+  },
+  {
+   "url": "/guide/media/#press",
+   "what": "Headline, Day 3 aim; lead's paragraph stamped 08:44",
+   "px": 1586,
+   "seconds": 25,
+   "taps": 0
+  },
+  {
+   "url": "/guide/media/#now-detail",
+   "what": "Four IPMA levels in IPMA's words; alert situation",
+   "px": 2654,
+   "seconds": 20,
+   "taps": 0
+  },
+  {
+   "url": "/guide/media/#websummit",
+   "what": "Day 3 'an aim, not a promise', read 04:33 (8 h ago); not yet announced",
+   "px": 3673,
+   "seconds": 20,
+   "taps": 0
+  },
+  {
+   "url": "/app/desk/",
+   "what": "Read about once an hour at :07; reply by a person can take longer; 'for a deadline, say so'",
+   "px": 380,
+   "seconds": 30,
+   "taps": 1
+  }
+ ],
+ "understood_10s": "Red rain in Lisbon until 18:00 UTC, orange wind and waves; IPMA read 11:26 UTC; not a warning service.",
+ "understood_1min": "Bridges, Carris, Fertagus, 208 flights cancelled at Lisbon, Day 2 off, Day 3 aims to proceed; contact line under the change list.",
+ "looked_for": [
+  {
+   "what": "What stands now, with source and time",
+   "result": "found",
+   "where": "/guide/media/ 0-664 px",
+   "seconds": 5,
+   "taps": 0
+  },
+  {
+   "what": "Changed since this morning (IPMA wind red to orange 07:16)",
+   "result": "partly",
+   "where": "Changed today fold rows 15-16 of 24 (@3454/@3644 open); lead's paragraph @1844 stamped 08:44",
+   "seconds": 75,
+   "taps": 1
+  },
+  {
+   "what": "Press contact and response time",
+   "result": "found",
+   "where": "@1508 -> /app/desk/ @380 'about once an hour'; no reply time promised",
+   "seconds": 20,
+   "taps": 1
+  },
+  {
+   "what": "Label key (FACT/EVIDENCE)",
+   "result": "not found",
+   "where": "only footer @7583 and hidden Panel lens",
+   "seconds": null,
+   "taps": null
+  }
+ ],
+ "misread": [
+  "Status chips on counts ('limited' on 208 flights cancelled, 'announced' on occurrence counts) read as statuses",
+  "'published 2026-11-11' in the heading read as the list's publish time",
+  "FACT vs EVIDENCE guessed; two IPMA FACT rows, unsure which is current",
+  "Lead's box stamped 08:44 under '1 min ago'"
+ ],
+ "not_found": [
+  "Warning-level changes pinned first in Changed today",
+  "A promised press reply time or phone",
+  "A one-line citation example on the page",
+  "A label key on the page"
+ ],
+ "advice_like": [],
+ "words_not_understood": [
+  "Panel",
+  "Deeper",
+  "the record",
+  "CAP Update",
+  "SRPC",
+  "limited/announced chips on counts"
+ ],
+ "would_act": "Files in about 3 minutes citing IPMA, websummit.com, operators and CNN Portugal; uses the desk only for a correction.",
+ "score": 4,
+ "score_reason": "Contact moved up and page shorter, so he files fast; the main IPMA change is still folded and duplicated, and no label key is in sight.",
+ "vs_guide3": [
+  {
+   "finding": "IPMA wind change buried in fold and duplicated",
+   "status": "not fixed"
+  },
+  {
+   "finding": "Page grew to 8,619 px",
+   "status": "partly"
+  },
+  {
+   "finding": "Press contact is an hourly form with no reply time",
+   "status": "partly"
+  },
+  {
+   "finding": "Status chips on counts",
+   "status": "not fixed"
+  },
+  {
+   "finding": "No 'last checked' on Changed today or Day 3",
+   "status": "not fixed"
+  },
+  {
+   "finding": "No FACT/EVIDENCE key; intro at bottom; '1 min ago'",
+   "status": "not fixed"
+  },
+  {
+   "finding": "Contact line far down (@8241)",
+   "status": "fixed"
+  }
+ ],
+ "findings": [
+  {
+   "class": "costly",
+   "what": "Main change (IPMA wind red->orange) folded and duplicated",
+   "where": "Changed today fold rows 15-16 of 24",
+   "measure": "75 s, 1 tap; ~2,000 px below the fold summary when open",
+   "change": "Pin warning-level changes first; merge rows of one event"
+  },
+  {
+   "class": "costly",
+   "what": "Duplicate rows in Changed today",
+   "where": "IPMA x2, flights 208/222, sea bars x2, Vasco da Gama x2",
+   "measure": "4 pairs in 24 rows",
+   "change": "One row per event, newest reading"
+  },
+  {
+   "class": "minor",
+   "what": "No label key on the page",
+   "where": "key only in hidden Panel; footer @7583",
+   "measure": "0 of 11.8 screens",
+   "change": "One line under the top box defining FACT and EVIDENCE"
+  },
+  {
+   "class": "minor",
+   "what": "Press reply time not promised",
+   "where": "/app/desk/ @380, @2098; 'Press or media' @808",
+   "measure": "read hourly at :07; reply 'can take longer'",
+   "change": "State the timing beside 'Press or media' and on the guide's contact line"
+  },
+  {
+   "class": "minor",
+   "what": "Status chips on counts",
+   "where": "@1948, @1811 (fold open)",
+   "measure": "several rows",
+   "change": "No status chip on counts"
+  },
+  {
+   "class": "minor",
+   "what": "No 'checked HH:MM' on Day 3 or the list",
+   "where": "@3724 '(8 h ago)'",
+   "measure": "source read 04:33",
+   "change": "'Checked HH:MM UTC; no newer word'"
+  }
+ ]
+}

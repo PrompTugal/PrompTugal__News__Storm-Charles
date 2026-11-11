@@ -1,0 +1,33 @@
+{"by":"incident.synthetic@web-summit.dinis","updated":"2026-11-11T12:11:00Z","label":"Invented person; not user research","persona":"stranded","run":"guide-4","start":"/guide/stranded/","version_seen":"v0.1.1043",
+"page_height_px":8674,"seconds_lost_to_length":14,
+"steps":[
+{"n":1,"url":"/guide/stranded/","what":"Title and headline: RED rain warning until 18:00 UTC, orange wind, orange waves; FACT, IPMA feed read 11:26 UTC","seconds":"0-5","px":430},
+{"n":2,"url":"/guide/stranded/ (one flick)","what":"Jump row (I'm stranded / Getting around); Changed today; Carris FACT service continues","seconds":"5-10","px":"734, 782, 851, 1238"},
+{"n":3,"url":"#around (tap 1)","what":"Carris, Fertagus, taxis, ride-hailing: not stated; Metropolitano de Lisboa NOT STATED, read 12:06 UTC","seconds":"10-18","px":"4246, 4389"},
+{"n":4,"url":"#around (scroll)","what":"Carris Metropolitana disrupted; TTSL notice; Metro running chip on homeless-shelter row","seconds":"18-35","px":"4430-5392"},
+{"n":5,"url":"#stranded (tap 2, after swipe to top)","what":"Pingo Doce, museums, schools closed; courts; hospitals limited","seconds":"35-60","px":"1571-2900"}],
+"understood_10s":"Red rain warning until 18:00 UTC; two links that are his questions; Carris buses continue.",
+"understood_1min":"Carris continues (FACT); Metro today not stated by Metro's own site (read 12:06); supermarkets, museums, schools closed; cafes/malls/taxis list not reached.",
+"looked_for":[
+{"what":"Can I get across town (Metro, buses, Uber)?","result":"found, muddied by contradictions","where":"4389 Metro; 1238 Carris; 4246 not-stated line","seconds":18,"taps":1},
+{"what":"Is anything open (cafe, mall, place to wait)?","result":"partly","where":"1571-2900 closures; not-stated list ~3550 not reached","seconds":60,"taps":2},
+{"what":"Where do I go?","result":"not found","where":"homeless shelter rows 3700, not reached","seconds":null,"taps":2}],
+"misread":["Carris FACT service continues (1238) vs Carris, Fertagus not stated (4246)","Metro NOT STATED (4389) vs running chip on homeless-shelter row (5392) read as Metro running","4 before 3 reads as a skipped section"],
+"not_found":["One clear Metro service line (Wednesday row hidden, truncated to 'Me…')","An up-link back to the jump row","Any place stated open to wait in"],
+"advice_like":[],
+"words_not_understood":["IPMA","ANEPC","Fertagus","Transtejo Soflusa","Carris vs Carris Metropolitana","São Bento","Lusoponte","EVIDENCE"],
+"would_act":"Go to a Carris stop; ask reception about the Metro.",
+"score":4,"score_reason":"Jump row puts Metro today 18 s and one tap away, but the transport block contradicts the operator facts shown above it.",
+"vs_guide3":[
+{"finding":"Metro today not reachable in 60 s; no jump link","status":"fixed"},
+{"finding":"Carris and Fertagus FACT at top vs not stated in Getting around","status":"not fixed"},
+{"finding":"Changed today pushed stranded section off first screen","status":"partly"},
+{"finding":"Deeper open, repeats closures","status":"fixed"},
+{"finding":"Metro block opens on homeless running row","status":"not fixed"},
+{"finding":"4 then 3; Still open:; CP forecast parenthesis","status":"partly"}],
+"findings":[
+{"class":"costly","what":"Carris and Fertagus FACT vs not-stated line in Getting around","where":"1238, 1400 (folded) vs 4246","measure":"both seen within 18 s","change":"Feed operator facts into Getting around; drop them from the not-stated line"},
+{"class":"costly","what":"Metro NOT STATED then running chip on homeless-shelter row","where":"4389 vs 5392","measure":"1000 px apart, 1 tap","change":"Move the shelter row under Shelter or chip it announced"},
+{"class":"costly","what":"Row text truncated to 1-3 characters (M…, Me…, Con…)","where":"3881 visible; Deeper 6947+","measure":"3 rows","change":"Truncate at a word boundary with a minimum length"},
+{"class":"minor","what":"'↑ The seven questions' jumps down; no up-link to jump row","where":"4127, 7074 -> 7157","measure":"~5 s swiping","change":"'↑ Top' to the jump row or label '↓ All questions'"},
+{"class":"minor","what":"4 before 3; CP 'forecast' parenthesis without forecaster","where":"1586/4194; 5646","measure":"not reached in minute (CP)","change":"Renumber; '(the press citing a forecast)'"}]}

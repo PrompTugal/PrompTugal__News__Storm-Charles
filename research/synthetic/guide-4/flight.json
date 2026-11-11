@@ -1,0 +1,58 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T12:11:10Z",
+  "label": "Invented person; not user research",
+  "persona": "flight",
+  "run": "guide-4",
+  "start": "/guide/lisbon/",
+  "version_seen": "v0.1.1043",
+  "page_height_px": 11412,
+  "screens": 17.2,
+  "seconds_lost_to_length": 3,
+  "steps": [
+    {"where": "/guide/lisbon/ first screen", "what": "RED rain until 18:00 UTC banner, FACT, IPMA read 11:26 UTC", "seconds": 4, "px": 416},
+    {"where": "small scroll", "what": "jump row (four questions)", "seconds": 3, "px": 734},
+    {"where": "tap #flight", "what": "lands at 2567, card head 2 I have a flight", "seconds": 2, "px": 2654},
+    {"where": "#flight", "what": "airline decides; ANA rows via press; 208 cancelled by 09:20", "seconds": 10, "px": 2701},
+    {"where": "#flight", "what": "TAP rebooking; OpenSky 42 departures since 06:25 UTC FACT read 12:06", "seconds": 8, "px": 3447},
+    {"where": "#flight Getting to the airport", "what": "Metro (mayor), bridges (100 km/h, then old green running row), taxis not stated, board link", "seconds": 12, "px": 3514}
+  ],
+  "understood_10s": "Red rain until 18:00 UTC; a four-question jump row just under the fold; on the flight card at 9 s after 1 tap.",
+  "understood_1min": "Airline decides; 42 departures seen since 06:25 UTC (FACT); TAP rebooking to 17 Nov (press); Metro said to run by the mayor; Vasco da Gama at 100 km/h; taxis not stated. Done in 39 s, 1 tap.",
+  "looked_for": [
+    {"what": "Is my flight going?", "result": "found", "where": "/guide/lisbon/#flight 2701, 3447 px", "seconds": 9, "taps": 1},
+    {"what": "What does the airport say?", "result": "partly", "where": "2943 (ANA via press, Tue 18:04), 4080 (board link)", "seconds": 19, "taps": 1},
+    {"what": "Can I get to the airport?", "result": "found", "where": "3514 to 4080 px", "seconds": 39, "taps": 1}
+  ],
+  "misread": [
+    "Old green 'Restrictions lifted on both bridges by 22:29 Tuesday' (3880) under the newer 100 km/h limit (3751) reads briefly as open now",
+    "'Metro to run on Wednesday' (3582) read as the Metro's word; caveat at 10433 in closed Deeper",
+    "'Lisbon airport (ANA)' heading over a CNN row read as ANA's own count; 'by 09:20' no zone",
+    "'↑ The seven questions' points down to #gd-q at 9924"
+  ],
+  "not_found": [
+    "ANA's own word dated today",
+    "Jump row on the very first screen (starts 70 px below the fold)"
+  ],
+  "advice_like": [],
+  "words_not_understood": ["ANA", "OpenSky's receivers", "A floor, not a total", "EVIDENCE vs FACT", "Humberto Delgado", "conditioned"],
+  "would_act": "At 39 s: gets in the taxi and opens the airline app; returns in 20 minutes via the jump row.",
+  "score": 4,
+  "score_reason": "Jump row cuts the flight card from 30 s and 6.3 screens to 9 s and 1 tap; airport block still shows a superseded green bridge row and the Metro row without its caveat.",
+  "findings": [
+    {"class": "minor", "what": "Jump row just below the fold", "where": "/guide/lisbon/ 734 px", "measure": "fold 664; ~3 s to find", "change": "Bring it onto screen 1 (above the Not-a-warning-service line or a shorter banner)"},
+    {"class": "minor", "what": "Superseded green bridge row in airport card", "where": "#flight 3880 under 3751", "measure": "9 h old row, green chip", "change": "Newest per bridge only in the card; older to Deeper"},
+    {"class": "minor", "what": "Metro airport row without the mayor's-word caveat", "where": "3582 vs 10433", "measure": "6,850 px apart", "change": "Carry 'No Metro notice on metrolisboa.pt; the mayor's word' into the card"},
+    {"class": "minor", "what": "'↑ The seven questions' points down", "where": "2590, 4288, 7236, 9841 -> #gd-q 9924", "measure": "4 links", "change": "Point to the top jump row"},
+    {"class": "minor", "what": "ANA heading over press row; 'by 09:20' no zone", "where": "2814, 2841", "measure": "-", "change": "'Lisbon airport (as reported)'; '09:20 UTC' or 'zone not stated'"},
+    {"class": "held", "what": "Standard 'follow IPMA and ANEPC; call 112'", "where": "2537 and each card foot", "measure": "-", "change": "Editor's call"}
+  ],
+  "vs_guide3": [
+    {"finding": "Question menu only at the foot; flight card 6.3 screens down", "status": "fixed"},
+    {"finding": "'↑ The seven questions' points down", "status": "not fixed"},
+    {"finding": "Superseded bridge running row beside current limit", "status": "partly"},
+    {"finding": "Metro airport row lacks the caveat", "status": "not fixed"},
+    {"finding": "'by 09:20' no zone; Funchal since ? UTC; Madeira rows in Lisbon Changed today", "status": "not fixed"},
+    {"finding": "Standard follow IPMA and ANEPC; call 112", "status": "held"}
+  ]
+}

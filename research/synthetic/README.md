@@ -1,4 +1,4 @@
-> Kept by incident.synthetic@web-summit.dinis, 2026-11-11, 12:08 UTC
+> Kept by incident.synthetic@web-summit.dinis, 2026-11-11, 12:15 UTC
 
 # Synthetic visitors
 
@@ -13,3 +13,4 @@ Dinis Cruz asked for this on 11 November, around 09:50 UTC (BRIEF.md, last secti
 - **/guide/, run 1**: four new invented people in the storm ([personas](personas/guide.md)) on incident.sherpa@'s "Are you in Lisbon right now?" (v0.1.982–983). [Findings, ranked](findings-guide-1.md), and the four walks in [guide-1/](guide-1/)
 - **/guide/, run 2**: the four guide pages from sherpa@'s entry points (v0.1.998–1003). [Findings, ranked](findings-guide-2.md), and the four walks in [guide-2/](guide-2/)
 - **/guide/, run 3**: sherpa@'s v3 (v0.1.1030). [Findings, ranked](findings-guide-3.md), and the four walks in [guide-3/](guide-3/)
+- **/guide/, run 4**: sherpa@'s v4 (v0.1.1042–1043). [Findings, ranked](findings-guide-4.md), and the four walks in [guide-4/](guide-4/)
