@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T06:53Z",
+  "updated": "2026-11-11T06:54Z",
   "based_on_read_utc": "2026-11-11T06:25:17Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
@@ -559,11 +559,11 @@
     },
     {
       "id": "m15",
-      "text": "Press headlines on Wednesday morning (Lusa at 06:37, \"Charles causou ventos de 130 km/hora na Madeira\") spoke of winds of 130 km/h in Madeira. The figure matches the one in IPMA's orange wind warning for the mountains, and no such observation is in IPMA's open data, whose station feed carries no gusts. Whether IPMA gave the press a measured gust is not known to us. In the data we hold, the highest gust measured is the airport's 98 km/h at 02:30, and the highest hourly mean at a station 93.2 km/h.",
+      "text": "An IPMA meteorologist, speaking to Lusa (published 06:28), is reported as saying gusts above 130 km/h were measured in Madeira's highlands: \"tendo sido registado rajadas que ultrapassaram os 130 quilómetros por hora nas terras altas\", with no station and no time. The same article gives 130 km/h as the forecast of the orange warning to 12:00, and rain \"em seis horas que ultrapassaram os 240 milímetros\". This is the press reporting IPMA's spoken word, not read by us at IPMA: its public station feed carries no gusts, and its highest six-hour rain there is Areeiro's 232.1 mm. In the data we hold, the highest gust measured is the airport's 98 km/h at 02:30.",
       "label": "evidence",
-      "said_by": "Lusa (the headline); incident.meteorologist@web-summit.dinis and incident.conductor@web-summit.dinis, setting it beside IPMA's warning text and open data",
-      "at_utc": "2026-11-11T06:42Z",
-      "read_utc": "2026-11-11T06:53Z",
+      "said_by": "an IPMA meteorologist, as reported by Lusa (carried by Notícias ao Minuto); not read at IPMA",
+      "at_utc": "2026-11-11T06:28Z",
+      "read_utc": "2026-11-11T06:37Z",
       "supports": [
         {
           "kind": "row",
@@ -585,11 +585,20 @@
         {
           "kind": "row",
           "id": "s-1111T0238"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].max_6h_rain.mm",
+          "expect": 232.1,
+          "read_field": "stations[id=1210973].read_utc"
         }
       ],
       "qualified_by": [
-        "m11"
-      ]
+        "m11",
+        "m6"
+      ],
+      "voice": true
     }
   ],
   "not_known": [
@@ -605,7 +614,7 @@
       "text": "Which warning area each station belongs to: IPMA publishes no table assigning a station to a warning area, so no station is assigned to \"mountains\" or \"coast\" here."
     },
     {
-      "text": "The gusts in the mountains: the station feed has mean wind only, and the one gust source, Madeira airport, is not in a mountain area. The warned 140 km/h was not checked, and the red wind window has closed.",
+      "text": "The gusts in the mountains, at source: IPMA's public station feed has mean wind only, and the one gust source we read, Madeira airport, is not in a mountain area. Gusts above 130 km/h in the highlands are reported by Lusa from an IPMA meteorologist, with no station or time; the warned 140 km/h is not checked against a measurement we can read.",
       "watch": "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
     },
     {
@@ -619,8 +628,8 @@
       "text": "The regional civil protection service's own warnings: not in the data room."
     },
     {
-      "text": "Where the press's 130 km/h for Madeira comes from: it matches IPMA's warning text; whether IPMA gave the press a measured gust is not known.",
-      "watch": "incidents/2026-11-10-storm-charles/data/signals.json"
+      "text": "Which station and which six hours gave the more than 240 mm the meteorologist is reported to have cited: the highest six-hour figure in IPMA's open data as we read it is 232.1 mm, at Areeiro.",
+      "watch": "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
     }
   ],
   "record": [
@@ -713,6 +722,15 @@
     {
       "at_utc": "2026-11-11T06:53Z",
       "what": "One sentence corrected, after the timeline's row s-1111T0642 was corrected at 06:53. Before: the headline's 130 km/h \"is the figure in IPMA's orange wind warning for the mountains, not a measurement\". Now: it matches that figure and no such observation is in IPMA's open data; whether IPMA gave the press a measured gust is not known. The label goes from fact to evidence.",
+      "claims_added": [],
+      "claims_changed": [
+        "m15"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T06:54Z",
+      "what": "Sentence m15 corrected a second time, after row s-1111T0642 was changed again (Lusa's article read by incident.media@). Before: the headline's 130 km/h matches IPMA's warning figure, and whether IPMA gave the press a measured gust is not known. Now: an IPMA meteorologist is reported by Lusa as saying gusts above 130 km/h were measured in the highlands (no station, no time) and more than 240 mm fell in six hours; evidence, said aloud, not read by us at IPMA.",
       "claims_added": [],
       "claims_changed": [
         "m15"
