@@ -140,4 +140,50 @@
       c.el.appendChild(h('p', { class: 'meta', text: es.length + ' edges of the decision graph. A thick border is a fact (read at the body that decided), a thin one is evidence (reported by others), a dotted one was due and not announced when read.' }))
     }
   })
+  // ---- lag: the primary source's own time against the time others published it, and the time we read it
+  L.exp('timelines/lag', {
+    needs: ['first', 'warnings'],
+    draw: function (c) {
+      var d = c.data, lab = c.phone ? 120 : 300, W = Math.max(c.W - 22, c.phone ? 820 : 760), RH = 36
+      // A. the press: minutes after the primary source, one row per fact
+      var facts = d.first.facts.filter(function (f) { return f.primary_time && f.first_by_outlet.length })
+      var mins = [].concat.apply([0], facts.map(function (f) { return f.first_by_outlet.map(function (o) { return o.minutes_after_primary }) }))
+      var lo = Math.min.apply(null, mins), hi = Math.max.apply(null, mins), m0 = Math.floor(lo / 60) * 60, m1 = Math.ceil(hi / 60) * 60 || 60
+      var x = function (m) { return lab + (m - m0) / (m1 - m0) * (W - lab - 30) }, top = 40
+      var g = L.svg(W, top + facts.length * RH + 14, 'Minutes between the primary source and each outlet')
+      for (var m = m0; m <= m1; m += (m1 - m0) / 60 > 12 ? 120 : 60) { g.appendChild(s('line', { x1: x(m), x2: x(m), y1: top, y2: top + facts.length * RH, class: m === 0 ? 'ax-day' : 'ax-h' })); g.appendChild(s('text', { x: x(m), y: top - 6, class: 'ax-t', 'text-anchor': 'middle', text: (m > 0 ? '+' : '') + m / 60 + ' h' })) }
+      g.appendChild(s('text', { x: x(0) + 4, y: top - 20, class: 'ax-dayname', text: 'the primary source\'s own time' }))
+      facts.forEach(function (f, i) {
+        var y = top + i * RH, cy = y + RH / 2
+        if (i % 2 === 0) g.appendChild(s('rect', { x: 0, y: y, width: W, height: RH, class: 'lane-bg' }))
+        g.appendChild(s('text', { x: 6, y: cy - 1, class: 'lane-name', text: f.what.length > (c.phone ? 18 : 46) ? f.what.slice(0, c.phone ? 17 : 45) + '…' : f.what }))
+        g.appendChild(s('text', { x: 6, y: cy + 12, class: 'lane-sub', text: L.dhm(T(f.primary_time)) + ' · ' + f.first_by_outlet.length + ' outlets' }))
+        var pid = L.valueItem('fact:' + f.id, { type: 'the primary source\'s time for a keyed fact', label: f.primary_label, title: f.what, when: f.primary_time, facts: [['How the time is known', f.primary_note], ['Outlets matched', String(f.items_matched)]], sources: [{ label: 'research/media/first-on-each-fact.json (incident.media@)', url: null }], read: d.first.updated, by: d.first.by, file: 'research/media/first-on-each-fact.json' })
+        g.appendChild(L.mark(L.dot(x(0), cy, 6, f.primary_label, true), pid, f.what))
+        var lv = []; f.first_by_outlet.slice().sort(function (a, b) { return a.minutes_after_primary - b.minutes_after_primary }).forEach(function (o, k) {
+          var px = x(o.minutes_after_primary), kk = 0; while (lv[kk] != null && px - lv[kk] < 12) kk++; lv[kk] = px
+          var dt = L.dot(px, cy - 8 + (kk % 3) * 8, 5, 'evidence'); dt.appendChild(s('title', { text: o.outlet + ' · ' + L.dhm(T(o.published)) + ' · ' + o.minutes_after_primary + ' min · ' + o.title }))
+          g.appendChild(L.mark(dt, L.valueItem('first:' + f.id + ':' + o.outlet, { type: 'an outlet\'s first item on this fact (' + o.via + ')', label: 'evidence', title: o.outlet + ': ' + o.title, when: o.published, whenName: 'Published (the page\'s own time)', facts: [['The fact', f.what], ['After the primary source', o.minutes_after_primary + ' minutes (primary: ' + L.dhm(T(f.primary_time)) + ')'], ['Rank among the outlets we could read', String(o.rank)]], sources: [{ label: L.host(o.url), url: o.url }], read: d.first.updated, by: d.first.by, file: 'research/media/first-on-each-fact.json' }), o.outlet + ' ' + o.minutes_after_primary + ' minutes'))
+          if (k === 0 && !c.phone) g.appendChild(s('text', { x: W - 34, y: cy + 4, 'text-anchor': 'end', class: 't-small', text: 'first: ' + o.outlet + ', ' + (o.minutes_after_primary >= 0 ? '+' : '') + o.minutes_after_primary + ' min' }))
+        })
+      })
+      c.el.appendChild(h('h3', { text: 'The press: minutes from the primary source\'s time to each outlet\'s first item' })); c.el.appendChild(g)
+      c.el.appendChild(h('p', { class: 'meta', text: 'From incident.media@\'s analysis of ' + facts.length + ' keyed facts, among the outlets a bot could read. A dot left of the line means the outlet published before the time we hold for the primary source (for the alert, the page is dated hours after the minister spoke). ' + (d.first.facts.length - facts.length) + ' facts have no primary time or no outlet and are not drawn.' }))
+      // B. us: when each step of IPMA's warnings happened and when one of our desks read it
+      var hs = d.warnings.history.filter(function (x) { return x.event && /^\d{4}-/.test(x.at_utc || '') && !isNaN(T(x.read_utc)) && T(x.read_utc) > T(x.at_utc) }), t0 = Math.floor(Math.min.apply(null, hs.map(function (x) { return T(x.at_utc) })) / H) * H - H, t1 = Math.ceil(Math.max.apply(null, hs.map(function (x) { return T(x.read_utc) })) / H) * H + H
+      var note = c.phone ? 0 : 130, sc = L.scale(t0, t1, lab, W - note - 14), g2 = L.svg(W, top + hs.length * RH + 14, 'When each warning step happened and when we read it')
+      L.axis(g2, sc, top, top + hs.length * RH)
+      hs.forEach(function (x, i) {
+        var y = top + i * RH, cy = y + RH / 2, a = T(x.at_utc), b = T(x.read_utc), lbl = x.kind === 'fact' ? 'fact' : x.kind === 'analysis' ? 'hypothesis' : 'evidence'
+        if (i % 2 === 0) g2.appendChild(s('rect', { x: 0, y: y, width: W, height: RH, class: 'lane-bg' }))
+        g2.appendChild(s('text', { x: 6, y: cy + 4, class: 'lane-name', text: x.event.length > (c.phone ? 18 : 46) ? x.event.slice(0, c.phone ? 17 : 45) + '…' : x.event }))
+        var q = s('g', {}); q.appendChild(s('line', { x1: sc(a), x2: sc(b), y1: cy, y2: cy, class: 'link' })); q.appendChild(L.dot(sc(a), cy, 6, lbl, true)); q.appendChild(s('rect', { x: sc(b) - 5, y: cy - 5, width: 10, height: 10, class: 'obs-dot' })); q.appendChild(s('rect', { x: Math.min(sc(a), sc(b)) - 8, y: y + 2, width: Math.abs(sc(b) - sc(a)) + 16, height: RH - 4, class: 'hit' }))
+        g2.appendChild(L.mark(q, L.valueItem('history:' + i, { type: 'a step in IPMA\'s warnings, and our read of it', label: lbl, title: x.event, when: x.at_utc, whenName: 'Happened', facts: [['Read', L.dhm(b) + ' UTC, ' + L.dur(b - a) + ' later'], ['Read by', x.read_by || 'not recorded']], sources: [{ label: L.host(x.source), url: /^https?:/.test(x.source || '') ? x.source : null }], read: x.read_utc, by: x.read_by, file: L.DATA + 'weather/warnings.json' }), x.event.slice(0, 60)))
+        if (note) g2.appendChild(s('text', { x: W - note - 4, y: cy + 4, class: 't-small', text: L.dur(b - a) + ' later' }))
+      })
+      c.el.appendChild(h('h3', { text: 'Us: when each step of IPMA\'s warnings happened, and when it was read into our data' })); c.el.appendChild(g2)
+      c.el.appendChild(L.legend([['lg-decision', 'the source\'s own time (solid: a fact; hollow: reported)'], ['lg-evidence', 'an outlet\'s first item'], ['lg-rain', 'blue square: read into our data']]))
+      c.el.appendChild(h('p', { class: 'meta', text: hs.length + ' steps from weather/warnings.json (history). Read this one with care: the rows that begin "IPMA sends" carry IPMA\'s own send time, which we first held when we first read the feed that states it (Tue 10, 23:51); the warnings themselves had been read hours earlier from IPMA\'s open data, with only the time of reading. So the long bars measure how late we learned the exact send time, not how late we knew of the warning.' }))
+    }
+  })
 })()

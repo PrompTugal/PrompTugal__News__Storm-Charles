@@ -7,7 +7,7 @@
   'use strict'
   var NS = 'http://www.w3.org/2000/svg'
   var DATA = 'incidents/2026-11-10-storm-charles/data/'
-  var FILES = { signals: 'signals.json', graph: 'decisions/graph.json', warnings: 'weather/warnings.json', cap: 'weather/cap.json', stations: 'weather/stations.json', rain: 'weather/lisbon-rain.json', madeira: 'weather/madeira.json', forecast: 'weather/forecast.json', airport: 'weather/airport.json', analysis: 'weather/analysis.json' }
+  var FILES = { signals: 'signals.json', graph: 'decisions/graph.json', warnings: 'weather/warnings.json', cap: 'weather/cap.json', stations: 'weather/stations.json', rain: 'weather/lisbon-rain.json', madeira: 'weather/madeira.json', forecast: 'weather/forecast.json', airport: 'weather/airport.json', analysis: 'weather/analysis.json', first: '/research/media/first-on-each-fact.json' }
   var H = 3600e3, DAY = 24 * H
   var exps = {}, items = new Map(), root = '', panel = null
 
@@ -87,12 +87,15 @@
 
   function openItem(id) {
     var it = items.get(id); if (!panel) return
-    var was = panel.hidden
-    panel.textContent = ''; panel.hidden = false; panel.parentNode.classList.add('has-item')
+    // the frame's reader's panel (app/design/panel.js) when the page has it: the item goes in its "This item"; otherwise our own aside
+    var SP = window.stormPanel, slot = SP && SP.slot && SP.slot('item'), own = !slot, was = panel.hidden
+    if (slot) { SP.show({}); panel = slot; panel.classList.add('lab-item') }
+    else { panel.hidden = false; panel.parentNode.classList.add('has-item') }
+    panel.textContent = ''
     if (!it) { add(panel, h('p', { class: 'meta', text: 'Nothing recorded for ' + id })); return }
     var t = T(it.when)
     add(panel, [
-      h('button', { type: 'button', class: 'lab-close', 'aria-label': 'Close', text: '×', on: { click: function () { panel.hidden = true; panel.parentNode.classList.remove('has-item'); if (Labs.onPanel) Labs.onPanel() } } }),
+      own && h('button', { type: 'button', class: 'lab-close', 'aria-label': 'Close', text: '×', on: { click: function () { panel.hidden = true; panel.parentNode.classList.remove('has-item'); if (Labs.onPanel) Labs.onPanel() } } }),
       h('p', { class: 'lab-kind' }, it.label ? h('span', { class: 'lbl l-' + String(it.label).split(' ')[0], text: it.label }) : null, ' ', it.type),
       h('h3', { text: it.title }),
       h('p', { class: 'lab-when' }, (it.whenName || 'When') + ': ', h('time', { datetime: it.when || '', text: (it.approx ? 'about ' : '') + when(it.when) }), isNaN(t) ? '' : ' UTC'),
@@ -103,13 +106,13 @@
       h('p', { class: 'lab-links' }, it.page ? [h('a', { href: root + it.page, text: 'Open ' + (it.pageName || 'its page') }), ' · '] : null, it.file ? h('a', { href: root + it.file, text: 'The file behind it' }) : null, ' · ', h('code', { text: it.id }))
     ])
     try { history.replaceState(null, '', '#' + encodeURIComponent(id)) } catch (e) { }
-    if (was && Labs.onPanel) Labs.onPanel()   // the stage got narrower: draw again to fit
+    if ((was || !own) && Labs.onPanel) Labs.onPanel()   // the stage got narrower: draw again to fit
   }
 
   // ---- data
   var cache = {}
   function load(keys) {
-    return Promise.all(keys.map(function (k) { return cache[k] || (cache[k] = fetch(root + DATA + FILES[k]).then(function (r) { if (!r.ok) throw new Error(FILES[k] + ': ' + r.status); return r.json() })) })).then(function (a) { var o = {}; keys.forEach(function (k, i) { o[k] = a[i] }); return o })
+    return Promise.all(keys.map(function (k) { return cache[k] || (cache[k] = fetch(root + (FILES[k][0] === '/' ? FILES[k].slice(1) : DATA + FILES[k])).then(function (r) { if (!r.ok) throw new Error(FILES[k] + ': ' + r.status); return r.json() })) })).then(function (a) { var o = {}; keys.forEach(function (k, i) { o[k] = a[i] }); return o })
   }
 
   // ---- mounting
