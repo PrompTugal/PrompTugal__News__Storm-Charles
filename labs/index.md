@@ -2,7 +2,7 @@
 title: Labs
 summary: Experiments in showing Storm Charles: several timelines, several decision views, several weather views, each on its own page, so they can be compared and the best moved into the site's two faces.
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:32 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:46 UTC
 
 # Labs: many ways of showing the same storm
 
@@ -23,6 +23,7 @@ Small experiments, each on its own page, at Dinis Cruz's word ([BRIEF.md](../BRI
 |---|---|
 | [Lead times](decisions/lead-times.md) | **The strongest decision view.** Warning sent, decision announced, effect begins, on one axis with the notice written out. Limited to the few decisions whose hours are stated. |
 | [Flow: what followed from a warning](decisions/flow.md) | Answers one question at a time (never the whole graph) and reads well; an arrow means "followed", which is easy to misread as "caused". |
+| [By state of service](decisions/state.md) | New in round 5. A board: closed, suspended, limited, running, not announced, by place or by kind of body, with a table twin. The quickest answer to "what is shut and who has not said"; one word per decision is coarse, and time is nearly absent. |
 | [Day by day](decisions/days.md) | Useful for Wednesday (everything in effect, hour by hour); Tuesday and Thursday are thin. |
 
 ## Weather

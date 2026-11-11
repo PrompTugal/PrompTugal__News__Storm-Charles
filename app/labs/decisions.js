@@ -1,4 +1,4 @@
-// Labs, decisions (incident.labs@web-summit.dinis): flow, lead-times, days. Data: decisions/graph.json, weather/analysis.json.
+// Labs, decisions (incident.labs@web-summit.dinis): flow, lead-times, days, state. Data: decisions/graph.json, weather/analysis.json.
 // Never the whole graph: each view is the result of a question (what followed from this warning; what has a stated effect; what
 // touches this day).
 (function () {
@@ -126,6 +126,49 @@
         if (dayonly.length || open.length) c.el.appendChild(h('div', { class: 'cols' }, dayonly.length ? h('section', {}, h('h4', { text: 'Announced that day, hour not stated (' + dayonly.length + ')' }), dayonly.map(function (e) { return card(e, ix) })) : null, open.length ? h('section', {}, h('h4', { text: 'About this day and still open when read (' + open.length + ')' }), open.map(function (e) { return card(e, ix) })) : null))
       })
       c.el.appendChild(L.legend([['lg-decision', 'announced at this hour'], ['lg-fx', 'in effect (dotted edge: a start or end not stated; drawn only on the day of the hour that is stated)'], ['lg-red', 'IPMA red warning in force'], ['lg-orange', 'IPMA orange']]))
+    }
+  })
+
+  // ---- by state of service: who is closed, suspended, limited, running, and who has not said
+  var STATES = [['closed', 'Closed'], ['suspended', 'Suspended'], ['limited', 'Limited'], ['running', 'Running'], ['not_announced', 'Not announced']]
+  var AREAS = [['lisbon', 'Lisbon'], ['mainland', 'Mainland Portugal'], ['national', 'National'], ['madeira', 'Madeira'], ['porto-santo', 'Porto Santo']]
+  var KINDS = [['transport', 'Transport'], ['organiser', 'The organiser and events'], ['service', 'Schools and services'], ['government', 'Government'], ['municipality', 'The city'], ['authority', 'Authorities'], ['venue', 'The venue']]
+  function stateGlyph(st) { return h('i', { class: 'sg sg-' + st, 'aria-hidden': 'true' }) }
+  L.exp('decisions/state', {
+    needs: ['graph'],
+    setup: function (c) { L.choice(c.tools, 'rows', [['area', 'By place'], ['kind', 'By kind of body']], c.state, c.redraw); L.choice(c.tools, 'show', [['standing', 'Standing when read'], ['all', 'Every decision']], c.state, c.redraw) },
+    draw: function (c) {
+      var g = c.data.graph, ix = index(g), asOf = T(g.updated)
+      var all = g.edges.filter(function (e) { return e.state })
+      function ended(e) { return e.status === 'superseded' || (e.effect_to_utc && T(e.effect_to_utc) <= asOf) }
+      var es = c.state.show === 'all' ? all : all.filter(function (e) { return !ended(e) })
+      var groups = c.state.rows === 'kind' ? KINDS : AREAS
+      function groupOf(e) { return c.state.rows === 'kind' ? (ix.n[e.by] || {}).kind : e.area }
+      var known = {}; groups.forEach(function (x) { known[x[0]] = 1 })
+      var rows = groups.filter(function (x) { return es.some(function (e) { return groupOf(e) === x[0] }) })
+      if (es.some(function (e) { return !known[groupOf(e)] })) rows = rows.concat([['', c.state.rows === 'kind' ? 'Other' : 'Place not stated']])
+      function inCell(gr, st) { return es.filter(function (e) { return e.state === st && (gr ? groupOf(e) === gr : !known[groupOf(e)]) }).sort(function (a, b) { return (isNaN(T(a.at)) ? Infinity : T(a.at)) - (isNaN(T(b.at)) ? Infinity : T(b.at)) }) }
+      function stCard(e, tag) { return card(e, ix, [ended(e) ? h('span', { class: 'fxt', text: e.status === 'superseded' ? 'Superseded by a later decision' : 'Ended ' + L.dhm(T(e.effect_to_utc)) + ', before the graph was last written' }) : null, e.state_note ? h('span', { class: 'fxt', text: e.state_note }) : null, tag ? h('span', { class: 'fxt', text: tag }) : null]) }
+      var board = h('div', { class: 'stb' + (c.phone ? ' stb-phone' : '') })
+      if (c.phone) {
+        STATES.forEach(function (st) {
+          var list = es.filter(function (e) { return e.state === st[0] }); if (!list.length) return
+          board.appendChild(h('h4', { class: 'stb-h' }, stateGlyph(st[0]), st[1] + ' (' + list.length + ')'))
+          rows.forEach(function (gr) { inCell(gr[0], st[0]).forEach(function (e) { var cd = stCard(e, gr[1]); if (ended(e)) cd.classList.add('st-superseded'); board.appendChild(cd) }) })
+        })
+      } else {
+        board.appendChild(h('div', { class: 'stb-c stb-corner' }))
+        STATES.forEach(function (st) { board.appendChild(h('div', { class: 'stb-c stb-h' }, stateGlyph(st[0]), st[1] + ' (' + es.filter(function (e) { return e.state === st[0] }).length + ')')) })
+        rows.forEach(function (gr) {
+          board.appendChild(h('div', { class: 'stb-c stb-g', text: gr[1] }))
+          STATES.forEach(function (st) { var list = inCell(gr[0], st[0]); board.appendChild(h('div', { class: 'stb-c' + (list.length ? '' : ' stb-none') }, list.length ? list.map(function (e) { var cd = stCard(e); if (ended(e)) cd.classList.add('st-superseded'); return cd }) : h('span', { class: 'lab-empty', text: 'none recorded' }))) })
+        })
+      }
+      c.el.appendChild(board)
+      c.el.appendChild(L.table('The same as a table', ['State', c.state.rows === 'kind' ? 'Kind of body' : 'Place', 'By', 'Decision', 'Announced', 'In effect', 'Label'], [].concat.apply([], STATES.map(function (st) { return [].concat.apply([], rows.map(function (gr) { return inCell(gr[0], st[0]).map(function (e) { return [st[1] + (ended(e) ? ' (ended or superseded)' : ''), gr[1], ((ix.n[e.by] || {}).name || e.by).split(' (')[0], { text: short(e.decision, 140), item: L.edgeItem(e, ix.n) }, L.when(e.at), fxText(e).replace(/^In effect /, '') || 'hours not stated', e.label] }) })) }))))
+      var hidden = all.length - es.length
+      c.el.appendChild(h('p', { class: 'meta', text: es.length + ' of the graph\'s ' + g.edges.length + ' edges are shown: those that say what state a service is in. ' + (hidden ? hidden + ' more are hidden because they ended or were superseded before the graph was last written (' + L.dhm(asOf) + ' UTC): "Every decision" shows them, faded. ' : '') + (g.edges.length - all.length) + ' edges carry no state (a warning, a statement, a recommendation or a hypothesis). The state is incident.researcher@\'s reading of each decision, in five words of the graph\'s own; it is what was decided or said when read, not a live report of the service, and "none recorded" means the graph has no such edge, not that nothing is ' + 'affected. Thick border: fact. Thin: evidence. Dotted: due and not announced when read.' }))
+      c.el.appendChild(L.legend(STATES.map(function (st) { return ['lg-st lgs-' + st[0], st[1].toLowerCase()] })))
     }
   })
 })()

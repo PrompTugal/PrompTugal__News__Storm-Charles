@@ -149,8 +149,12 @@
     return decision ? s('rect', { x: x - r, y: y - r, width: 2 * r, height: 2 * r, transform: 'rotate(45 ' + x + ' ' + y + ')', class: cls }) : s('circle', { cx: x, cy: y, r: r, class: cls })
   }
   function legend(parts) { return h('p', { class: 'lab-legend' }, parts.map(function (p) { return h('span', { class: 'lg ' + p[0] }, h('i', {}), p[1]) })) }
+  // the table twin of a chart (the design's .wx-table): the same marks as rows; a cell { text, item } opens the item like a mark does
+  function table(summary, heads, rows) {
+    return h('details', { class: 'wx-table lab-table' }, h('summary', { text: summary + ' (' + rows.length + ' rows)' }), h('table', {}, h('thead', {}, h('tr', {}, heads.map(function (x) { return h('th', { scope: 'col', text: x }) }))), h('tbody', {}, rows.map(function (r) { return h('tr', {}, r.map(function (c) { return h('td', {}, c && c.item ? mark(h('button', { type: 'button', class: 'lab-cell', text: c.text }), c.item) : (c == null ? '' : String(c))) })) }))))
+  }
   var LABELS = [['lg-fact', 'fact: read at the body that decides or warns'], ['lg-evidence', 'evidence: reported by others'], ['lg-hypothesis', 'hypothesis: our analysis'], ['lg-decision', 'a decision (diamond)']]
 
-  var Labs = window.Labs = { exp: function (name, def) { exps[name] = def }, openItem: openItem, items: items, h: h, s: s, svg: svg, mark: mark, T: T, H: H, DAY: DAY, hm: hm, dhm: dhm, day: day, when: when, dur: dur, dayOnly: dayOnly, scale: scale, axis: axis, level: level, wtype: wtype, levelBar: levelBar, reg: reg, host: host, signalItem: signalItem, edgeItem: edgeItem, capItem: capItem, warnItem: warnItem, valueItem: valueItem, choice: choice, dot: dot, legend: legend, LABELS: LABELS, DATA: DATA }
+  var Labs = window.Labs = { exp: function (name, def) { exps[name] = def }, openItem: openItem, items: items, h: h, s: s, svg: svg, mark: mark, T: T, H: H, DAY: DAY, hm: hm, dhm: dhm, day: day, when: when, dur: dur, dayOnly: dayOnly, scale: scale, axis: axis, level: level, wtype: wtype, levelBar: levelBar, reg: reg, host: host, signalItem: signalItem, edgeItem: edgeItem, capItem: capItem, warnItem: warnItem, valueItem: valueItem, choice: choice, table: table, dot: dot, legend: legend, LABELS: LABELS, DATA: DATA }
   document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('.lab[data-lab]').forEach(mount) })
 })()

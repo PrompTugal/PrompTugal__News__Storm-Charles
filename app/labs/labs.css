@@ -124,3 +124,20 @@ svg .mk:hover, svg .mk:focus { filter: drop-shadow(0 0 2px var(--focus)); }
 .lab-item h3 { font-size: 15px; line-height: 1.35; margin: 6px 0 8px; } .lab-item h4 { font-size: 12px; margin: 12px 0 4px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); } .lab-item .prov { white-space: normal; display: block; margin-top: 8px; }
 .lv-kept rect { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 2 3; fill-opacity: .55; }
 .lg-kept i { border-radius: 2px; border: 1.5px dotted var(--ink); background: color-mix(in srgb, var(--yellow) 55%, var(--surface)); width: 22px; }
+/* state board (decisions/state): the state is said by the column, its word and a glyph in ink, never by a warning colour */
+.stb { display: grid; grid-template-columns: 120px repeat(5, minmax(190px, 1fr)); gap: 0; min-width: min-content; }
+.stb-c { padding: 8px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.stb-corner, .stb-g { border-left: 0; }
+.stb-h { font: 600 13px var(--sans); background: var(--surface-2); flex-direction: row; align-items: center; gap: 8px; border-top: 0; }
+.stb-g { font: 600 13px var(--sans); }
+.stb-none { background: color-mix(in srgb, var(--surface-2) 45%, var(--surface)); }
+.stb-phone { display: block; } .stb-phone .lc { margin: 6px 0; } .stb-phone h4.stb-h { display: flex; padding: 6px 8px; margin: 14px 0 4px; border: 0; }
+.sg, .lg-st i { width: 14px; height: 14px; flex: none; display: inline-block; box-sizing: border-box; border: 2px solid var(--ink); border-radius: 2px; }
+.sg-closed, .lgs-closed i { background: var(--ink); }
+.sg-suspended, .lgs-suspended i { background: repeating-linear-gradient(45deg, var(--ink) 0 2px, var(--surface) 2px 5px); }
+.sg-limited, .lgs-limited i { background: linear-gradient(90deg, var(--ink) 50%, var(--surface) 50%); }
+.sg-running, .lgs-running i { background: var(--surface); border-radius: 50%; }
+.sg-not_announced, .lgs-not_announced i { background: var(--surface); border-style: dotted; border-color: var(--ink-2); }
+/* table twin */
+.lab-table { border: 0; padding: 8px 2px 0; }
+.lab-cell { font: inherit; color: var(--link); background: none; border: 0; padding: 0; text-align: left; cursor: pointer; text-decoration: underline; }
