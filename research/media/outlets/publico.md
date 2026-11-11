@@ -1,13 +1,13 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 18: 17 articles, 0 live, 0 video, 1 opinion |
-| First and last | 9 Nov 09:04 to 11 Nov 07:14 UTC |
-| Whose reporting | 11 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 19% |
+| Items we read | 19: 18 articles, 0 live, 0 video, 1 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 08:14 UTC |
+| Whose reporting | 12 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 18% |
 | Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 5 of 18 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 5 of 19 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -47,7 +47,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Adriana Castro, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -71,3 +71,4 @@ Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, J
 | 11 Nov 05:30 | article | Sara de Melo Rocha, Tiago Orato | [Tempestades e inundações. Como preparar as cidades para a chuva extrema? ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/tempestades-inundacoes-preparar-cidades-chuva-extrema-2194516) |
 | 11 Nov 06:40 | article | Sofia Neves | [Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/charles-causou-ventos-130-kmhora-madeira-dirigese-continente-2194537) |
 | 11 Nov 07:14 | article | not read | [Despertador: Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://www.publico.pt/2026/11/11/newsletter/despertador) |
+| 11 Nov 08:14 | article | Carlos Dias | [Tempestade: Alqueva tem capacidade para receber 900 milhões de metros cúbicos de água ↗](https://www.publico.pt/2026/11/11/azul/noticia/tempestade-alqueva-capacidade-receber-900-milhoes-metros-cubicos-agua-2194513) |

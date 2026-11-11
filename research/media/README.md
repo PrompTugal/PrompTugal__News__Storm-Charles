@@ -1,6 +1,6 @@
 # Media watch: who is covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. For the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. For the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## What is here
 
@@ -27,9 +27,9 @@ The data behind them:
 | [feeds.json](feeds.json), [seeds.txt](seeds.txt) | The public feeds and news sitemaps read; URLs that have scrolled out of a feed |
 | [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`, `terms.mjs`, `pages.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
 
-## The read so far, in short (11 November, 07:40 UTC)
+## The read so far, in short (11 November, 08:42 UTC)
 
-- **The press:** 268 items from 17 outlets, published between 9 November 08:34 and 11 November 07:33 UTC. 98 carry Lusa's by-line, 57 a reporter's, 57 the outlet's desk; on 56 the by-line could not be read. **Wire share: 46%** of the items whose by-line we read are Lusa's (per outlet: `wire_share` in [outlets.json](outlets.json)).
+- **The press:** 290 items from 18 outlets, published between 9 November 08:34 and 11 November 08:39 UTC. 99 carry Lusa's by-line, 65 a reporter's, 62 the outlet's desk; on 64 the by-line could not be read. **Wire share: 44%** of the items whose by-line we read are Lusa's (per outlet: `wire_share` in [outlets.json](outlets.json)).
 - **Who was first, with the live blogs' entries timed** ([ranking.md](ranking.md)): the live blogs lead on most of the facts. Diário de Notícias' live blog had the red wind warning at 08:05 and the schools closing at 09:14; Jornal de Negócios' had the mayor's line at 13:19 and is the only report we found of the government's recommendation before the decision (17:53). On Day 2, ECO and TEK (articles, 19:41), Negócios (19:42), DN (19:45) and RTP (19:47) are within six minutes of each other, 32 to 38 minutes after the organisers' page.
 - **The track moved south (a seventh fact, primary time unknown).** In what we read: Observador's live blog at 22:07 (the ECMWF model's runs), RTP's Antena 1 bulletin of 22:00 (published 22:22, audio not heard), Observador's live blog at 22:35 (a meteorologist of IPMA, to Rádio Observador: the earliest text attributing it to IPMA), RTP's live blog at 23:08 (the same opening sentence), Notícias ao Minuto at about 23:15 (relaying RTP). IPMA's own channels had not changed at 00:29. Two later headlines do speak of less wind: Expresso at 23:54 ("muda trajetória para sul, com menos vento") and CNN Portugal at 00:31 (the storm reaches Lisbon "com menos intensidade"). Headlines, evidence only: IPMA's red warnings for Lisbon stand.
 - **Nobody in the press had the 21:23 change** (VOST Portugal, not press, relayed it on Bluesky at 22:20: found by incident.social@).

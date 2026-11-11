@@ -1,6 +1,6 @@
 # Jornal de Negócios: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **We do not read this outlet by machine.** no automated reading from 2026-11-11T03:30:00Z: its footer says reproduction is expressly forbidden (and incident.sources@ marks Jornal de Negócios "no automated reading: link only"). We make no further requests to it; what we already hold is kept as headline, time and link. Decided by incident.conductor@; Dinis decides whether a person asks for permission.
 

@@ -1,13 +1,13 @@
 # Correio da Manhã: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 11: 5 articles, 0 live, 6 video, 0 opinion |
+| Items we read | 12: 6 articles, 0 live, 6 video, 0 opinion |
 | First and last | 10 Nov 00:00 to 11 Nov 00:00 UTC |
-| Whose reporting | 0 with a reporter's by-line, 4 the agency's (Lusa), 7 the desk's, 0 not read; wire share 36% |
+| Whose reporting | 1 with a reporter's by-line, 4 the agency's (Lusa), 7 the desk's, 0 not read; wire share 33% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -16,7 +16,7 @@ No item of this outlet matched a keyed fact by its title.
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 11 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 12 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 - **It republished Jornal de Negócios:** 1 item (the item's by-line names the other outlet).
 
@@ -39,6 +39,10 @@ Read 11 Nov 02:14 UTC from its own pages. A reading, not legal advice.
 
 Through its own public page: [Ficha Técnica ↗](https://www.cmjornal.pt/mais-cm/ficha-tecnica/detalhe/ficha_tecnica). We link to it and copy nothing from it: no address, number or name is kept here. Corrections to anything on this page: [contribute](../../../contribute.md).
 
+## By-lines on this story, as printed
+
+Marta Mariano. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+
 ## What it published, in order
 
 | Published (UTC) | Kind | By-line as printed | Item |
@@ -47,6 +51,7 @@ Through its own public page: [Ficha Técnica ↗](https://www.cmjornal.pt/mais-c
 | 10 Nov 00:00 (day only) | article | Jornal de Negócios | [Pingo Doce fecha supermercados devido à depressão Charles. Continente mantém lojas abertas ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/pingo-doce-fecha-supermercados-devido-a-depressao-charles-continente-mantem-lojas-abertas) |
 | 10 Nov 00:00 (day only) | video | Correio da Manhã | [Portugueses correm aos supermercados para se precaverem dos efeitos da tempestade Charles ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/portugueses-correm-aos-supermercados-para-se-precaverem-dos-efeitos-da-tempestade-charles) |
 | 10 Nov 00:00 (day only) | article | Lusa | [Dois mil clientes da E-Redes sem energia pelas 19h30 devido ao mau tempo ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/dois-mil-clientes-da-e-redes-sem-energia-pelas-19h30-devido-ao-mau-tempo) |
+| 11 Nov 00:00 (day only) | article | Marta Mariano | [Depressão Charles deixa País em alerta. Ventos causaram estragos na Madeira e tempestade aproxima-s… ↗](https://www.cmjornal.pt/sociedade/detalhe/mau-tempo-deixa-pais-em-alerta-ventos-causaram-estragos-na-madeira-e-tempestade-dirige-se-para-o-continente) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Acessos à praia na Foz de Douro cortados devido ao mau tempo ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/acessos-a-praia-na-foz-de-douro-cortados-devido-ao-mau-tempo) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Costa de Caparica sem registo de ocorrências devido ao mau tempo durante a madrugada ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/costa-de-caparica-sem-registo-de-ocorrencias-devido-ao-mau-tempo-durante-a-madrugada) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Escola em Paço de Arcos fica inundada devido ao temporal que atinge o país ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/escola-em-paco-de-arcos-fica-inundada-devido-ao-temporal-que-atinge-o-pais) |

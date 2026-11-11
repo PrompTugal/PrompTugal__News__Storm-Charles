@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 31: 11 articles, 0 live, 20 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 07:22 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 22 not read; wire share 67% |
+| Items we read | 34: 12 articles, 0 live, 22 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 08:19 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 25 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 31 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 34 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -78,8 +78,11 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 01:16 | video | not read | [Como o Algarve se está a preparar para a chegada da tempestade ↗](https://cnnportugal.iol.pt/videos/como-o-algarve-se-esta-a-preparar-para-a-chegada-da-tempestade/6af3c0cc0cf2aafa0453e1a0) |
 | 11 Nov 05:43 | article | not read | [Depressão Charles provoca 115 ocorrências na Madeira: abastecimento de energia já foi restabelecido ↗](https://cnnportugal.iol.pt/madeira/ocorrencias/depressao-charles-provoca-99-ocorrencias-na-madeira-abastecimento-de-energia-ja-foi-restabelecido/20261111/6af40075d34e5a653d733ae2) |
 | 11 Nov 06:03 | video | not read | [Imagens mostram a passagem da depressão Charles pela Madeira durante a madrugada desta quarta-feira ↗](https://cnnportugal.iol.pt/videos/imagens-mostram-a-passagem-da-depressao-charles-pela-madeira-durante-a-madrugada-desta-quarta-feira/6af403330cf2aafa0453e1a8) |
+| 11 Nov 06:59 | video | not read | [A poucas horas de chegar a território continental, assim está a depressão Charles ↗](https://cnnportugal.iol.pt/videos/a-poucas-horas-de-chegar-a-territorio-continental-assim-esta-a-depressao-charles/6af40ae00cf235b99ef5089e) |
 | 11 Nov 06:59 | video | not read | ["Coração da depressão Charles vai atingir praticamente metade de Portugal continental": saiba em qu… ↗](https://cnnportugal.iol.pt/videos/coracao-da-depressao-charles-vai-atingir-praticamente-metade-de-portugal-continental-saiba-em-que-horarios/6af40ae00cf235b99ef5089e) |
 | 11 Nov 07:00 | article | not read | [Se tiver mesmo de sair de casa esta quarta-feira, tem aqui tudo o que precisa de saber ↗](https://cnnportugal.iol.pt/charles/bruna/se-tiver-mesmo-de-sair-de-casa-esta-quarta-feira-tem-aqui-tudo-o-que-precisa-de-saber/20261111/6af331d9d34e9ce6f1b43d36) |
 | 11 Nov 07:22 | video | not read | [Vários carros parcialmente submersos na zona do Oriente, em Lisboa, devido à Depressão Charles ↗](https://cnnportugal.iol.pt/videos/varios-carros-parcialmente-submersos-na-zona-do-oriente-em-lisboa-devido-a-depressao-charles/6af417a80cf235b99ef508a3) |
+| 11 Nov 07:49 | article | not read | [Homem arrastado pela corrente no Funchal é resgatado com vida após transbordo de ribeiro ↗](https://cnnportugal.iol.pt/depressao-charles/homem-desaparecido/homem-desaparecido-apos-transbordo-de-ribeiro-no-funchal-devido-a-passagem-da-depressao-charles/20261111/6af41e2dd34e5a653d733af3) |
+| 11 Nov 08:19 | video | not read | [Tempestade Charles pode chegar mais cedo ao continente. Especialista aponta horas mais críticas e n… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-pode-chegar-mais-cedo-ao-continente-especialista-aponta-horas-mais-criticas-e-nao-descarta-ciclogenese-explosiva/6af41c490cf2aafa0453e1ae) |
 | no time | video | not read | [Portugal aprendeu com as últimas tempestades? O que diz quem acompanha a Proteção Civil há 30 anos ↗](https://cnnportugal.iol.pt/videos/portugal-aprendeu-com-as-ultimas-tempestades-o-que-diz-quem-acompanha-a-protecao-civil-ha-30-anos/6af336ea0cf2051820fb12a8) |
 | no time | video | not read | [Tempestade Charles aproxima-se de Portugal, mas ainda há dúvidas sobre por onde vai entrar ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-aproxima-se-de-portugal-mas-ainda-ha-duvidas-sobre-por-onde-vai-entrar/6af336570cf2aafa0453e038) |

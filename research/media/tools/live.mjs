@@ -75,7 +75,7 @@ for (const b of BLOGS) {
         note = `entry times taken from our capture of ${used.read}: at ${read} the page no longer gave a time per entry`
     }
     const times = all.map(e => e.at).sort()
-    if (!all.length && PREV[b.url] && PREV[b.url].entries_read) { blogs.push({ ...PREV[b.url], status: r.status, rechecked: read, rechecked_note: 'at this read the page gave no time per entry and this session holds no earlier capture: the record of the earlier read is kept, and its timed entries stay below' }); console.error(`${b.outlet}: ${r.status}, 0 entries now; the earlier record kept`); await new Promise(r => setTimeout(r, 1000)); continue }
+    if (PREV[b.url] && all.length < (PREV[b.url].entries_read || 0)) { blogs.push({ ...PREV[b.url], status: r.status, rechecked: read, rechecked_note: 'at this read the page gave fewer timed entries than the earlier read (a live page drops entries or their times as it ages) and this session holds no earlier capture: the record of the earlier read is kept, and its timed entries stay below' }); console.error(`${b.outlet}: ${r.status}, ${all.length} entries now; the earlier record kept`); await new Promise(r => setTimeout(r, 1000)); continue }
     blogs.push({ outlet: b.outlet, url: b.url, status: r.status, read: used.read, capture_sha256: used.sha, note, entries_read: all.length, first_entry: times[0] || null, last_entry: times[times.length - 1] || null })
     for (const e of all) for (const f of FACTS) {
         const re = new RegExp(f.live_pattern || f.pattern, 'i')

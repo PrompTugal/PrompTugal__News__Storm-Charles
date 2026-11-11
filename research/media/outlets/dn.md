@@ -1,14 +1,14 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 18: 17 articles, 0 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 00:22 UTC |
-| Whose reporting | 17 with a reporter's by-line, 1 the agency's (Lusa), 0 the desk's, 0 not read; wire share 6% |
-| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; own reporting: most items carry a reporter's by-line |
+| Items we read | 19: 17 articles, 1 live, 0 video, 1 opinion |
+| First and last | 9 Nov 08:34 to 11 Nov 08:39 UTC |
+| Whose reporting | 18 with a reporter's by-line, 1 the agency's (Lusa), 0 the desk's, 0 not read; wire share 5% |
+| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
 
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 2 of 18 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 2 of 19 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 2 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -49,7 +49,7 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 
 ## By-lines on this story, as printed
 
-[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), David Pereira (2), Margarida Vaqueiro Lopes (2), Sofia Fonseca (2), Sónia Santos Pereira (2), Susete Henriques (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Sofia Fonseca](../people/sofia-fonseca.md) (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Susete Henriques (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -73,3 +73,4 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 10 Nov 22:22 | article | Adelaide Cabral | [Primeiro-ministro assume comando: país fechado para enfrentar tempestade ↗](https://www.dn.pt/sociedade/primeiro-ministro-assume-comando-pas-fechado-para-enfrentar-tempestade) |
 | 11 Nov 00:04 | opinion | Filipe Alves | [O teste da tempestade ↗](https://www.dn.pt/opiniao-dn/o-teste-da-tempestade) |
 | 11 Nov 00:22 | article | Ricardo Simões Ferreira | [DN garante acesso livre a todos os conteúdos sobre a tempestade ↗](https://www.dn.pt/media-geral/dn-garante-acesso-livre-a-todos-os-contedos-sobre-a-tempestade) |
+| 11 Nov 08:39 | live | Sofia Fonseca | [Charles causou ventos de 130 km/hora na Madeira. Agora está a caminho do continente ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |

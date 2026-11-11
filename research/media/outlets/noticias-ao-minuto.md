@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 88: 87 articles, 1 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 07:28 UTC |
-| Whose reporting | 4 with a reporter's by-line, 78 the agency's (Lusa), 6 the desk's, 0 not read; wire share 89% |
+| Items we read | 91: 90 articles, 1 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 08:24 UTC |
+| Whose reporting | 5 with a reporter's by-line, 79 the agency's (Lusa), 7 the desk's, 0 not read; wire share 87% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -23,8 +23,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 88 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 78 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 91 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 79 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -48,7 +48,7 @@ Through its own public page: [Ficha técnica ↗](https://www.noticiasaominuto.c
 
 ## By-lines on this story, as printed
 
-Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -142,3 +142,6 @@ Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Pa
 | 11 Nov 06:46 | article | Lusa | [Mau tempo: Madeira com 137 ocorrências até às 06h30, sem vítimas ↗](https://www.noticiasaominuto.com/pais/3082180/mau-tempo-madeira-com-137-ocorrencias-ate-as-0630-sem-vitimas) |
 | 11 Nov 07:08 | article | Lusa | [Mau tempo leva ao cancelamento de 16 voos na Madeira ↗](https://www.noticiasaominuto.com/pais/3082183/mau-tempo-cancelados-16-voos-na-madeira) |
 | 11 Nov 07:28 | article | Lusa | [Acessos ao centro do Funchal encerrados por motivos de segurança ↗](https://www.noticiasaominuto.com/pais/3082191/mau-tempo-acessos-ao-centro-do-funchal-encerrados-por-motivos-de-seguranca) |
+| 11 Nov 07:58 | article | Natacha Nunes Costa | [Mau tempo. Pai de nadador-salvador desaparecido: "Sinto o último beijo" ↗](https://www.noticiasaominuto.com/pais/3082187/mau-tempo-pai-de-nadador-salvador-desaparecido-sinto-o-ultimo-beijo) |
+| 11 Nov 08:09 | article | Notícias ao Minuto | [Antes de chegar ao continente, Charles passou na Madeira. E foi assim ↗](https://www.noticiasaominuto.com/pais/3082204/antes-de-chegar-ao-continente-charles-passou-na-madeira-e-foi-assim) |
+| 11 Nov 08:24 | article | Lusa | [Homem arrastado por galgamento de ribeiro na Madeira encontrado com vida ↗](https://www.noticiasaominuto.com/pais/3082212/mau-tempo-homem-arrastado-por-galgamento-de-ribeiro-na-madeira-encontrado-com-vida) |
