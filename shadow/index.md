@@ -4,7 +4,7 @@ summary: Every hour we ask answer engines with live search what a reader would a
 ---
 # Shadow reporting: what the answer engines told a reader
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 19:07 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 21:07 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and nothing an engine said is a fact here.
 
@@ -22,7 +22,7 @@ The idea is the SGit Newsroom's: "The shadow of an article is evidence. Who cite
 | **contradicts** | our record, or the calendar, says otherwise |
 | **unsupported** | outside our record, general information, or an omission we note |
 
-So far: **8** hour(s) asked, 10 paused (the account that pays the engines was out of credit: a gap, not silence), **144** answers, **374** statements: 181 matches, 78 behind us, 30 ahead: a lead, 52 contradicts, 33 unsupported. Spent on the engines: 0.98 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+So far: **8** hour(s) asked, 11 not asked (the account that pays the engines out of credit, or the desk's daily share spent: gaps, not silence), **144** answers, **374** statements: 181 matches, 78 behind us, 30 ahead: a lead, 52 contradicts, 33 unsupported. Spent on the engines: 0.98 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
 
 ## What the 19:05 round adds
 
@@ -147,6 +147,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 19:05 | OpenAI GPT-5 mini with web search (en) | "Maybe": Thursday is scheduled as Day 3; organisers "aim to resume", "subject to guidance from the authorities"; check before you travel. | 1 behind us | Web Summit's own page (Tuesday 19:09): Day 2 off, Day 3 "aims to proceed". The press: Thursday confirmed by the organisers; sessions rescheduled; a press conference on Thursday at 11:00. Not read by us at the organisers' page. [s-1110T1909](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1305](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1703](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 19:05 | Perplexity Sonar (en) | Yes: on tomorrow, Thursday 12 November, the final day; organisers emailed that the summit "is back tomorrow", with many sessions rescheduled. | 1 matches | 〃 |
 | 11 Nov, 19:05 | Perplexity Sonar (pt) | No: "tomorrow it does not take place"; Wednesday 11 November was cancelled; they "intend to" resume on Thursday. | 1 behind us, 1 contradicts | 〃 |
+| 11 Nov, 21:00 | none | not asked: paused: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05; the wrapper refused every call at 21:06 (status refused_budget); nothing asked | none | |
 
 ### "What warnings are in force in Lisbon now?" · "Que avisos estão em vigor em Lisboa agora?"
 
@@ -186,6 +187,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 19:05 | OpenAI GPT-5 mini with web search (en) | Active warnings for heavy rain, strong wind and rough seas, "high alert levels reported during the day"; the alert situation. | 1 matches, 1 contradicts | IPMA: in force for Lisbon at 19:05: orange sea to 21:00, then yellow sea to 03:00. Nothing else: red rain ended 15:00, orange wind 15:56, yellow rain 18:00. No red warning in Portugal since 15:55. The alert situation to 23:59. [s-1111T1803](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1824](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1853](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 19:05 | Perplexity Sonar (en) | Red rain (until 15:00), orange wind (until 18:00), yellow rain (until 18:00), orange sea (until 21:00), all "currently active"; sources saying they ended "appear to be older". | 1 matches, 2 contradicts | 〃 |
 | 11 Nov, 19:05 | Perplexity Sonar (pt) | An orange warning for heavy rain "until 09:00"; the red rain was lowered to orange; the alert situation to 23:59. | 2 matches, 1 contradicts | 〃 |
+| 11 Nov, 21:00 | none | not asked: paused: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05; the wrapper refused every call at 21:06 (status refused_budget); nothing asked | none | |
 
 ### "Will Storm Charles hit Lisbon?" · "A tempestade Charles vai atingir Lisboa?"
 
@@ -225,6 +227,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 19:05 | OpenAI GPT-5 mini with web search (en) | Yes, but the worst is easing for Lisbon; wind forecasts were reduced in the morning and the strongest gusts moved south. | 1 matches, 1 behind us | Observed at 18:00: west-north-west 24 km/h gusting 50 km/h at the airport, 992 hPa and rising; no rain at IPMA's Lisbon stations in the latest hour. No new IPMA communiqué after no. 3 (12:16). [s-1111T1824](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 19:05 | Perplexity Sonar (en) | Yes, "expected to affect" Lisbon; the city "is under a red alert"; gusts of 100 to 150 km/h forecast; how direct the hit "is still uncertain". | 1 behind us, 1 contradicts | 〃 |
 | 11 Nov, 19:05 | Perplexity Sonar (pt) | Yes, "strong indication that it will hit Lisbon"; red warning "in several updates"; the track may move south. | 1 matches, 1 behind us | 〃 |
+| 11 Nov, 21:00 | none | not asked: paused: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05; the wrapper refused every call at 21:06 (status refused_budget); nothing asked | none | |
 
 ### "Is the Lisbon metro running?" · "O metro de Lisboa está a funcionar?"
 
@@ -264,6 +267,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 19:06 | OpenAI GPT-5 mini with web search (en) | No answer: it asked "right now or a specific day?", and spoke of strikes in October and November. | 1 behind us | The mayor (Tuesday): the Metro runs on Wednesday; no service notice on the Metro's own site at 11:52. Lusoponte (17:30): both bridges back to their usual limits. [metro-runs](../incidents/2026-11-10-storm-charles/data/decisions/graph.json), [s-1111T1157](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1844](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 19:05 | Perplexity Sonar (en) | Yes, running; expected to keep service on Wednesday. | 1 matches | 〃 |
 | 11 Nov, 19:05 | Perplexity Sonar (pt) | Yes, running normally, by the Metro and "today's news". | 1 matches | 〃 |
+| 11 Nov, 21:00 | none | not asked: paused: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05; the wrapper refused every call at 21:06 (status refused_budget); nothing asked | none | |
 
 ### "What happened in Madeira?" · "O que aconteceu na Madeira?"
 
@@ -303,6 +307,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 19:06 | OpenAI GPT-5 mini with web search (en) | No answer, eighth time: it asked which event and timeframe were meant. | 1 behind us | IPMA: red warnings ended 06:00; Areeiro 249.5 mm in six hours, 474.7 in twelve. Regional civil protection, relayed by Lusa: 285 occurrences to about 13:00. [s-1111T0727](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1007](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1407](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 19:05 | Perplexity Sonar (en) | Charles: floods, landslides, power damage; schools closed; ferry, cruise and flight cancellations. No figures. | 1 matches | 〃 |
 | 11 Nov, 19:05 | Perplexity Sonar (pt) | Charles: 137 occurrences to 06:30, 210 to 09:00, 285 to about 13:10; a man rescued alive; 479 litres per square metre in 12 hours. | 1 matches, 1 ahead: a lead | 〃 |
+| 11 Nov, 21:00 | none | not asked: paused: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05; the wrapper refused every call at 21:06 (status refused_budget); nothing asked | none | |
 
 ## Zoom in: one decision at a time
 

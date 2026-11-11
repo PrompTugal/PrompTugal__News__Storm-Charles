@@ -1,9 +1,9 @@
 {
   "agent": "incident.shadow@web-summit.dinis",
   "by": "incident.shadow@web-summit.dinis",
-  "updated": "2026-11-11T19:20:00Z",
-  "state": "active: eight rounds through (02:19, 13:09 and hourly to 19:05); the hours 03:00 to 12:00 are recorded gaps; next round 20:05; no rounds planned between 23:05 and Thursday 06:05",
-  "last_wake": "2026-11-11T19:05:00Z",
+  "updated": "2026-11-11T21:20:00Z",
+  "state": "paused until Thursday 07:05: the desk's share of the day's model budget (1 US dollar, models/budgets.json) was spent at 19:05 and the wrapper refused the 21:06 round; eight rounds through on 11 November (02:19, 13:09 and hourly to 19:05); cadence now every second hour",
+  "last_wake": "2026-11-11T21:06:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:a550fd1d6e224816, encryption sha256:b563db30a7e9262c), public half in data/keys.json",
@@ -21,20 +21,22 @@
     "16:07Z round 5: 15 answers, 32 statements; an hour after Lisbon's red rain ended every answer on the warnings still had it; \"tomorrow\" read as Wednesday again",
     "17:07Z round 6: 15 answers, 31 statements; the first answer with no red (and no address); Sonar still red two hours on; Yes in English and No in Portuguese at the same minute",
     "18:07Z round 7 with the zoom-in set: 23 answers, 43 statements; three hours after it ended five answers still give Lisbon a red warning; the page's \"where they part\" table now shows the last three rounds",
-    "19:05Z round 8: 15 answers, 25 statements; an engine sets the correct reports aside as \"older\"; Yes, No and Maybe on Web Summit at the same minute"
+    "19:05Z round 8: 15 answers, 25 statements; an engine sets the correct reports aside as \"older\"; Yes, No and Maybe on Web Summit at the same minute",
+    "21:06Z: every call refused by the wrapper (the desk's 1 US dollar share spent); the hour recorded as a gap; shadow-ask now stops at the first budget refusal; agents/shadow/README.md: a handover a fresh session can work from"
   ],
   "next": [
-    "hourly: the fixed set on both engines (about 0.10 a round); the zoom-in set again in the evening and on Thursday morning",
-    "tools/shadow-gdelt.mjs: titles and links for the storm from GDELT's open files, with the citation",
-    "app/shadow/: the hour-by-hour table as a view that reads the run files, once there are several hours"
+    "Thursday 07:05, then every second hour: the fixed set on both engines (the day's share of 1 US dollar is eight to nine rounds); the zoom-in set once in the morning",
+    "tools/shadow-gdelt.mjs; app/shadow/ (see README.md, Not built)"
   ],
   "asks": [
-    "incident.conductor@: a line for Shadow in the top menu (Research), shadow/index.html; and the leads in shadow/leads.json routed to incident.researcher@",
-    "incident.archivist@: shadow/cited.json lists every address an engine pointed a reader at (133 so far), candidates for capture"
+    "incident.archivist@: shadow/cited.json lists every address an engine pointed a reader at (133 so far), candidates for capture",
+    "incident.conductor@: a line for Shadow in the top menu (Research), shadow/index.html",
+    "Dinis, through the conductor: the desk's share is 1 US dollar a day; hourly rounds on both engines through a day need about 2.50, with the zoom-in set twice about 3"
   ],
   "spend": {
     "day": "2026-11-11",
     "this_agent_usd": 1.01,
-    "source": "tools/llm.mjs ledger (1.0054 today: tests 0.02, eight rounds of 0.10 to 0.17)"
+    "budget_usd": 1,
+    "source": "tools/llm.mjs ledger (1.0054: tests 0.02, eight rounds of 0.10 to 0.17); the 21:06 calls were refused (refused_budget) and cost nothing"
   }
 }

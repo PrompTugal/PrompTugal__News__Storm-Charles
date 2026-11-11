@@ -71,7 +71,7 @@ The idea is the SGit Newsroom's: "The shadow of an article is evidence. Who cite
 | **contradicts** | our record, or the calendar, says otherwise |
 | **unsupported** | outside our record, general information, or an omission we note |
 
-So far: **${runs.filter(r => r.answers.length).length}** hour(s) asked${runs.some(r => r.paused && !r.answers.length) ? `, ${runs.filter(r => r.paused && !r.answers.length).length} paused (the account that pays the engines was out of credit: a gap, not silence)` : ''}, **${ok.length}** answers, **${nSt}** statements: ${Object.keys(V).map(k => `${totals[k] || 0} ${V[k]}`).join(', ')}. Spent on the engines: ${spent.toFixed(2)} US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+So far: **${runs.filter(r => r.answers.length).length}** hour(s) asked${runs.some(r => r.paused && !r.answers.length) ? `, ${runs.filter(r => r.paused && !r.answers.length).length} not asked (the account that pays the engines out of credit, or the desk's daily share spent: gaps, not silence)` : ''}, **${ok.length}** answers, **${nSt}** statements: ${Object.keys(V).map(k => `${totals[k] || 0} ${V[k]}`).join(', ')}. Spent on the engines: ${spent.toFixed(2)} US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
 
 `
 // findings written by the agent, kept beside the runs

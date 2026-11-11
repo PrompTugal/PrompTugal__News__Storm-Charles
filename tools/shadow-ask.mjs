@@ -76,6 +76,7 @@ async function one({ e, q, x }) {
     if (run.answers.some(r => r.id === id)) return
     if (paused) return   // the account is out of credit (HTTP 402): stop at the first, ask nothing more this hour
     const { text, line } = await call({ task: 'WS-214/shadow', agent: AGENT, model: e.model, max_tokens: e.max_tokens || 700, messages: [{ role: 'user', content: x.text }], extra: e.extra || {} })
+    if (line.status === 'refused_budget' || line.status === 'refused_cap') { paused = true; run.paused = `paused: the desk's share of the day's model budget is spent (${line.status}, ${line.spent_by_agent_usd ?? line.spent_today_usd} of ${line.budget_usd ?? line.cap_usd} US dollars at ${line.at}); nothing asked`; errors.push(`${id}: ${line.status}`); return }
     if (line.status === 'http_402' || /out_of_credit/.test(line.status)) { paused = true; run.paused = 'paused: account out of credit (HTTP 402 at ' + line.at + ')'; errors.push(`${id}: ${line.status}`); return }
     if (line.status !== 'ok' || !text) { errors.push(`${id}: ${line.status} ${line.error || ''}`); run.answers.push({ id, question: q.id, lang: x.lang, asked: x.text, engine: e.id, engine_name: e.name, model_asked: e.model, at: line.at, status: line.status, error: line.error || null, cost_usd: line.cost_usd, raw: line.raw, raw_sha256: line.raw_sha256, cited: [], statements: [] }); return }
     const raw = JSON.parse(fs.readFileSync(path.join(RAW_DIR, line.raw), 'utf8'))
