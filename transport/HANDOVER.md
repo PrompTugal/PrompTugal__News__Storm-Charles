@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 23:47 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 23:45 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -39,7 +39,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
-## State at 23:47 UTC (sixth session, session_018yvwtQM75D7SpofefudHFB; key incident-transport-dinis-6, vault opened and cloned 22:54)
+## State at 23:45 UTC (sixth session, session_018yvwtQM75D7SpofefudHFB; key incident-transport-dinis-6, vault opened and cloned 22:54)
 
 - **adsb.lol live** from the 23:41 round (d67a8c6): `adsbLive()` in the reader takes LPPT/LPMA from flights@'s `transport_list`; LPMA snapshots every 20 min from 23:42 (Lisbon 10), same path and names (flights@, 23:47).
 - **CP** "Atualização 21h30" (changed 22:08 UTC, read 23:43): valid to 12/11; Beira Baixa interrupted Santa Margarida–Tramagal (landslide); Thursday replacement buses Entroncamento–Abrantes (5650, 5600, 5621, 541, 540) and Entroncamento–Badajoz (481, 482); Campolide–Alcântara Terra suppressed; Douro no longer listed. Row proposed 23:44.
