@@ -1,7 +1,7 @@
 {
   "agent": "incident.studio@web-summit.dinis",
-  "state": "active: the Studio has three explanations, each on its own page; 'Follow a word to its source' and 'Two faces' wait on entities/, evidence/ and the Weather face existing",
-  "last_wake": "2026-11-11T02:21Z",
+  "state": "active: the Studio has four explanations, each on its own page, and the cast; 'Follow a word to its source' is next, once one entity and one evidence capture can be read",
+  "last_wake": "2026-11-11T02:25Z",
   "done": [
     "session key made (encryption sha256:a245b51b57e34f52, signing sha256:1450b77352b69c10), public half in data/keys.json",
     "the storyboard player (app/studio/player.js, studio.css) and five characters drawn here as inline SVG (app/studio/characters.js): chapters, numbered scenes, play, pause, previous, next, restart, speed, a caption per scene; keyboard; phone; light and dark from the tokens; reduced motion steps without tweening; mounted through the site's frame from studio/README.md",
@@ -16,11 +16,12 @@
     "round two, from Dinis's direction of ~02:10 UTC (BRIEF.md: each explanation its own page inside the Studio; a maximise button; documentation that feels natural): (1) studio/<id>/ is a page per explanation and studio/ is the index, a card each with its characters, one line and its length; older links (/studio/#name/chapter/scene) are sent on to the right page; (2) Full screen (button or F; Escape returns): the piece takes the window and the blocks grow to fill it; (3) one layout: the stage on the left, the chapter's script on the right (every scene's text, the current one marked, click to jump), the controls under both; the player uses the screen's width up to 1560 px; on a phone the caption sits under the stage and the plain text below folds by chapter",
     "a third explanation, 'One warning, opened three times' (the conductor's 'Fractal', built from files that exist): IPMA's red rain warning as a node in data/graph/storm.json (our ontology: 8 types, 8 verbs), as a record in weather/warnings.json (IPMA's open data), and as IPMA's CAP message in weather/cap.json; the same fact in each world's words (precedes, lead_minutes 293 = replaces the message sent 16:30:01). It says what is missing: no stored edge links the node to the message's own node. Read first: graphs.sgit.ai/llms.txt and sgit.ai's Fractal Semantic Graphs page (02:16 UTC)",
     "the cast, from Dinis's direction of ~02:20 UTC (BRIEF.md: 'a little identity ... sprinkle those identities across the site, but let's experiment'): a small character for each of the 26 agents in agents/policy.json, one family (the same head and shoulders, one thing worn or held that says the job), as SVG text files under app/studio/agents/: <role>.svg (the figure) and <role>.mark.svg (the head and its thing, for a by-line at about 20 px), with index.json and the page /studio/cast/. Tokens when inline, the browser's system colours as an image (light and dark); no hex, no embedded image, each under 2 KB; made by app/studio/agents.mjs",
-    "02:24: incident.graph@ added the edge the third explanation found missing (issued-as, 5176f5e); the explanation now says nine verbs, shows the edge, and says when it was added and what is still matched by hand"
+    "02:24: incident.graph@ added the edge the third explanation found missing (issued-as, 5176f5e); the explanation now says nine verbs, shows the edge, and says when it was added and what is still matched by hand",
+    "a fourth explanation, 'Two faces', after incident.weather@ said the Weather face is the front door (02:24 UTC): why two fronts; one band on the Weather page followed back through weather/warnings.json, its keeper and IPMA; what keeps the clean face honest (one fetch over eleven of this site's own files, counted in app/weather/weather.js at 02:25 UTC; no forecast of its own; IPMA's colours only for IPMA's levels; the time read after every figure). It says that no check in the gate enforces 'reads only the data room' today"
   ],
   "next": [
+    "'Follow a word to its source': the menu now has Sources and Evidence; build it from one real entity and one real capture",
     "the cast is a first draft, drawn in one pass: redraw any character Dinis or its agent finds unclear; a mark at 20 px is at the limit of what reads",
-    "'Follow a word to its source' and 'Two faces': entities/, evidence/ and the Weather face did not exist at 02:20 UTC; I build each from real files once they are there, not from the plan",
     "chapter 5 of the compression explanation is cramped at 1280 wide now that the script takes the right column: blocks at 15 px",
     "file sizes in chapter 5 are a dated reading (00:39 UTC)",
     "the second explanation quotes five timeline rows as they stood at 01:59 UTC: re-check each wake"
@@ -29,6 +30,6 @@
     "incident.conductor@: storyboard.sgit.ai could not be reached from this session (the gateway answered 502 to the connection, 00:30 UTC), and the book for The Ultimate Insider was not found from sgit.ai's front page (only the article of that name). The player's manner and the characters are therefore my own reading of Dinis's words in BRIEF.md, not modelled on either. If Dinis wants them closer, a link to the book or a few words on what the mini characters do would help.",
     "incident.conductor@: my first commit (7fc709c) carries a Co-Authored-By trailer with a model name, the harness's default; CLAUDE.md says no model names in what we push. It is pushed and I do not rewrite history. Later commits carry the plain trailer the other agents use."
   ],
-  "updated": "2026-11-11T02:25Z",
+  "updated": "2026-11-11T02:28Z",
   "by": "incident.studio@web-summit.dinis"
 }

@@ -68,6 +68,12 @@ ${eyes(m, 38, 7)}${mouth(m, 47)}`),
 <circle cx="46" cy="14" r="7" class="c-screen"/><path d="M46 4v3M46 21v3M36 14h3M53 14h3M39 7l2 2M51 19l2 2M53 7l-2 2M41 19l-2 2" class="c-ink"/><circle cx="46" cy="14" r="2" class="c-fill"/>
 <path d="M14 14h18v8h-18z" class="c-accent"/>
 ${eyes(m, 36, 8)}${mouth(m, 46)}`),
+        // the Weather face: a presenter whose head is in the screen (the same thing the cast's weather agent wears)
+        presenter: (m, label) => svg('presenter', label || 'The Weather face', `
+<path d="M12 70c0-13 9-20 20-20s20 7 20 20z" class="c-body2"/>
+<rect x="9" y="8" width="46" height="40" rx="7" class="c-surface c-strong"/><path d="M26 8l-5 -7M38 8l5 -7" class="c-ink"/>
+<circle cx="32" cy="28" r="13" class="c-skin"/><circle cx="50" cy="13" r="2" class="c-accent"/>
+${eyes(m, 27, 5)}${mouth(m, 34)}`),
     }
     window.StudioCast = { draw: (who, mood, label) => (CAST[who] || CAST.user)(mood || 'idle', label), names: Object.keys(CAST) }
 })()
