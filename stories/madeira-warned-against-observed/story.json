@@ -3,12 +3,12 @@
   "id": "madeira-warned-against-observed",
   "title": "Madeira: warned against observed",
   "standfirst": "Storm Charles reached Madeira first. This sets what IPMA wrote and warned for the island beside what its own stations measured on Tuesday night, hour by hour, as far as the data room holds it.",
-  "state": "developing",
+  "state": "standing",
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T11:56Z",
-  "based_on_read_utc": "2026-11-11T10:22:42Z",
+  "updated": "2026-11-11T12:54Z",
+  "based_on_read_utc": "2026-11-11T12:49:59Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
     "title": "IPMA's red warnings for Madeira",
@@ -224,11 +224,11 @@
     },
     {
       "id": "m7",
-      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00), 29.3 (05:00), 58.0 (06:00) 44.3 (07:00), 8.9 (08:00) and 0.6 mm (09:00): 484.2 mm in fourteen hourly values. The largest hour is the one labelled 06:00, the last of the red window; the rain went on for an hour after it under the orange warning, then fell to 8.9 mm in the hour labelled 08:00 and 0.6 mm in the one labelled 09:00, when the orange rain warning ended.",
+      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00), 29.3 (05:00), 58.0 (06:00) 44.3 (07:00), 8.9 (08:00), 0.6 (09:00) and nothing in the hours labelled 10:00, 11:00 and 12:00: 484.2 mm in seventeen hourly values. The largest hour is the one labelled 06:00, the last of the red window; the rain went on for an hour after it under the orange warning, then fell to 8.9 mm in the hour labelled 08:00 and 0.6 mm in the one labelled 09:00, when the orange rain warning ended; it has been dry at Areeiro since, through the end of the orange wind warning at 12:00.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T09:00Z",
-      "read_utc": "2026-11-11T10:22:42Z",
+      "at_utc": "2026-11-11T12:00Z",
+      "read_utc": "2026-11-11T12:49:59Z",
       "supports": [
         {
           "kind": "data",
@@ -330,9 +330,20 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
-          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T12:00Z]",
-          "note": "A tripwire: when the hour labelled 12:00 arrives (the orange wind warning ends then), the total is given again.",
-          "absent": true
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T10:00Z].rain_mm",
+          "expect": 0
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T11:00Z].rain_mm",
+          "expect": 0
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T12:00Z].rain_mm",
+          "expect": 0
         }
       ]
     },
@@ -694,7 +705,7 @@
     },
     {
       "id": "m17",
-      "text": "What that swing was is a hypothesis, and it has moved. At 08:22 our meteorologist read it as the storm's centre passing close to Madeira airport between about 07:30 and 08:00. At 09:50 it wrote that one centre could not pass Madeira then and reach Lisbon, 966 km away, by 13:00 to 15:00 without moving at 140 to 160 km/h, so the swing was most likely a separate feature: consistent with the \"two centres\" the press attributes to IPMA, not proof of them. IPMA has put nothing in writing about two centres, and no track of the centre from IPMA is in the data room.",
+      "text": "What that swing was is a hypothesis, and it has moved. At 08:22 our meteorologist read it as the storm's centre passing close to Madeira airport between about 07:30 and 08:00. At 09:50 it wrote that one centre could not pass Madeira then and reach Lisbon, 966 km away, by 13:00 to 15:00 without moving at 140 to 160 km/h, so the swing was most likely a separate feature: consistent with the \"two centres\" the press attributes to IPMA, not proof of them. IPMA put nothing in writing about two centres until 12:16, when its communiqué no. 3 said the depression passed north of Madeira and \"se dividiu em dois núcleos de baixa pressão distintos\"; it gives no time or place for the split, and no track of the centre from IPMA is in the data room.",
       "label": "hypothesis",
       "confidence": "medium (observations and distance; not IPMA in writing)",
       "said_by": "incident.meteorologist@, analysis (data/weather/analysis.md, section 11)",
@@ -733,6 +744,18 @@
           "field": "updates[written_utc=2026-11-11T09:50Z].analysis",
           "contains": [
             "Madeira's swing most likely a separate feature"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1226"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+          "field": "items[issued_utc=2026-11-11T12:16:26Z].text_pt",
+          "contains": [
+            "passou a norte do arquipélago da Madeira e se dividiu em dois núcleos de baixa pressão distintos"
           ]
         }
       ],
@@ -950,6 +973,14 @@
       "what": "m18: SAPO's 235 occurrences in Madeira added as a later press count (row s-1111T1135); the president's 205 to 09:00 stands.",
       "claims_changed": [
         "m18"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T12:54Z",
+      "what": "On the 12:49:59 read. m7 retold: before, fourteen hourly values to the hour labelled 09:00 (484.2 mm); now seventeen, the hours labelled 10:00 to 12:00 dry, the total unchanged. Madeira's warnings above yellow have ended (orange wind to 12:00; row s-1111T1240), so the story moves from developing to standing. m17: \"IPMA has put nothing in writing about two centres\" now past; it wrote the split at 12:16 (communiqué no. 3), with no time or place for it.",
+      "claims_changed": [
+        "m7",
+        "m17"
       ]
     }
   ]
