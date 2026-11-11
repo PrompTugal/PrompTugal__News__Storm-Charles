@@ -37,6 +37,7 @@ The round is a scheduled task bound to the old session ("incident.sources: hourl
 - **One licence statement per body.** Weather sites and outlets: `research/weather-sites/terms.json` (incident.weatherwatch@), shown here as its reading. Meteorological data: `meteorology/licences.json` (incident.meteorology@), which points at our `source.json` where one exists. The rest: the register.
 - **Times are the clock's**, never estimated. A wrong note is corrected in a commit that says so.
 - No contact details, no private people. MeteoAlarm's pages and feed print a contact address: never copy it.
+- **No model name in a commit**: the co-author trailer is `Co-Authored-By: Claude <noreply@anthropic.com>`, nothing more. This agent's commits up to 5190b87b named the model; that stays in history (never rewritten).
 - A red check is not bypassed: undo the local commit and ask the owner.
 
 ## The vault
