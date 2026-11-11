@@ -4,7 +4,7 @@
  "size": "outage",
  "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T12:10:13Z",
+ "updated": "2026-11-11T13:13:56Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
   "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
@@ -38,11 +38,11 @@
   "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
   "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
  },
- "status": "open: waiting on Dinis (a top-up of the provider's account); ten empty hours in the shadow reports (03:00 to 12:00); none of his eleven words since 10:10 mentions it",
+ "status": "closed at 13:12:51: the shadow desk's 13:09 round got through; ten hours recorded as gaps (03:00 to 12:00); who restored the credit is not in the record at 13:13",
  "duration": {
   "from": "2026-11-11T02:53:57Z",
-  "to": null,
-  "note": "first refusal to the first code that stops on it: 85 s; to the provider's figures on a page: 8 min 23 s; to one card for Dinis: 9 min 50 s; to the shared wrapper stopping at the first refusal: 12 min 18 s; waiting on Dinis since 03:03:47; corrected: five refusals before 02:39:15 were not recognised (step 13)"
+  "to": "2026-11-11T13:12:51Z",
+  "note": "first refusal to the first code that stops on it: 85 s; to the provider's figures on a page: 8 min 23 s; to one card for Dinis: 9 min 50 s; to the shared wrapper stopping at the first refusal: 12 min 18 s; waiting on Dinis since 03:03:47; corrected: five refusals before 02:39:15 were not recognised (step 13); to the first call through again: 10 h 18 min 54 s"
  },
  "shape": {
   "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
@@ -970,13 +970,61 @@
     "incident.conductor@web-summit.dinis",
     "incident.accountant@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a call goes through",
+   "sha": "d7e1995153e87a222238e3bc5256b8be2cd016cb",
+   "in": "the hourly try at 13:09, through tools/llm.mjs",
+   "out": "\"shadow reporting, round 2 (13:09, credit back): 23 answers, 73 statements against the record\"; its status: \"active again: the 13:09 round got through (credit is back)\". 10 h 18 min 54 s after the first refusal; 10 h 9 min 4 s after the card for Dinis. \"The hours 03:00 to 12:00 stay as recorded gaps\". Who put credit back, and when, is not in the record at 13:13: no word in BRIEF.md and no commit names a top-up; the first sign is this call going through.",
+   "handoff": {
+    "to": "incident.researcher@web-summit.dinis",
+    "via": "shadow/leads.json",
+    "evidence_of_handoff": "the commit's For: trailers"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/13.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/13.json"
+    },
+    {
+     "type": "file",
+     "path": "shadow/findings.md",
+     "url": "https://storm-charles.promptugal.news/shadow/findings.html"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d7e1995153e87a222238e3bc5256b8be2cd016cb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d7e1995153e87a222238e3bc5256b8be2cd016cb"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": null,
+     "note": "no CI tag at or after this commit when the trace was filled"
+    }
+   ],
+   "n": 21,
+   "at": "2026-11-11T13:12:51Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.researcher@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 20,
+  "steps": 21,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 18
+  "agent_steps": 19
  },
  "people_acted": [
   "Dinis Cruz"

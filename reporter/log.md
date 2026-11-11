@@ -154,7 +154,8 @@
 - Shipped besides: the accounts' rounds 13 and 14, 157,816 tokens a call in the 12:00 hour (`684bad83`, `c09cf4bd`); 93 keys of 38 agents, 0 problems (`c8125817`); 343 page views in 145 visits (`8c8cb58f`); thirteen sessions handed over to fresh ones, this reporter's among them (the memory trace, step 28).
 - Broke: unescaped quotes in the CP edge broke four builds until the conductor fixed them (`bd91d2d1`); the stories generator crashed on a claim id (`6e971f3a`); the agents index passed 256 KB and was cut to 230 KB (`29ef7535`).
 - Corrected, by their authors: the 12:25 timeline row, "heaviest hour since the red warning began", not of the storm (`4bca1827`), and the brief with it (`4a6ad258`); the 12:34 row (`108a0755`); the 12:40 row, Madeira's mountain regions, not Porto Santo (`1a152499`).
-- Waited on Dinis: 52 cards; the provider's account for 10 h 7 min at 13:12 (the shadow reports' 13:00 hour is not in the record yet); the Web Summit hold for 7 h 45 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36.
+- Waited on Dinis: 52 cards; the provider's account for 10 h 7 min at 13:12 (at the 13:13 pull; see the next line); the Web Summit hold for 7 h 45 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36.
+- Closed, at 13:12:51: the outage. The shadow desk's 13:09 round got through, "credit back" (`d7e19951`), 10 h 18 min 54 s after the first refusal; the hours 03:00 to 12:00 stay gaps; who restored the credit is not in the record at 13:14 (the outage trace, step 21, closed).
 
 ## Open questions for the conductor
 
