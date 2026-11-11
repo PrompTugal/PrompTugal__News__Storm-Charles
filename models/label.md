@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Label fact, evidence, hypothesis
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:41 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Label a row of our timeline as fact, evidence or hypothesis by this site's rules. The input is the row's text with its leading marker removed (rows start 'signal:' or 'analysis (...)': that would give the answer away) and its source labels. The gold is the row's label in signals.json, which tools/timeline.mjs derives from the lead's markers. Rows that quote the press or point at a private person's post are left out.
 
-Scoring: exact. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: exact. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:41 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -49,6 +49,18 @@ The rules:
 | `openai/gpt-6.1-terra` | commercial, large | **16/20** | 16 | 0 | 0 | 0 | 0 | 0.00075 | 2.8 | 4.8 |
 
 **Reading (ours, a hypothesis):** No model passed 17 of 20, and the misses are mostly the same rows for every model, which points at our labels as much as at the models. Two rows the lead marks 'analysis' (so: hypothesis) are counts made by incident.media@ from its own dataset (who published when; that no title had reported a change by a given time): 13 of 13 and 11 of 13 models call them fact or evidence. One team row ('No further statement from Web Summit', from a watcher's sweep) split the models three ways. The clear rows (IPMA's own data; a forecast-like reading by the meteorologist; a press report relayed by a watcher) were labelled right by nearly every model above the smallest. The smallest model (4 billion parameters) got 8 of 20: not usable for this.
+
+## A question for Dinis: do our three labels lack a fourth, "our measurement"?
+
+*asked by incident.conductor@web-summit.dinis (its message of 02:38 UTC), from this page's results; written up by incident.models@.*
+
+The lead keeps the three labels below as they are: by our rule, anything that is our own analysis is a hypothesis. The models were given that rule and still read these rows differently, and the way they differ is the finding. Two of the rows are counts incident.media@ made from sources we hold (who published when; that no article title had reported a change by a given time). The third is an absence we observed (no further statement found in a sweep). None is an opinion or a forecast-like reading: each can be recomputed from the dataset it names and would come out the same. Our labels have fact (read at the body that decides, warns or measures), evidence (reported by others) and hypothesis (our reasoning, with its reasons). A count we made ourselves sits in none of them comfortably: it is not the primary source's statement, not someone else's report, and not a judgement. A fourth kind, "our measurement" (we counted or computed it from sources we hold; reproducible; with its limits stated), would let a reader tell the meteorologist's 'the centre most likely passes just south of Lisbon' from the media desk's '87 of 212 items carry Lusa's by-line'. Today both wear the same word. No row has been relabelled.
+
+| Row | Our label | What the models said | The row |
+|---|---|---|---|
+| [s-1110T2358](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2358) | hypothesis | evidence 8, fact 7 (of 15) | the press on Day 2 after Web Summit's 19:09 page: ECO and TEK 19:41 (32 min later), DN 19:49, Lusa via Notícias ao Minuto 20:01, Observador 20:08, Euronews 20:2… |
+| [s-1111T0015](../incidents/2026-11-10-storm-charles/timeline.md#s-1111T0015) | hypothesis | fact 11, hypothesis 2, evidence 1, no answer 1 (of 15) | IPMA's move of Lisbon's red rain to 09:00 (sent 21:23) had not been reported by any article title or live-blog entry we could read by 00:15. Limits: matched by … |
+| [s-1110T2153](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2153) | fact | evidence 5, hypothesis 4, fact 3, no answer 3 (of 15) | No further statement from Web Summit (social.watch@'s sweep 4); still open: Wednesday's talks, the PITCH semi-final (when it was set is in conflict: Wednesday 1… |
 
 ## Item by item
 

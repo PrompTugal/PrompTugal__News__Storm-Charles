@@ -42,6 +42,9 @@ for (const [task, title] of TASKS) {
 // overall, per model, over the tasks it ran
 out.overall = Object.fromEntries(roster.models.map(m => { const R = Object.values(out.tasks).map(t => t.models[m.id]).filter(Boolean); const asked = R.reduce((s, r) => s + r.asked, 0), right = R.reduce((s, r) => s + r.right, 0), cost = R.reduce((s, r) => s + r.cost_usd, 0)
     return [m.id, R.length ? { tasks: R.length, asked, right, accuracy: +(right / asked).toFixed(3), cost_usd: +cost.toFixed(6), cost_per_item_usd: +(cost / asked).toFixed(7), latency_ms_median: med(R.map(r => r.latency_ms_median)), not_answered: R.reduce((s, r) => s + r.malformed + r.cut_off + r.refused + r.errors, 0) } : null] }).filter(([, v]) => v))
+const which = { about: notes.which_about, by: BY, updated: stamp, label: 'hypothesis', source: 'models/results.json', jobs: notes.which.map(w => { const r = w.model && out.tasks[w.task]?.models[w.model]; return { job: w.job, use: w.use.replace(/`/g, ''), model: w.model, measured_on: w.task, right: r ? `${r.right}/${r.asked}` : null, usd_per_100_items: r ? +(r.cost_per_item_usd * 100).toFixed(4) : 0, median_seconds: r ? +(r.latency_ms_median / 1000).toFixed(1) : null, check: w.check.replace(/`/g, '') } }) }
+out.usd_per_100_items = Object.fromEntries(Object.entries(out.tasks).map(([t, T]) => [t, Object.fromEntries(Object.entries(T.models).map(([m, r]) => [m, +(r.cost_per_item_usd * 100).toFixed(4)]))]))
+W('models/which.json', JSON.stringify(which, null, 1) + '\n')
 W('models/results.json', JSON.stringify(out, null, 1) + '\n')
 
 // ---- ledger-summary.json (every day the ledger has; no prompt or answer text is in the ledger at all)
@@ -92,6 +95,11 @@ const sourceLine = `Source for every figure on this page: [results.json](results
         L.push(`| \`${m.id}\` | ${group(m)} | ${ran.map(([t]) => { const r = out.tasks[t].models[m.id]; return r ? `${r.right}/${r.asked}` : '' }).join(' | ')} | **${o.right}/${o.asked}** | ${o.not_answered} | ${usd(o.cost_per_item_usd)} | ${(o.latency_ms_median / 1000).toFixed(1)} |`) }
     L.push('', '"Not answered" counts answers that were not the JSON asked for, were cut off at the token limit, were refusals, or failed at the provider. Latency is the median over a task\'s items, then the median over tasks, measured from this session through OpenRouter (it includes their routing).', '')
     L.push('**How to read it.** ' + notes.how_to_read, '')
+    L.push('## Which model for which job here', '', `*${notes.which_about}* As data: [which.json](which.json).`, '', '| Job | Call | Right in round 1 | USD per 100 items | Median seconds | The check before anything is used |', '|---|---|---|---|---|---|')
+    for (const w of which.jobs) { const n = notes.which.find(x => x.job === w.job); L.push(`| ${cell(w.job)} | ${cell(n.use)} | ${w.right ? `${w.right} ([${out.tasks[w.measured_on].title.toLowerCase()}](${w.measured_on}.md))` : ''} | ${w.usd_per_100_items} | ${w.median_seconds ?? ''} | ${cell(n.check)} |`) }
+    L.push('', '**What 100 timeline rows cost.** Labelling and decision extraction, per 100 items, at the prices OpenRouter reported in round 1 (from [results.json](results.json), `usd_per_100_items`):', '', '| Model | Label 100 rows, USD | Right on labels | Extract 100 decisions, USD | Right on decisions |', '|---|---|---|---|---|')
+    for (const m of roster.models) { const a = out.tasks.label?.models[m.id], b = out.tasks['extract-decision']?.models[m.id]; if (a && b) L.push(`| \`${m.id}\` | ${(a.cost_per_item_usd * 100).toFixed(4)} | ${a.right}/${a.asked} | ${(b.cost_per_item_usd * 100).toFixed(4)} | ${b.right}/${b.asked} |`) }
+    L.push('', 'So a second reader on every row of a 100-row timeline costs under one US cent on the two large open-weight models that answer without reasoning (Gemma 4 31B, Llama 4 Maverick), and 30 to 60 cents on the two that reason at length by default.', '')
     L.push('## What we would use each for', '', '*Our reading of the table: a hypothesis, from small samples, to be re-run as the item sets grow.*', '')
     for (const u of notes.use) L.push(`- **${u.job}**: ${u.pick} ${u.why}`)
     L.push('', '## What the models tell us about our own data', '', notes.own_data.replace(/\bs-\d{4}T\d{4}[a-z]?\b/g, id => `[${id}](../incidents/2026-11-10-storm-charles/timeline.md#${id})`).replace('on the label page', 'on [the label page](label.md)'), '')
@@ -121,6 +129,11 @@ for (const [task, title] of TASKS) {
     L.push('## The table', '', `| Model | Kind | Right | ${items.fields.map(f => `\`${f}\``).join(' | ')} | Malformed | Cut off | Refused | Errors | Cost per item, USD | Median latency, s | p90, s |`, `|---|---|---|${items.fields.map(() => '---').join('|')}|---|---|---|---|---|---|---|`)
     for (const m of ms) { const r = T.models[m.id]; L.push(`| \`${m.id}\` | ${group(m)} | **${r.right}/${r.asked}** | ${items.fields.map(f => r.by_field[f]).join(' | ')} | ${r.malformed} | ${r.cut_off} | ${r.refused} | ${r.errors} | ${usd(r.cost_per_item_usd)} | ${(r.latency_ms_median / 1000).toFixed(1)} | ${(r.latency_ms_p90 / 1000).toFixed(1)} |`) }
     L.push('', notes.tasks[task].reading ? `**Reading (ours, a hypothesis):** ${notes.tasks[task].reading}` : '', '')
+    if (task === 'label' && notes.fourth_label) { const F = notes.fourth_label
+        L.push(`## ${F.title}`, '', `*${F.by}.*`, '', F.text, '', '| Row | Our label | What the models said | The row |', '|---|---|---|---|')
+        for (const id of F.rows) { const it = items.items.find(x => x.id === id); if (!it) continue; const c = {}; for (const m of ms) { const a = res.models[m.id].answers[id]; const k = a?.answer?.label || (a ? 'no answer' : null); if (k) c[k] = (c[k] || 0) + 1 }
+            L.push(`| [${id}](../incidents/2026-11-10-storm-charles/timeline.md#${id}) | ${it.gold.label} | ${Object.entries(c).sort((x, y) => y[1] - x[1]).map(([k, n]) => `${k} ${n}`).join(', ')} (of ${ms.length}) | ${cell(it.input.text.slice(0, 160))}… |`) }
+        L.push('') }
     L.push('## Item by item', '', `| Item | Right | ${ms.map(m => short(m.id)).join(' | ')} |`, `|---|---|${ms.map(() => '---').join('|')}|`)
     for (const it of items.items) { const A = ms.map(m => res.models[m.id].answers[it.id]); L.push(`| [${it.id}](#${it.id.toLowerCase()}) | ${A.filter(a => a?.right).length}/${A.filter(Boolean).length} | ${A.map(a => !a ? '' : a.right ? 'right' : '**no**').join(' | ')} |`) }
     L.push('')

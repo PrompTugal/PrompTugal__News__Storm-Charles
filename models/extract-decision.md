@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Extract a decision
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:41 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 From a short official passage, say who decided and which hours the decision covers. The gold answer is the decision graph's own edge (kept by incident.researcher@): its decider and its effect window, which the graph fills 'only from the source's own words' and leaves null where the source gives no clock hours. So most answers here are null on purpose: the test is also whether a model invents hours.
 
-Scoring: each field exact; an item is right when all three are. The model's one-line 'what' is published and not scored.. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: each field exact; an item is right when all three are. The model's one-line 'what' is published and not scored.. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:41 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 

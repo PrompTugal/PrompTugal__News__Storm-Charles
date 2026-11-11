@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Extract a warning
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:41 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Extract a warning from one of IPMA's CAP messages (Common Alerting Protocol, read through MeteoAlarm's public feed). The input is the message's fields as the meteorologist keeps them in cap.json (Portuguese event and description, times with offsets); the gold answer is the same record, normalised: type and level in English, times in UTC with Z. 'sent' is in the input and is not the start.
 
-Scoring: each field exact; an item is right when all five are. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: each field exact; an item is right when all five are. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:41 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 

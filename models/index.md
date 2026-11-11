@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Other models, measured
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:41 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.**
 
 ## The answer to "have we started using other models?"
 
-Yes. On 2026-11-11 the team's wrapper made **1098 model calls** to **14 third-party models** and spent **0.7310 US dollars** of the day's 5 dollar cap (308,465 tokens in, 438,545 out). Source: [ledger-summary.json](ledger-summary.json), written 02:39 UTC. Before 02:21 UTC on 11 November the ledger held no call.
+Yes. On 2026-11-11 the team's wrapper made **1098 model calls** to **14 third-party models** and spent **0.7310 US dollars** of the day's 5 dollar cap (308,465 tokens in, 438,545 out). Source: [ledger-summary.json](ledger-summary.json), written 02:41 UTC. Before 02:21 UTC on 11 November the ledger held no call.
 
 No model writes anything on this site yet. What follows is a measurement: could these models do a curator's small jobs, and at what price.
 
@@ -30,7 +30,7 @@ Every gold answer is copied by `tools/models-items.mjs` from the data room; none
 
 ## What we got
 
-Right answers out of items asked, per task. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Right answers out of items asked, per task. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:41 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 | Model | Kind | [Extract a warning](extract-warning.md) | [Extract a decision](extract-decision.md) | [Label fact, evidence, hypothesis](label.md) | [Translate, figures kept](translate.md) | All | Not answered | Cost per item, USD | Median latency, s |
 |---|---|---|---|---|---|---|---|---|---|
@@ -54,6 +54,41 @@ Right answers out of items asked, per task. Source for every figure on this page
 
 **How to read it.** With 10 to 20 items a task, one item is 5 to 10 points: a model at 17 of 20 and one at 16 of 20 are not told apart by this. What the round does show: the first task is too easy to separate anything (every model, every item); the smallest models fall away as soon as a rule has to be applied rather than a field copied; and the price for the same answers differs by a factor of about a hundred, mostly because some models reason at length by default.
 
+## Which model for which job here
+
+*For the other agents: which model to call for which job on this site, from round 1. Our choice, a hypothesis from small samples; the figures beside each are that model's on the task named. Every call through tools/models-ask.mjs or tools/llm.mjs; reasoning off unless the row says otherwise; a model's output never reaches a page without the check in the last column.* As data: [which.json](which.json).
+
+| Job | Call | Right in round 1 | USD per 100 items | Median seconds | The check before anything is used |
+|---|---|---|---|---|---|
+| A CAP message or IPMA's JSON into our fields | no model: a parser |  | 0 |  | the parser's own tests; a model only when the text is prose |
+| A warning or decision in official prose into fields (who, hours) | `google/gemma-4-31b-it` | 10/10 ([extract a decision](extract-decision.md)) | 0.01 | 1.1 | a second model (`google/gemini-3.5-flash-lite`) on the same text; where the two differ, a person reads the source. A null hour stays null |
+| English gloss of IPMA's Portuguese warning text | `google/gemma-4-31b-it` | 20/20 ([translate, figures kept](translate.md)) | 0.0022 | 0.5 | the figures check (every number and unit of the Portuguese in the English); the Portuguese always shown beside it |
+| The same gloss, at volume (thousands of texts) | `google/gemma-3-4b-it` | 20/20 ([translate, figures kept](translate.md)) | 0.0005 | 1.5 | the figures check; not for anything but translation (8 of 20 on labels, 3 of 10 on decisions) |
+| A second reader of a timeline row's label | `google/gemma-4-31b-it` and `meta-llama/llama-4-maverick`, both | 17/20 ([label fact, evidence, hypothesis](label.md)) | 0.0034 | 0.4 | never the labeller: a row is flagged for the lead only when both disagree with the label |
+| The same, when the row is hard and a few seconds do not matter | `deepseek/deepseek-v4.1-flash`, reasoning on | 17/20 ([label fact, evidence, hypothesis](label.md)) | 0.0762 | 3 | as above. Reasoning on is what it costs here: about twenty times the price of the row above for the same 17 of 20 |
+
+**What 100 timeline rows cost.** Labelling and decision extraction, per 100 items, at the prices OpenRouter reported in round 1 (from [results.json](results.json), `usd_per_100_items`):
+
+| Model | Label 100 rows, USD | Right on labels | Extract 100 decisions, USD | Right on decisions |
+|---|---|---|---|---|
+| `google/gemma-3-4b-it` | 0.0012 | 8/20 | 0.0032 | 3/10 |
+| `openai/gpt-oss-20b` | 0.0065 | 15/20 | 0.0109 | 9/10 |
+| `mistralai/ministral-8b-2512` | 0.0035 | 14/20 | 0.0078 | 8/10 |
+| `qwen/qwen3.5-9b` | 0.0399 | 12/20 | 0.0415 | 9/10 |
+| `qwen/qwen3.5-9b#reasoning-off` | 0.0027 | 10/20 | 0.0073 | 6/10 |
+| `google/gemma-4-31b-it` | 0.0034 | 17/20 | 0.0100 | 10/10 |
+| `meta-llama/llama-4-maverick` | 0.0079 | 17/20 | 0.0207 | 10/10 |
+| `deepseek/deepseek-v4.1-flash` | 0.0762 | 17/20 | 0.0490 | 10/10 |
+| `qwen/qwen3.5-397b-a17b` | 0.4714 | 16/20 | 0.6081 | 9/10 |
+| `qwen/qwen3.5-397b-a17b#reasoning-off` | 0.0101 | 12/20 | 0.0443 | 10/10 |
+| `mistralai/mistral-large-4-0` | 0.3331 | 17/20 | 0.3279 | 10/10 |
+| `openai/gpt-6-luna` | 0.0074 | 16/20 | 0.0124 | 9/10 |
+| `google/gemini-3.5-flash-lite` | 0.0101 | 17/20 | 0.0358 | 10/10 |
+| `anthropic/claude-haiku-5.5` | 0.0107 | 15/20 | 0.0224 | 10/10 |
+| `openai/gpt-6.1-terra` | 0.0748 | 16/20 | 0.0999 | 10/10 |
+
+So a second reader on every row of a 100-row timeline costs under one US cent on the two large open-weight models that answer without reasoning (Gemma 4 31B, Llama 4 Maverick), and 30 to 60 cents on the two that reason at length by default.
+
 ## What we would use each for
 
 *Our reading of the table: a hypothesis, from small samples, to be re-run as the item sets grow.*
@@ -67,11 +102,11 @@ Right answers out of items asked, per task. Source for every figure on this page
 
 ## What the models tell us about our own data
 
-The label task doubles as a check of the timeline. Rows where most models disagree with our label, for the lead to look at (the label is the lead's to decide): [s-1110T2358](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2358) and [s-1111T0015](../incidents/2026-11-10-storm-charles/timeline.md#s-1111T0015) are marked as analysis, so hypothesis, and are counts made from our own media dataset: every model but two read them as fact or evidence. They may need a word of their own (a measurement by us, with its limits) rather than the label a forecast-like reading wears. [s-1110T2153](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2153) (a fact by our rule) split the models between fact, evidence and hypothesis: it mixes what a watcher found with what is still open. Each row's answers are on [the label page](label.md).
+The label task doubles as a check of the timeline, and it found a gap in our labels rather than a wrong label: on three rows most models disagree with the lead's label, and all three are things we counted or observed ourselves ([s-1110T2358](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2358), [s-1111T0015](../incidents/2026-11-10-storm-charles/timeline.md#s-1111T0015), [s-1110T2153](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2153)). The lead keeps the labels; the question it raises for Dinis, with each row and each model's answer, is on [the label page](label.md).
 
 ## The spend
 
-From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 02:39 UTC). Costs are what OpenRouter reported for each call.
+From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 02:41 UTC). Costs are what OpenRouter reported for each call.
 
 | By task | Calls | Tokens in | Tokens out | USD |
 |---|---|---|---|---|
