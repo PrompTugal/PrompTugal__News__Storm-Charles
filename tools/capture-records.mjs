@@ -102,7 +102,8 @@ for (const chain of chains.values()) {
         if (!r.changed?.text) delete r.diff
         if (r.changed?.text && !r.diff) {
             const read = id => { try { return fs.readFileSync(path.join(CV, id, 'text.txt'), 'utf8') } catch { return null } }
-            const A = read(prev.id), B = read(r.id)
+            const strip = t => { if (t == null) return t; for (const re of sourceOf(r.host).volatile || []) t = t.replace(new RegExp(re, 'g'), ''); return t }
+            const A = strip(read(prev.id)), B = strip(read(r.id))
             if (A != null && B != null) {
                 const parts = t => t.split(/(?<=[.!?:])\s+|\s{2,}| \| /).map(x => x.trim()).filter(x => x.length > 2)
                 const a = parts(A), b = parts(B), sa = new Set(a), sb = new Set(b)
