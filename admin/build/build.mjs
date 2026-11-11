@@ -238,11 +238,18 @@ ${html}
 <p class="meta">Every row's label, kind and id are in <a href="data/signals.json">data/signals.json</a> (made ${esc(String(sg?.made_at || '').replace('T', ' ').slice(0, 16))} UTC from this table). A row's time links to itself: copy it to cite the row.</p></article></div></main>`
         extraHead += `<script src="../../app/design/timeline.js" defer></script>`
     }
-    // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text) and
+    // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text, under the page's title) and
     // `head:` (its stylesheet and script tags, one line). The page then always has the site's nav, notice and footer
-    if (fm.mount) { body = `<main class="doc"><div class="wrap">${fm.mount}</div></main>` + body; extraHead += fm.head || '' }
+    // The page's title comes first (designer, round 59): the body's leading h1 and the "Kept by" line under it are lifted above the mount,
+    // unless the mount carries its own h1 (on a phone /guide/'s h1 sat at 9,822 px of 11,317, below its app)
+    const mountAbove = app => {
+        let top = ''
+        if (!/<h1[\s>]/.test(app)) body = body.replace(/^(<main class="doc"><div class="wrap"><article>)(<h1[\s>][\s\S]*?<\/h1>\s*(?:<blockquote>[\s\S]*?<\/blockquote>)?)/, (m, open, head) => { top = head; return open })
+        body = `<main class="doc"><div class="wrap">${top ? `<article class="mount-head">${top}</article>` : ''}${app}</div></main>` + body
+    }
+    if (fm.mount) { mountAbove(fm.mount); extraHead += fm.head || '' }
     if (rel === 'agents/README.md') {   // the live agents page (incident.observability@'s app/agents/)
-        body = `<main class="doc"><div class="wrap"><div id="agents-live" data-base="../"></div></div></main>` + body
+        mountAbove(`<div id="agents-live" data-base="../"></div>`)
         extraHead = `<link rel="stylesheet" href="../app/agents/agents.css"><script src="../app/agents/agents.js" defer></script>`
     }
     write(htmlRel, page({ rel: htmlRel, title, body, desc: fm.summary || '', twin: path.basename(rel), extraHead }))
