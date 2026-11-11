@@ -14,6 +14,9 @@
 <!-- One flow, embeddable by an iframe (incident.motion@web-summit.dinis, 11 November 2026). An experiment.
      ?flow=<id>                         a flow the build made (data/flows/index.json lists them)
      ?kind=wake|handover|night&agent=<role or name>[&at=<UTC>][&n=<session>]   one built here, in the browser, from the record
+     ?kind=hour[&minutes=20]            the team's last hour (or minutes) of the record, built here
+     ?flow=last-hour                    the same, as the build made it
+     &bare=1                            no title or summary (for a panel that has its own)
      &autoplay=0                        wait for a press -->
 <div id="flow"></div>
 <p class="ft">Not a warning service: follow <a href="https://www.ipma.pt/" target="_blank" rel="noopener">IPMA</a> and <a href="https://prociv.gov.pt/" target="_blank" rel="noopener">ANEPC</a>. An experiment of <a href="../../flows/index.html" target="_blank">storm-charles.promptugal.news/flows</a>: every step links its evidence.</p>
@@ -22,6 +25,8 @@
     var q = new URLSearchParams(location.search), d = document.getElementById('flow')
     if (q.get('flow')) d.dataset.flow = q.get('flow')
     else { d.dataset.flowKind = q.get('kind') || 'wake'; d.dataset.flowAgent = q.get('agent') || 'journalist'; if (q.get('at')) d.dataset.flowAt = q.get('at'); if (q.get('n')) d.dataset.flowN = q.get('n') }
+    if (q.get('minutes')) d.dataset.flowMinutes = q.get('minutes')
+    if (q.get('bare') === '1') d.dataset.flowBare = '1'
     if (q.get('autoplay') === '0') d.dataset.flowAutoplay = '0'
     if (q.get('speed')) d.dataset.flowSpeed = q.get('speed')
 })()

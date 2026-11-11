@@ -8,6 +8,7 @@
 //   <div data-flow="wake-journalist"></div><script src="https://storm-charles.promptugal.news/app/flows/player.js" defer></script>
 //   <iframe src="https://storm-charles.promptugal.news/app/flows/embed.html?flow=wake-journalist" width="640" height="420"></iframe>
 // or ask for a flow the gallery does not list (built in the browser from data/flows/record.json by app/flows/core.js):
+//   <div data-flow-kind="hour" data-flow-minutes="20"></div>   the team's last 20 minutes of the record
 //   <div data-flow-kind="wake|handover|night" data-flow-agent="reporter" data-flow-at="2026-11-11T09:00:00Z" data-flow-n="2"></div>
 // Options: data-flow-bare="1" leaves out the title and summary (for a card that shows them); data-flow-autoplay="0" to wait for a press; data-flow-speed (ms a step, default chosen from the length).
 // No outside request: it reads only this site's files. Colours are the site's tokens, with system colours where they are absent.
@@ -31,7 +32,7 @@
         const d = host.dataset
         if (d.flow) return getJSON(BASE + 'data/flows/' + encodeURIComponent(d.flow) + '.json')
         const [C, rec] = await Promise.all([core(), record()])
-        const f = C.make(rec, { kind: d.flowKind, agent: d.flowAgent, n: d.flowN, at: d.flowAt })
+        const f = C.make(rec, { kind: d.flowKind, agent: d.flowAgent, n: d.flowN, at: d.flowAt, minutes: d.flowMinutes })
         if (!f) throw new Error('nothing in the record for ' + [d.flowKind, d.flowAgent, d.flowN, d.flowAt].filter(Boolean).join(' '))
         return f
     }

@@ -262,14 +262,35 @@
         return p
     }
 
+    // 5. the last hour of the record: every agent that pushed in the 60 minutes up to the newest commit in the record (the
+    // record's own clock, not the reader's: the same record gives the same flow), a lane each, its For: arrows to agents that
+    // also pushed in that hour. For the front page's "the team at work" panel (Dinis, 11 November ~11:55, BRIEF.md).
+    function lastHour(rec, o = {}) {
+        const mins = o.minutes || 60, list = rec.commits.slice().sort((a, b) => ms(a.at) - ms(b.at)); if (!list.length) return null
+        const end = ms(list[list.length - 1].at), from = end - mins * 6e4
+        const win = list.filter(c => ms(c.at) > from && /@/.test(c.agent)); if (!win.length) return null
+        const count = new Map(); for (const c of win) count.set(c.agent, (count.get(c.agent) || 0) + 1)
+        const names = [...count.keys()].sort((a, b) => count.get(b) - count.get(a)).slice(0, o.lanes || 14), keep = new Set(names)
+        const actors = names.map(n => agentActor(n)), steps = []
+        for (const c of win) {
+            if (!keep.has(c.agent)) continue
+            steps.push({ t: c.at, actor: aid(c.agent), verb: 'commit', object: clip(c.what), files: c.files || [], n_files: c.n_files, evidence: commitEv(c) })
+            const to = (c.to || []).filter(t => keep.has(t) && t !== c.agent)
+            if (to.length) steps.push({ t: c.at, actor: aid(c.agent), verb: 'message', object: 'For: ' + to.map(t => short(t) + '@').join(', '), to: to.map(aid), evidence: { commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha } })
+        }
+        const left = [...count.keys()].filter(n => !keep.has(n))
+        return finish({ id: o.id || 'last-hour', kind: 'hour', title: o.title || 'The team in the last hour of the record', summary: `${win.length} commits by ${count.size} agents in the ${mins} minutes up to ${new Date(end).toISOString().slice(11, 16)} UTC (the newest commit in the record)${left.length ? '; ' + left.length + ' agent(s) with the fewest pushes left out: ' + left.map(short).join(', ') : ''}. Updated when the commit extracts are.`, actors, steps, pause_min: 10, built_from: ['data/ci/commits/', 'data/agents/commits.json'] }, rec)
+    }
+
     // a recipe by name, for the builder's list (flows/flows.json) and the browser API (?kind=&agent=&n=&at=)
     function make(rec, spec) {
         const name = spec.agent && !/@/.test(spec.agent) ? `incident.${spec.agent}@web-summit.dinis` : spec.agent
         if (spec.kind === 'wake') return wake(rec, name, spec)
         if (spec.kind === 'handover') return handover(rec, name, { ...spec, n: spec.n ? +spec.n : undefined })
         if (spec.kind === 'night') return night(rec, name, spec)
+        if (spec.kind === 'hour' || spec.kind === 'last-hour') return lastHour(rec, { ...spec, minutes: spec.minutes ? +spec.minutes : undefined })
         return null
     }
 
-    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, fromPath, fromStory, fromTrace, finish: (f, rec) => finish(f, rec || {}), check, make, wakesOf, short, scrub }
+    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, lastHour, fromPath, fromStory, fromTrace, finish: (f, rec) => finish(f, rec || {}), check, make, wakesOf, short, scrub }
 })(typeof globalThis !== 'undefined' ? globalThis : this)

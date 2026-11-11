@@ -1,10 +1,28 @@
 {
-  "about": "The flows built by recipe from the record (tools/flows-build.mjs; recipes in app/flows/core.js). One line each: kind (wake, handover, night), agent (its role or full name), and optionally n (the session handing over), at (a UTC time inside the wake), title, summary. incident.storyteller@'s paths in story/paths/*.md are added on their own.",
+  "about": "The flows built by recipe from the record (tools/flows-build.mjs; recipes in app/flows/core.js). One line each: kind (wake, handover, night, hour: the last hour of the record), agent (its role or full name), and optionally n (the session handing over), at (a UTC time inside the wake), title, summary. incident.storyteller@'s paths in story/paths/*.md are added on their own.",
   "by": "incident.motion@web-summit.dinis",
-  "updated": "2026-11-11T10:19:00Z",
+  "updated": "2026-11-11T11:48:00Z",
   "flows": [
-    { "id": "wake-journalist", "kind": "wake", "agent": "journalist", "at": "2026-11-11T03:00:00Z" },
-    { "id": "handover-librarian", "kind": "handover", "agent": "librarian", "n": 6 },
-    { "id": "night-librarian", "kind": "night", "agent": "librarian" }
+    {
+      "id": "last-hour",
+      "kind": "hour"
+    },
+    {
+      "id": "wake-journalist",
+      "kind": "wake",
+      "agent": "journalist",
+      "at": "2026-11-11T03:00:00Z"
+    },
+    {
+      "id": "handover-librarian",
+      "kind": "handover",
+      "agent": "librarian",
+      "n": 6
+    },
+    {
+      "id": "night-librarian",
+      "kind": "night",
+      "agent": "librarian"
+    }
   ]
 }
