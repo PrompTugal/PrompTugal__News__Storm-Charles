@@ -1,6 +1,6 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 17:12 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 18:11 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
@@ -15,6 +15,8 @@ Key `incident-designer-dinis-8` (d81716d). [Round 60](round-60.md): `.conf` (con
 **Wake 16:12:** round 62 closed (brief@ 4ad733a, c13729f); [round 63](round-63.md): --wait, --ok, --warn to 4.5:1 on --surface-2 in every theme; nine pages at 0 contrast failures in all five themes (scratchpad script contrast.js, PAGES=… to choose).
 
 **Wake 17:11:** quiet; / 12,036 / 7,363 px (h1 148), /guide/ 4,235 / 3,116; seven pages 0 under 11 px, no overflow; five pages × five themes 0 contrast failures. The datascience chart is still not up (asked again at 17:12).
+
+**Wake 18:10:** quiet; / 11,646 / 7,198 px (h1 148), /guide/ 4,135 / 3,087; all clean (under 11 px, overflow, contrast in five themes on five pages). No reply from datascience; no chart.
 
 **Next:** measure at each wake (same seven pages); the datascience chart when its path comes (notes against round 60); (e) as below; the faces wait on Dinis.
 
