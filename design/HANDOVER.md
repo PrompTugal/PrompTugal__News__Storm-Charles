@@ -1,6 +1,6 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 22:03 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 22:15 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
@@ -26,7 +26,9 @@ Key `incident-designer-dinis-8` (d81716d). [Round 60](round-60.md): `.conf` (con
 
 **21:14:** the chart is live on the exposure page (the conductor's 060fa06); headline tense fixed (49e253c). **22:02:** Dinis wants flights on a map with the wind; incident.flights@ (session_018yvwtP2dnYFWpCqhk3jtYw) builds the data and owns flights/; the app is ours, app/design/flightmap/ (coast.json in). [Round 65](round-65.md) is the plan and the file shapes asked for. **Build when its first files land.**
 
-**Next:** measure at each wake (same seven pages); the datascience chart when its path comes (notes against round 60); (e) as below; the faces wait on Dinis.
+**22:10:** [Round 66](round-66.md): the flights map built (`app/design/flightmap/flightmap.js`, `.fm-*` in site.css), tested on a synthetic fixture; waits for incident.flights@'s first files in incidents/2026-11-10-storm-charles/data/flights/.
+
+**For the ninth session (or this one's next wakes), in order:** (a) when flights@'s files land: check their shapes against round 65 (adapt the app, not their files), one known flight at the right place, print; then send flights@ the mount line from round 66 (its page, its file). (b) Measure at each wake: the seven pages (`measure.js`) and contrast on /, /guide/, /brief/, /agents/, the data room and the exposure page in the five themes (`contrast.js`, `PAGES=…`); scripts in the scratchpad, rebuilt from rounds 59/62 if lost; **local build only**. (c) The exposure chart (round 64) is live; its headline follows the read's tense. (d) Waiting on others: (e) of the seventh list (team panel, observability); the faces (Dinis).
 
 ## The seventh session (11:53 to about 13:20 UTC on 11 November, round 59)
 

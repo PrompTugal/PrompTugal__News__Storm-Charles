@@ -21,3 +21,6 @@ f();setInterval(f,30000)})()
 // round 64: residents by hour (app/design/hours.js) loads only on a page that mounts <div data-hours-chart="...json">
 ;(function(){if(!document.querySelector('[data-hours-chart]'))return;var c=document.querySelector('script[src*="app/design/frame.js"]');if(!c)return
 var s=document.createElement('script');s.src=c.src.replace('frame.js','hours.js');document.head.appendChild(s)})()
+// round 66: the flights map (app/design/flightmap/flightmap.js) loads only on a page that mounts <div data-flightmap="...index.json">
+;(function(){if(!document.querySelector('[data-flightmap]'))return;var c=document.querySelector('script[src*="app/design/frame.js"]');if(!c)return
+var s=document.createElement('script');s.src=c.src.replace('frame.js','flightmap/flightmap.js');document.head.appendChild(s)})()

@@ -912,3 +912,40 @@ footer.agent .ptn-foot a { font-weight: 700; }
 .hc .hc-legend svg rect.lv-red { fill: var(--red); } .hc .hc-legend svg rect.lv-orange { fill: var(--orange); } .hc .hc-legend svg rect.lv-yellow { fill: var(--yellow); }
 .hc .prov .conf { margin-left: 8px; }
 @media print { .hc .wx-scroll { overflow: visible; } .hc .wx-chart { min-width: 0; } .hc rect { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+/* round 66: the flights map (app/design/flightmap/flightmap.js). The wind is a model: --ink-2, never IPMA's colours; aircraft --ink, the picked one --link */
+.fm { margin: 12px 0 18px; }
+.fm-grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+.fm-fig, .fm-side { min-width: 0; }
+@media (min-width: 1100px) { .fm-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; } }
+.fm-fig { margin: 0; }
+.fm-map { display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.fm-coast polyline { fill: none; stroke: var(--ink-2); stroke-width: 1.6; stroke-linejoin: round; }
+.fm-rw line { stroke: var(--ink); stroke-width: 5; stroke-linecap: butt; }
+.fm-place { font: 600 14px var(--sans); fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+.fm-scale line { stroke: var(--ink); stroke-width: 2; } .fm-scale text { font: 13px var(--mono); fill: var(--ink-2); } .fm-scale path { fill: var(--ink-2); }
+.fm-wind line { stroke: var(--ink-2); stroke-width: 1.6; } .fm-wind path { fill: var(--ink-2); }
+.fm-plane path { fill: var(--ink); stroke: var(--surface); stroke-width: 1; }
+.fm-plane .fm-hit { fill: transparent; }
+.fm-plane { cursor: pointer; outline: none; }
+.fm-plane.on path, .fm-plane:focus-visible path, .fm-plane:hover path { fill: var(--link); }
+.fm-plane:focus-visible .fm-hit { stroke: var(--link); stroke-width: 2; }
+.fm-ctl { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
+.fm-ctl .fm-t { flex: 1 1 200px; display: flex; } .fm-ctl input[type=range] { width: 100%; accent-color: var(--link); }
+.fm-ctl .fm-play { font: 600 14px var(--sans); padding: 6px 12px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); cursor: pointer; }
+.fm-ctl .fm-play[disabled] { color: var(--ink-2); cursor: not-allowed; }
+.fm-now { font: 600 15px var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); min-width: 13ch; }
+.fm-cap { font-size: 14px; color: var(--ink-2); margin: 4px 0; } .fm-item { font: 14px var(--mono); color: var(--ink); min-height: 1.4em; }
+.fm-side h3 { font-size: 16px; margin: 0 0 6px; } .fm-side section { margin: 0 0 16px; }
+.fm-chart .fm-l { fill: none; stroke-width: 2; } .fm-chart .fm-gust { stroke-dasharray: 5 4; stroke-width: 1.4; }
+.fm-chart .fm-l0, .fm-chart .fm-l2 { stroke: var(--ink); } .fm-chart .fm-l1, .fm-chart .fm-l3 { stroke: var(--ink-2); }
+.fm-chart .fm-l2, .fm-chart .fm-l3 { stroke-dasharray: 1 3; }
+.fm-chart .fm-end { font: 600 12px var(--mono); fill: var(--ink); }
+.fm-chart .fm-nowline { stroke: var(--focus); stroke-width: 2; }
+.fm-dep { fill: var(--ink-2); } .fm-can { fill: color-mix(in srgb, var(--ink) 15%, var(--surface)); stroke: var(--ink); stroke-width: 1; }
+.fm-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 0 0 6px; font-size: 13px; color: var(--ink-2); }
+.fm-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.fm-tables table { margin: 10px 0; } .fm-tables caption { text-align: left; font-weight: 600; padding: 4px 0; }
+@media print { .fm-ctl, .fm-item { display: none; } .fm-map { border-color: var(--ink); } .fm-plane path { fill: var(--ink); } }
+.fm .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.fm-map .fm-place { font-size: 34px; stroke-width: 6px; } .fm-map .fm-scale text { font-size: 32px; } .fm-scale line { stroke-width: 3; }
+.fm-coast polyline { stroke-width: 2.2; } .fm-rw line { stroke-width: 7; } .fm-wind line { stroke-width: 2.2; }
