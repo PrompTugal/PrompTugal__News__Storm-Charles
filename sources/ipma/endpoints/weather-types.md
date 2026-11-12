@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Weather types
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 11:52 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 12:53 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Lista de identificadores do tempo significativo*. Documente
 | Shape | · |
 | IPMA says it updates | not stated |
 | IPMA's file dated (its Last-Modified header) | 2024-06-07 09:55 UTC |
-| We last read it | 2026-11-12 11:48 UTC, 1 file, 4954 bytes |
+| We last read it | 2026-11-12 12:50 UTC, 1 file, 4954 bytes |
 
 ## Fields
 
@@ -37,6 +37,6 @@ IPMA's name for it: *Lista de identificadores do tempo significativo*. Documente
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [weather-type-classe.json](https://api.ipma.pt/open-data/weather-type-classe.json) | 200 | 4954 | `8727e4e98344696b…` | 2024-06-07 09:55 | 2026-11-12 11:48 |
+| [weather-type-classe.json](https://api.ipma.pt/open-data/weather-type-classe.json) | 200 | 4954 | `8727e4e98344696b…` | 2024-06-07 09:55 | 2026-11-12 12:50 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads. Our small files made from it: [data/cities.json](../data.md#data/cities.json).
