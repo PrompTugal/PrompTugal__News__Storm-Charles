@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T05:00:16Z",
+  "updated": "2026-11-12T05:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -28,7 +28,8 @@
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
     "AEA": "Air Europa",
-    "TAP": "TAP Air Portugal"
+    "TAP": "TAP Air Portugal",
+    "TAM": "LATAM Brasil"
   },
   "frames": [
     {
@@ -50,6 +51,44 @@
         ["AEA025","AEA","B788",31.1087,-15.6151,34975,false,432,235,-96,0.5],
         ["TAP104","TAP","A339",31.5026,-15.1455,40000,false,519,34,0,0.5]
       ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T05:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 839,
+        "sha256": "6b7baa1d723cf577e9ff174600ed47891f26b476aba02fa1a2bb4a7a21e918d2",
+        "read": "2026-11-12T05:20:16Z",
+        "response_ms": 445,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T052016Z-6b7baa1d723c.body",
+        "rate_limit_remaining": 496
+      },
+      "airline": 1,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["TAM8132","TAM","B789",32.3489,-14.4798,37975,false,554,34,-160,11.3]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T05:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 101,
+        "sha256": "7773b17da42367f2b0f8b927e0d581a64a91323910b0c99291a7cb7855bd4bb7",
+        "read": "2026-11-12T05:40:15Z",
+        "response_ms": 448,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T054015Z-7773b17da423.body",
+        "rate_limit_remaining": 491
+      },
+      "airline": 0,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [],
       "others": []
     }
   ]
