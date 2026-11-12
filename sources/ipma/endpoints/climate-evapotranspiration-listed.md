@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Daily reference evapotranspiration by municipality (the address IPMA's directory lists)
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 02:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 03:52 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Simbologia Estados do Tempo*. **Not in IPMA's documentation
 | Shape | four icons per weather type: w_ic_d_{idWeatherType}.svg (day), w_ic_n_ (night), and an animated version of each |
 | IPMA says it updates | not stated |
 | IPMA's file dated (its Last-Modified header) | 2026-06-20 19:12 UTC |
-| We last read it | 2026-11-12 02:51 UTC, 1 file, 431062 bytes |
+| We last read it | 2026-11-12 03:51 UTC, 1 file, 431062 bytes |
 | Our note | Not downloaded and not used on this site: only its headers are read. Imagery here is used only under its licence. |
 | What we observed | The file as IPMA's directory lists it. The documentation gives the name with "20d" and "concelhos" the other way round, and that address answers 404. |
 
@@ -33,6 +33,6 @@ IPMA's name for it: *Simbologia Estados do Tempo*. **Not in IPMA's documentation
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv](https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv) | 200 | 431062 | `·` | 2026-06-20 19:12 | 2026-11-12 02:51 |
+| [observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv](https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv) | 200 | 431062 | `·` | 2026-06-20 19:12 | 2026-11-12 03:51 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads.
