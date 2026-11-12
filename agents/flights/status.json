@@ -1,10 +1,10 @@
 {
   "agent": "incident.flights@web-summit.dinis",
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T23:05:17Z",
+  "updated": "2026-11-12T00:01:58Z",
   "role": "flights: flights on the map with the wind on top, as replayable JSON (Dinis, 11 Nov ~22:00, BRIEF.md)",
-  "state": "active: second session took over at 23:04 UTC (adsb.lol poller running here since 23:04:48; the first session asked to stop its own); raw vault key awaiting the conductor's seal to incident-flights-dinis-2",
-  "last_wake": "2026-11-11T23:05:17Z",
+  "state": "active: second session handing over (context about 232k tokens a call); poller (frames every 5/20 min) and hourly publisher running here until a third session takes over",
+  "last_wake": "2026-11-12T00:01:58Z",
   "session": {
     "id": "session_018yvwtMyxnGmzJLiwnr7JrW",
     "started_at": "2026-11-11T23:02:00Z",
@@ -26,18 +26,23 @@
     "map files in incident.designer@'s round-65 shapes, written by the build (tools/flights-map.mjs)",
     "flights/sources.md: seven flight sources, licences, limits, coverage (conductor's ask, 22:10)",
     "near_airport counts in each snapshot (transport's boxes)",
-    "second session: key incident-flights-dinis-2 published (23:03); adsb.lol poller taken over (23:04:48)"
+    "second session: key incident-flights-dinis-2 published (23:03); adsb.lol poller taken over (23:04:48)",
+    "Madeira as a second map on /flights/ (designer round 69)",
+    "Dinis's ask (23:38 via the conductor): frames at 250/150 nm every 5/20 min with others as anonymous dots, tracks per area per hour, flights/how.json and how.md (e9c24a6, 10ad0cc)",
+    "wind field over the wide maps at 0.5 deg plus 0.25 deg close fields (60b58c0, cd3dc4b); cadence_min in the data",
+    "crosswind window ends 12 Nov 12:00 (56777c4)"
   ],
   "next": [
-    "cut the storm hours (Lisbon and Funchal boxes) from adsb.lol's 11 November history archive when it is published (expected 12 November): stream, raw to the vault, small de-identified files in git",
-    "emit trace events once tools/trace.mjs exists",
-    "restart the poller at each wake (~/flights-bin/poller.sh; the harness stops it after 2 h)",
-    "crosswind.json grows about 5 KB an hour: stop its window at 12 November 12:00 UTC"
+    "third session takes over (HANDOVER.md)",
+    "1-2 minute positions need an adsb.lol key (Dinis's decision)",
+    "11 Nov archive cut: the runner's first job",
+    "restart the poller at each wake (~/flights-bin/poller2.sh)"
   ],
   "asks": [
     "incident.models@: name the model for the flights summary (using meta-llama/llama-4-maverick from models/delegate.json until told)",
     "Dinis: OpenSky's terms (as read 22:19) require a written licence for automated use and de-identified publication; whether transport's automated OpenSky counts may continue is yours to decide (flights/sources.md)",
-    "Dinis: any paid flight-status plan (AeroDataBox derived-work plan, about 200 to 499 USD a month) and ANA's consent for its boards are yours to decide"
+    "Dinis: any paid flight-status plan (AeroDataBox derived-work plan, about 200 to 499 USD a month) and ANA's consent for its boards are yours to decide",
+    "Dinis: an adsb.lol API key (free adhoc, 1,000 a day; or feeder, 7,200) for positions every 1-2 minutes"
   ],
   "vault": {
     "raw": "bfahrf8t (raw adsb.lol, Open-Meteo, AWC and OurAirports responses; earlier raw OpenSky; key sealed to the conductor via the keys lane at 22:14 UTC; to be sealed to incident-flights-dinis-2)"
