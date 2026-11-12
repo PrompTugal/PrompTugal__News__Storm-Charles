@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T13:00:17Z",
+  "updated": "2026-11-12T13:40:17Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -31,7 +31,11 @@
     "EZY": "easyJet",
     "OCN": "Discover Airlines",
     "RYR": "Ryanair",
-    "TFL": "TUI fly Netherlands"
+    "TFL": "TUI fly Netherlands",
+    "AFR": "Air France",
+    "NSZ": "Norwegian",
+    "RUK": "Ryanair UK",
+    "CFG": "Condor"
   },
   "frames": [
     {
@@ -64,6 +68,60 @@
       "others": [
         ["A2",32.019,-15.431,40000,false,502,30]
       ]
+    },
+    {
+      "t": "2026-11-12T13:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 7039,
+        "sha256": "548d600344e5a23a92539569423d27c054b70ee336b3a6f1d6b5af2a3a6778d7",
+        "read": "2026-11-12T13:20:15Z",
+        "response_ms": 491,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T132015Z-548d600344e5.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 8,
+      "other": 2,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["AFR412","AFR","A359",31.1667,-17.8539,37000,false,421,213,0,0.3],
+        ["EXS6BP","EXS","B738",32.5611,-16.4895,36000,false,414,183,64,8.7],
+        ["EXS70WH","EXS","A21N",30.7623,-16.7934,37000,false,401,194,0,0.4],
+        ["EXS7JF","EXS","A21N",31.9551,-16.5174,37025,false,418,184,0,0.1],
+        ["EXS7Z","EXS","B738",32.4853,-16.051,37000,false,397,202,0,0.8],
+        ["NSZ2876","NSZ","B38M",31.3827,-16.4918,39000,false,400,193,0,0.3],
+        ["OCN8NT","OCN","A320",30.4866,-16.7696,35000,false,424,192,0,0.4],
+        ["RUK9NQ","RUK","B738",31.0013,-15.4086,36000,false,490,17,0,3.6]
+      ],
+      "others": [
+        ["A5",32.3,-16.489,39000,false,432,184],
+        ["A3",31.289,-15.312,37000,false,386,214]
+      ]
+    },
+    {
+      "t": "2026-11-12T13:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 3380,
+        "sha256": "65e34274d39c92d8c5c10fa26addf7ec0e76ca05e7fbed05267cd191ba646bab",
+        "read": "2026-11-12T13:40:16Z",
+        "response_ms": 501,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T134016Z-65e34274d39c.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 5,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["CFG4PH","CFG","A20N",32.6403,-16.5592,10800,false,351,52,960,1.9],
+        ["EXS1L","EXS","A21N",31.9065,-16.5394,37050,false,423,182,64,0.2],
+        ["EXS3B","EXS",null,30.5187,-15.5811,36000,false,491,17,0,0.7],
+        ["EXS7Z","EXS","B738",30.3792,-16.7301,37000,false,399,189,0,0.2],
+        ["EZY42XC","EZY","A20N",30.8433,-15.4365,36025,false,509,33,64,0.1]
+      ],
+      "others": []
     }
   ]
 }
