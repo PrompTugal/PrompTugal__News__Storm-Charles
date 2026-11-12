@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 23:33 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 12 November 2026, 00:41 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,13 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 00:39 UTC re-read (12 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (00:39).
+
+- **At the authorities** (facts): IPMA's communiqué page now says ["Não existem comunicados meteorológicos"](https://www.ipma.pt/pt/otempo/comunicados/): no. 3 expired at 23:59 and no no. 4 was issued. No CAP message since 22:43:28. Lisbon: yellow sea to 03:00 on the 12th, nothing else.
+- **In the coverage** (evidence): Observador ["foi menos destrutiva do que se previa. Porquê?"](https://observador.pt/2026/11/12/a-tempestade-charles-passou-e-foi-menos-destrutiva-do-que-se-previa-porque/); SAPO "segue para Espanha com menos força".
 
 ## What changed at the 23:31 UTC re-read (11 November)
 
