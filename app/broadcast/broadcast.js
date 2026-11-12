@@ -191,15 +191,22 @@
     if (f && f.airports) {
       f.airports.filter(function (a) { return a.iata === 'LIS' || a.iata === 'OPO' }).forEach(function (a) {
         var d = a.departures_today; if (!d || d.count == null) return
-        var ls = a.live_snapshot
-        // OpenSky readings paused (incident.transport@, 22:41: its terms ask a written licence for automated use): the last counts, as of when they froze
+        var ls = a.live_snapshot, name = a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport'
+        // OpenSky readings paused (incident.transport@, 22:41 on 11 Nov: its terms ask a written licence for automated use): the last counts, with their day
         var frozen = d.frozen_at || d.paused || f.opensky_paused ? (d.frozen_at || d.read) : null
-        h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in OpenSky\'s recent window') + ' (at least)' +
-          (frozen ? '; <span class="bc-frozen">as of ' + tm(frozen, hm(frozen)) + ' UTC, readings paused</span>' : '') +
-          (!frozen && ls && ls.label === 'fact' && a.iata === 'LIS' && (ls.on_ground || ls.airborne_low) ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
+        var dayTxt = function (t) { return new Date(T(t)).toLocaleDateString('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'short' }) }
+        var notToday = d.not_today || (d.day && d.day !== new Date(now()).toISOString().slice(0, 10))
+        h += '<div class="bc-tl"><b>' + esc(name) + '</b>: ' + (notToday ? 'on ' + esc(dayTxt(d.day || frozen || d.read)) + ', ' : '') + '<span class="bc-tn">' + esc(d.count) + '</span> airline departures seen' +
+          (d.covered_from ? ' from ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + (frozen ? ' to ' + tm(frozen, hm(frozen)) + ' UTC' : '') + ' (at least)' +
+          (frozen ? '; <span class="bc-frozen">readings paused' + (notToday ? ': not a count of today' : '') + '</span>' : '') +
           prov('OpenSky', d.source, d.read) + '</div>'
+        // the live count: its own source (adsb.lol through incident.flights@ since 23:41 on 11 Nov), shown only when recent and not zero
+        if (ls && ls.label === 'fact' && ls.at && now() - T(ls.at) < 3 * 36e5 && (ls.on_ground || ls.airborne_low)) {
+          h += '<div class="bc-tl">' + esc(name) + ' at ' + tm(ls.at, hm(ls.at)) + ' UTC: ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' +
+            prov((ls.source_name || 'OpenSky') + (ls.licence ? ', ' + String(ls.licence).split(' (')[0] : ''), ls.source, ls.read) + '</div>'
+        }
       })
-      h += '<div class="meta">Counts are what OpenSky\'s receivers saw: a floor, not a tally, and not compared with a normal day. Faro and Funchal are under-covered and not shown.</div>'
+      h += '<div class="meta">Counts are what receivers saw (departures: OpenSky; live: adsb.lol): a floor, not a tally, and not compared with a normal day. Faro and Funchal are under-covered and not shown.</div>'
     }
     // one line per mode, the Lisbon area first (Porto's operators are on /transport/)
     var MODES = [['Metro', D.metro], ['Trains', D.trains], ['Ferries', D.ferries], ['Buses', D.buses]], lines = []
@@ -213,7 +220,8 @@
     })
     if (lines.length) h += '<div class="bc-sub">Operators, Lisbon area</div><ul class="bc-ops">' + lines.join('') + '</ul>'
     h += '<div class="meta"><b>Check with your airline or operator.</b> More: <a href="' + esc(base + 'transport/index.html') + '">transport</a>.</div>'
-    if (f && f.attribution) h += '<span class="prov">' + esc(cut(f.attribution, 140)) + '</span>'
+    if (f && f.attribution) h += '<span class="prov">Departures: ' + esc(cut(f.attribution, 140)) + '</span>'
+    if (f && f.attribution_live) h += '<span class="prov">Live counts: ' + esc(cut(f.attribution_live, 150)) + '</span>'
     box.innerHTML = h
   }
 
