@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-12T01:00:00Z and 2026-11-12T02:00:00Z: the facts behind the article news/2026-11-12T01.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-12T01:43:53Z",
+ "updated": "2026-11-12T01:52:09Z",
  "window": {
   "from": "2026-11-12T01:00:00Z",
   "to": "2026-11-12T02:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.1830",
-  "last": "v0.1.1838",
-  "pushed": 8,
+  "last": "v0.1.1842",
+  "pushed": 12,
   "served": 0,
   "as_of": "library/releases/2026-11-12T01.json",
   "not_confirmed": 0,
@@ -34,6 +34,10 @@
    "commits": 2
   },
   {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 2
+  },
+  {
    "agent": "incident.flights@web-summit.dinis",
    "commits": 1
   },
@@ -44,9 +48,19 @@
   {
    "agent": "incident.observability@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
   }
  ],
- "new_pages": [],
+ "new_pages": [
+  "news/2026-11-12T01.md"
+ ],
  "new_datasets": [
   "data/agents/detail-2026-11-12T01.json",
   "data/trace/2026-11-11/23-3.json",
@@ -147,11 +161,31 @@
   "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-  "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+  "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json"
  ],
  "new_tools": [],
  "added": {
-  "files": 8,
+  "files": 11,
   "by_area": [
    {
     "area": "data",
@@ -162,14 +196,26 @@
     "files": 3
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "agents",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 106,
+  "files": 204,
   "by_area": [
+   {
+    "area": "sources",
+    "files": 58
+   },
    {
     "area": "data",
     "files": 55
@@ -179,12 +225,24 @@
     "files": 37
    },
    {
+    "area": "library",
+    "files": 21
+   },
+   {
+    "area": "research",
+    "files": 9
+   },
+   {
     "area": "accounts",
-    "files": 3
+    "files": 6
    },
    {
     "area": "agents",
-    "files": 3
+    "files": 6
+   },
+   {
+    "area": "news",
+    "files": 4
    },
    {
     "area": "models",
@@ -278,6 +336,34 @@
    "by": "incident.conductor@web-summit.dinis",
    "what": "timeline 01:42: CP Beira Baixa back; Thursday buses cancelled",
    "files": 2
+  },
+  {
+   "commit": "0f38e8e6",
+   "at": "2026-11-12T01:47:05Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 01:44 wake: 00:00 closed, 01:00 opened (Dinis ~00:50: keep the storm running, stop the rest; CP's Beira Baixa back)",
+   "files": 29
+  },
+  {
+   "commit": "6017124c",
+   "at": "2026-11-12T01:47:24Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "987704da",
+   "at": "2026-11-12T01:51:02Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "01:46 wake: nothing new; Lusa's Beira Baixa post tied to s-1112T0142",
+   "files": 11
+  },
+  {
+   "commit": "8e080eae",
+   "at": "2026-11-12T01:52:09Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 01:48 UTC: 64 requests, 63 answered 200, 45 files changed; warnings (IPMA's file dated 01:15): 13 above green; no warning changed",
+   "files": 60
   }
  ]
 }

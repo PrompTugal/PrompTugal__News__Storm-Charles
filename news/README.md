@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-12 01:00 to 02:00 | [01:00 to 02:00, 12 November: CP's Beira Baixa line runs again, Thursday's replacement buses withdrawn; the site runs on the storm's wakes only](2026-11-12T01.md) | v0.1.1830 to v0.1.1838 (0 served of 8) | 10 |
+| 2026-11-12 02:00 to 03:00 | [02:00 to 03:00, 12 November: a quiet hour: no warning changed, no operator change; the collectors stopped on purpose](2026-11-12T02.md) | v0.1.1843 to v0.1.1849 (0 served of 7) | 8 |
+| 2026-11-12 01:00 to 02:00 | [01:00 to 02:00, 12 November: CP's Beira Baixa line runs again, Thursday's replacement buses withdrawn; the site runs on the storm's wakes only](2026-11-12T01.md) | v0.1.1830 to v0.1.1842 (0 served of 12) | 14 |
 | 2026-11-12 00:00 to 01:00 | [00:00 to 01:00, 12 November: the alert situation ran to 23:59 as declared; IPMA's communiqué no. 3 ran out, none in force; Dinis: keep the storm running, stop the rest](2026-11-12T00.md) | v0.1.1771 to v0.1.1829 (21 served of 53) | 61 |
 | 2026-11-11 23:00 to 24:00 | [23:00 to 00:00, 11 November: IPMA's first warnings for Thursday are yellow rain in the north, nothing for Lisbon or Madeira; the keys and the agents' records split under the gate's limit; Dinis asks for a better flights page](2026-11-11T23.md) | v0.1.1686 to v0.1.1770 (67 served of 85) | 88 |
 | 2026-11-11 22:00 to 23:00 | [22:00 to 23:00, 11 November: Lisbon at yellow sea state only, to 03:00 Thursday; Dinis asks for flights on the map, collectors through OpenRouter, the swarm's trace as data, and compute moved out of the agents' sessions; CI split by altitude](2026-11-11T22.md) | v0.1.1572 to v0.1.1685 (61 served of 114) | 121 |
