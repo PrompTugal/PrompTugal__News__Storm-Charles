@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T07:00:16Z",
+  "updated": "2026-11-12T07:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -27,7 +27,10 @@
   "cadence_min": 20,
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
-    "RYR": "Ryanair"
+    "RYR": "Ryanair",
+    "AFR": "Air France",
+    "IBE": "Iberia",
+    "IBS": "Iberia Express"
   },
   "frames": [
     {
@@ -47,6 +50,48 @@
       "withheld_by_owner_request": 0,
       "rows": [
         ["RYR99UQ","RYR","B38M",30.9158,-15.4023,38000,false,510,26,0,0.2]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T07:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 2005,
+        "sha256": "a918c783e7693af72edfad3dbcc0572f33c428dd258246429f1f419b655d50c8",
+        "read": "2026-11-12T07:20:15Z",
+        "response_ms": 462,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T072015Z-a918c783e769.body",
+        "rate_limit_remaining": 488
+      },
+      "airline": 3,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["AFR459","AFR","A359",31.2954,-16.0268,40000,false,539,25,0,0.6],
+        ["IBE0272","IBE","A333",32.1644,-14.5998,38000,false,530,34,0,1.4],
+        ["RYR3BZ","RYR","B38M",31.4143,-15.0651,36000,false,514,33,0,0.4]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T07:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 783,
+        "sha256": "13764e59d01f3cb758053c8fd2c0c3d9929913c194bf6009653d78bfefaf326d",
+        "read": "2026-11-12T07:40:16Z",
+        "response_ms": 224,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T074016Z-13764e59d01f.body",
+        "rate_limit_remaining": 485
+      },
+      "airline": 1,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["IBS1590","IBS","A21N",31.8702,-14.7665,34025,false,509,33,0,0.6]
       ],
       "others": []
     }

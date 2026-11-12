@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T07:00:16Z",
+  "updated": "2026-11-12T07:50:16Z",
   "label": "fact",
   "about": "Airline aircraft adsb.lol's community receivers saw around Lisbon (40 nm) and Madeira (30 nm), 2026-11-12 07:00 to :59 UTC, one snapshot every 10 minutes for Lisbon and every 20 for Madeira. Airline flights only (an airline's ICAO code plus a flight number); every other aircraft is dropped and only counted. Fact: what adsb.lol shows at the time read; position_age_s says how old each position is. The wider areas, every 5 minutes, with the other aircraft as anonymous positions: frames/<area>/<date>/<HH>.json. Not the storm's peak: these start on 11 November at about 22:25 UTC (adsb.lol's daily history archive for 11 November is not out yet).",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -36,9 +36,110 @@
     "ETD": "Etihad",
     "RYR": "Ryanair",
     "TAP": "TAP Air Portugal",
-    "THY": "Turkish Airlines"
+    "THY": "Turkish Airlines",
+    "ACA": "Air Canada",
+    "EJU": "easyJet Europe",
+    "IBE": "Iberia",
+    "UAL": "United",
+    "BCS": "DHL (EAT Leipzig)",
+    "LGL": "Luxair",
+    "TVF": "Transavia France",
+    "CXI": "Corendon"
   },
   "snapshots": [
+    {
+      "area": "funchal",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:00:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 811,
+        "sha256": "93f34f056c157b79e1a03a03f4e96b314900e9f4b630ce6fcaff428d186418ae",
+        "read": "2026-11-12T07:00:16Z",
+        "response_ms": 435,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T070016Z-93f34f056c15.body",
+        "rate_limit_remaining": 498
+      },
+      "aircraft": [],
+      "other_aircraft_dropped": 0,
+      "near_airport": {
+        "LPMA": {
+          "box": [32.448,-17.024,32.948,-16.524],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 0,
+          "airborne_below_3000m": 0,
+          "read": "2026-11-12T07:00:16Z",
+          "transport_list": {
+            "on_ground": 0,
+            "airborne_below_3000m": 0,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "funchal",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 2005,
+        "sha256": "a918c783e7693af72edfad3dbcc0572f33c428dd258246429f1f419b655d50c8",
+        "read": "2026-11-12T07:20:15Z",
+        "response_ms": 462,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T072015Z-a918c783e769.body",
+        "rate_limit_remaining": 488
+      },
+      "aircraft": [],
+      "other_aircraft_dropped": 0,
+      "near_airport": {
+        "LPMA": {
+          "box": [32.448,-17.024,32.948,-16.524],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 0,
+          "airborne_below_3000m": 0,
+          "read": "2026-11-12T07:20:15Z",
+          "transport_list": {
+            "on_ground": 0,
+            "airborne_below_3000m": 0,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "funchal",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 783,
+        "sha256": "13764e59d01f3cb758053c8fd2c0c3d9929913c194bf6009653d78bfefaf326d",
+        "read": "2026-11-12T07:40:16Z",
+        "response_ms": 224,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T074016Z-13764e59d01f.body",
+        "rate_limit_remaining": 485
+      },
+      "aircraft": [],
+      "other_aircraft_dropped": 0,
+      "near_airport": {
+        "LPMA": {
+          "box": [32.448,-17.024,32.948,-16.524],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 0,
+          "airborne_below_3000m": 0,
+          "read": "2026-11-12T07:40:16Z",
+          "transport_list": {
+            "on_ground": 0,
+            "airborne_below_3000m": 0,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
     {
       "area": "lisbon",
       "source": "adsb.lol",
@@ -85,31 +186,236 @@
       }
     },
     {
-      "area": "funchal",
+      "area": "lisbon",
       "source": "adsb.lol",
-      "time": "2026-11-12T07:00:16Z",
+      "time": "2026-11-12T07:10:16Z",
       "request": {
-        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
         "status": 200,
-        "bytes": 811,
-        "sha256": "93f34f056c157b79e1a03a03f4e96b314900e9f4b630ce6fcaff428d186418ae",
-        "read": "2026-11-12T07:00:16Z",
-        "response_ms": 435,
-        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T070016Z-93f34f056c15.body",
-        "rate_limit_remaining": 498
+        "bytes": 52970,
+        "sha256": "b890747e7dfbf745b58d3c6b502e060da5962534a75bebe9db90a1482a17f2d3",
+        "read": "2026-11-12T07:10:15Z",
+        "response_ms": 603,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T071015Z-b890747e7dfb.body",
+        "rate_limit_remaining": 496
       },
-      "aircraft": [],
-      "other_aircraft_dropped": 0,
+      "aircraft": [
+        {"callsign":"ACA812","airline":"ACA","type":"A21N","lat":38.776094,"lon":-9.134125,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":4.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.83},
+        {"callsign":"AZU8750","airline":"AZU","type":"A332","lat":38.773842,"lon":-9.13764,"baro_alt_ft":null,"geo_alt_ft":575,"on_ground":true,"ground_speed_kt":10.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.831},
+        {"callsign":"BAW513","airline":"BAW","type":"A21N","lat":38.777409,"lon":-9.132675,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":9.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":8.544},
+        {"callsign":"DAL272","airline":"DAL","type":"B764","lat":38.968646,"lon":-9.0354,"baro_alt_ft":4275,"geo_alt_ft":4225,"on_ground":false,"ground_speed_kt":180.2,"track_deg":202.86,"vertical_rate_fpm":-448,"position_age_s":0.091},
+        {"callsign":"EJU56HX","airline":"EJU","type":"A320","lat":38.766935,"lon":-9.140518,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":14.335},
+        {"callsign":"EJU7673","airline":"EJU","type":"A20N","lat":38.773696,"lon":-9.132034,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":3.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.83},
+        {"callsign":"ETD7LG","airline":"ETD","type":"A332","lat":38.833085,"lon":-9.108154,"baro_alt_ft":1525,"geo_alt_ft":1450,"on_ground":false,"ground_speed_kt":140.8,"track_deg":202.56,"vertical_rate_fpm":-704,"position_age_s":0.54},
+        {"callsign":"RYR73GP","airline":"RYR","type":"B738","lat":39.077252,"lon":-8.592651,"baro_alt_ft":22300,"geo_alt_ft":22575,"on_ground":false,"ground_speed_kt":446.8,"track_deg":42.01,"vertical_rate_fpm":1984,"position_age_s":0.417},
+        {"callsign":"TAP1859","airline":"TAP","type":"A20N","lat":38.785125,"lon":-9.133911,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":6.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.12},
+        {"callsign":"TAP27UZ","airline":"TAP","type":"E195","lat":38.766842,"lon":-9.13092,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":4.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.186},
+        {"callsign":"TAP40MR","airline":"TAP","type":"E190","lat":38.962454,"lon":-8.632935,"baro_alt_ft":7825,"geo_alt_ft":7825,"on_ground":false,"ground_speed_kt":214,"track_deg":270.8,"vertical_rate_fpm":-1088,"position_age_s":0.351},
+        {"callsign":"TAP43PA","airline":"TAP","type":"A21N","lat":38.768029,"lon":-9.136887,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.362},
+        {"callsign":"TAP85CE","airline":"TAP","type":"E190","lat":39.079834,"lon":-8.876834,"baro_alt_ft":6175,"geo_alt_ft":6150,"on_ground":false,"ground_speed_kt":203.8,"track_deg":227.39,"vertical_rate_fpm":-704,"position_age_s":0.774},
+        {"callsign":"TAP901","airline":"TAP","type":"A20N","lat":38.766911,"lon":-9.141357,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.83}
+      ],
+      "other_aircraft_dropped": 8,
       "near_airport": {
-        "LPMA": {
-          "box": [32.448,-17.024,32.948,-16.524],
+        "LPPT": {
+          "box": [38.524,-9.384,39.024,-8.884],
           "box_order": "lamin, lomin, lamax, lomax",
-          "on_ground": 0,
-          "airborne_below_3000m": 0,
-          "read": "2026-11-12T07:00:16Z",
+          "on_ground": 9,
+          "airborne_below_3000m": 2,
+          "read": "2026-11-12T07:10:15Z",
           "transport_list": {
-            "on_ground": 0,
-            "airborne_below_3000m": 0,
+            "on_ground": 9,
+            "airborne_below_3000m": 2,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "lisbon",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:20:15Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
+        "status": 200,
+        "bytes": 58540,
+        "sha256": "bd28f322bf4bcb31d522a6c1573ad8ed49b65ac0dc36cc010cfeac67eb695ba1",
+        "read": "2026-11-12T07:20:15Z",
+        "response_ms": 707,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T072015Z-bd28f322bf4b.body",
+        "rate_limit_remaining": 485
+      },
+      "aircraft": [
+        {"callsign":"BAW513","airline":"BAW","type":"A21N","lat":38.745575,"lon":-9.343096,"baro_alt_ft":11350,"geo_alt_ft":11400,"on_ground":false,"ground_speed_kt":292.1,"track_deg":6.88,"vertical_rate_fpm":3072,"position_age_s":0.249},
+        {"callsign":"EJU56HX","airline":"EJU","type":"A320","lat":38.775803,"lon":-9.135788,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":7.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.051},
+        {"callsign":"EJU67GE","airline":"EJU","type":"A20N","lat":38.76889,"lon":-9.130814,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":2.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.855},
+        {"callsign":"EJU7673","airline":"EJU","type":"A20N","lat":38.785137,"lon":-9.132475,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.348},
+        {"callsign":"IBE05GZ","airline":"IBE","type":"A321","lat":38.993134,"lon":-8.877431,"baro_alt_ft":4525,"geo_alt_ft":4475,"on_ground":false,"ground_speed_kt":204.1,"track_deg":268.32,"vertical_rate_fpm":-704,"position_age_s":0.947},
+        {"callsign":"TAP10MD","airline":"TAP","type":"A320","lat":38.771976,"lon":-9.132251,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":6.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.348},
+        {"callsign":"TAP1859","airline":"TAP","type":"A20N","lat":38.628204,"lon":-9.872888,"baro_alt_ft":24775,"geo_alt_ft":25200,"on_ground":false,"ground_speed_kt":339.5,"track_deg":276.94,"vertical_rate_fpm":1856,"position_age_s":0.445},
+        {"callsign":"TAP30BC","airline":"TAP","type":"E195","lat":38.76511,"lon":-9.139147,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":1.1,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.051},
+        {"callsign":"TAP34A","airline":"TAP","type":"E195","lat":38.743705,"lon":-9.156433,"baro_alt_ft":2050,"geo_alt_ft":1975,"on_ground":false,"ground_speed_kt":151.5,"track_deg":202.5,"vertical_rate_fpm":576,"position_age_s":0.032},
+        {"callsign":"TAP40MR","airline":"TAP","type":"E190","lat":38.909958,"lon":-9.066766,"baro_alt_ft":3125,"geo_alt_ft":3025,"on_ground":false,"ground_speed_kt":153.2,"track_deg":203.05,"vertical_rate_fpm":-832,"position_age_s":0.115},
+        {"callsign":"TAP43PA","airline":"TAP","type":"A21N","lat":38.774254,"lon":-9.135356,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":11.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.348},
+        {"callsign":"TAP85CE","airline":"TAP","type":"E190","lat":38.77264,"lon":-9.136983,"baro_alt_ft":null,"geo_alt_ft":550,"on_ground":true,"ground_speed_kt":7.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.855},
+        {"callsign":"TAP901","airline":"TAP","type":"A20N","lat":38.766918,"lon":-9.141356,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":4.86},
+        {"callsign":"UAL64","airline":"UAL","type":"B78X","lat":39.19177,"lon":-9.600098,"baro_alt_ft":10400,"geo_alt_ft":10450,"on_ground":false,"ground_speed_kt":324.8,"track_deg":100.83,"vertical_rate_fpm":-512,"position_age_s":0.249}
+      ],
+      "other_aircraft_dropped": 9,
+      "near_airport": {
+        "LPPT": {
+          "box": [38.524,-9.384,39.024,-8.884],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 8,
+          "airborne_below_3000m": 2,
+          "read": "2026-11-12T07:20:15Z",
+          "transport_list": {
+            "on_ground": 8,
+            "airborne_below_3000m": 2,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "lisbon",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:30:15Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
+        "status": 200,
+        "bytes": 61437,
+        "sha256": "c96b0ade012e418b7c9d2605d24ec8be62ebab5addb0f7bae780d69654857712",
+        "read": "2026-11-12T07:30:15Z",
+        "response_ms": 862,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T073015Z-c96b0ade012e.body",
+        "rate_limit_remaining": 496
+      },
+      "aircraft": [
+        {"callsign":"EJU56HX","airline":"EJU","type":"A320","lat":38.789841,"lon":-9.311271,"baro_alt_ft":10875,"geo_alt_ft":10975,"on_ground":false,"ground_speed_kt":356,"track_deg":42.38,"vertical_rate_fpm":1472,"position_age_s":0.017},
+        {"callsign":"EJU67GE","airline":"EJU","type":"A20N","lat":38.784199,"lon":-9.132191,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.087},
+        {"callsign":"EJU7673","airline":"EJU","type":"A20N","lat":38.314354,"lon":-9.502816,"baro_alt_ft":21675,"geo_alt_ft":22025,"on_ground":false,"ground_speed_kt":327.6,"track_deg":214.18,"vertical_rate_fpm":1856,"position_age_s":0.322},
+        {"callsign":"ETD7LG","airline":"ETD","type":"A332","lat":38.775524,"lon":-9.131592,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0.1,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.375},
+        {"callsign":"IBE05GZ","airline":"IBE","type":"A321","lat":38.766781,"lon":-9.141416,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":5.8,"track_deg":158,"vertical_rate_fpm":0,"position_age_s":0.087},
+        {"callsign":"RYR8KD","airline":"RYR","type":"B38M","lat":38.76541,"lon":-9.137253,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.906},
+        {"callsign":"TAP10MD","airline":"TAP","type":"A320","lat":38.780869,"lon":-9.136207,"baro_alt_ft":675,"geo_alt_ft":525,"on_ground":false,"ground_speed_kt":98.6,"track_deg":202.66,"vertical_rate_fpm":64,"position_age_s":0.087},
+        {"callsign":"TAP30BC","airline":"TAP","type":"E195","lat":38.778259,"lon":-9.135117,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":3.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.629},
+        {"callsign":"TAP34A","airline":"TAP","type":"E195","lat":39.206062,"lon":-8.631104,"baro_alt_ft":22075,"geo_alt_ft":22425,"on_ground":false,"ground_speed_kt":399.5,"track_deg":44.49,"vertical_rate_fpm":1792,"position_age_s":0.099},
+        {"callsign":"TAP41SN","airline":"TAP","type":"A319","lat":39.00342,"lon":-8.542542,"baro_alt_ft":9525,"geo_alt_ft":9550,"on_ground":false,"ground_speed_kt":258.2,"track_deg":268,"vertical_rate_fpm":-832,"position_age_s":0.481},
+        {"callsign":"TAP43PA","airline":"TAP","type":"A21N","lat":38.714191,"lon":-9.172302,"baro_alt_ft":3425,"geo_alt_ft":3300,"on_ground":false,"ground_speed_kt":219.5,"track_deg":211.59,"vertical_rate_fpm":3072,"position_age_s":0.002},
+        {"callsign":"TAP552N","airline":"TAP","type":"A21N","lat":38.768211,"lon":-9.13955,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":7.623},
+        {"callsign":"TAP901","airline":"TAP","type":"A20N","lat":38.766329,"lon":-9.136185,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":15.5,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.375},
+        {"callsign":"TAP945","airline":"TAP","type":"A20N","lat":39.100571,"lon":-8.907583,"baro_alt_ft":5375,"geo_alt_ft":5325,"on_ground":false,"ground_speed_kt":251.6,"track_deg":216.6,"vertical_rate_fpm":-1344,"position_age_s":0.087},
+        {"callsign":"UAL64","airline":"UAL","type":"B78X","lat":38.841325,"lon":-9.103699,"baro_alt_ft":1700,"geo_alt_ft":1600,"on_ground":false,"ground_speed_kt":141.2,"track_deg":202.93,"vertical_rate_fpm":-704,"position_age_s":0.186}
+      ],
+      "other_aircraft_dropped": 6,
+      "near_airport": {
+        "LPPT": {
+          "box": [38.524,-9.384,39.024,-8.884],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 7,
+          "airborne_below_3000m": 3,
+          "read": "2026-11-12T07:30:15Z",
+          "transport_list": {
+            "on_ground": 7,
+            "airborne_below_3000m": 3,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "lisbon",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
+        "status": 200,
+        "bytes": 64447,
+        "sha256": "cbddb8f6ca2a7b9f748eaf4898db76547ebda9d18f1593ace84f8b87c41ff5ba",
+        "read": "2026-11-12T07:40:15Z",
+        "response_ms": 635,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T074015Z-cbddb8f6ca2a.body",
+        "rate_limit_remaining": 486
+      },
+      "aircraft": [
+        {"callsign":"BCS2FC","airline":"BCS","type":"A306","lat":39.273697,"lon":-9.09447,"baro_alt_ft":12200,"geo_alt_ft":12275,"on_ground":false,"ground_speed_kt":316.7,"track_deg":145.81,"vertical_rate_fpm":-2624,"position_age_s":0.723},
+        {"callsign":"EJU67GE","airline":"EJU","type":"A20N","lat":38.80426,"lon":-9.174778,"baro_alt_ft":11300,"geo_alt_ft":11400,"on_ground":false,"ground_speed_kt":337.2,"track_deg":62.45,"vertical_rate_fpm":1536,"position_age_s":0.494},
+        {"callsign":"EJU69QL","airline":"EJU","type":"A320","lat":38.778247,"lon":-9.133636,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":10.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.635},
+        {"callsign":"IBE05GZ","airline":"IBE","type":"A321","lat":38.766014,"lon":-9.138192,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":13.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0},
+        {"callsign":"LGL9T","airline":"LGL","type":"E295","lat":39.386917,"lon":-8.970093,"baro_alt_ft":11525,"geo_alt_ft":11550,"on_ground":false,"ground_speed_kt":261.4,"track_deg":259.42,"vertical_rate_fpm":-960,"position_age_s":0.776},
+        {"callsign":"RYR78TB","airline":"RYR","type":"B38M","lat":38.435623,"lon":-9.503054,"baro_alt_ft":37000,"geo_alt_ft":37675,"on_ground":false,"ground_speed_kt":403,"track_deg":212.74,"vertical_rate_fpm":0,"position_age_s":0.314},
+        {"callsign":"RYR8KD","airline":"RYR","type":"B38M","lat":38.785172,"lon":-9.132475,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.324},
+        {"callsign":"TAP10MD","airline":"TAP","type":"A320","lat":39.055884,"lon":-8.524658,"baro_alt_ft":22150,"geo_alt_ft":22450,"on_ground":false,"ground_speed_kt":443.4,"track_deg":65.05,"vertical_rate_fpm":2176,"position_age_s":0.518},
+        {"callsign":"TAP1685","airline":"TAP","type":"E190","lat":38.76527,"lon":-9.138229,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":3.678},
+        {"callsign":"TAP1939","airline":"TAP","type":"A320","lat":39.398602,"lon":-9.015076,"baro_alt_ft":16250,"geo_alt_ft":16500,"on_ground":false,"ground_speed_kt":281,"track_deg":270.2,"vertical_rate_fpm":-960,"position_age_s":0.149},
+        {"callsign":"TAP30BC","airline":"TAP","type":"E195","lat":38.744729,"lon":-9.155396,"baro_alt_ft":2525,"geo_alt_ft":2475,"on_ground":false,"ground_speed_kt":157.7,"track_deg":203.15,"vertical_rate_fpm":1664,"position_age_s":0.105},
+        {"callsign":"TAP41SN","airline":"TAP","type":"A319","lat":38.816233,"lon":-9.117249,"baro_alt_ft":1175,"geo_alt_ft":1075,"on_ground":false,"ground_speed_kt":131.5,"track_deg":201.88,"vertical_rate_fpm":-576,"position_age_s":0.407},
+        {"callsign":"TAP647","airline":"TAP","type":"A20N","lat":39.119705,"lon":-9.113637,"baro_alt_ft":5975,"geo_alt_ft":5950,"on_ground":false,"ground_speed_kt":261.3,"track_deg":158.44,"vertical_rate_fpm":-1344,"position_age_s":1.856},
+        {"callsign":"TAP832","airline":"TAP","type":"A21N","lat":38.784427,"lon":-9.132217,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":4.242},
+        {"callsign":"TAP945","airline":"TAP","type":"A20N","lat":38.771896,"lon":-9.137072,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":1.9,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":1.635},
+        {"callsign":"TVF119W","airline":"TVF","type":"A20N","lat":38.868896,"lon":-9.436778,"baro_alt_ft":37025,"geo_alt_ft":37625,"on_ground":false,"ground_speed_kt":397.2,"track_deg":209.4,"vertical_rate_fpm":64,"position_age_s":0.044},
+        {"callsign":"UAL64","airline":"UAL","type":"B78X","lat":38.765556,"lon":-9.141237,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":11.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.565}
+      ],
+      "other_aircraft_dropped": 8,
+      "near_airport": {
+        "LPPT": {
+          "box": [38.524,-9.384,39.024,-8.884],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 7,
+          "airborne_below_3000m": 2,
+          "read": "2026-11-12T07:40:15Z",
+          "transport_list": {
+            "on_ground": 7,
+            "airborne_below_3000m": 2,
+            "note": "the same, with incident.transport@'s airline list exactly"
+          }
+        }
+      }
+    },
+    {
+      "area": "lisbon",
+      "source": "adsb.lol",
+      "time": "2026-11-12T07:50:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
+        "status": 200,
+        "bytes": 72160,
+        "sha256": "47c8f9a44b8a18088ac2e11489fccc8e552e02042007e927d2f0bbd003509c0b",
+        "read": "2026-11-12T07:50:15Z",
+        "response_ms": 700,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T075015Z-47c8f9a44b8a.body",
+        "rate_limit_remaining": 483
+      },
+      "aircraft": [
+        {"callsign":"BCS2FC","airline":"BCS","type":"A306","lat":38.79451,"lon":-9.128862,"baro_alt_ft":750,"geo_alt_ft":650,"on_ground":false,"ground_speed_kt":132.6,"track_deg":203.09,"vertical_rate_fpm":-640,"position_age_s":0.277},
+        {"callsign":"CXI7EZ","airline":"CXI","type":"B738","lat":38.839874,"lon":-9.457915,"baro_alt_ft":39000,"geo_alt_ft":39675,"on_ground":false,"ground_speed_kt":391,"track_deg":209.58,"vertical_rate_fpm":0,"position_age_s":0.376},
+        {"callsign":"EJU69QL","airline":"EJU","type":"A320","lat":38.719032,"lon":-9.1698,"baro_alt_ft":2675,"geo_alt_ft":2625,"on_ground":false,"ground_speed_kt":222.2,"track_deg":203.33,"vertical_rate_fpm":1088,"position_age_s":0.178},
+        {"callsign":"LGL9T","airline":"LGL","type":"E295","lat":38.963944,"lon":-9.037598,"baro_alt_ft":4225,"geo_alt_ft":4150,"on_ground":false,"ground_speed_kt":176.2,"track_deg":207.73,"vertical_rate_fpm":-576,"position_age_s":0.178},
+        {"callsign":"RYR8KD","airline":"RYR","type":"B38M","lat":38.746452,"lon":-9.279297,"baro_alt_ft":12300,"geo_alt_ft":12400,"on_ground":false,"ground_speed_kt":311.2,"track_deg":45.78,"vertical_rate_fpm":704,"position_age_s":0.218},
+        {"callsign":"TAP1023","airline":"TAP","type":"A320","lat":39.00499,"lon":-8.705949,"baro_alt_ft":7000,"geo_alt_ft":7000,"on_ground":false,"ground_speed_kt":242.8,"track_deg":349.8,"vertical_rate_fpm":-64,"position_age_s":0.014},
+        {"callsign":"TAP120Y","airline":"TAP","type":"A21N","lat":38.779884,"lon":-9.128489,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0.1,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.651},
+        {"callsign":"TAP1685","airline":"TAP","type":"E190","lat":38.787952,"lon":-9.134863,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":18.5,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.217},
+        {"callsign":"TAP1939","airline":"TAP","type":"A320","lat":39.087662,"lon":-8.96156,"baro_alt_ft":5925,"geo_alt_ft":5975,"on_ground":false,"ground_speed_kt":230.8,"track_deg":205.12,"vertical_rate_fpm":-1344,"position_age_s":0.178},
+        {"callsign":"TAP30BC","airline":"TAP","type":"E195","lat":39.035065,"lon":-8.546408,"baro_alt_ft":23575,"geo_alt_ft":23950,"on_ground":false,"ground_speed_kt":418.6,"track_deg":63.01,"vertical_rate_fpm":1856,"position_age_s":0.399},
+        {"callsign":"TAP41SN","airline":"TAP","type":"A319","lat":38.766865,"lon":-9.141373,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":0,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":2.073},
+        {"callsign":"TAP647","airline":"TAP","type":"A20N","lat":38.771974,"lon":-9.136749,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":5.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.217},
+        {"callsign":"TAP70VE","airline":"TAP","type":"A21N","lat":38.780045,"lon":-9.134117,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":3.2,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.651},
+        {"callsign":"TAP832","airline":"TAP","type":"A21N","lat":38.619643,"lon":-9.092346,"baro_alt_ft":9725,"geo_alt_ft":9775,"on_ground":false,"ground_speed_kt":315.5,"track_deg":65.47,"vertical_rate_fpm":2560,"position_age_s":0.086},
+        {"callsign":"TAP86PZ","airline":"TAP","type":"A320","lat":38.783542,"lon":-9.132462,"baro_alt_ft":null,"geo_alt_ft":null,"on_ground":true,"ground_speed_kt":12.8,"track_deg":null,"vertical_rate_fpm":null,"position_age_s":0.006},
+        {"callsign":"TAP9RH","airline":"TAP","type":"A20N","lat":39.251543,"lon":-9.192749,"baro_alt_ft":8900,"geo_alt_ft":8925,"on_ground":false,"ground_speed_kt":268.3,"track_deg":153.91,"vertical_rate_fpm":-640,"position_age_s":0.086}
+      ],
+      "other_aircraft_dropped": 7,
+      "near_airport": {
+        "LPPT": {
+          "box": [38.524,-9.384,39.024,-8.884],
+          "box_order": "lamin, lomin, lamax, lomax",
+          "on_ground": 6,
+          "airborne_below_3000m": 4,
+          "read": "2026-11-12T07:50:15Z",
+          "transport_list": {
+            "on_ground": 6,
+            "airborne_below_3000m": 4,
             "note": "the same, with incident.transport@'s airline list exactly"
           }
         }
