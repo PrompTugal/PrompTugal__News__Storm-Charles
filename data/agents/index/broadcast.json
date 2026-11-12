@@ -9,26 +9,25 @@
   "job": "**the news-channel wall** (Dinis, 11 Nov ~10:13, BRIEF.md): `/broadcast/`, Storm Charles as a live news channel shows it: split panels (IPMA's warnings, an animated wind and pressure map from open model data, pictures we may show, airport observations, counts), a chyron from the headline and a ticker from the timeline; each panel with its source and time read. Information, not alarm; not a warning service. Pictures only under licence; outside requests listed for Dinis before any is made.",
   "shared_row": false,
   "status_file": "agents/broadcast/status.json",
-  "status_sha256": "ded2a90519a8b1bb256c56c09a1d455fdc991755076b156563453f2f90a167ac",
-  "state": "active: the first session; /broadcast/ is live, Storm Charles as a news channel would show it, from the data room only",
+  "status_sha256": "688c0f580314509092dc646a08443d81e8a3410326505b44156fa18df2c8a28a",
+  "state": "stopped: the first session ends at 14:37 on 12 Nov (Dinis's ~00:50 word: no new wakes); /broadcast/ stays live from the data room; hand-over in broadcast/HANDOVER.md",
   "last_wake": "",
   "jobs": [],
   "done": [
     "/broadcast/ (broadcast/index.md, app/broadcast/): chyron from the headline, ticker from the newest timeline rows, IPMA warnings (Lisbon and every area), Lisbon airport's METAR, counts as reported (evidence), the Lisbon clock, full screen f…",
     "an animated wind and pressure map drawn in the browser: a model field from Open-Meteo (CC BY 4.0) read by tools/broadcast-field.mjs into broadcast/data/field.json, Natural Earth land (tools/broadcast-coast.mjs); Atlantic, Lisbon and Madeir…",
-    "a transport panel from incident.transport@'s files: departures 'seen since covered_from', one line per mode for the Lisbon area",
     "an exposure panel from incident.datascience@'s people-by-hour.json: residents under each IPMA level this hour",
     "broadcast/README.md: what each panel reads, and the list of pictures and outside requests for Dinis (sent to the conductor 10:24)",
     "the exposure panel says so when its file was worked out from an older read of IPMA's warnings than the warnings panel (19:35)",
     "the transport panel shows OpenSky's departures as 'as of <frozen_at> UTC, readings paused' once incident.transport@ pauses them (22:33)",
     "the transport panel dates frozen departures ('on 11 Nov ... readings paused: not a count of today') and credits the live count to its own source, adsb.lol (ODbL), not OpenSky (00:50, 12 Nov)",
     "Thursday: the warnings panel says when Lisbon (or every area) has nothing above green; the exposure panel drops 'the most under red' when it is 0 (06:36, 12 Nov)",
-    "the exposure panel hides its figures when its file is more than two hours older than the warnings beside it (at 10:31 it showed 0 under yellow while six areas were yellow) (10:36, 12 Nov)"
+    "the exposure panel hides its figures when its file is more than two hours older than the warnings beside it (at 10:31 it showed 0 under yellow while six areas were yellow) (10:36, 12 Nov)",
+    "last model field read at 14:31 on 12 Nov (12 Nov 12:00 to 14 Nov 06:00 UTC); broadcast/HANDOVER.md written"
   ],
-  "done_total": 11,
+  "done_total": 12,
   "next": [
-    "refresh the model field every few hours (read 10:31 on 12 Nov, 12 Nov 06:00 to 14 Nov 00:00 UTC; next about 14:30)",
-    "a tides line from data/exposure/tides.json (high water at Cascais, the Tagus mouth, Funchal)"
+    "none scheduled; a fresh session, if wanted, is Dinis's to start (broadcast/HANDOVER.md)"
   ],
   "asks_dinis": [
     "Dinis: which of the pictures in broadcast/README.md (IPMA radar, EUMETSAT, authorities' photos, a licensed feed) may be requested; until then the wall shows none"
