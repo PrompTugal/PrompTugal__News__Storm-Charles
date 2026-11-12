@@ -1,0 +1,90 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-12T00:00:16Z",
+  "label": "fact",
+  "area": "lisbon",
+  "area_def": {
+    "name": "Lisbon and the Atlantic approaches: within 250 nautical miles (463 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre)",
+    "lat": 38.75,
+    "lon": -9.2,
+    "dist_nm": 250
+  },
+  "hour": "2026-11-12T00:00:00Z",
+  "about": "Aircraft adsb.lol's community receivers saw in Lisbon and the Atlantic approaches: within 250 nautical miles (463 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre), 2026-11-12 00:00 to :59 UTC, one frame per poll (Lisbon every 5 minutes, Madeira every 20). Fact: what adsb.lol shows at the time read (frames[].t; frames[].request holds the URL, status, bytes and sha256 of the raw response, which is in our vault). rows: airline flights (an airline's ICAO code plus a flight number), one array per aircraft in the order of fields. others: every other aircraft, one array in the order of other_fields: its ADS-B emitter category and position only, with no callsign, no ICAO24 address, no registration and no type, so nothing names a private owner; altitude rounded to 100 ft. Aircraft whose owners asked to be withheld (PIA or LADD in adsb.lol's data) are dropped and only counted. pos_age_s: how old each position was when read. Nothing between frames is measured: a line or a moving dot drawn between two frames is a drawing (hypothesis), not a position.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "licence": "ODbL 1.0",
+  "fields": ["callsign","airline","type","lat","lon","alt_ft","on_ground","gs_kt","track_deg","vrate_fpm","pos_age_s"],
+  "other_fields": ["category","lat","lon","alt_ft","on_ground","gs_kt","track_deg"],
+  "units": {
+    "alt_ft": "feet, barometric (geometric when barometric is absent); null on the ground",
+    "gs_kt": "knots",
+    "track_deg": "degrees true, clockwise from north",
+    "vrate_fpm": "feet per minute, + climbing",
+    "pos_age_s": "seconds since the position was received",
+    "category": "ADS-B emitter category (A1 light, A2 small, A3 large, A4 B757, A5 heavy, A7 rotorcraft, B1 glider, B6 drone, C1-C3 surface; null not sent)"
+  },
+  "cadence_min": 5,
+  "cadence": "one frame every 5 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
+  "airlines": {
+    "AEA": "Air Europa",
+    "DLH": "Lufthansa",
+    "ELY": "El Al",
+    "GLO": "Gol",
+    "IBE": "Iberia",
+    "MAC": "Air Arabia Maroc",
+    "TAP": "TAP Air Portugal"
+  },
+  "frames": [
+    {
+      "t": "2026-11-12T00:00:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/38.75/lon/-9.2/dist/250",
+        "status": 200,
+        "bytes": 17357,
+        "sha256": "f8c9492244139bf1cca04a1256781c5d95ab030a308fc0a1ec07980c694e86fb",
+        "read": "2026-11-12T00:00:15Z",
+        "response_ms": 1019,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T000015Z-f8c949224413.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 18,
+      "other": 12,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["AEA015","AEA","B788",41.6708,-10.2752,37000,false,446,288,0,0.4],
+        ["AEA041","AEA","B789",39.3486,-4.0673,21975,false,376,223,928,0.5],
+        ["AEA057","AEA","B789",38.1904,-5.2968,31050,false,433,206,640,0.1],
+        ["DLH500","DLH","B789",38.5916,-8.8755,32975,false,440,219,-192,0.2],
+        ["DLH506","DLH","B748",35.4222,-7.8802,31000,false,425,219,0,0.1],
+        ["ELY018","ELY","B789",40.6412,-6.1498,37975,false,559,79,256,0.1],
+        ["GLO7021","GLO","A332",37.0751,-10.5484,29625,false,420,214,1088,0.3],
+        ["IBE0123","IBE","A359",40.7019,-4.5196,24300,false,418,301,1152,0.1],
+        ["IBE0155","IBE","A359",40.9963,-5.2579,30175,false,444,303,832,0.1],
+        ["IBE0267","IBE","A332",37.936,-5.4932,33000,false,406,217,0,0.3],
+        ["IBE0303","IBE","A359",41.3943,-5.5557,31050,false,470,312,576,0.4],
+        ["IBE5103","IBE","A359",37.6668,-5.7074,35000,false,425,217,0,0.1],
+        ["IBE6117","IBE","A359",39.5497,-6.3339,33775,false,432,243,640,0.2],
+        ["MAC342","MAC","A320",37.0878,-6.2922,37000,false,385,216,-64,0.5],
+        ["TAP087","TAP","A339",38.7885,-9.1321,750,false,117,203,64,0],
+        ["TAP1938","TAP","A320",39.8856,-8.7726,24000,false,364,14,-64,0],
+        ["TAP297","TAP","A339",36.7679,-4.7875,36950,false,545,112,384,0],
+        ["TAP97LS","TAP","A321",36.7707,-11.9846,35025,false,null,null,null,19.6]
+      ],
+      "others": [
+        ["A5",36.019,-10.067,35000,false,418,215],
+        ["A3",35.304,-9.426,37000,false,363,233],
+        [null,38.424,-9.186,null,true,0,null],
+        ["A2",38.697,-9.176,6600,false,265,182],
+        ["A3",38.772,-9.137,null,true,0,null],
+        ["C2",38.778,-9.135,null,true,null,null],
+        [null,38.778,-9.135,null,true,0,null],
+        ["A3",38.776,-9.13,null,true,0,null],
+        [null,39.174,-9.054,null,true,0,null],
+        [null,38.705,-9.01,null,true,0,null],
+        [null,37.701,-7.764,null,true,0,null],
+        ["A3",39.688,-6.815,35200,false,532,62]
+      ]
+    }
+  ]
+}
