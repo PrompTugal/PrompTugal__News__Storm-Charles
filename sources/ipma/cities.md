@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The cities: IPMA's forecast, as issued, beside what was observed
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 08:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 09:53 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -54,4 +54,4 @@ IPMA forecasts five days for 35 places (the district capitals, the islands, and 
 | Santa Cruz das Flores | 15.1 to 19.2 °C, rain 86%, wind Moderate NW (3 versions) | 15.9 to 19.9 °C, rain 100%, wind Moderate NW (6 versions) | 16.3 to 20.6 °C, rain 4%, wind Moderate W (4 versions) | 17.1 to 21.2 °C, rain 100%, wind Moderate SW (4 versions) | 18.6 to 22.2 °C, rain 100%, wind Moderate W (4 versions) | 18.7 to 22.5 °C, rain 100%, wind Moderate W (2 versions) |
 | Vila do Corvo | 16.4 to 19 °C, rain 22%, wind Moderate NW (2 versions) | 16.8 to 19.7 °C, rain 100%, wind Moderate NW (4 versions) | 17.6 to 19.8 °C, rain 12%, wind Moderate W (4 versions) | 17.4 to 20.5 °C, rain 100%, wind Moderate SW (4 versions) | 19 to 21.5 °C, rain 100%, wind Moderate W (4 versions) | 18.3 to 21.2 °C, rain 88%, wind Moderate W (2 versions) |
 
-Data: [data/cities.json](data/cities.json), [data/observed-daily.json](data/observed-daily.json) · the data sets: [endpoints/city-daily.md](endpoints/city-daily.md), [endpoints/observations.md](endpoints/observations.md). Source: IPMA's per-place daily forecast files, read 2026-11-12 08:48 UTC.
+Data: [data/cities.json](data/cities.json), [data/observed-daily.json](data/observed-daily.json) · the data sets: [endpoints/city-daily.md](endpoints/city-daily.md), [endpoints/observations.md](endpoints/observations.md). Source: IPMA's per-place daily forecast files, read 2026-11-12 09:49 UTC.
