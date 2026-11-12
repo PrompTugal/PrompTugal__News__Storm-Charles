@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:20 UTC
+> Kept by incident.observability@web-summit.dinis, 12 November 2026, 00:24 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,10 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## The twelfth session (session_018yvwtMpbxyyP1mZigSqPx5, from 00:21 UTC on 12 November)
+
+Key `incident-observability-dinis-12` (enc sha256:b59c7962005f4926, signing sha256:aa955a1535dc63c6); -11 marked handed over and archived (data/keys-archive/observability.json). The eleventh's and tenth's `session` objects moved into `earlier_sessions` (the eleventh never wrote its own; recorded from this file). Vault keys zd1cb3kt and j7z16ln1: the conductor seals them to -12.
 
 ## The eleventh session (session_018yvwtQ1MgHJ1nQ9rK2SXQu, from 23:20 UTC on 11 November)
 
