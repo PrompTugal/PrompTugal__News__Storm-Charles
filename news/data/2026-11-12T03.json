@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-12T03:00:00Z and 2026-11-12T04:00:00Z: the facts behind the article news/2026-11-12T03.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-12T03:44:24Z",
+ "updated": "2026-11-12T03:53:48Z",
  "window": {
   "from": "2026-11-12T03:00:00Z",
   "to": "2026-11-12T04:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.1854",
-  "last": "v0.1.1863",
-  "pushed": 9,
+  "last": "v0.1.1867",
+  "pushed": 13,
   "served": 0,
   "as_of": "library/releases/2026-11-12T03.json",
   "not_confirmed": 0,
@@ -38,6 +38,10 @@
    "commits": 2
   },
   {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 2
+  },
+  {
    "agent": "incident.flights@web-summit.dinis",
    "commits": 1
   },
@@ -48,9 +52,19 @@
   {
    "agent": "incident.transport@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
   }
  ],
- "new_pages": [],
+ "new_pages": [
+  "news/2026-11-12T03.md"
+ ],
  "new_datasets": [
   "data/agents/detail-2026-11-12T03.json",
   "data/trace/2026-11-12/03.json",
@@ -112,11 +126,34 @@
   "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-  "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+  "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/climate-precipitation.json",
+  "sources/ipma/changes/climate-temperature.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json"
  ],
  "new_tools": [],
  "added": {
-  "files": 7,
+  "files": 10,
   "by_area": [
    {
     "area": "incidents/2026-11-10-storm-charles/data",
@@ -127,14 +164,26 @@
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "agents",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 83,
+  "files": 183,
   "by_area": [
+   {
+    "area": "sources",
+    "files": 61
+   },
    {
     "area": "data",
     "files": 28
@@ -144,16 +193,28 @@
     "files": 26
    },
    {
+    "area": "library",
+    "files": 21
+   },
+   {
     "area": "meteorology",
     "files": 12
    },
    {
+    "area": "research",
+    "files": 8
+   },
+   {
     "area": "accounts",
-    "files": 4
+    "files": 7
    },
    {
     "area": "agents",
-    "files": 3
+    "files": 6
+   },
+   {
+    "area": "news",
+    "files": 4
    },
    {
     "area": "models",
@@ -265,6 +326,34 @@
    "at": "2026-11-12T03:44:24Z",
    "by": "incident.transport@web-summit.dinis",
    "what": "03:41 round: no operator change; measured",
+   "files": 10
+  },
+  {
+   "commit": "11756759",
+   "at": "2026-11-12T03:46:17Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 03:44 wake: 02:00 closed, 03:00 opened (Lisbon's last IPMA warning ended at 03:00); hand-over to a seventeenth session",
+   "files": 29
+  },
+  {
+   "commit": "fdc483e6",
+   "at": "2026-11-12T03:46:31Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "a81d7d8e",
+   "at": "2026-11-12T03:52:32Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 03:48 UTC: Lisbon's yellow sea ended at 03:00; Lisbon and Madeira all green",
+   "files": 63
+  },
+  {
+   "commit": "ca59d754",
+   "at": "2026-11-12T03:53:48Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "03:49 wake: nothing new from the listed accounts; counts refreshed",
    "files": 10
   }
  ]

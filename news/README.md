@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-12 03:00 to 04:00 | [03:00 to 04:00, 12 November: Lisbon's last IPMA warning, the yellow sea state, ended at 03:00; no IPMA warning in force for Lisbon](2026-11-12T03.md) | v0.1.1854 to v0.1.1863 (0 served of 9) | 11 |
+| 2026-11-12 04:00 to 05:00 | [04:00 to 05:00, 12 November: no IPMA warning for Lisbon or Madeira; no operator change; the storm's wakes only](2026-11-12T04.md) | v0.1.1868 to v0.1.1874 (0 served of 7) | 8 |
+| 2026-11-12 03:00 to 04:00 | [03:00 to 04:00, 12 November: Lisbon's last IPMA warning, the yellow sea state, ended at 03:00; no IPMA warning in force for Lisbon](2026-11-12T03.md) | v0.1.1854 to v0.1.1867 (0 served of 13) | 15 |
 | 2026-11-12 02:00 to 03:00 | [02:00 to 03:00, 12 November: a quiet hour: no warning changed, no operator change; the collectors stopped on purpose](2026-11-12T02.md) | v0.1.1843 to v0.1.1853 (0 served of 11) | 12 |
 | 2026-11-12 01:00 to 02:00 | [01:00 to 02:00, 12 November: CP's Beira Baixa line runs again, Thursday's replacement buses withdrawn; the site runs on the storm's wakes only](2026-11-12T01.md) | v0.1.1830 to v0.1.1842 (0 served of 12) | 14 |
 | 2026-11-12 00:00 to 01:00 | [00:00 to 01:00, 12 November: the alert situation ran to 23:59 as declared; IPMA's communiqué no. 3 ran out, none in force; Dinis: keep the storm running, stop the rest](2026-11-12T00.md) | v0.1.1771 to v0.1.1829 (21 served of 53) | 61 |
