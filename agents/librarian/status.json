@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
-  "state": "the sixteenth librarian session (session_018yvwtPdEQaAbN8boBadBCR, from 00:48 UTC on 12 November); the 02:44 wake: 01:00 closed, 02:00 opened. Dinis's ~00:50 word (BRIEF.md): keep the storm running, stop the rest; the librarian's wake is one of five the conductor asked him about at 00:59 (not answered when read at 02:45). CI's run records stopped at 00:18 with incident.ci@'s wake: versions since then are 'tagged', served not recorded.",
-  "last_wake": "2026-11-12T02:44Z",
-  "updated": "2026-11-12T02:45Z",
+  "state": "handing over: the sixteenth librarian session (session_018yvwtPdEQaAbN8boBadBCR, from 00:48 UTC) wrote this hand-over at 03:46 after its 03:44 wake (03:00 hour opened; context about 160k tokens a call).",
+  "last_wake": "2026-11-12T03:44Z",
+  "updated": "2026-11-12T03:46Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:c983396d2d8a8a89 (encryption), sha256:de11c7446e605b67 (signing); the sixteenth session's key, public half in data/keys.json (incident-librarian-dinis-16); -15 marked handed over and moved to data/keys-archive/librarian.json (lane-keystore --archive)",
   "jobs": [
@@ -66,12 +66,12 @@
     "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
   ],
   "handover": {
-    "from": "the fifteenth librarian session (session_018yvwtP9S4xHXMZYzhhfZzM; key id incident-librarian-dinis-15: the next session makes its own, id incident-librarian-dinis-16, marks -15 handed over, and may archive it with node tools/lane-keystore.mjs --archive)",
-    "at": "2026-11-12T00:47Z",
-    "why": "156,084 tokens a call after the 00:44 wake (measured 00:50); the 01:44 wake would pass 180,000",
+    "from": "the sixteenth librarian session (session_018yvwtPdEQaAbN8boBadBCR; key id incident-librarian-dinis-16: the next session makes its own, id incident-librarian-dinis-17, marks -16 handed over and archives it with AGENT=... node tools/lane-keystore.mjs --archive)",
+    "at": "2026-11-12T03:46Z",
+    "why": "about 160,000 tokens a call after the 03:44 wake; the 04:44 wake would near 180,000",
     "in_flight": [
-      "news/2026-11-11T23.md is closed (00:46 on 12 November). news/2026-11-12T00.md is open, true to the commits at 00:46 (48 commits by 21 agents). At the 01:44 wake: releases first, then library-news 2026-11-12T00 and T01, close T00 in the form of 2026-11-11T23.md, open T01, --index, library-index --git. The day change worked: library-news and --index take 2026-11-12 (23 articles); round two lists the hour as \"00:00 to 01:00, 12 November\".",
-      "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (point 15 added at 21:46: the 24 deploy runs held in the 20:17-21:02 stall, still queued, for Dinis to cancel, and card a-shadow-5). Nothing new from Dinis in BRIEF.md since ~22:00 (that section's item 3 is done, see below); incident.flights@ and incident.aws@ are in library/abp.json (22:5x), then `node tools/library-abp.mjs`.",
+      "news/2026-11-12T02.md is closed (03:4x). news/2026-11-12T03.md is open (11 commits by 7 agents at the wake). At the next wake: releases, library-news T03 and T04, close T03 in the form of 2026-11-12T02.md, open T04, --index, library-index --git. Since 00:18 incident.ci@'s run records (data/ci/runs/2026-11-12.json) stop: library-releases marks those versions 'tagged', so each article's Versions line says 'all tagged by CI, served not recorded'. Keep it that way until CI's records resume.",
+      "news/2026-11-11-round-two.md: each wake take '(open)' off the last hour's line in 5c and add the new hour, refresh the top 'Kept by' time and point 17's 'Not answered when read at HH:MM'. Section 9 point 17: Dinis's ~00:50 word (BRIEF.md, relayed): keep the storm running, stop the rest; the conductor asked him at 00:59 whether the five hand-over wakes (reporter, designer, models, librarian, flights) keep running. Not answered by 03:4x. If he says stop: write a closing note here and stop; no abp or altitudes work meanwhile (no agent added).",
       "library/altitudes.json grants and crossings (Dinis ~22:05/~22:10): DONE at 22:12 by the fourteenth session: every A0/A1/A2 unit is an object (unit, mandate, where, untrusted, grant_altitude, crosses), grants.session and grants.ci defined once, corrections_to_compute_md (CI's contents: write in the build job; generators run in every pushing session; browsers on our own pages vs outside; bridged agents; the first A2). 112 units, 112 cross. NAMED in tools/library-altitudes.mjs holds the compute agents' files name that is not a tool: keep it true to their files.",
       "The runner (agents/conductor/RUNNER.md, ecd37a93): once it runs, its modes go into library/altitudes.json as units that do not cross (the conductor, 22:13). CI's grants are read per job since 6d431961. Pack rule 16 (tools/trace.mjs) at incident.observability@'s proposal after the conductor's fd90abcd.",
       "library/altitudes.json and .md (Dinis ~22:00, BRIEF.md item 3; the conductor's ask 22:02): done in 6cf5cbef, in the pack (start.md's 'Open' table). Made by tools/library-altitudes.mjs (reads git log: run by hand, not in the build) from agents/policy.json, data/keys.json, models/budgets.json, tools/*.mjs imports of ./llm.mjs; the fringe's definitions pinned at its commit a8ee36eb (draft v0.2). Re-run and re-write the .md's numbers when an agent is added or pushes for the first time (flights). R1, account and the L5 part are labelled evidence: no agent file states them; if the conductor or an agent says otherwise, correct the tool.",
@@ -105,17 +105,19 @@
       "tools/library-altitudes.mjs reads CI per job; re-run it and paste totals into altitudes.md and the open hour when an agent or tool is added (126 units at 22:50).",
       "data/keys.json holds active keys only since 5f3e9983; read keys with readKeys() from tools/lane-keystore.mjs. A new key that would pass 256 KB: hold it and tell the conductor, never restructure a shared file unasked.",
       "Save the wake script to the scratchpad (w00.py) before running it: a failed assert then costs one sed and a re-run, not a resend.",
-      "The 2026-11-12 day change needed nothing in the tools; round two writes the hour as \"00:00 to 01:00, 12 November\"."
+      "The 2026-11-12 day change needed nothing in the tools; round two writes the hour as \"00:00 to 01:00, 12 November\".",
+      "The clone starts shallow: `git fetch --unshallow origin dev` before library-releases/library-news (6 s), then `git config core.abbrev 8`, or every hour's releases file is rewritten with 9-character hashes.",
+      "The wake script reads the open hour's 'Kept by' and versions lines with a regex rather than a literal time (the 02:44 wake lost one run on a 01:46 vs 01:47 guess); scratchpad w03.py is the form."
     ],
     "not_in_git": [
       "This session's private key: stays here and ends with the session.",
-      "The scratchpad script w21.py (closing/opening/round-two in one) and the fringe clone: their result is in the articles and in library/altitudes.json."
+      "The scratchpad scripts w01.py to w03.py: their result is in the articles."
     ],
-    "scheduled_wakes": "incident.librarian@web-summit.dinis hourly (15) (trig_01S4HoKFwY2dvmsWi4gwaXeB), at :44, bound to the fifteenth session; the conductor points it at the sixteenth.",
-    "last_half_hour": "Lisbon: yellow sea only, to 03:00 Thursday; IPMA has no communiqué in force (no. 3 ran out 23:59); Thursday yellow rain in the north only (CAP 22:43:28); the alert situation ran to 23:59 as declared. Dinis ~23:38: the flights page (two conductor jobs). Board: a-adsb-key waits on Dinis (in round two section 9 item 16). No message to the librarian is unanswered.",
+    "scheduled_wakes": "incident.librarian@web-summit.dinis hourly (16) (trig_015ecZqqpkzZ8kouHHQM7PsL), at :44, bound to the sixteenth session; fired 01:44, 02:44, 03:44. The conductor points it at the seventeenth, or disables it if Dinis says stop.",
+    "last_half_hour": "Lisbon: no IPMA warning in force since the yellow sea warning ended at 03:00 (timeline 03:03); yellow rain in the north only (03:00-09:00 and 15:00 today to 06:00 Friday); no communiqué in force. The collectors (sources, media) are stopped on purpose; the storm's wakes run. No message to the librarian is unanswered.",
     "board_cards": "a-behaviour-policies waits on Dinis (no answer wanted from the librarian); a-librarian-8 should be closed (see above); a-librarian-9 (wakes firing into stopped sessions) waits on the conductor; a-reporter-5 waits on the librarian for (b) and (c) in 'in_flight'; the j-librarian cards are the jobs above.",
-    "written": "2026-11-12T00:47Z by the fifteenth librarian session",
-    "session": "the fifteenth (session_018yvwtP9S4xHXMZYzhhfZzM, key incident-librarian-dinis-15, published f1627886 after the keys split 5f3e9983); the 00:44 wake done at 00:46",
+    "written": "2026-11-12T03:46Z by the sixteenth librarian session",
+    "session": "the sixteenth (session_018yvwtPdEQaAbN8boBadBCR, key incident-librarian-dinis-16, e076087); wakes 01:44, 02:44, 03:44 done",
     "keys_note": "data/keys.json keeps active keys only; earlier ones in data/keys-archive/<role>.json; read them through tools/lane-keystore.mjs readKeys() (incident.identity@ switched library-abp.mjs and library-altitudes.mjs). A handed-over librarian key may be moved with `node tools/lane-keystore.mjs --archive`, as other roles now do."
   },
   "started_from_the_pack": {
@@ -144,7 +146,7 @@
     ],
     "what_it_did_tell_me": "everything else: the key, the release, the trailers, the measure step, my paths and the wake; I opened CLAUDE.md, RESTRUCTURE.md, REALITY.md, ROADMAP.md and PIPELINE.md not at all, and BRIEF.md and JOBS.md only by grep for the conductor's page"
   },
-  "wake": "hourly at :44 into the sixteenth session (trig_015ecZqqpkzZ8kouHHQM7PsL, the conductor's); fired 01:44 and 02:44. Whether it keeps running after Dinis's ~00:50 word is his answer to the conductor's 00:59 question.",
+  "wake": "hourly at :44 (trig_015ecZqqpkzZ8kouHHQM7PsL), bound to the sixteenth session; the conductor re-points it or disables it.",
   "eleventh_session": {
     "started": "2026-11-11T15:04Z",
     "done": [

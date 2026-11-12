@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-12T02:00:00Z and 2026-11-12T03:00:00Z: the facts behind the article news/2026-11-12T02.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-12T02:42:52Z",
+ "updated": "2026-11-12T02:52:00Z",
  "window": {
   "from": "2026-11-12T02:00:00Z",
   "to": "2026-11-12T03:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.1843",
-  "last": "v0.1.1849",
-  "pushed": 7,
+  "last": "v0.1.1853",
+  "pushed": 11,
   "served": 0,
   "as_of": "library/releases/2026-11-12T02.json",
   "not_confirmed": 0,
@@ -24,6 +24,10 @@
   {
    "agent": "incident.models@web-summit.dinis",
    "commits": 3
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 2
   },
   {
    "agent": "incident.flights@web-summit.dinis",
@@ -44,9 +48,19 @@
   {
    "agent": "incident.transport@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
   }
  ],
- "new_pages": [],
+ "new_pages": [
+  "news/2026-11-12T02.md"
+ ],
  "new_datasets": [
   "data/agents/detail-2026-11-12T02.json",
   "data/trace/2026-11-12/02.json",
@@ -108,11 +122,31 @@
   "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-  "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+  "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json"
  ],
  "new_tools": [],
  "added": {
-  "files": 7,
+  "files": 10,
   "by_area": [
    {
     "area": "incidents/2026-11-10-storm-charles/data",
@@ -123,14 +157,26 @@
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "agents",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 66,
+  "files": 163,
   "by_area": [
+   {
+    "area": "sources",
+    "files": 58
+   },
    {
     "area": "data",
     "files": 29
@@ -140,12 +186,24 @@
     "files": 25
    },
    {
+    "area": "library",
+    "files": 20
+   },
+   {
+    "area": "research",
+    "files": 8
+   },
+   {
     "area": "accounts",
-    "files": 3
+    "files": 6
    },
    {
     "area": "agents",
-    "files": 3
+    "files": 6
+   },
+   {
+    "area": "news",
+    "files": 5
    },
    {
     "area": "models",
@@ -221,6 +279,34 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "02:41 round: no operator change; measured",
    "files": 10
+  },
+  {
+   "commit": "ed528ba2",
+   "at": "2026-11-12T02:45:59Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 02:44 wake: 01:00 closed, 02:00 opened (a quiet hour; the collectors stopped on purpose)",
+   "files": 29
+  },
+  {
+   "commit": "52aedd40",
+   "at": "2026-11-12T02:46:15Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "de219d27",
+   "at": "2026-11-12T02:50:32Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "02:46 wake: nothing new from the listed accounts; counts refreshed",
+   "files": 10
+  },
+  {
+   "commit": "69d329f6",
+   "at": "2026-11-12T02:52:00Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 02:47 UTC: 64 requests, 63 answered 200, 45 files changed; warnings (IPMA's file dated 02:15): 13 above green; no warning changed",
+   "files": 60
   }
  ]
 }
