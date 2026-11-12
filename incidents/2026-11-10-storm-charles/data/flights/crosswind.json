@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T11:00:27Z",
+  "updated": "2026-11-12T12:00:28Z",
   "label": "fact",
   "about": "The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC to 12 November 12:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky's receivers saw and to ANA's own cancellation figures. Facts: the METAR (IPMA's observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -16,7 +16,7 @@
   },
   "window": {
     "from": "2026-11-10T18:00:00Z",
-    "to": "2026-11-12T10:30:00Z"
+    "to": "2026-11-12T11:30:00Z"
   },
   "airports": [
     {
@@ -56,7 +56,7 @@
         "situation_at": "2026-11-11T11:00:00Z",
         "published": "2026-11-11T11:55:02Z",
         "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-        "read": "2026-11-12T10:42:04Z",
+        "read": "2026-11-12T11:42:15Z",
         "note": "ANA's figures for the day up to the time it states, not per hour."
       },
       "hours": [
@@ -2375,6 +2375,62 @@
           ],
           "max_gust_or_wind_kt": 13,
           "max_crosswind_kt": 6.8
+        },
+        {
+          "hour": "2026-11-12T11:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-12T11:00:00Z",
+              "raw": "METAR LPPT 121100Z 25011KT 9999 SCT025 FEW030CB 18/14 Q1005 NOSIG",
+              "wind_dir": 250,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 7.4,
+                  "crosswind_kt": 8.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -7.4,
+                  "crosswind_kt": 8.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-12T11:30:00Z",
+              "raw": "METAR LPPT 121130Z 24013KT 210V270 9999 BKN024 FEW030TCU 19/14 Q1005 NOSIG",
+              "wind_dir": 240,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 10.2,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -10.2,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 13,
+          "max_crosswind_kt": 8.2
         }
       ]
     },
@@ -2416,7 +2472,7 @@
         "situation_at": "2026-11-11T11:00:00Z",
         "published": "2026-11-11T11:55:02Z",
         "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-        "read": "2026-11-12T10:42:04Z",
+        "read": "2026-11-12T11:42:15Z",
         "note": "ANA's figures for the day up to the time it states, not per hour."
       },
       "hours": [
@@ -4665,19 +4721,75 @@
           ],
           "max_gust_or_wind_kt": 5,
           "max_crosswind_kt": 2.3
+        },
+        {
+          "hour": "2026-11-12T11:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-12T11:00:00Z",
+              "raw": "METAR LPMA 121100Z 14004KT 070V170 9999 FEW015 22/16 Q1015",
+              "wind_dir": 140,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 0.4,
+                  "crosswind_kt": 4,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -0.4,
+                  "crosswind_kt": 4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-12T11:30:00Z",
+              "raw": "METAR LPMA 121130Z 14004KT 100V180 9999 FEW015 23/16 Q1015",
+              "wind_dir": 140,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 0.4,
+                  "crosswind_kt": 4,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -0.4,
+                  "crosswind_kt": 4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 4,
+          "max_crosswind_kt": 4
         }
       ]
     }
   ],
   "sources": [
     {"what":"runway headings, degrees true (OurAirports, public domain; read once, cached)","url":"https://davidmegginson.github.io/ourairports-data/runways.csv","status":200,"bytes":3974055,"sha256":"a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9","read":"2026-11-12T01:00:27Z","response_ms":267,"raw":"flights vault: ourairports/2026-11-12/2026-11-12T010027Z-a39ff4071b14.body"},
-    {"what":"METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)","url":"https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json","status":200,"bytes":110565,"sha256":"0bfcf67d2ddb9617809d50b0efcd07349819c009ef5f4952e3db08af940d919b","read":"2026-11-12T11:00:26Z","response_ms":432,"raw":"flights vault: awc-metar/2026-11-12/2026-11-12T110026Z-0bfcf67d2ddb.body"},
-    {"path":"incidents/2026-11-10-storm-charles/data/transport/flights.json","what":"airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@","sha256":"b1e66367c573e7bf01006502444a716a2ecdf88215d80d909a730071282f6d49","bytes":20736,"read_utc":"2026-11-12T10:42:43Z"},
-    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport.json","what":"METAR history kept by incident.meteorologist@ (LPPT)","sha256":"c19cb8db87b492fe5ad67040744c75a38283b59109ab271c101367053ecf72e0","bytes":65167,"read_utc":"2026-11-12T10:34:53Z"},
-    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json","what":"METAR history kept by incident.meteorologist@ (LPMA)","sha256":"481e66fafcee359448df8064a1d7021bde92670e938d6d80b719516fd7e5d612","bytes":54157,"read_utc":"2026-11-12T10:34:53Z"}
+    {"what":"METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)","url":"https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json","status":200,"bytes":110449,"sha256":"289ba1a718f92991c75660db755710ee527264e58dc4fee4fe0e15526952079d","read":"2026-11-12T12:00:28Z","response_ms":451,"raw":"flights vault: awc-metar/2026-11-12/2026-11-12T120028Z-289ba1a718f9.body"},
+    {"path":"incidents/2026-11-10-storm-charles/data/transport/flights.json","what":"airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@","sha256":"b18b1bf45fb4a12c1d2734186783997cc40fcab12ac461edc861429a1a03683f","bytes":20735,"read_utc":"2026-11-12T11:42:55Z"},
+    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport.json","what":"METAR history kept by incident.meteorologist@ (LPPT)","sha256":"38bfadb7e587a3b0b0c751306d1cb7cf3e514e09fc4a56450d76a9c26a2c7cc4","bytes":65883,"read_utc":"2026-11-12T11:23:45Z"},
+    {"path":"incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json","what":"METAR history kept by incident.meteorologist@ (LPMA)","sha256":"9f1c03b035607bad3c49a4f3459a135c70ac45e76489606dd8741ed88498101a","bytes":54787,"read_utc":"2026-11-12T11:23:45Z"}
   ],
   "source": "https://aviationweather.gov/api/data/metar (IPMA's METAR), with incident.meteorologist@'s airport files; runways from OurAirports",
-  "read_utc": "2026-11-12T11:00:26Z",
+  "read_utc": "2026-11-12T12:00:28Z",
   "method": "For each METAR: headwind = wind x cos(wind direction - runway heading), crosswind = |wind x sin(...)|, true degrees; gust components the same with the gust. hours[] (LPPT) and hours_by_airport give, per hour, the METAR with the strongest gust or wind. Variable winds (VRB) have no components.",
   "hours": [
     {
@@ -5455,6 +5567,25 @@
         "02": {
           "cross_kt": 6.1,
           "head_kt": -11.5,
+          "gust_cross_kt": null
+        }
+      }
+    },
+    {
+      "t": "2026-11-12T11:00:00Z",
+      "metar_time": "2026-11-12T11:30:00Z",
+      "wind_dir": 240,
+      "wind_kt": 13,
+      "gust_kt": null,
+      "by_runway_end": {
+        "20": {
+          "cross_kt": 8,
+          "head_kt": 10.2,
+          "gust_cross_kt": null
+        },
+        "02": {
+          "cross_kt": 8,
+          "head_kt": -10.2,
           "gust_cross_kt": null
         }
       }
@@ -6240,6 +6371,25 @@
             "gust_cross_kt": null
           }
         }
+      },
+      {
+        "t": "2026-11-12T11:00:00Z",
+        "metar_time": "2026-11-12T11:30:00Z",
+        "wind_dir": 240,
+        "wind_kt": 13,
+        "gust_kt": null,
+        "by_runway_end": {
+          "20": {
+            "cross_kt": 8,
+            "head_kt": 10.2,
+            "gust_cross_kt": null
+          },
+          "02": {
+            "cross_kt": 8,
+            "head_kt": -10.2,
+            "gust_cross_kt": null
+          }
+        }
       }
     ],
     "LPMA": [
@@ -7007,6 +7157,25 @@
           "05": {
             "cross_kt": 2.3,
             "head_kt": -3.3,
+            "gust_cross_kt": null
+          }
+        }
+      },
+      {
+        "t": "2026-11-12T11:00:00Z",
+        "metar_time": "2026-11-12T11:00:00Z",
+        "wind_dir": 140,
+        "wind_kt": 4,
+        "gust_kt": null,
+        "by_runway_end": {
+          "23": {
+            "cross_kt": 4,
+            "head_kt": 0.4,
+            "gust_cross_kt": null
+          },
+          "05": {
+            "cross_kt": 4,
+            "head_kt": -0.4,
             "gust_cross_kt": null
           }
         }
