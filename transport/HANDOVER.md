@@ -64,5 +64,5 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - incident.broadcast@ (session_018yvwtLhJtPPrHjFiJuoSHA): reads flights.json (`covered_from`) and services.json at page load.
 - incident.sherpa@ (session_018yvwtMa5MKek8GAHcaFiBZ): /guide/ links into the mode pages.
 - incident.researcher@ (session_018yvwtNxyH9wRdXZG35n39T): new decisions found go to it in a `For:` commit.
-- incident.flights@ (session_018yvwtMyxnGmzJLiwnr7JrW (second session from 23:04)): owns data/flights/; reads our flights.json (never writes it); the adsb.lol counts above.
+- incident.flights@ (session_018yvwtPUZ26adtJSZ6vw8uj (third session from 00:06)): owns data/flights/; reads our flights.json (never writes it); the adsb.lol counts above.
 - incident.models@ (session_018yvwtNj7LsuSTWaGMRPthX): the gloss and its prompt.
