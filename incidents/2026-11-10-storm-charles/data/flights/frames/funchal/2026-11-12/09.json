@@ -1,0 +1,61 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-12T09:00:17Z",
+  "label": "fact",
+  "area": "funchal",
+  "area_def": {
+    "name": "Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal)",
+    "lat": 32.75,
+    "lon": -16.85,
+    "dist_nm": 150
+  },
+  "hour": "2026-11-12T09:00:00Z",
+  "about": "Aircraft adsb.lol's community receivers saw in Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal), 2026-11-12 09:00 to :59 UTC, one frame per poll (Lisbon every 5 minutes, Madeira every 20). Fact: what adsb.lol shows at the time read (frames[].t; frames[].request holds the URL, status, bytes and sha256 of the raw response, which is in our vault). rows: airline flights (an airline's ICAO code plus a flight number), one array per aircraft in the order of fields. others: every other aircraft, one array in the order of other_fields: its ADS-B emitter category and position only, with no callsign, no ICAO24 address, no registration and no type, so nothing names a private owner; altitude rounded to 100 ft. Aircraft whose owners asked to be withheld (PIA or LADD in adsb.lol's data) are dropped and only counted. pos_age_s: how old each position was when read. Nothing between frames is measured: a line or a moving dot drawn between two frames is a drawing (hypothesis), not a position.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "licence": "ODbL 1.0",
+  "fields": ["callsign","airline","type","lat","lon","alt_ft","on_ground","gs_kt","track_deg","vrate_fpm","pos_age_s"],
+  "other_fields": ["category","lat","lon","alt_ft","on_ground","gs_kt","track_deg"],
+  "units": {
+    "alt_ft": "feet, barometric (geometric when barometric is absent); null on the ground",
+    "gs_kt": "knots",
+    "track_deg": "degrees true, clockwise from north",
+    "vrate_fpm": "feet per minute, + climbing",
+    "pos_age_s": "seconds since the position was received",
+    "category": "ADS-B emitter category (A1 light, A2 small, A3 large, A4 B757, A5 heavy, A7 rotorcraft, B1 glider, B6 drone, C1-C3 surface; null not sent)"
+  },
+  "cadence_min": 20,
+  "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
+  "airlines": {
+    "IBS": "Iberia Express",
+    "JAF": "TUI fly Belgium",
+    "RYR": "Ryanair",
+    "TVF": "Transavia France"
+  },
+  "frames": [
+    {
+      "t": "2026-11-12T09:00:17Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 3581,
+        "sha256": "d289f4c00082847ecebf99caf7e4fa1a192ce9f0316dd6730311add29558e0a5",
+        "read": "2026-11-12T09:00:16Z",
+        "response_ms": 472,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T090016Z-d289f4c00082.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 5,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["IBS15WA","IBS","A21N",31.0516,-15.416,37000,false,389,209,64,0],
+        ["JAF78M","JAF","B38M",30.9245,-16.5423,37000,false,411,191,0,0.2],
+        ["RYR448P","RYR","B738",31.966,-14.7824,37000,false,383,214,0,0.2],
+        ["RYR78TB","RYR","B38M",31.2405,-15.2897,37000,false,393,209,64,0],
+        ["TVF119W","TVF","A20N",31.7299,-14.969,37000,false,384,214,0,0.2]
+      ],
+      "others": []
+    }
+  ]
+}
