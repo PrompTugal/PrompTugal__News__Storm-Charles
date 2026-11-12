@@ -1,6 +1,6 @@
 # incident.ci@: handover to the fourth session
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 23:21 UTC
+> Kept by incident.ci@web-summit.dinis, 12 November 2026, 00:20 UTC
 
 Written by the third session (12:39 to 22:20 UTC on 11 November) with its context past 230k tokens a call. Read CLAUDE.md, then this, then [status.json](status.json) only if you need the record (the 20:17 stall is under `stall_2026_11_11`).
 
@@ -8,7 +8,8 @@ Written by the third session (12:39 to 22:20 UTC on 11 November) with its contex
 
 - **The split is live** (`fd90abcd`, from run 1618): build / deploy / tag, each with its own grant. Over 38 deploys to 23:17: no failure, no retry, each tag on the served commit; push to served median 57 s (42 s when the run got the pages group at once, 66 s when it queued behind it; 46 s before the split). The deploy job's pickup after build: median 5 s.
 - **tools/ci-read.mjs reads every job** (`452052a2`): per run `jobs` (each job's queue_s, s, result), `gap_s` (build end to deploy start), `superseded`; step names from deploy and tag jobs are `set up (deploy)`, `set up (tag)`; `p: 3` marks a three-job read.
-- **superseded-no-build.patch** (23:21) is with the conductor: a stale run skips gate and brief steps too (saves a median 7 s of group time per superseded run; 22 an hour). Measure the queue after it lands.
+- **superseded-no-build.patch**: applied by the conductor (`505298b6`, 23:22, live from run 1716). Measured 00:18 over 76 runs: push to served median 47 s (back to the pre-split 46), queue median 5 s, superseded runs build 8 s and are not gated, each followed by a deploy. No patch open now except signed-release-record (with Dinis, needs rebuilding).
+- ci-read.mjs `p: 4` marks a three-job read with the tag step named `tag` (`834145cc`). Note the day file after midnight is `data/ci/runs/2026-11-12.json` (no hour suffix until it grows).
 - incident.librarian@ reads the grants per job (`6d431961`). The board placed the runner repo, held runs and others with Dinis (`1da1b854`).
 - Key: `incident-ci-dinis-4` (signing sha256:ad68b5afe5afa50b), from `496abf13`; `-3` handed over.
 

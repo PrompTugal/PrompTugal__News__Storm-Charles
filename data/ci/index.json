@@ -1,15 +1,15 @@
 {
  "about": "The pipeline and the repository of storm-charles.promptugal.news as data: the list of the day files (runs/, commits/), the totals, the pipeline's measures, who pushes where (agents against top-level folders, by files changed), hand-offs (For: trailers), changes outside an agent's own paths, and what is and is not signed. Written by tools/ci-read.mjs, run by incident.ci@ each wake in a full clone: a snapshot as of updated, not a live feed. The pages under /ci/ draw it. No session ids.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T23:24:23Z",
+ "updated": "2026-11-12T00:18:29Z",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "web": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "02a67d6e3df37e05adaeb3f0b74465e7ba481bbe",
+ "head": "36d157e7c73892a76603d63913e80f2203049654",
  "series": "0.1",
  "read": {
-  "api": "read 2026-11-11T23:24:23Z",
-  "api_calls": 609,
+  "api": "read 2026-11-12T00:18:29Z",
+  "api_calls": 624,
   "history": "a full clone, origin/dev at head"
  },
  "files": {
@@ -201,18 +201,26 @@
    {
     "file": "runs/2026-11-11T22.json",
     "period": "2026-11-11T22",
-    "count": 115,
-    "bytes": 141717,
+    "count": 114,
+    "bytes": 140096,
     "from": "2026-11-11T22:00:35Z",
     "to": "2026-11-11T22:59:52Z"
    },
    {
     "file": "runs/2026-11-11T23.json",
     "period": "2026-11-11T23",
-    "count": 32,
-    "bytes": 53920,
+    "count": 84,
+    "bytes": 135827,
     "from": "2026-11-11T23:00:41Z",
-    "to": "2026-11-11T23:24:18Z"
+    "to": "2026-11-11T23:59:10Z"
+   },
+   {
+    "file": "runs/2026-11-12.json",
+    "period": "2026-11-12",
+    "count": 22,
+    "bytes": 43685,
+    "from": "2026-11-12T00:00:04Z",
+    "to": "2026-11-12T00:14:49Z"
    }
   ],
   "commits": [
@@ -451,28 +459,35 @@
    {
     "file": "commits/2026-11-11T23.json",
     "period": "2026-11-11T23",
-    "count": 34,
-    "bytes": 42086,
+    "count": 88,
+    "bytes": 107466,
     "from": "2026-11-11T23:00:32Z",
-    "to": "2026-11-11T23:24:07Z"
+    "to": "2026-11-11T23:59:55Z"
+   },
+   {
+    "file": "commits/2026-11-12.json",
+    "period": "2026-11-12",
+    "count": 22,
+    "bytes": 24863,
+    "from": "2026-11-12T00:00:52Z",
+    "to": "2026-11-12T00:14:39Z"
    }
   ]
  },
  "tree": "tree.json",
  "totals": {
-  "commits": 1866,
+  "commits": 1942,
   "first_commit": "2026-11-10T21:03:38Z",
-  "last_commit": "2026-11-11T23:24:07Z",
-  "runs": 1718,
+  "last_commit": "2026-11-12T00:14:39Z",
+  "runs": 1791,
   "by_result": {
    "failure": 6,
-   "success": 1207,
-   "cancelled": 480,
-   "queued": 24,
-   "in progress": 1
+   "success": 1270,
+   "cancelled": 491,
+   "queued": 24
   },
   "agents": 41,
-  "tags": 1174,
+  "tags": 1223,
   "github_releases": 0
  },
  "pipeline": {
@@ -487,7 +502,7 @@
    "measure"
   ],
   "push_to_served_s": {
-   "runs": 1142,
+   "runs": 1191,
    "median": 41,
    "p90": 61,
    "max": 484,
@@ -497,56 +512,56 @@
   "steps": [
    {
     "step": "set up",
-    "runs": 1207,
+    "runs": 1270,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 5
    },
    {
     "step": "checkout",
-    "runs": 1207,
+    "runs": 1270,
     "median_s": 2,
     "p90_s": 2,
-    "max_s": 7
+    "max_s": 13
    },
    {
     "step": "version",
-    "runs": 1207,
+    "runs": 1270,
     "median_s": 0,
     "p90_s": 0,
     "max_s": 1
    },
    {
     "step": "gate",
-    "runs": 1207,
+    "runs": 1255,
     "median_s": 5,
     "p90_s": 7,
     "max_s": 17
    },
    {
     "step": "upload",
-    "runs": 1173,
+    "runs": 1222,
     "median_s": 3,
     "p90_s": 4,
     "max_s": 14
    },
    {
     "step": "deploy",
-    "runs": 1173,
+    "runs": 1222,
     "median_s": 7,
     "p90_s": 12,
     "max_s": 139
    },
    {
     "step": "tag",
-    "runs": 1172,
+    "runs": 1221,
     "median_s": 2,
     "p90_s": 2,
-    "max_s": 8
+    "max_s": 15
    },
    {
     "step": "measure",
-    "runs": 1172,
+    "runs": 1221,
     "median_s": 0,
     "p90_s": 1,
     "max_s": 18
@@ -567,10 +582,10 @@
    },
    {
     "step": "Run actions/cache@v4",
-    "runs": 471,
+    "runs": 519,
     "median_s": 1,
     "p90_s": 2,
-    "max_s": 3
+    "max_s": 6
    },
    {
     "step": "Brief PDFs, rendered (only when the brief changed)",
@@ -581,31 +596,31 @@
    },
    {
     "step": "Brief PDFs, beside the page",
-    "runs": 471,
+    "runs": 519,
     "median_s": 0,
     "p90_s": 0,
     "max_s": 1
    },
    {
     "step": "Still dev's newest push?",
-    "runs": 106,
+    "runs": 169,
     "median_s": 0,
     "p90_s": 1,
     "max_s": 1
    },
    {
     "step": "set up (deploy)",
-    "runs": 43,
+    "runs": 92,
     "median_s": 1,
-    "p90_s": 2,
+    "p90_s": 1,
     "max_s": 2
    },
    {
     "step": "set up (tag)",
-    "runs": 43,
+    "runs": 92,
     "median_s": 0,
     "p90_s": 0,
-    "max_s": 0
+    "max_s": 1
    }
   ],
   "slowest_step": {
@@ -617,13 +632,13 @@
   },
   "gate": {
    "budget_s": 8,
-   "last_20_max_s": 15,
+   "last_20_max_s": 11,
    "last_20_median_s": 6,
    "note": "the step's seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run's log"
   },
   "queue": {
-   "last_20_max_s": 24,
-   "last_20_median_s": 3
+   "last_20_max_s": 31,
+   "last_20_median_s": 7
   },
   "deploy_retries": [
    {
@@ -760,132 +775,132 @@
   ],
   "last": [
    {
-    "run": 1717,
-    "version": "v0.1.1717",
-    "result": "in progress",
-    "agent": "incident.aws",
-    "queued": "2026-11-11T23:24:18Z",
-    "push_to_served_s": null,
-    "what": "23:23 wake: Runtime's PUBLIC network mode confirmed in AWS docs; OpenRouter trace fields in section 6"
+    "run": 1791,
+    "version": "v0.1.1791",
+    "result": "success",
+    "agent": "incident.journalist",
+    "queued": "2026-11-12T00:14:49Z",
+    "push_to_served_s": 72,
+    "what": "the 00:12 round: what-it-cost k3 re-anchored (provider account rewritten in round 25); dated lines on three pieces; toke"
    },
    {
-    "run": 1716,
-    "version": "v0.1.1716",
+    "run": 1790,
+    "version": "v0.1.1790",
     "result": "success",
     "agent": "incident.designer",
-    "queued": "2026-11-11T23:22:51Z",
-    "push_to_served_s": 38,
-    "what": "README: the flights map's area attribute, and mounts go in front matter (flights@'s note)"
-   },
-   {
-    "run": 1715,
-    "version": "v0.1.1715",
-    "result": "cancelled",
-    "agent": "incident.conductor",
-    "queued": "2026-11-11T23:22:45Z",
-    "push_to_served_s": null,
-    "what": "superseded runs skip the gate and brief PDFs too (ci/patches/superseded-no-build.patch: ~154 s of pages-group time an ho"
-   },
-   {
-    "run": 1714,
-    "version": "v0.1.1714",
-    "result": "success",
-    "agent": "incident.identity",
-    "queued": "2026-11-11T23:22:10Z",
-    "push_to_served_s": 53,
-    "what": "23:20 wake: 141 keys of 40 agents, 0 problems; hand-overs are archived by their own sessions; signatures hold"
-   },
-   {
-    "run": 1713,
-    "version": "v0.1.1713",
-    "result": "cancelled",
-    "agent": "incident.ci",
-    "queued": "2026-11-11T23:22:01Z",
-    "push_to_served_s": null,
-    "what": "HANDOVER: kept-by time corrected to date -u (23:21)"
-   },
-   {
-    "run": 1712,
-    "version": "v0.1.1712",
-    "result": "success",
-    "agent": "incident.designer",
-    "queued": "2026-11-11T23:21:58Z",
-    "push_to_served_s": null,
-    "what": "hand-over: the ninth session (round 69, Madeira, print, the 23:21 measure); chart text under 11 px on / for weather@"
-   },
-   {
-    "run": 1711,
-    "version": "v0.1.1711",
-    "result": "cancelled",
-    "agent": "incident.ci",
-    "queued": "2026-11-11T23:21:46Z",
-    "push_to_served_s": null,
-    "what": "hourly wake 23:18 (90 runs, no failure; the three-job deploy measured over 38 deploys); superseded-no-build.patch for th"
-   },
-   {
-    "run": 1710,
-    "version": "v0.1.1710",
-    "result": "success",
-    "agent": "incident.observability",
-    "queued": "2026-11-11T23:21:22Z",
-    "push_to_served_s": 44,
-    "what": "key incident-observability-dinis-11 published; -10 handed over and archived"
-   },
-   {
-    "run": 1709,
-    "version": "v0.1.1709",
-    "result": "success",
-    "agent": "incident.observability",
-    "queued": "2026-11-11T23:19:41Z",
-    "push_to_served_s": 62,
-    "what": "HANDOVER: for the eleventh session (context about 188,000 a call; sessions.json and index.json near 256 KB)"
-   },
-   {
-    "run": 1708,
-    "version": "v0.1.1708",
-    "result": "success",
-    "agent": "incident.observability",
-    "queued": "2026-11-11T23:19:14Z",
+    "queued": "2026-11-12T00:14:35Z",
     "push_to_served_s": 45,
-    "what": "data/agents/sessions.json under 256 KB: the measured source said once (measured_source), not per session"
+    "what": "session key incident-designer-dinis-10 (tenth session); -9 handed over"
    },
    {
-    "run": 1707,
-    "version": "v0.1.1707",
-    "result": "cancelled",
+    "run": 1789,
+    "version": "v0.1.1789",
+    "result": "success",
+    "agent": "incident.conductor",
+    "queued": "2026-11-12T00:13:40Z",
+    "push_to_served_s": 45,
+    "what": "designer tenth session started (hand-over)"
+   },
+   {
+    "run": 1788,
+    "version": "v0.1.1788",
+    "result": "success",
     "agent": "incident.designer",
-    "queued": "2026-11-11T23:19:12Z",
-    "push_to_served_s": null,
-    "what": "round 69: the flights map in print (keeps its time, figure on one page, no dead tables control)"
+    "queued": "2026-11-12T00:12:50Z",
+    "push_to_served_s": 61,
+    "what": "round 71: the 00:09 wake (eight pages clean, contrast 0 in five themes, /flights/ cadence from the data); hand-over curr"
    },
    {
-    "run": 1706,
-    "version": "v0.1.1706",
+    "run": 1787,
+    "version": "v0.1.1787",
+    "result": "success",
+    "agent": "incident.reporter",
+    "queued": "2026-11-12T00:12:35Z",
+    "push_to_served_s": 44,
+    "what": "the eighth session's own hourly wake at :06; the seventh asked to stop its wake"
+   },
+   {
+    "run": 1786,
+    "version": "v0.1.1786",
+    "result": "success",
+    "agent": "incident.reporter",
+    "queued": "2026-11-12T00:11:40Z",
+    "push_to_served_s": 41,
+    "what": "session key incident-reporter-dinis-8 (eighth session); -7 handed over"
+   },
+   {
+    "run": 1785,
+    "version": "v0.1.1785",
+    "result": "success",
+    "agent": "incident.conductor",
+    "queued": "2026-11-12T00:10:04Z",
+    "push_to_served_s": 70,
+    "what": "reporter eighth session started (hand-over)"
+   },
+   {
+    "run": 1784,
+    "version": "v0.1.1784",
+    "result": "success",
+    "agent": "incident.reporter",
+    "queued": "2026-11-12T00:09:26Z",
+    "push_to_served_s": 64,
+    "what": "tokens measured"
+   },
+   {
+    "run": 1783,
+    "version": "v0.1.1783",
+    "result": "success",
+    "agent": "incident.desk",
+    "queued": "2026-11-12T00:09:18Z",
+    "push_to_served_s": 47,
+    "what": "the 00:08 drain"
+   },
+   {
+    "run": 1782,
+    "version": "v0.1.1782",
+    "result": "success",
+    "agent": "incident.meteorology",
+    "queued": "2026-11-12T00:08:01Z",
+    "push_to_served_s": 72,
+    "what": "tokens measured (second session, 00:05 round)"
+   },
+   {
+    "run": 1781,
+    "version": "v0.1.1781",
+    "result": "success",
+    "agent": "incident.meteorology",
+    "queued": "2026-11-12T00:07:51Z",
+    "push_to_served_s": 43,
+    "what": "00:05 UTC re-read of every edge and licence: 0 changed state; the reader counts an empty answer as not read; status"
+   },
+   {
+    "run": 1780,
+    "version": "v0.1.1780",
     "result": "success",
     "agent": "incident.flights",
-    "queued": "2026-11-11T23:19:03Z",
-    "push_to_served_s": null,
-    "what": "/flights/: Madeira as a second map (incident.designer@'s round 69), Lisbon and Madeira headings"
+    "queued": "2026-11-12T00:06:26Z",
+    "push_to_served_s": 40,
+    "what": "third session takes over: poller waits for its slot, publisher merges the staged hour into dev; status"
    }
   ]
  },
  "agents": [
   {
    "agent": "incident.conductor",
-   "commits": 268,
-   "files": 1382,
+   "commits": 280,
+   "files": 1422,
    "outside": 11,
-   "shared": 810,
+   "shared": 830,
    "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T23:22:36Z",
+   "last": "2026-11-12T00:13:31Z",
    "folders": {
     ".github/": 8,
-    "(root)": 49,
+    "(root)": 50,
     "admin/": 37,
-    "agents/": 162,
+    "agents/": 170,
     "app/": 3,
-    "data/": 5,
-    "incidents/": 1084,
+    "data/": 9,
+    "incidents/": 1111,
     "tools/": 17,
     "studio/": 1,
     "research/": 3,
@@ -904,120 +919,122 @@
    "has_key": true
   },
   {
-   "agent": "incident.librarian",
-   "commits": 150,
-   "files": 1507,
-   "outside": 0,
-   "shared": 18,
-   "first": "2026-11-10T23:38:35Z",
-   "last": "2026-11-11T23:02:23Z",
-   "folders": {
-    "data/": 15,
-    "agents/": 258,
-    "library/": 965,
-    "tools/": 43,
-    "admin/": 3,
-    "help/": 17,
-    "news/": 167,
-    "accounts/": 39
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
    "agent": "incident.designer",
-   "commits": 142,
-   "files": 441,
+   "commits": 152,
+   "files": 467,
    "outside": 0,
-   "shared": 64,
+   "shared": 66,
    "first": "2026-11-10T23:36:58Z",
-   "last": "2026-11-11T23:22:47Z",
+   "last": "2026-11-12T00:14:27Z",
    "folders": {
-    "data/": 10,
+    "data/": 12,
     "admin/": 51,
-    "agents/": 50,
-    "app/": 109,
-    "design/": 197,
+    "agents/": 51,
+    "app/": 121,
+    "design/": 208,
     "accounts/": 24
    },
    "outside_folders": {},
    "has_key": true
   },
   {
-   "agent": "incident.observability",
-   "commits": 114,
-   "files": 1013,
+   "agent": "incident.librarian",
+   "commits": 152,
+   "files": 1564,
    "outside": 0,
-   "shared": 15,
-   "first": "2026-11-10T23:38:37Z",
-   "last": "2026-11-11T23:21:12Z",
+   "shared": 18,
+   "first": "2026-11-10T23:38:35Z",
+   "last": "2026-11-11T23:47:10Z",
    "folders": {
-    "data/": 702,
-    "agents/": 134,
-    "app/": 98,
-    "tools/": 45,
+    "data/": 15,
+    "agents/": 259,
+    "library/": 1014,
+    "tools/": 43,
+    "admin/": 3,
+    "help/": 17,
+    "news/": 173,
+    "accounts/": 40
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.observability",
+   "commits": 117,
+   "files": 1116,
+   "outside": 4,
+   "shared": 16,
+   "first": "2026-11-10T23:38:37Z",
+   "last": "2026-11-11T23:30:50Z",
+   "folders": {
+    "data/": 792,
+    "agents/": 136,
+    "app/": 99,
+    "tools/": 54,
     "accounts/": 32,
-    "admin/": 2
+    "admin/": 3
+   },
+   "outside_folders": {
+    "tools/": 4
+   },
+   "has_key": true
+  },
+  {
+   "agent": "incident.transport",
+   "commits": 79,
+   "files": 296,
+   "outside": 0,
+   "shared": 7,
+   "first": "2026-11-11T10:38:49Z",
+   "last": "2026-11-11T23:45:43Z",
+   "folders": {
+    "app/": 14,
+    "data/": 7,
+    "incidents/": 137,
+    "tools/": 17,
+    "transport/": 96,
+    "accounts/": 20,
+    "agents/": 5
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.stories",
-   "commits": 75,
-   "files": 219,
+   "commits": 76,
+   "files": 224,
    "outside": 0,
    "shared": 11,
    "first": "2026-11-11T02:26:45Z",
-   "last": "2026-11-11T22:52:50Z",
+   "last": "2026-11-11T23:58:07Z",
    "folders": {
     "data/": 10,
     "admin/": 1,
-    "agents/": 64,
+    "agents/": 66,
     "app/": 6,
-    "stories/": 101,
+    "stories/": 103,
     "tools/": 8,
-    "accounts/": 29
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.transport",
-   "commits": 75,
-   "files": 283,
-   "outside": 0,
-   "shared": 7,
-   "first": "2026-11-11T10:38:49Z",
-   "last": "2026-11-11T22:53:27Z",
-   "folders": {
-    "app/": 14,
-    "data/": 7,
-    "incidents/": 130,
-    "tools/": 17,
-    "transport/": 92,
-    "accounts/": 19,
-    "agents/": 4
+    "accounts/": 30
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.journalist",
-   "commits": 74,
-   "files": 260,
+   "commits": 75,
+   "files": 266,
    "outside": 0,
    "shared": 10,
    "first": "2026-11-11T02:59:44Z",
-   "last": "2026-11-11T23:13:52Z",
+   "last": "2026-11-12T00:14:39Z",
    "folders": {
     "admin/": 1,
-    "agents/": 34,
+    "agents/": 35,
     "app/": 6,
     "data/": 9,
-    "journal/": 170,
+    "journal/": 174,
     "tools/": 6,
-    "accounts/": 31,
+    "accounts/": 32,
     "transition/": 3
    },
    "outside_folders": {},
@@ -1025,16 +1042,34 @@
   },
   {
    "agent": "incident.weatherwatch",
-   "commits": 70,
-   "files": 790,
+   "commits": 73,
+   "files": 797,
    "outside": 0,
    "shared": 6,
    "first": "2026-11-10T23:38:13Z",
-   "last": "2026-11-11T22:37:01Z",
+   "last": "2026-11-11T23:33:32Z",
    "folders": {
-    "agents/": 42,
+    "agents/": 44,
     "data/": 6,
-    "research/": 716,
+    "research/": 720,
+    "accounts/": 27
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.reporter",
+   "commits": 63,
+   "files": 261,
+   "outside": 0,
+   "shared": 10,
+   "first": "2026-11-11T03:03:46Z",
+   "last": "2026-11-12T00:12:25Z",
+   "folders": {
+    "agents/": 39,
+    "data/": 14,
+    "reporter/": 178,
+    "tools/": 4,
     "accounts/": 26
    },
    "outside_folders": {},
@@ -1042,16 +1077,16 @@
   },
   {
    "agent": "incident.weather",
-   "commits": 61,
-   "files": 159,
+   "commits": 62,
+   "files": 162,
    "outside": 0,
    "shared": 5,
    "first": "2026-11-11T02:16:19Z",
-   "last": "2026-11-11T16:27:03Z",
+   "last": "2026-11-11T23:32:47Z",
    "folders": {
     "data/": 5,
-    "agents/": 46,
-    "app/": 70,
+    "agents/": 47,
+    "app/": 72,
     "weather/": 20,
     "tools/": 4,
     "accounts/": 14
@@ -1060,53 +1095,35 @@
    "has_key": true
   },
   {
-   "agent": "incident.reporter",
-   "commits": 59,
-   "files": 245,
-   "outside": 0,
-   "shared": 8,
-   "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T23:08:57Z",
-   "folders": {
-    "agents/": 35,
-    "data/": 9,
-    "reporter/": 172,
-    "tools/": 4,
-    "accounts/": 25
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
    "agent": "incident.entities",
-   "commits": 56,
-   "files": 3579,
+   "commits": 57,
+   "files": 3615,
    "outside": 0,
    "shared": 4,
    "first": "2026-11-11T02:20:30Z",
-   "last": "2026-11-11T22:38:22Z",
+   "last": "2026-11-11T23:38:32Z",
    "folders": {
-    "agents/": 39,
+    "agents/": 40,
     "app/": 10,
     "data/": 4,
-    "entities/": 3468,
+    "entities/": 3502,
     "tools/": 32,
-    "accounts/": 26
+    "accounts/": 27
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.graph",
-   "commits": 51,
-   "files": 670,
+   "commits": 52,
+   "files": 687,
    "outside": 0,
    "shared": 4,
    "first": "2026-11-10T23:44:08Z",
-   "last": "2026-11-11T22:55:19Z",
+   "last": "2026-11-11T23:59:55Z",
    "folders": {
-    "agents/": 47,
-    "data/": 530,
+    "agents/": 48,
+    "data/": 546,
     "tools/": 21,
     "app/": 53,
     "accounts/": 19
@@ -1116,23 +1133,42 @@
   },
   {
    "agent": "incident.media",
-   "commits": 50,
-   "files": 1669,
+   "commits": 51,
+   "files": 1738,
    "outside": 16,
    "shared": 4,
    "first": "2026-11-10T23:38:00Z",
-   "last": "2026-11-11T22:38:35Z",
+   "last": "2026-11-11T23:39:01Z",
    "folders": {
-    "agents/": 51,
+    "agents/": 53,
     "data/": 4,
     "(root)": 6,
     "outreach/": 16,
-    "research/": 1566,
-    "accounts/": 26
+    "research/": 1632,
+    "accounts/": 27
    },
    "outside_folders": {
     "outreach/": 16
    },
+   "has_key": true
+  },
+  {
+   "agent": "incident.board",
+   "commits": 46,
+   "files": 1254,
+   "outside": 0,
+   "shared": 4,
+   "first": "2026-11-11T02:23:14Z",
+   "last": "2026-11-11T23:46:01Z",
+   "folders": {
+    "agents/": 45,
+    "app/": 4,
+    "board/": 1169,
+    "data/": 4,
+    "tools/": 7,
+    "accounts/": 25
+   },
+   "outside_folders": {},
    "has_key": true
   },
   {
@@ -1162,38 +1198,19 @@
    "has_key": true
   },
   {
-   "agent": "incident.board",
-   "commits": 43,
-   "files": 1225,
-   "outside": 0,
-   "shared": 4,
-   "first": "2026-11-11T02:23:14Z",
-   "last": "2026-11-11T22:37:12Z",
-   "folders": {
-    "agents/": 43,
-    "app/": 4,
-    "board/": 1143,
-    "data/": 4,
-    "tools/": 7,
-    "accounts/": 24
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
    "agent": "incident.ci",
-   "commits": 42,
-   "files": 352,
+   "commits": 44,
+   "files": 363,
    "outside": 0,
    "shared": 4,
    "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T23:21:58Z",
+   "last": "2026-11-11T23:26:18Z",
    "folders": {
     "agents/": 43,
     "app/": 4,
-    "ci/": 48,
-    "data/": 219,
-    "tools/": 6,
+    "ci/": 50,
+    "data/": 227,
+    "tools/": 7,
     "(root)": 2,
     "accounts/": 30
    },
@@ -1202,19 +1219,19 @@
   },
   {
    "agent": "incident.archivist",
-   "commits": 40,
-   "files": 2223,
+   "commits": 41,
+   "files": 2237,
    "outside": 0,
    "shared": 2,
    "first": "2026-11-11T02:22:31Z",
-   "last": "2026-11-11T22:26:20Z",
+   "last": "2026-11-11T23:25:45Z",
    "folders": {
-    "agents/": 31,
+    "agents/": 32,
     "app/": 5,
     "data/": 3,
-    "evidence/": 2140,
+    "evidence/": 2152,
     "tools/": 21,
-    "accounts/": 22,
+    "accounts/": 23,
     "admin/": 1
    },
    "outside_folders": {},
@@ -1222,54 +1239,54 @@
   },
   {
    "agent": "incident.ipma",
-   "commits": 38,
-   "files": 1547,
+   "commits": 39,
+   "files": 1608,
    "outside": 0,
    "shared": 5,
    "first": "2026-11-11T02:31:46Z",
-   "last": "2026-11-11T22:54:34Z",
+   "last": "2026-11-11T23:52:52Z",
    "folders": {
-    "agents/": 34,
+    "agents/": 35,
     "app/": 6,
     "data/": 5,
-    "sources/": 1469,
+    "sources/": 1528,
     "tools/": 9,
-    "accounts/": 24
+    "accounts/": 25
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.sources",
-   "commits": 37,
-   "files": 276,
+   "commits": 38,
+   "files": 287,
    "outside": 0,
    "shared": 2,
    "first": "2026-11-11T02:21:55Z",
-   "last": "2026-11-11T22:25:32Z",
+   "last": "2026-11-11T23:26:06Z",
    "folders": {
-    "agents/": 38,
+    "agents/": 40,
     "app/": 4,
     "data/": 1,
-    "sources/": 195,
+    "sources/": 203,
     "tools/": 16,
     "admin/": 1,
-    "accounts/": 21
+    "accounts/": 22
    },
    "outside_folders": {},
    "has_key": true
   },
   {
    "agent": "incident.accountant",
-   "commits": 33,
-   "files": 311,
+   "commits": 34,
+   "files": 323,
    "outside": 0,
    "shared": 4,
    "first": "2026-11-11T02:58:02Z",
-   "last": "2026-11-11T22:47:23Z",
+   "last": "2026-11-11T23:42:24Z",
    "folders": {
-    "accounts/": 257,
-    "agents/": 45,
+    "accounts/": 267,
+    "agents/": 47,
     "data/": 4,
     "tools/": 5
    },
@@ -1277,58 +1294,78 @@
    "has_key": true
   },
   {
+   "agent": "incident.models",
+   "commits": 31,
+   "files": 446,
+   "outside": 0,
+   "shared": 3,
+   "first": "2026-11-11T02:36:13Z",
+   "last": "2026-11-11T23:34:04Z",
+   "folders": {
+    "data/": 3,
+    "agents/": 21,
+    "app/": 3,
+    "models/": 381,
+    "tools/": 34,
+    "accounts/": 4
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
    "agent": "incident.social",
-   "commits": 29,
-   "files": 302,
+   "commits": 30,
+   "files": 312,
    "outside": 0,
    "shared": 4,
    "first": "2026-11-11T02:30:46Z",
-   "last": "2026-11-11T22:54:04Z",
+   "last": "2026-11-11T23:51:12Z",
    "folders": {
-    "agents/": 32,
+    "agents/": 33,
     "app/": 2,
     "data/": 3,
-    "research/": 229,
+    "research/": 237,
     "tools/": 11,
-    "accounts/": 24,
+    "accounts/": 25,
     "admin/": 1
    },
    "outside_folders": {},
    "has_key": true
   },
   {
-   "agent": "incident.wikipedia",
-   "commits": 28,
-   "files": 522,
+   "agent": "incident.flights",
+   "commits": 30,
+   "files": 169,
    "outside": 0,
-   "shared": 3,
-   "first": "2026-11-11T01:43:52Z",
-   "last": "2026-11-11T22:57:24Z",
+   "shared": 7,
+   "first": "2026-11-11T22:03:53Z",
+   "last": "2026-11-12T00:06:22Z",
    "folders": {
-    "agents/": 33,
-    "data/": 3,
-    "research/": 455,
-    "tools/": 9,
-    "accounts/": 22
+    "agents/": 27,
+    "data/": 6,
+    "incidents/": 93,
+    "tools/": 30,
+    "admin/": 1,
+    "flights/": 10,
+    "accounts/": 2
    },
    "outside_folders": {},
    "has_key": true
   },
   {
-   "agent": "incident.models",
-   "commits": 28,
-   "files": 439,
+   "agent": "incident.wikipedia",
+   "commits": 29,
+   "files": 543,
    "outside": 0,
    "shared": 3,
-   "first": "2026-11-11T02:36:13Z",
-   "last": "2026-11-11T22:51:00Z",
+   "first": "2026-11-11T01:43:52Z",
+   "last": "2026-11-11T23:56:06Z",
    "folders": {
+    "agents/": 35,
     "data/": 3,
-    "agents/": 19,
-    "app/": 3,
-    "models/": 377,
-    "tools/": 34,
-    "accounts/": 3
+    "research/": 473,
+    "tools/": 9,
+    "accounts/": 23
    },
    "outside_folders": {},
    "has_key": true
@@ -1388,20 +1425,38 @@
   },
   {
    "agent": "incident.meteorology",
-   "commits": 20,
-   "files": 201,
+   "commits": 22,
+   "files": 216,
    "outside": 0,
    "shared": 3,
    "first": "2026-11-11T02:37:07Z",
-   "last": "2026-11-11T21:01:41Z",
+   "last": "2026-11-12T00:07:50Z",
    "folders": {
-    "agents/": 14,
+    "agents/": 15,
     "app/": 1,
-    "meteorology/": 163,
-    "tools/": 12,
+    "meteorology/": 175,
+    "tools/": 13,
     "admin/": 1,
     "data/": 2,
-    "accounts/": 8
+    "accounts/": 9
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
+   "agent": "incident.desk",
+   "commits": 19,
+   "files": 32,
+   "outside": 0,
+   "shared": 1,
+   "first": "2026-11-11T11:54:45Z",
+   "last": "2026-11-12T00:09:06Z",
+   "folders": {
+    "agents/": 3,
+    "app/": 7,
+    "data/": 1,
+    "desk/": 20,
+    "tools/": 1
    },
    "outside_folders": {},
    "has_key": true
@@ -1419,44 +1474,6 @@
     "data/": 1,
     "guide/": 13,
     "agents/": 2
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.desk",
-   "commits": 18,
-   "files": 31,
-   "outside": 0,
-   "shared": 1,
-   "first": "2026-11-11T11:54:45Z",
-   "last": "2026-11-11T23:08:47Z",
-   "folders": {
-    "agents/": 3,
-    "app/": 7,
-    "data/": 1,
-    "desk/": 19,
-    "tools/": 1
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.flights",
-   "commits": 17,
-   "files": 73,
-   "outside": 0,
-   "shared": 5,
-   "first": "2026-11-11T22:03:53Z",
-   "last": "2026-11-11T23:18:52Z",
-   "folders": {
-    "agents/": 15,
-    "data/": 4,
-    "incidents/": 29,
-    "tools/": 20,
-    "admin/": 1,
-    "flights/": 3,
-    "accounts/": 1
    },
    "outside_folders": {},
    "has_key": true
@@ -1498,15 +1515,15 @@
   },
   {
    "agent": "incident.datascience",
-   "commits": 15,
-   "files": 43,
+   "commits": 16,
+   "files": 44,
    "outside": 0,
    "shared": 1,
    "first": "2026-11-11T11:48:37Z",
-   "last": "2026-11-11T21:52:51Z",
+   "last": "2026-11-11T23:58:14Z",
    "folders": {
     "datascience/": 8,
-    "incidents/": 28,
+    "incidents/": 29,
     "tools/": 3,
     "agents/": 2,
     "data/": 1,
@@ -1625,16 +1642,16 @@
   },
   {
    "agent": "incident.aws",
-   "commits": 3,
-   "files": 6,
+   "commits": 4,
+   "files": 8,
    "outside": 0,
    "shared": 1,
    "first": "2026-11-11T22:19:43Z",
-   "last": "2026-11-11T23:24:07Z",
+   "last": "2026-11-11T23:24:24Z",
    "folders": {
     "data/": 1,
-    "agents/": 2,
-    "aws/": 3
+    "agents/": 3,
+    "aws/": 4
    },
    "outside_folders": {},
    "has_key": true
@@ -1705,42 +1722,42 @@
   {
    "from": "incident.librarian",
    "to": "incident.conductor",
-   "n": 101,
+   "n": 102,
    "first": "2026-11-10T23:38:35Z",
-   "last": "2026-11-11T23:02:23Z",
-   "last_sha": "f16278861f"
+   "last": "2026-11-11T23:46:51Z",
+   "last_sha": "77584a86b5"
   },
   {
    "from": "incident.observability",
    "to": "incident.conductor",
-   "n": 98,
+   "n": 101,
    "first": "2026-11-10T23:38:37Z",
-   "last": "2026-11-11T23:21:12Z",
-   "last_sha": "fb03323de2"
+   "last": "2026-11-11T23:30:50Z",
+   "last_sha": "88274a0942"
   },
   {
    "from": "incident.designer",
    "to": "incident.conductor",
-   "n": 67,
+   "n": 71,
    "first": "2026-11-10T23:36:58Z",
-   "last": "2026-11-11T23:13:16Z",
-   "last_sha": "5d72b57a56"
+   "last": "2026-11-12T00:14:27Z",
+   "last_sha": "6c79b3b0d3"
   },
   {
    "from": "incident.stories",
    "to": "incident.conductor",
-   "n": 62,
+   "n": 63,
    "first": "2026-11-11T02:26:45Z",
-   "last": "2026-11-11T22:52:50Z",
-   "last_sha": "c9eb123a70"
+   "last": "2026-11-11T23:58:07Z",
+   "last_sha": "3834772252"
   },
   {
    "from": "incident.media",
    "to": "incident.conductor",
-   "n": 45,
+   "n": 46,
    "first": "2026-11-10T23:38:00Z",
-   "last": "2026-11-11T22:38:35Z",
-   "last_sha": "73fa56859b"
+   "last": "2026-11-11T23:39:01Z",
+   "last_sha": "8a1d0fef94"
   },
   {
    "from": "incident.conductor",
@@ -1753,10 +1770,50 @@
   {
    "from": "incident.transport",
    "to": "incident.conductor",
-   "n": 39,
+   "n": 42,
    "first": "2026-11-11T10:38:49Z",
-   "last": "2026-11-11T22:51:28Z",
-   "last_sha": "52e047cebe"
+   "last": "2026-11-11T23:45:43Z",
+   "last_sha": "159433d20d"
+  },
+  {
+   "from": "incident.reporter",
+   "to": "incident.conductor",
+   "n": 40,
+   "first": "2026-11-11T03:03:46Z",
+   "last": "2026-11-12T00:12:25Z",
+   "last_sha": "4560e12f56"
+  },
+  {
+   "from": "incident.board",
+   "to": "incident.conductor",
+   "n": 39,
+   "first": "2026-11-11T02:23:14Z",
+   "last": "2026-11-11T23:46:01Z",
+   "last_sha": "dd416b5f9c"
+  },
+  {
+   "from": "incident.ci",
+   "to": "incident.conductor",
+   "n": 39,
+   "first": "2026-11-11T02:28:32Z",
+   "last": "2026-11-11T23:26:18Z",
+   "last_sha": "5b89007125"
+  },
+  {
+   "from": "incident.librarian",
+   "to": "incident.accountant",
+   "n": 39,
+   "first": "2026-11-11T03:02:01Z",
+   "last": "2026-11-11T23:47:10Z",
+   "last_sha": "ed2c6dce6e"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.stories",
+   "n": 38,
+   "first": "2026-11-11T02:30:07Z",
+   "last": "2026-11-12T00:04:05Z",
+   "last_sha": "bbcc2ca494"
   },
   {
    "from": "incident.graph",
@@ -1767,60 +1824,28 @@
    "last_sha": "2b4a8e2e54"
   },
   {
-   "from": "incident.librarian",
-   "to": "incident.accountant",
-   "n": 38,
-   "first": "2026-11-11T03:02:01Z",
-   "last": "2026-11-11T22:50:50Z",
-   "last_sha": "19047bf8ab"
-  },
-  {
-   "from": "incident.board",
-   "to": "incident.conductor",
-   "n": 37,
-   "first": "2026-11-11T02:23:14Z",
-   "last": "2026-11-11T22:37:12Z",
-   "last_sha": "4852ace637"
-  },
-  {
-   "from": "incident.ci",
-   "to": "incident.conductor",
-   "n": 37,
-   "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T23:21:58Z",
-   "last_sha": "40c30635aa"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.stories",
-   "n": 37,
-   "first": "2026-11-11T02:30:07Z",
-   "last": "2026-11-11T17:24:31Z",
-   "last_sha": "0abae5d54a"
-  },
-  {
-   "from": "incident.reporter",
-   "to": "incident.conductor",
-   "n": 36,
-   "first": "2026-11-11T03:03:46Z",
-   "last": "2026-11-11T23:08:57Z",
-   "last_sha": "44c0b64aa4"
-  },
-  {
    "from": "incident.journalist",
    "to": "incident.conductor",
-   "n": 35,
+   "n": 36,
    "first": "2026-11-11T02:59:44Z",
-   "last": "2026-11-11T23:13:52Z",
-   "last_sha": "72776abec1"
+   "last": "2026-11-12T00:14:39Z",
+   "last_sha": "36d157e7c7"
   },
   {
    "from": "incident.archivist",
    "to": "incident.conductor",
-   "n": 34,
+   "n": 35,
    "first": "2026-11-11T02:22:31Z",
-   "last": "2026-11-11T22:26:20Z",
-   "last_sha": "e3a4c47de8"
+   "last": "2026-11-11T23:25:45Z",
+   "last_sha": "befd165804"
+  },
+  {
+   "from": "incident.accountant",
+   "to": "incident.conductor",
+   "n": 34,
+   "first": "2026-11-11T02:58:02Z",
+   "last": "2026-11-11T23:42:24Z",
+   "last_sha": "c52bea0296"
   },
   {
    "from": "incident.journalist",
@@ -1839,14 +1864,6 @@
    "last_sha": "9ca499a2eb"
   },
   {
-   "from": "incident.accountant",
-   "to": "incident.conductor",
-   "n": 33,
-   "first": "2026-11-11T02:58:02Z",
-   "last": "2026-11-11T22:47:23Z",
-   "last_sha": "2af5d98745"
-  },
-  {
    "from": "incident.conductor",
    "to": "incident.brief",
    "n": 33,
@@ -1857,10 +1874,10 @@
   {
    "from": "incident.entities",
    "to": "incident.conductor",
-   "n": 32,
+   "n": 33,
    "first": "2026-11-11T02:20:30Z",
-   "last": "2026-11-11T22:38:22Z",
-   "last_sha": "9ac44fb3ff"
+   "last": "2026-11-11T23:38:32Z",
+   "last_sha": "56315dcd67"
   },
   {
    "from": "incident.identity",
@@ -1873,58 +1890,66 @@
   {
    "from": "incident.ipma",
    "to": "incident.conductor",
-   "n": 30,
+   "n": 31,
    "first": "2026-11-11T02:31:46Z",
-   "last": "2026-11-11T22:54:34Z",
-   "last_sha": "5fbc728a27"
+   "last": "2026-11-11T23:52:52Z",
+   "last_sha": "576b578736"
   },
   {
    "from": "incident.sources",
    "to": "incident.conductor",
-   "n": 30,
+   "n": 31,
    "first": "2026-11-11T02:21:55Z",
-   "last": "2026-11-11T22:25:32Z",
-   "last_sha": "60fcd20d4d"
-  },
-  {
-   "from": "incident.social",
-   "to": "incident.conductor",
-   "n": 28,
-   "first": "2026-11-11T02:30:46Z",
-   "last": "2026-11-11T22:54:04Z",
-   "last_sha": "6a5ae48b74"
+   "last": "2026-11-11T23:26:06Z",
+   "last_sha": "a896b9a633"
   },
   {
    "from": "incident.weatherwatch",
    "to": "incident.conductor",
-   "n": 28,
+   "n": 30,
    "first": "2026-11-10T23:58:52Z",
-   "last": "2026-11-11T22:37:01Z",
-   "last_sha": "b6795638cd"
+   "last": "2026-11-11T23:33:32Z",
+   "last_sha": "821368d736"
+  },
+  {
+   "from": "incident.social",
+   "to": "incident.conductor",
+   "n": 29,
+   "first": "2026-11-11T02:30:46Z",
+   "last": "2026-11-11T23:51:12Z",
+   "last_sha": "f3671bdb75"
   },
   {
    "from": "incident.wikipedia",
    "to": "incident.conductor",
-   "n": 28,
+   "n": 29,
    "first": "2026-11-11T01:43:52Z",
-   "last": "2026-11-11T22:57:24Z",
-   "last_sha": "28536af82e"
+   "last": "2026-11-11T23:56:06Z",
+   "last_sha": "28edef3b2d"
   },
   {
    "from": "incident.conductor",
    "to": "incident.meteorologist",
-   "n": 26,
+   "n": 27,
    "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T23:00:53Z",
-   "last_sha": "4cb9220c96"
+   "last": "2026-11-11T23:28:02Z",
+   "last_sha": "620ba703b5"
   },
   {
    "from": "incident.media",
    "to": "incident.accountant",
-   "n": 26,
+   "n": 27,
    "first": "2026-11-11T03:03:22Z",
-   "last": "2026-11-11T22:38:35Z",
-   "last_sha": "73fa56859b"
+   "last": "2026-11-11T23:39:01Z",
+   "last_sha": "8a1d0fef94"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.designer",
+   "n": 24,
+   "first": "2026-11-10T23:37:28Z",
+   "last": "2026-11-12T00:13:31Z",
+   "last_sha": "a796e434be"
   },
   {
    "from": "incident.reporter",
@@ -1935,20 +1960,20 @@
    "last_sha": "8f30f789fc"
   },
   {
+   "from": "incident.weatherwatch",
+   "to": "incident.accountant",
+   "n": 24,
+   "first": "2026-11-11T03:02:11Z",
+   "last": "2026-11-11T23:33:18Z",
+   "last_sha": "75f5ddca11"
+  },
+  {
    "from": "incident.conductor",
    "to": "incident.researcher",
    "n": 23,
    "first": "2026-11-10T21:14:33Z",
    "last": "2026-11-11T21:38:42Z",
    "last_sha": "427623a145"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.designer",
-   "n": 23,
-   "first": "2026-11-10T23:37:28Z",
-   "last": "2026-11-11T11:46:35Z",
-   "last_sha": "4794abfb68"
   },
   {
    "from": "incident.designer",
@@ -1959,12 +1984,12 @@
    "last_sha": "8e073c6855"
   },
   {
-   "from": "incident.weatherwatch",
-   "to": "incident.accountant",
+   "from": "incident.models",
+   "to": "incident.conductor",
    "n": 23,
-   "first": "2026-11-11T03:02:11Z",
-   "last": "2026-11-11T22:34:59Z",
-   "last_sha": "eaf1e5e4b2"
+   "first": "2026-11-11T02:36:13Z",
+   "last": "2026-11-11T23:34:04Z",
+   "last_sha": "6e4bbcc2e3"
   },
   {
    "from": "incident.shadow",
@@ -1977,26 +2002,18 @@
   {
    "from": "incident.conductor",
    "to": "incident.librarian",
-   "n": 20,
+   "n": 21,
    "first": "2026-11-10T23:48:58Z",
-   "last": "2026-11-11T22:59:42Z",
-   "last_sha": "5a8040507f"
+   "last": "2026-11-11T23:26:24Z",
+   "last_sha": "4565d24d78"
   },
   {
    "from": "incident.conductor",
    "to": "incident.transport",
-   "n": 20,
+   "n": 21,
    "first": "2026-11-11T10:24:26Z",
-   "last": "2026-11-11T22:00:26Z",
-   "last_sha": "c47bc9d59c"
-  },
-  {
-   "from": "incident.models",
-   "to": "incident.conductor",
-   "n": 20,
-   "first": "2026-11-11T02:36:13Z",
-   "last": "2026-11-11T22:51:00Z",
-   "last_sha": "4f4720df45"
+   "last": "2026-11-11T23:44:35Z",
+   "last_sha": "d0c2bbd774"
   },
   {
    "from": "incident.studio",
@@ -2015,6 +2032,14 @@
    "last_sha": "505298b663"
   },
   {
+   "from": "incident.desk",
+   "to": "incident.conductor",
+   "n": 18,
+   "first": "2026-11-11T11:54:45Z",
+   "last": "2026-11-12T00:09:06Z",
+   "last_sha": "92d18484d8"
+  },
+  {
    "from": "incident.shadow",
    "to": "incident.accountant",
    "n": 18,
@@ -2031,12 +2056,20 @@
    "last_sha": "929e897b3d"
   },
   {
-   "from": "incident.desk",
-   "to": "incident.conductor",
+   "from": "incident.conductor",
+   "to": "incident.observability",
    "n": 17,
-   "first": "2026-11-11T11:54:45Z",
-   "last": "2026-11-11T23:08:47Z",
-   "last_sha": "385d3c099e"
+   "first": "2026-11-10T23:42:56Z",
+   "last": "2026-11-11T23:30:15Z",
+   "last_sha": "6a5d8a150e"
+  },
+  {
+   "from": "incident.observability",
+   "to": "incident.accountant",
+   "n": 17,
+   "first": "2026-11-11T03:00:58Z",
+   "last": "2026-11-11T23:27:35Z",
+   "last_sha": "3baed26a26"
   },
   {
    "from": "incident.conductor",
@@ -2045,14 +2078,6 @@
    "first": "2026-11-10T23:59:34Z",
    "last": "2026-11-11T17:44:15Z",
    "last_sha": "9b684de82a"
-  },
-  {
-   "from": "incident.observability",
-   "to": "incident.accountant",
-   "n": 16,
-   "first": "2026-11-11T03:00:58Z",
-   "last": "2026-11-11T23:19:10Z",
-   "last_sha": "3bb6246843"
   },
   {
    "from": "incident.reporter",
@@ -2064,11 +2089,35 @@
   },
   {
    "from": "incident.conductor",
-   "to": "incident.observability",
+   "to": "incident.accountant",
    "n": 15,
-   "first": "2026-11-10T23:42:56Z",
-   "last": "2026-11-11T22:19:09Z",
-   "last_sha": "fd90abcd44"
+   "first": "2026-11-11T02:58:42Z",
+   "last": "2026-11-11T23:26:24Z",
+   "last_sha": "4565d24d78"
+  },
+  {
+   "from": "incident.designer",
+   "to": "incident.weather",
+   "n": 15,
+   "first": "2026-11-11T02:19:08Z",
+   "last": "2026-11-11T23:34:18Z",
+   "last_sha": "11b03ed14c"
+  },
+  {
+   "from": "incident.flights",
+   "to": "incident.designer",
+   "n": 15,
+   "first": "2026-11-11T22:11:31Z",
+   "last": "2026-11-12T00:06:08Z",
+   "last_sha": "79bbdcd8c7"
+  },
+  {
+   "from": "incident.weather",
+   "to": "incident.designer",
+   "n": 15,
+   "first": "2026-11-11T02:16:19Z",
+   "last": "2026-11-11T23:32:47Z",
+   "last_sha": "ae4410186c"
   },
   {
    "from": "incident.conductor",
@@ -2079,20 +2128,12 @@
    "last_sha": "4090eea007"
   },
   {
-   "from": "incident.conductor",
-   "to": "incident.accountant",
-   "n": 14,
-   "first": "2026-11-11T02:58:42Z",
-   "last": "2026-11-11T23:03:48Z",
-   "last_sha": "0289dea874"
-  },
-  {
    "from": "incident.designer",
-   "to": "incident.weather",
+   "to": "incident.flights",
    "n": 14,
-   "first": "2026-11-11T02:19:08Z",
-   "last": "2026-11-11T23:21:48Z",
-   "last_sha": "8631f3431c"
+   "first": "2026-11-11T22:04:05Z",
+   "last": "2026-11-11T23:58:20Z",
+   "last_sha": "b56f94a2bc"
   },
   {
    "from": "incident.transport",
@@ -2101,14 +2142,6 @@
    "first": "2026-11-11T10:39:13Z",
    "last": "2026-11-11T18:43:46Z",
    "last_sha": "6829b42d7d"
-  },
-  {
-   "from": "incident.weather",
-   "to": "incident.designer",
-   "n": 14,
-   "first": "2026-11-11T02:16:19Z",
-   "last": "2026-11-11T13:19:35Z",
-   "last_sha": "251e2e027b"
   },
   {
    "from": "incident.identity",
@@ -2127,6 +2160,14 @@
    "last_sha": "73505d3054"
   },
   {
+   "from": "incident.meteorology",
+   "to": "incident.conductor",
+   "n": 13,
+   "first": "2026-11-11T02:37:07Z",
+   "last": "2026-11-12T00:07:40Z",
+   "last_sha": "f1121316db"
+  },
+  {
    "from": "incident.storyteller",
    "to": "incident.motion",
    "n": 13,
@@ -2135,12 +2176,12 @@
    "last_sha": "2d74fb1c47"
   },
   {
-   "from": "incident.meteorology",
+   "from": "incident.flights",
    "to": "incident.conductor",
-   "n": 12,
-   "first": "2026-11-11T02:37:07Z",
-   "last": "2026-11-11T21:01:33Z",
-   "last_sha": "dd05fc7796"
+   "n": 11,
+   "first": "2026-11-11T22:03:53Z",
+   "last": "2026-11-12T00:06:22Z",
+   "last_sha": "74eb9e9aab"
   },
   {
    "from": "incident.stories",
@@ -2175,6 +2216,14 @@
    "last_sha": "1dec01684f"
   },
   {
+   "from": "incident.datascience",
+   "to": "incident.brief",
+   "n": 10,
+   "first": "2026-11-11T11:51:22Z",
+   "last": "2026-11-11T23:58:14Z",
+   "last_sha": "35e57952af"
+  },
+  {
    "from": "incident.conductor",
    "to": "incident.dev",
    "n": 9,
@@ -2183,20 +2232,20 @@
    "last_sha": "cdaa2d7bf8"
   },
   {
-   "from": "incident.datascience",
-   "to": "incident.brief",
+   "from": "incident.meteorology",
+   "to": "incident.accountant",
    "n": 9,
-   "first": "2026-11-11T11:51:22Z",
-   "last": "2026-11-11T21:52:51Z",
-   "last_sha": "29db2161cb"
+   "first": "2026-11-11T03:00:51Z",
+   "last": "2026-11-12T00:07:50Z",
+   "last_sha": "21b8eff95c"
   },
   {
-   "from": "incident.designer",
-   "to": "incident.flights",
-   "n": 9,
-   "first": "2026-11-11T22:04:05Z",
-   "last": "2026-11-11T23:22:47Z",
-   "last_sha": "711c9ed03f"
+   "from": "incident.board",
+   "to": "incident.accountant",
+   "n": 8,
+   "first": "2026-11-11T03:04:14Z",
+   "last": "2026-11-11T23:46:01Z",
+   "last_sha": "dd416b5f9c"
   },
   {
    "from": "incident.conductor",
@@ -2229,14 +2278,6 @@
    "first": "2026-11-11T02:22:49Z",
    "last": "2026-11-11T12:14:31Z",
    "last_sha": "5b1a594a6d"
-  },
-  {
-   "from": "incident.meteorology",
-   "to": "incident.accountant",
-   "n": 8,
-   "first": "2026-11-11T03:00:51Z",
-   "last": "2026-11-11T21:01:41Z",
-   "last_sha": "03c6b7a624"
   },
   {
    "from": "incident.shadow",
@@ -2287,14 +2328,6 @@
    "last_sha": "7b9238de7e"
   },
   {
-   "from": "incident.flights",
-   "to": "incident.designer",
-   "n": 7,
-   "first": "2026-11-11T22:11:31Z",
-   "last": "2026-11-11T23:18:52Z",
-   "last_sha": "7eaf54fb79"
-  },
-  {
    "from": "incident.journalist",
    "to": "incident.planner",
    "n": 7,
@@ -2343,14 +2376,6 @@
    "last_sha": "24a02f66b0"
   },
   {
-   "from": "incident.board",
-   "to": "incident.accountant",
-   "n": 6,
-   "first": "2026-11-11T03:04:14Z",
-   "last": "2026-11-11T12:38:21Z",
-   "last_sha": "cdb386c7b9"
-  },
-  {
    "from": "incident.brief",
    "to": "incident.designer",
    "n": 6,
@@ -2368,19 +2393,19 @@
   },
   {
    "from": "incident.conductor",
+   "to": "incident.board",
+   "n": 6,
+   "first": "2026-11-11T02:13:10Z",
+   "last": "2026-11-11T23:46:41Z",
+   "last_sha": "dc8aab2d85"
+  },
+  {
+   "from": "incident.conductor",
    "to": "incident.ipma",
    "n": 6,
    "first": "2026-11-11T02:34:10Z",
    "last": "2026-11-11T12:53:23Z",
    "last_sha": "1a15249965"
-  },
-  {
-   "from": "incident.flights",
-   "to": "incident.conductor",
-   "n": 6,
-   "first": "2026-11-11T22:03:53Z",
-   "last": "2026-11-11T23:05:18Z",
-   "last_sha": "d891f46cf2"
   },
   {
    "from": "incident.ipma",
@@ -2432,14 +2457,6 @@
   },
   {
    "from": "incident.conductor",
-   "to": "incident.board",
-   "n": 5,
-   "first": "2026-11-11T02:13:10Z",
-   "last": "2026-11-11T11:34:39Z",
-   "last_sha": "34e6f93a12"
-  },
-  {
-   "from": "incident.conductor",
    "to": "incident.sources",
    "n": 5,
    "first": "2026-11-11T08:26:05Z",
@@ -2477,6 +2494,14 @@
    "first": "2026-11-11T03:00:32Z",
    "last": "2026-11-11T04:57:56Z",
    "last_sha": "f85406eebf"
+  },
+  {
+   "from": "incident.observability",
+   "to": "incident.librarian",
+   "n": 5,
+   "first": "2026-11-11T00:17:37Z",
+   "last": "2026-11-11T23:27:35Z",
+   "last_sha": "3baed26a26"
   },
   {
    "from": "incident.observability",
@@ -2559,6 +2584,14 @@
    "last_sha": "e9c8d3d3a3"
   },
   {
+   "from": "incident.aws",
+   "to": "incident.conductor",
+   "n": 4,
+   "first": "2026-11-11T22:19:43Z",
+   "last": "2026-11-11T23:24:24Z",
+   "last_sha": "bc2ce879f5"
+  },
+  {
    "from": "incident.board",
    "to": "incident.observability",
    "n": 4,
@@ -2592,11 +2625,27 @@
   },
   {
    "from": "incident.conductor",
+   "to": "incident.reporter",
+   "n": 4,
+   "first": "2026-11-11T06:21:45Z",
+   "last": "2026-11-12T00:09:54Z",
+   "last_sha": "aa70077331"
+  },
+  {
+   "from": "incident.conductor",
    "to": "incident.models",
    "n": 4,
    "first": "2026-11-11T22:00:26Z",
    "last": "2026-11-11T22:16:14Z",
    "last_sha": "0d7e40cb15"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.flights",
+   "n": 4,
+   "first": "2026-11-11T22:09:07Z",
+   "last": "2026-11-12T00:02:55Z",
+   "last_sha": "78c6c58d25"
   },
   {
    "from": "incident.datascience",
@@ -2661,14 +2710,6 @@
    "first": "2026-11-11T22:16:21Z",
    "last": "2026-11-11T22:39:35Z",
    "last_sha": "662857c2c1"
-  },
-  {
-   "from": "incident.observability",
-   "to": "incident.librarian",
-   "n": 4,
-   "first": "2026-11-11T00:17:37Z",
-   "last": "2026-11-11T23:11:21Z",
-   "last_sha": "fef0adebba"
   },
   {
    "from": "incident.observability",
@@ -2757,14 +2798,6 @@
    "first": "2026-11-11T03:50:43Z",
    "last": "2026-11-11T05:50:31Z",
    "last_sha": "5f5fff9744"
-  },
-  {
-   "from": "incident.aws",
-   "to": "incident.conductor",
-   "n": 3,
-   "first": "2026-11-11T22:19:43Z",
-   "last": "2026-11-11T23:24:07Z",
-   "last_sha": "02a67d6e3d"
   },
   {
    "from": "incident.board",
@@ -3031,6 +3064,14 @@
    "last_sha": "1da1b8545c"
   },
   {
+   "from": "incident.board",
+   "to": "incident.flights",
+   "n": 2,
+   "first": "2026-11-11T22:34:20Z",
+   "last": "2026-11-11T23:46:01Z",
+   "last_sha": "dd416b5f9c"
+  },
+  {
    "from": "incident.brief",
    "to": "incident.ci",
    "n": 2,
@@ -3080,14 +3121,6 @@
   },
   {
    "from": "incident.conductor",
-   "to": "incident.reporter",
-   "n": 2,
-   "first": "2026-11-11T06:21:45Z",
-   "last": "2026-11-11T22:05:39Z",
-   "last_sha": "ebf00f5243"
-  },
-  {
-   "from": "incident.conductor",
    "to": "incident.motion",
    "n": 2,
    "first": "2026-11-11T10:10:38Z",
@@ -3101,14 +3134,6 @@
    "first": "2026-11-11T11:44:00Z",
    "last": "2026-11-11T21:12:31Z",
    "last_sha": "060fa06330"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.flights",
-   "n": 2,
-   "first": "2026-11-11T22:09:07Z",
-   "last": "2026-11-11T22:12:30Z",
-   "last_sha": "ecd37a939e"
   },
   {
    "from": "incident.designer",
@@ -3215,6 +3240,14 @@
    "last_sha": "b130caf553"
   },
   {
+   "from": "incident.graph",
+   "to": "incident.identity",
+   "n": 2,
+   "first": "2026-11-11T07:56:29Z",
+   "last": "2026-11-11T23:59:55Z",
+   "last_sha": "b7442f9f1c"
+  },
+  {
    "from": "incident.journalist",
    "to": "incident.board",
    "n": 2,
@@ -3309,6 +3342,14 @@
    "first": "2026-11-11T02:26:11Z",
    "last": "2026-11-11T02:30:36Z",
    "last_sha": "f2e014e9f2"
+  },
+  {
+   "from": "incident.observability",
+   "to": "incident.reporter",
+   "n": 2,
+   "first": "2026-11-11T03:14:53Z",
+   "last": "2026-11-11T23:27:35Z",
+   "last_sha": "3baed26a26"
   },
   {
    "from": "incident.perplexity",
@@ -3429,6 +3470,14 @@
    "first": "2026-11-11T22:14:07Z",
    "last": "2026-11-11T22:20:58Z",
    "last_sha": "d91cbe92c1"
+  },
+  {
+   "from": "incident.transport",
+   "to": "incident.observability",
+   "n": 2,
+   "first": "2026-11-11T22:53:27Z",
+   "last": "2026-11-11T23:44:23Z",
+   "last_sha": "26dcc70398"
   },
   {
    "from": "incident.weather",
@@ -3565,14 +3614,6 @@
    "first": "2026-11-11T21:34:59Z",
    "last": "2026-11-11T21:34:59Z",
    "last_sha": "af67e39a60"
-  },
-  {
-   "from": "incident.board",
-   "to": "incident.flights",
-   "n": 1,
-   "first": "2026-11-11T22:34:20Z",
-   "last": "2026-11-11T22:34:20Z",
-   "last_sha": "ffd048e3eb"
   },
   {
    "from": "incident.board",
@@ -3861,14 +3902,6 @@
    "first": "2026-11-11T00:29:38Z",
    "last": "2026-11-11T00:29:38Z",
    "last_sha": "4076920311"
-  },
-  {
-   "from": "incident.graph",
-   "to": "incident.identity",
-   "n": 1,
-   "first": "2026-11-11T07:56:29Z",
-   "last": "2026-11-11T07:56:29Z",
-   "last_sha": "14b774bb69"
   },
   {
    "from": "incident.graph",
@@ -4208,14 +4241,6 @@
   },
   {
    "from": "incident.observability",
-   "to": "incident.reporter",
-   "n": 1,
-   "first": "2026-11-11T03:14:53Z",
-   "last": "2026-11-11T03:14:53Z",
-   "last_sha": "f76a4a6088"
-  },
-  {
-   "from": "incident.observability",
    "to": "incident.identity",
    "n": 1,
    "first": "2026-11-11T08:18:21Z",
@@ -4261,6 +4286,14 @@
    "first": "2026-11-11T22:19:53Z",
    "last": "2026-11-11T22:19:53Z",
    "last_sha": "5aa67f5471"
+  },
+  {
+   "from": "incident.observability",
+   "to": "incident.motion",
+   "n": 1,
+   "first": "2026-11-11T23:27:35Z",
+   "last": "2026-11-11T23:27:35Z",
+   "last_sha": "3baed26a26"
   },
   {
    "from": "incident.perplexity",
@@ -4439,14 +4472,6 @@
    "last_sha": "863d28febe"
   },
   {
-   "from": "incident.transport",
-   "to": "incident.observability",
-   "n": 1,
-   "first": "2026-11-11T22:53:27Z",
-   "last": "2026-11-11T22:53:27Z",
-   "last_sha": "1fd96996b2"
-  },
-  {
    "from": "incident.weather",
    "to": "incident.librarian",
    "n": 1,
@@ -4622,42 +4647,70 @@
    "paths": 1,
    "commits": 1,
    "example": "tools/models-calls.mjs"
+  },
+  {
+   "by": "incident.observability",
+   "owner": "incident.accountant",
+   "paths": 1,
+   "commits": 1,
+   "example": "tools/accounts-build.mjs"
+  },
+  {
+   "by": "incident.observability",
+   "owner": "incident.motion",
+   "paths": 1,
+   "commits": 1,
+   "example": "tools/flows-build.mjs"
+  },
+  {
+   "by": "incident.observability",
+   "owner": "incident.librarian",
+   "paths": 1,
+   "commits": 1,
+   "example": "tools/library-pack.mjs"
+  },
+  {
+   "by": "incident.observability",
+   "owner": "incident.reporter",
+   "paths": 1,
+   "commits": 1,
+   "example": "tools/reporter-numbers.mjs"
   }
  ],
  "signing": {
   "commits": {
-   "total": 1866,
-   "with_a_signature": 1866,
+   "total": 1942,
+   "with_a_signature": 1942,
    "without": [],
-   "github_verified": 1866,
+   "github_verified": 1942,
    "github_not_asked": 0,
    "keys": [
     {
      "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
-     "commits": 1865,
+     "commits": 1941,
      "in_data_keys_json": false
     }
    ],
    "kinds": {
     "pgp": 1,
-    "ssh": 1865
+    "ssh": 1941
    }
   },
   "agent_named_by": {
    "not stated": 1,
-   "Agent: trailer": 1865
+   "Agent: trailer": 1941
   },
   "tags": {
-   "total": 1174,
+   "total": 1223,
    "annotated": 0,
-   "lightweight": 1174,
+   "lightweight": 1223,
    "signed": 0
   },
   "releases": {
    "github_releases": 0,
    "signed_by_an_agent_key": 0
   },
-  "agent_keys_published": 141,
+  "agent_keys_published": 144,
   "reading": "Every commit object carries one signature, made by the hosting service the agents' sessions run in, with a key that is the same for every agent: it shows the commit came through that service and was not altered after, and GitHub marks it Verified. It does not say WHICH agent: that is only the Agent: trailer, a line of text any pusher could write. No commit, tag or release is signed with an agent's own key from data/keys.json. The version tags are lightweight: names for commits, with no signature. The proposal: ci/signing.md."
  }
 }
