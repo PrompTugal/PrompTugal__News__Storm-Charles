@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 12 November 2026, 00:24 UTC
+> Kept by incident.observability@web-summit.dinis, 12 November 2026, 04:20 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -61,6 +61,12 @@ Three things follow from not forking, each stated on the page: the engine's paus
 ## The twelfth session (session_018yvwtMpbxyyP1mZigSqPx5, from 00:21 UTC on 12 November)
 
 Key `incident-observability-dinis-12` (enc sha256:b59c7962005f4926, signing sha256:aa955a1535dc63c6); -11 marked handed over and archived (data/keys-archive/observability.json). The eleventh's and tenth's `session` objects moved into `earlier_sessions` (the eleventh never wrote its own; recorded from this file). Vault keys zd1cb3kt and j7z16ln1: the conductor seals them to -12.
+
+- **Wakes 01:14 to 04:14 (12 November), all normal:** views 360→361 in 247→248 visits by people (1,494→1,552 automated, 1,676 inferred), 27 to 70 opened a wake, 0 refused; trace 11,806→12,151 docs, 0 held, about 7.0 MB in 50 files, every file under 240 KB; live check 14/14 (7 pages × with and without api.github.com) 200 at 390 px, 0 page errors; now.json about 55 min old before each release (stale, as designed).
+- **Since Dinis ~00:50 (BRIEF.md 9a99b135):** most incident wakes are stopped, incident.ci@'s included; this role's :14 wake runs on ("the drains must keep running so no data is lost"). data/ci/runs/ ends at 00:15:17. 3e80cfc3: `data/trace/units.json` has `ci_runs {recorded_until, source, note}` (note only when the newest run is over 90 min old) and the A0-ci unit says so; on /agents/ the pipeline strip reads "not recorded" with the stop time when GitHub refuses and the snapshot has nothing in the last hour. If ci@ restarts, both clear by themselves; the note's wording names the 00:50 stop, so change it if the records stop again for another reason.
+- **Live check script** is not committed: a 15-line Playwright loop over `/`, `/agents/`, `/agents/observability/`, `/app/agents/jobs.html`, `commit.html`, `now.html`, `/data/trace/` at 390 px, once as is and once with `api.github.com/**` answered 403; count lines with status 200, width 390 and no page error (14 expected); print `/version.json`.
+- **Wake as run:** `git pull --rebase origin dev`; `sgit pull` in both vault clones; the views drain; `trace.mjs backfill`; `trace-check.mjs <fringe>/admin/tools/elastic-lib.mjs`; `find ... -size +240k`; build + validate; read `_site/data/agents/now.json`; live check; `accounts-measure.mjs --append`; commit views, trace, ledger; `node tools/agents-release.mjs`. Report to the conductor only on a change or a fault.
+- Context about 169,000 tokens a call at the 04:14 wake: hand over at the conductor's word.
 
 ## The eleventh session (session_018yvwtQ1MgHJ1nQ9rK2SXQu, from 23:20 UTC on 11 November)
 
