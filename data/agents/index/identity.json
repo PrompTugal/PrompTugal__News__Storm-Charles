@@ -9,23 +9,23 @@
   "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
   "shared_row": false,
   "status_file": "agents/identity/status.json",
-  "status_sha256": "1366f45954c3f8daf3632b8183aca667d244cd6a53f2ba4f2e1da39840b19625",
+  "status_sha256": "7e2c6ba805789c5058e8d013bb0b47cbba52ba511fefb1392fe46d7559ebf749",
   "state": "the conductor's append lane for vault keys is open (vault wowyrqlr, data/lanes.json keys_to_conductor). Dinis's feedback lane exists on the same vault and stays off until his key is a named sender. The login and the sealed feedback box are live as before",
-  "last_wake": "2026-11-11T22:58:26Z",
+  "last_wake": "2026-11-11T23:22:00Z",
   "jobs": [],
   "done": [
     "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
     "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
-    "16:21: wake: 115 keys of 38 agents, 0 problems (since 15:21, by diffing data/keys.json: observability-7, stories-8, journalist-7, reporter-6 added, each previous one handed over); no private half in any tracked file; signed.json unchanged …",
     "17:21: wake: no change to data/keys.json since 16:20 (115 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
     "18:21: wake: 119 keys of 38 agents, 0 problems (since 17:21, by diffing data/keys.json: weatherwatch-5, librarian-12, stories-9, observability-8 added, each previous one handed over); no private half in any tracked file; signed.json unchan…",
     "19:21: wake: 120 keys of 38 agents, 0 problems (since 18:21, by diffing data/keys.json: transport-5 added, -4 handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
     "20:21: wake: no change to data/keys.json since 19:20 (120 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
     "21:21: wake: 123 keys of 38 agents, 0 problems (since 20:20, by diffing data/keys.json: media-4, librarian-13, reporter-7 added, each previous one handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-te…",
     "22:21: wake: 132 keys of 40 agents, 0 problems (since 21:20, by diffing data/keys.json: librarian-14, board-4, stories-10, models-2, accountant-4, journalist-8, observability-9 added, each previous one handed over; two new agents, incident…",
-    "22:58: at the conductor's ask (22:52), data/keys.json (261,474 B, over the gate's 256 KB) split: the 40 active keys stay (75,104 B); 97 earlier keys of 23 agents moved to data/keys-archive/<role>.json; tools/lane-keystore.mjs reads both (r…"
+    "22:58: at the conductor's ask (22:52), data/keys.json (261,474 B, over the gate's 256 KB) split: the 40 active keys stay (75,104 B); 97 earlier keys of 23 agents moved to data/keys-archive/<role>.json; tools/lane-keystore.mjs reads both (r…",
+    "23:22: wake: 141 keys of 40 agents, 0 problems (since the split: designer-9, flights-2, librarian-15, observability-11 added, each previous one handed over and already moved to data/keys-archive/ by its own session: nothing left to archive…"
   ],
-  "done_total": 37,
+  "done_total": 38,
   "next": [
     "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
     "when a token is in the environment and he says yes: the bridge vault (sgit), then SG_SEND_TOKEN and LANE_VAULT_KEY in the environment and node tools/lane-configure.mjs; the data vault; their keys sealed to him",

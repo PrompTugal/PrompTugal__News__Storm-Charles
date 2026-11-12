@@ -3,7 +3,7 @@
   "by": "incident.observability@web-summit.dinis",
   "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
   "branch": "dev",
-  "head": "180d6956d5b54d0fa28ac59a4c78b274eb6ec643",
+  "head": "36d157e7c73892a76603d63913e80f2203049654",
   "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
   "address_pattern": {
     "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
@@ -14,11 +14,11 @@
   "measured_source": "each session's measured: accounts/ledger/<role>.jsonl, the latest line of the measured session that began before that session's first push (matched by time: a ledger line carries no session address)",
   "counts": {
     "agents": 43,
-    "sessions": 133,
+    "sessions": 135,
     "agents_with_more_than_one_session": 25,
     "sessions_stated_that_do_not_push_here": 3,
-    "sessions_measured": 112,
-    "sessions_with_a_recorded_start": 61,
+    "sessions_measured": 118,
+    "sessions_with_a_recorded_start": 60,
     "agents_without_a_key": 3
   },
   "split": "one file per agent beside this one (agents[].file); tools/agents-split.mjs joins them (readAgentsData), and the build serves the whole object at data/agents/sessions.json",
@@ -196,5 +196,5 @@
       "file": "wikipedia.json"
     }
   ],
-  "updated": "2026-11-11T23:18:42Z"
+  "updated": "2026-11-12T00:19:56Z"
 }
