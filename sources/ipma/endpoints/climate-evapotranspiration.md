@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Daily reference evapotranspiration by municipality
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 23:52 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 00:52 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Evapotranspiração de referência diária por concelho*. D
 | Shape | one line per municipality and day, 20 days |
 | IPMA says it updates | Taxa de atualização diária. |
 | IPMA's file dated (its Last-Modified header) | · UTC |
-| We last read it | 2026-11-11 23:51 UTC, 1 file, 0 bytes |
+| We last read it | 2026-11-12 00:51 UTC, 1 file, 0 bytes |
 | IPMA's note | "Valores diários obtidos através do processo de interpolação com recurso aos dados das estações meteorológicas automáticas da rede do IPMA. Valores dos últimos 20 dias." |
 
 ## Fields
@@ -47,6 +47,6 @@ IPMA's name for it: *Evapotranspiração de referência diária por concelho*. D
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv](https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv) | 404 | · | `·` | · | 2026-11-11 23:51 |
+| [observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv](https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv) | 404 | · | `·` | · | 2026-11-12 00:51 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads.
