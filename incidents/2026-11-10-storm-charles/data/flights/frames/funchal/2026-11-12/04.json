@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T04:00:17Z",
+  "updated": "2026-11-12T04:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -26,7 +26,9 @@
   },
   "cadence_min": 20,
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
-  "airlines": {},
+  "airlines": {
+    "TAM": "LATAM Brasil"
+  },
   "frames": [
     {
       "t": "2026-11-12T04:00:17Z",
@@ -44,6 +46,44 @@
       "other": 0,
       "withheld_by_owner_request": 0,
       "rows": [],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T04:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 101,
+        "sha256": "340026bece0c839f69f5360a46451ea645bec77ca57e1c19a9e9a5bd8394c5d7",
+        "read": "2026-11-12T04:20:15Z",
+        "response_ms": 451,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T042015Z-340026bece0c.body",
+        "rate_limit_remaining": 486
+      },
+      "airline": 0,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T04:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 786,
+        "sha256": "f3c17f77df42ac33c61abdf079a883ac8f60e23ab0541c051d09e97b278a13b0",
+        "read": "2026-11-12T04:40:16Z",
+        "response_ms": 467,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T044016Z-f3c17f77df42.body",
+        "rate_limit_remaining": 496
+      },
+      "airline": 1,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["TAM8146","TAM","B77W",30.9862,-15.4709,38000,false,543,40,0,1.8]
+      ],
       "others": []
     }
   ]
