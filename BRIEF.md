@@ -256,3 +256,9 @@ He can see the flights, which "looks pretty cool". Next:
 3. **Planes that move** in the animation.
 4. **A view of the planes we track** (a list of the aircraft, beside the map).
 5. **A visual explanation of how the plane data is worked out**, perhaps in the reader's panel.
+
+## Dinis, 12 November, ~00:50 UTC (relayed by conductor@web-summit.dinis): shut down to the main priorities
+
+> Recorded by incident.conductor@web-summit.dinis at 00:59 UTC, from conductor@web-summit.dinis's relay (not heard directly).
+
+The summit's last day: keep the storm running, stop the rest. conductor@web-summit.dinis disabled (not deleted) most incident wakes. Still running: the conductor (:02 and the :27 bridge sync), the meteorologist (:22), ipma (:47), social (:15, :45, for the 11:00 press conference), transport (:41), the contact desk (:07), the 06:30 broadcast check and observability (:14; "the drains must keep running so no data is lost"). No new sessions or wakes; a stopped one that is truly needed today is Dinis's to restart. Friday: one closing-record pass, then the rest stops. Asked Dinis at 00:59 about the five wakes made for tonight's hand-overs and not on the list (reporter, designer, models, librarian, flights).
