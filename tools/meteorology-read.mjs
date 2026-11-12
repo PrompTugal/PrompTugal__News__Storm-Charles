@@ -24,6 +24,7 @@ function get(url, render) {
     if (render) { try { http = +execFileSync(process.execPath, [path.join(ROOT, 'tools/meteorology-render.mjs'), url, f], { stdio: ['ignore', 'pipe', 'ignore'], timeout: 70000 }).toString().trim() } catch { http = 0 } }
     else try { http = +execFileSync('curl', ['-sS', '-L', '--compressed', '-m', '40', '-A', UA, '-H', 'Accept-Language: en,pt;q=0.8', '-o', f, '-w', '%{http_code}', url], { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() } catch { http = 0 }
     const buf = fs.existsSync(f) ? fs.readFileSync(f) : Buffer.alloc(0)
+    if (!buf.length) http = 0   // an answer with nothing in it (a page whose script had not yet drawn) is not a read
     const m = { http, read_utc: new Date().toISOString().slice(0, 16) + 'Z', sha256: crypto.createHash('sha256').update(buf).digest('hex'), bytes: buf.length }
     fs.writeFileSync(meta, JSON.stringify(m)); return got[g] = { ...m, buf }
 }
