@@ -202,7 +202,13 @@
 
     // (2) flight
     var lisF = F && (F.airports || []).filter(function (a) { return a.iata === 'LIS' })[0], fun = F && (F.airports || []).filter(function (a) { return a.iata === 'FNC' })[0]
-    var depLine = function (a) { var d = a && a.departures_today; return d && d.label === 'fact' ? '<li><b>' + esc(a.name) + '</b>: <b class="gd-num">' + d.count + '</b> airline departures <i>seen</i> by OpenSky\'s receivers' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in our readings today') + ' ' + lbl('fact') + ' ' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '<span class="meta">A floor, not a total; it says nothing about your flight.</span></li>' : '' }
+    // a count always carries its day; one that is not today's says so in transport@'s words (transport@, 00:43 UTC 12 Nov)
+    var depLine = function (a) {
+      var d = a && a.departures_today; if (!d || d.label !== 'fact') return ''
+      var day = d.day || iso(d.covered_from).slice(0, 10), isToday = !d.not_today && day === new Date(now).toISOString().slice(0, 10)
+      return '<li><b>' + esc(a.name) + '</b>: <b class="gd-num">' + d.count + '</b> airline departures <i>seen</i> by OpenSky\'s receivers on ' + esc(dhm(day + 'T12:00').slice(0, 10)) + (d.covered_from ? ' from ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + ' ' + lbl('fact') + ' ' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) +
+        (isToday ? '' : '<span class="gd-ns-line">' + esc(d.not_today || 'Not a count of today.') + '</span>') + '<span class="meta">A floor, not a total; it says nothing about your flight.</span></li>'
+    }
     var newest = function (list) { var all = []; list.forEach(function (x) { all = all.concat(standing(x)) }); all.sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) }); return all[0] }
     var nf = newest([E.airport, E.tap]); LINES.flight = 'Your airline decides. ' + (nf ? nf.decision : '')
     out += sect('flight', '2 · I have a flight',
