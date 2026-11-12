@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Wind strength classes
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 01:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 02:51 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Lista de classes relativa à intensidade vento*. Documented
 | Shape | · |
 | IPMA says it updates | not stated |
 | IPMA's file dated (its Last-Modified header) | 2018-01-18 17:50 UTC |
-| We last read it | 2026-11-12 01:48 UTC, 1 file, 644 bytes |
+| We last read it | 2026-11-12 02:48 UTC, 1 file, 644 bytes |
 
 ## Fields
 
@@ -39,6 +39,6 @@ IPMA's name for it: *Lista de classes relativa à intensidade vento*. Documented
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [wind-speed-daily-classe.json](https://api.ipma.pt/open-data/wind-speed-daily-classe.json) | 200 | 644 | `c747a9932e4c8661…` | 2018-01-18 17:50 | 2026-11-12 01:48 |
+| [wind-speed-daily-classe.json](https://api.ipma.pt/open-data/wind-speed-daily-classe.json) | 200 | 644 | `c747a9932e4c8661…` | 2018-01-18 17:50 | 2026-11-12 02:48 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads. Our small files made from it: [data/cities.json](../data.md#data/cities.json).

@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The sea: IPMA's sea state forecast
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 01:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 02:51 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -31,4 +31,4 @@ IPMA forecasts the sea for 12 coastal places, three days at a time: the signific
 
 In each cell: significant wave height (min to **max**), prevailing direction, swell height, swell peak period, sea surface temperature.
 
-Data: [data/sea.json](data/sea.json) · the data set: [endpoints/sea-forecast.md](endpoints/sea-forecast.md) · rough-sea warnings: [warnings.md](warnings.md). Source: IPMA's hp-daily-sea-forecast-day0 to day2 files, read 2026-11-12 01:50 UTC.
+Data: [data/sea.json](data/sea.json) · the data set: [endpoints/sea-forecast.md](endpoints/sea-forecast.md) · rough-sea warnings: [warnings.md](warnings.md). Source: IPMA's hp-daily-sea-forecast-day0 to day2 files, read 2026-11-12 02:50 UTC.

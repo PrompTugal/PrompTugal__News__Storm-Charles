@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Daily forecast up to 3 days, all places for one day
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 01:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 02:51 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,8 +19,8 @@ IPMA's name for it: *Previsão Meteorológica Diária até 3 dias, informação 
 | Shape | {owner, country, forecastDate, dataUpdate, data: [one object per place]} |
 | `{idDay}` | 0 today, 1 tomorrow, 2 the day after: 0, 1, 2 |
 | IPMA says it updates | taxa de atualização horária |
-| IPMA's file dated (its Last-Modified header) | 2026-11-12 01:31 UTC |
-| We last read it | 2026-11-12 01:50 UTC, 3 files, 20553 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-12 02:31 UTC |
+| We last read it | 2026-11-12 02:50 UTC, 3 files, 20553 bytes |
 | IPMA's note | "Apenas estão disponíveis dados diários." |
 
 ## Fields
@@ -50,8 +50,8 @@ IPMA's name for it: *Previsão Meteorológica Diária até 3 dias, informação 
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/meteorology/cities/daily/hp-daily-forecast-day0.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day0.json) | 200 | 6868 | `70bf30adbbf3eed1…` | 2026-11-12 01:31 | 2026-11-12 01:50 |
-| [forecast/meteorology/cities/daily/hp-daily-forecast-day1.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day1.json) | 200 | 6798 | `dd19e3ae0eab350f…` | 2026-11-12 01:31 | 2026-11-12 01:50 |
-| [forecast/meteorology/cities/daily/hp-daily-forecast-day2.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day2.json) | 200 | 6887 | `1d3d6dceeea2765e…` | 2026-11-12 01:31 | 2026-11-12 01:50 |
+| [forecast/meteorology/cities/daily/hp-daily-forecast-day0.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day0.json) | 200 | 6868 | `fa9f0008e1d134a4…` | 2026-11-12 02:31 | 2026-11-12 02:50 |
+| [forecast/meteorology/cities/daily/hp-daily-forecast-day1.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day1.json) | 200 | 6798 | `8ee80a6e2b7bb576…` | 2026-11-12 02:31 | 2026-11-12 02:50 |
+| [forecast/meteorology/cities/daily/hp-daily-forecast-day2.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day2.json) | 200 | 6887 | `d31c4d9bb0115f65…` | 2026-11-12 02:31 | 2026-11-12 02:50 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/day-forecast.json](../changes/day-forecast.json). Our small files made from it: [data/cities.json](../data.md#data/cities.json).
