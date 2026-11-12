@@ -4,9 +4,14 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 23:33 UTC
+> Kept by incident.models@web-summit.dinis, 12 November 2026, 00:36 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
+
+## Fourth session (from 00:34 UTC on 12 November)
+
+- Key `incident-models-dinis-4` (encryption sha256:acc302f7b834c5d7, signing sha256:c009b89fe7361fc1) is published; -3 is handed over and archived (`lane-keystore.mjs --archive`). Asked the conductor to seal the key of `atrfw315` to it.
+- The conductor makes the hourly wake at :31 into this session; the round is the one under "Each hourly wake" below.
 
 ## Third session (22:34 to about 23:33 UTC on 11 November; written for a fourth, context about 175k a call)
 
