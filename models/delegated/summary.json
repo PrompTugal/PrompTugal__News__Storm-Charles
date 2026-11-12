@@ -1,41 +1,41 @@
 {
  "about": "The delegation of collectors' analysis to open-weight models through OpenRouter, at a glance: per calling agent, delegated calls (tasks WS-214/delegate/*), failures (a call not ok), re-asks (an answer that failed the schema or the task's check and was asked again), loops, and the agreement each owner's own check reports. From the published call records; text-free.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T23:32:56Z",
+ "updated": "2026-11-12T00:32:57Z",
  "label": "fact",
  "source": "models/calls/index.json and the owners' result files named",
  "collectors": {
   "incident.models@web-summit.dinis": {
-   "calls": 313,
+   "calls": 343,
    "failed": 0,
    "failure_rate": 0,
-   "cost_usd": 0.066057,
-   "loops": 93,
-   "answers_checked": 285,
+   "cost_usd": 0.077293,
+   "loops": 103,
+   "answers_checked": 315,
    "reasked": 6,
-   "reask_rate": 0.021,
+   "reask_rate": 0.019,
    "tasks": {
-    "extract-decision": 48,
+    "extract-decision": 78,
     "translate": 29,
     "match-fact": 221,
     "extract-warning": 15
    },
    "models": {
-    "google/gemini-3.5-flash-lite": 103,
-    "meta-llama/llama-4-maverick": 99,
-    "qwen/qwen3.5-397b-a17b": 16,
+    "google/gemini-3.5-flash-lite": 113,
+    "meta-llama/llama-4-maverick": 109,
+    "qwen/qwen3.5-397b-a17b": 26,
     "google/gemma-4-31b-it": 74,
     "qwen/qwen3.5-9b": 16,
     "mistralai/ministral-8b-2512": 5
    },
    "owner_check": {
     "file": "models/delegated/press-decisions.json (for incident.researcher@)",
-    "read": 30,
-    "matched_an_edge": 6,
+    "read": 40,
+    "matched_an_edge": 11,
     "leads": 0,
-    "no_decision": 12,
-    "models_differ": 12,
-    "cost_usd": 0.032475
+    "no_decision": 15,
+    "models_differ": 14,
+    "cost_usd": 0.043737
    }
   },
   "incident.media@web-summit.dinis": {
@@ -57,35 +57,35 @@
    },
    "owner_check": {
     "file": "research/media/models-match.json",
-    "read": 30,
-    "agree_with_pattern": 19,
-    "models_agree_pattern_differs": 3,
-    "cost_usd": 0.013307
+    "read": 45,
+    "agree_with_pattern": 31,
+    "models_agree_pattern_differs": 4,
+    "cost_usd": 0.021167
    }
   },
   "incident.sources@web-summit.dinis": {
-   "calls": 45,
+   "calls": 75,
    "failed": 0,
    "failure_rate": 0,
-   "cost_usd": 0.005755,
-   "loops": 15,
-   "answers_checked": 45,
+   "cost_usd": 0.009645,
+   "loops": 25,
+   "answers_checked": 75,
    "reasked": 0,
    "reask_rate": 0,
    "tasks": {
-    "extract-warning": 45
+    "extract-warning": 75
    },
    "models": {
-    "qwen/qwen3.5-9b": 15,
-    "mistralai/ministral-8b-2512": 15,
-    "google/gemini-3.5-flash-lite": 15
+    "qwen/qwen3.5-9b": 25,
+    "mistralai/ministral-8b-2512": 25,
+    "google/gemini-3.5-flash-lite": 25
    },
    "owner_check": {
     "file": "sources/meteoalarm/data/portugal/models-check.json",
-    "checked": 25,
-    "agree_with_parser": 25,
+    "checked": 35,
+    "agree_with_parser": 35,
     "differ": 0,
-    "cost_usd": 0.009645
+    "cost_usd": 0.013483
    }
   },
   "incident.transport@web-summit.dinis": {
@@ -108,8 +108,8 @@
    },
    "owner_check": {
     "file": "transport/gloss.json",
-    "items": 12,
-    "check_passed": 7
+    "items": 18,
+    "check_passed": 12
    }
   }
  }

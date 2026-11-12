@@ -1,7 +1,7 @@
 {
  "about": "Press headlines that may report a decision, read by open-weight models through OpenRouter (task extract-decision of models/delegate.json) and matched against graph.json's edges. Evidence, labelled with the models' names; a press headline is never the decision itself: an agreed decider with no matching edge is a lead to read on the body's own channel. Ids, urls, deciders and hours only. A lead list for incident.researcher@, kept by incident.models@ at incident.conductor@'s word (22:24 UTC, 11 November).",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T23:32:51Z",
+ "updated": "2026-11-12T00:32:57Z",
  "read": {
   "A-ed529c17": {
    "id": "A-ed529c17",
@@ -995,14 +995,354 @@
    "cost_usd": 0.00108605,
    "calls": 3,
    "title_sha256": "c44eacc2a88aadb0c3f93bea393bbf49841de8c2da2c36c88060230450fa708e"
+  },
+  "A-7fe2ace3": {
+   "id": "A-7fe2ace3",
+   "url": "https://www.dn.pt/sociedade/tempestade-charles-perdeu-a-fora-mas-governo-no-se-arrepende-do-alerta",
+   "outlet": "dn",
+   "published": "2026-11-11T23:24:19Z",
+   "at": "2026-11-12T00:32:23Z",
+   "trace_id": "21c2f630259e841fd182d5d656ace259",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "government",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "government",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "government",
+   "matching_edges": [
+    "gov-alert",
+    "gov-council-sao-bento"
+   ],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "government"
+   },
+   "cost_usd": 0.00111578,
+   "calls": 3,
+   "title_sha256": "f2ebbebbf981720355ffe7480ec4d61da5bc960b02d58949f952600c048e9763"
+  },
+  "A-f109e215": {
+   "id": "A-f109e215",
+   "url": "https://observador.pt/programas/noticiario/as-noticias-das-22h-1896/",
+   "outlet": "observador",
+   "published": "2026-11-11T22:12:12Z",
+   "at": "2026-11-12T00:32:27Z",
+   "trace_id": "3406bdd5fc12f97ca06a7115758fa7c7",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "mai",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "mai",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "mai",
+   "matching_edges": [
+    "mai-alert-ends-midnight"
+   ],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "mai"
+   },
+   "cost_usd": 0.00126389,
+   "calls": 3,
+   "title_sha256": "02b1d8fcd733de32dc436c533272ae64a1def1d25c1d190d904c98e3c721a63d"
+  },
+  "A-364f8b62": {
+   "id": "A-364f8b62",
+   "url": "https://www.noticiasaominuto.com/pais/3082518/gnr-atualiza-vias-interditas-e-condicionadas-devido-ao-mau-tempo-confira",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T15:30:26Z",
+   "at": "2026-11-12T00:32:30Z",
+   "trace_id": "5dfb1d873be38b0391248d584a3fdf85",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "gnr",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "gnr",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "gnr",
+   "matching_edges": [
+    "gnr-readiness",
+    "a1-vialonga"
+   ],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "gnr"
+   },
+   "cost_usd": 0.0011979,
+   "calls": 3,
+   "title_sha256": "846945c15189fa598796b6a4d7d7c06b492f8cebbea3ee8e49390993b3ab4751"
+  },
+  "A-00fe4ac5": {
+   "id": "A-00fe4ac5",
+   "url": "https://cnnportugal.iol.pt/alerta/mau-tempo/mai-diz-que-estado-de-alerta-termina-a-meia-noite-e-espera-que-quinta-feira-retorne-a-normalidade/20261111/6af485f8d34e5a653d733c4a",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-11T15:26:00Z",
+   "at": "2026-11-12T00:32:33Z",
+   "trace_id": "4e360c65342da78e39f4b674be585e66",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "mai",
+     "effect_from_utc": null,
+     "effect_to_utc": "2026-11-12T00:00Z"
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "mai",
+     "effect_from_utc": null,
+     "effect_to_utc": "2026-11-12T00:00Z"
+    }
+   },
+   "agreed_decider": "mai",
+   "matching_edges": [
+    "mai-alert-ends-midnight"
+   ],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "mai"
+   },
+   "cost_usd": 0.00101277,
+   "calls": 3,
+   "title_sha256": "3da14b5df0a343a301718d50f0bcbfafb24b98da97492303898f6aee0ed7f0d6"
+  },
+  "A-286c92f5": {
+   "id": "A-286c92f5",
+   "url": "https://jornaleconomico.sapo.pt/noticias/mau-tempo-aumenta-para-oito-as-estradas-condicionadas-incluindo-eixo-norte-sul-em-lisboa/",
+   "outlet": "jornal-economico",
+   "published": "2026-11-11T15:18:55Z",
+   "at": "2026-11-12T00:32:36Z",
+   "trace_id": "d6859c29435ee4507ab744d92f22126b",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "none",
+   "matching_edges": [],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "none"
+   },
+   "cost_usd": 0.00109961,
+   "calls": 3,
+   "title_sha256": "fd870726297d2c42cb80de81963e0365cd23691c5c91390eeb163a8deb92f360"
+  },
+  "A-c3bc2b8d": {
+   "id": "A-c3bc2b8d",
+   "url": "https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846",
+   "outlet": "expresso",
+   "published": "2026-11-11T15:17:23Z",
+   "at": "2026-11-12T00:32:42Z",
+   "trace_id": "094df481ba908a2a362a959759163729",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "airport",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": null,
+   "matching_edges": [],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "none"
+   },
+   "cost_usd": 0.00108961,
+   "calls": 3,
+   "title_sha256": "22e1b1e89968f0154d3a4f979dc6063893406f8601d61ff048f809662218ed9b"
+  },
+  "A-04d77446": {
+   "id": "A-04d77446",
+   "url": "https://www.publico.pt/2026/11/11/fugas/noticia/depressao-charles-servicos-entrega-comida-estao-quase-suspensos-2194593",
+   "outlet": "publico",
+   "published": "2026-11-11T15:15:07Z",
+   "at": "2026-11-12T00:32:45Z",
+   "trace_id": "af2a0a83724f38f8c9808fd3149592fb",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "none",
+   "matching_edges": [],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "none"
+   },
+   "cost_usd": 0.00103659,
+   "calls": 3,
+   "title_sha256": "4f6d57123e608aa442fba5c734dbde4f9c5b576c72044750e3fdf230ecaea746"
+  },
+  "A-78822fdd": {
+   "id": "A-78822fdd",
+   "url": "https://www.noticiasaominuto.com/pais/3082507/mau-tempo-aumenta-para-oito-as-estradas-condicionadas-incluindo-eixo-norte-sul-em-lisboa",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T15:06:52Z",
+   "at": "2026-11-12T00:32:49Z",
+   "trace_id": "eb16e3c463ad7803511ff317d79ccd70",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "tunnels",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": null,
+   "matching_edges": [],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "none"
+   },
+   "cost_usd": 0.00108237,
+   "calls": 3,
+   "title_sha256": "cc90a7d293113eb807600de4a9e21ab58dad964c1fb4d46f929c7a8ead7c82b9"
+  },
+  "A-366b93a1": {
+   "id": "A-366b93a1",
+   "url": "https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja",
+   "outlet": "dn",
+   "published": "2026-11-11T14:32:32.263Z",
+   "at": "2026-11-12T00:32:52Z",
+   "trace_id": "7bf0ccb33d12ca22b98cd85ef1dc61b0",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "ipma",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "ipma",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "ipma",
+   "matching_edges": [
+    "ipma-red-wind",
+    "ipma-red-rain",
+    "ipma-communique-2",
+    "ipma-red-rain-0900",
+    "ipma-wind-orange",
+    "ipma-cut-1233",
+    "ipma-lisbon-1506",
+    "ipma-cut-1555",
+    "ipma-all-lifted-2005"
+   ],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "ipma"
+   },
+   "cost_usd": 0.001184,
+   "calls": 3,
+   "title_sha256": "f284d407d5bcd38039e5c552c0a2d3124ff19bed7c4c7fee6b6bd9982d5430a8"
+  },
+  "A-a7fb13ac": {
+   "id": "A-a7fb13ac",
+   "url": "https://www.noticiasaominuto.com/pais/3082473/mau-tempo-seis-estradas-nacionais-nos-distritos-de-setubal-portalegre-e-guarda-com-circulacao-condicionada",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T14:30:04Z",
+   "at": "2026-11-12T00:32:57Z",
+   "trace_id": "dbba8e8b8fc22c03460aa4f8058e5ccc",
+   "label": "evidence",
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "decider": "none",
+     "effect_from_utc": null,
+     "effect_to_utc": null
+    }
+   },
+   "agreed_decider": "none",
+   "matching_edges": [],
+   "lead": false,
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "decider": "none"
+   },
+   "cost_usd": 0.00117915,
+   "calls": 3,
+   "title_sha256": "7f9cad1cafceda448728e70e364968fc4d8196380d55d434e904a009212f4aa7"
   }
  },
  "totals": {
-  "read": 30,
-  "matched_an_edge": 6,
+  "read": 40,
+  "matched_an_edge": 11,
   "leads": 0,
-  "no_decision": 12,
-  "models_differ": 12,
-  "cost_usd": 0.032475
+  "no_decision": 15,
+  "models_differ": 14,
+  "cost_usd": 0.043737
  }
 }
