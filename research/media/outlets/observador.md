@@ -1,13 +1,13 @@
 # Observador: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 23:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-12, 00:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online daily (pt) |
-| Items we read | 87: 84 articles, 2 live, 0 video, 1 opinion |
-| First and last | 10 Nov 07:32 to 11 Nov 23:08 UTC |
-| Whose reporting | 46 with a reporter's by-line, 16 the agency's (Lusa), 25 the desk's, 0 not read; wire share 18% |
+| Items we read | 90: 87 articles, 2 live, 0 video, 1 opinion |
+| First and last | 10 Nov 07:32 to 12 Nov 00:32 UTC |
+| Whose reporting | 49 with a reporter's by-line, 16 the agency's (Lusa), 25 the desk's, 0 not read; wire share 18% |
 | Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; first on "IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands"; first on "IPMA lowers Santarém's rain warning from red to yellow and Leiria's from orange to yellow, 15:06 to 18:00; no change for Lisbon"; first on "IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00"; a running live blog |
 
 ## Against the key moments
@@ -29,8 +29,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 2 of 87 items link to a body that decides or warns (IPMA, Web Summit). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 18 items (the item's by-line names the agency).
+- **Links to primary sources:** 2 of 90 items link to a body that decides or warns (IPMA, Web Summit). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 19 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
 
@@ -53,7 +53,7 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 
 ## By-lines on this story, as printed
 
-[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (4), [Judite França](../people/judite-franca.md) (4), [Paulo Ferreira](../people/paulo-ferreira.md) (4), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [Filomena Martins](../people/filomena-martins.md) (3), [João Francisco Gomes](../people/joao-francisco-gomes.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), [Mariana Lima Cunha](../people/mariana-lima-cunha.md) (3), [Miguel Videira](../people/miguel-videira.md) (3), [Ricardo Conceição](../people/ricardo-conceicao.md) (3), Ana Sanlez (2), António Moura dos Santos (2), Beatriz Félix (2), Edgar Caetano (2), Helena Garrido (2), Hugo Fortunato de Oliveira (2), João Porfírio (2), Martim Andrade (2), Miguel Santos Carrapatoso (2), Miguel Viterbo Dias (2), Alexandra Machado, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Eduardo Sá, Hugo Moreira, João Adrião, João Paulo Godinho, José Carlos Duarte, Leonor Riso, Nelson Ferreira, Pedro Benevides, Rita Tavares, Rui Pedro Antunes, Teresa Freire, Tiago Caeiro, Tomás Silva, Vasco Maldonado Correia. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (4), [Judite França](../people/judite-franca.md) (4), [Paulo Ferreira](../people/paulo-ferreira.md) (4), [António Moura dos Santos](../people/antonio-moura-dos-santos.md) (3), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [Filomena Martins](../people/filomena-martins.md) (3), [João Francisco Gomes](../people/joao-francisco-gomes.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), [Mariana Lima Cunha](../people/mariana-lima-cunha.md) (3), [Miguel Videira](../people/miguel-videira.md) (3), [Ricardo Conceição](../people/ricardo-conceicao.md) (3), Ana Sanlez (2), Beatriz Félix (2), Edgar Caetano (2), Helena Garrido (2), Hugo Fortunato de Oliveira (2), João Porfírio (2), Martim Andrade (2), Miguel Santos Carrapatoso (2), Miguel Viterbo Dias (2), Alexandra Machado, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Eduardo Sá, Guilherme Costa Oliveira, Hugo Moreira, Joana Moreira, João Adrião, João Paulo Godinho, José Carlos Duarte, Leonor Riso, Miguel Pinheiro Correia, Nelson Ferreira, Pedro Benevides, Rita Tavares, Rui Pedro Antunes, Teresa Freire, Tiago Caeiro, Tomás Silva, Vasco Maldonado Correia. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -146,3 +146,6 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 | 11 Nov 22:12 | article | Rádio Observador | [22h. Charles. Ministro da Administração Interna insiste que Governo tomou a decisão certa em coloca… ↗](https://observador.pt/programas/noticiario/as-noticias-das-22h-1896/) |
 | 11 Nov 22:44 | article | António Moura dos Santos | [Luís Neves rejeita excesso de zelo na prevenção. "A missão do nosso governo é proteger as pessoas" ↗](https://observador.pt/2026/11/11/luis-neves-rejeita-excesso-de-zelo-na-prevencao-a-missao-do-nosso-governo-e-proteger-as-pessoas/) |
 | 11 Nov 23:08 | article | Agência Lusa | [Depressão Charles teve rajada máxima de 123 km/h em Monchique. IPMA defende que medidas de prevençã… ↗](https://observador.pt/2026/11/11/depressao-charles-teve-rajada-maxima-de-123-km-h-em-monchique-ipma-defende-que-medidas-de-prevencao-foram-adequadas/) |
+| 12 Nov 00:02 | article | Joana Moreira | [A tempestade Charles passou e foi menos destrutiva do que se previa. Porquê? ↗](https://observador.pt/2026/11/12/a-tempestade-charles-passou-e-foi-menos-destrutiva-do-que-se-previa-porque/) |
+| 12 Nov 00:15 | article | António Moura dos Santos, Agência Lusa | [Tempestade Charles na Madeira. Homem de 74 anos resgatado de garagem inundada após ficar preso na á… ↗](https://observador.pt/2026/11/12/tempestade-charles-na-madeira-homem-de-74-anos-resgatado-de-garagem-inundada-apos-ficar-preso-na-agua/) |
+| 12 Nov 00:32 | article | Miguel Pinheiro Correia, Guilherme Costa Oliveira | [Mau tempo. Porto preparou-se para o pior com a depressão Charles, mas viveu dia “sossegado" que "es… ↗](https://observador.pt/especiais/mau-tempo-porto-preparou-se-para-o-pior-com-a-depressao-charles-mas-viveu-dia-sossegado-que-estragou-o-negocio-do-sao-martinho/) |

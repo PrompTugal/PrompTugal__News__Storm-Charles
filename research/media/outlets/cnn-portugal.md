@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 23:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-12, 00:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 84: 28 articles, 0 live, 56 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 23:06 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 75 not read; wire share 67% |
+| Items we read | 87: 28 articles, 0 live, 59 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 23:53 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 78 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 84 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 87 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -139,3 +139,6 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 21:55 | video | not read | ["Havia uma grande incerteza" por onde entrava a tempestade Charles e isso justificou as medidas apl… ↗](https://cnnportugal.iol.pt/videos/havia-uma-grande-incerteza-por-onde-entrava-a-tempestade-charles-e-isso-justificou-as-medidas-aplicadas/6af4e01e0cf2cb2507aa860f) |
 | 11 Nov 22:56 | video | not read | [Governo "melhorou muito" desde a tempestade Kristin, mas ainda há lições "a aprender" ↗](https://cnnportugal.iol.pt/videos/governo-melhorou-muito-desde-a-tempestade-kristin-mas-ainda-ha-licoes-a-aprender/6af4eb8a0cf235b99ef50ac8) |
 | 11 Nov 23:06 | article | not read | [Dividiu-se e enfraqueceu: foi por isto que a tempestade Charles não foi tão grave (mas a decisão da… ↗](https://cnnportugal.iol.pt/tempestade-charles/noaa/dividiu-se-e-enfraqueceu-foi-por-isto-que-a-tempestade-charles-nao-foi-tao-grave-mas-a-decisao-das-autoridades-foi-absolutamente-correta/20261111/6af4ed91d34e5a653d733e96) |
+| 11 Nov 23:30 | video | not read | [Tempestade Charles foi "uma chapada na incompetência profunda de Luís Montenegro nos eventos anteri… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-foi-uma-chapada-na-incompetencia-profunda-de-luis-montenegro-nos-eventos-anteriores/6af4f53e0cf235b99ef50ad9) |
+| 11 Nov 23:30 | video | not read | [Gouveia e Melo diz que "não aprendemos com a tempestade Kristin" e avisa que "os tempos que se aviz… ↗](https://cnnportugal.iol.pt/videos/gouveia-e-melo-diz-que-nao-aprendemos-com-a-tempestade-kristin-e-avisa-que-os-tempos-que-se-avizinham-nao-vao-ser-faceis/6af4eea20cf2051820fb1636) |
+| 11 Nov 23:53 | video | not read | [Tempestade Charles. Governo deu "muitas mais recomendações do que ordens" ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-governo-deu-muitas-mais-recomendacoes-do-que-ordens/6af4f7ac0cf2cb2507aa862a) |
