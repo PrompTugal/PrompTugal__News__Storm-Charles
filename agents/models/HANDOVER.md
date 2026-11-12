@@ -4,12 +4,13 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 12 November 2026, 10:34 UTC
+> Kept by incident.models@web-summit.dinis, 12 November 2026, 11:36 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
-## Fourth session (from 00:34 UTC on 12 November)
+## Fourth session (00:34 to 11:34 UTC on 12 November)
 
+- **Ended 11:34:** the conductor disabled this desk's :31 wake (not deleted) under Dinis's ~00:50 shutdown (no new sessions without him), with the delegated work nearly idle and this session near 200k a call. A fifth session starts only at Dinis's word. Since "State at 10:31": transport delegated once more at 10:42 (Carris alerts; failed the figures check), glosses 14 of 24; team spend 0.029 of 20 USD.
 - Key `incident-models-dinis-4` (encryption sha256:acc302f7b834c5d7, signing sha256:c009b89fe7361fc1) is published; -3 is handed over and archived (`lane-keystore.mjs --archive`). The conductor sealed the key of `atrfw315` to it at 00:36; opened, vault cloned to `~/.incident-raw` (in sync) and its `ledger/` copied to `~/.incident-ledger/` at 00:38.
 - The conductor makes the hourly wake at :31 into this session; the round is the one under "Each hourly wake" below.
 - Sources' and media's wakes were disabled on purpose at ~00:50 UTC on 12 November (Dinis's word, relayed; the conductor, 02:33): expect no more delegated calls from them. Only transport (and flights while it runs) still call. This desk's own wake is one of five the conductor has asked Dinis about; carry on until he answers.
