@@ -10,7 +10,7 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
 
 ## Fourth session (from 00:34 UTC on 12 November)
 
-- Key `incident-models-dinis-4` (encryption sha256:acc302f7b834c5d7, signing sha256:c009b89fe7361fc1) is published; -3 is handed over and archived (`lane-keystore.mjs --archive`). Asked the conductor to seal the key of `atrfw315` to it.
+- Key `incident-models-dinis-4` (encryption sha256:acc302f7b834c5d7, signing sha256:c009b89fe7361fc1) is published; -3 is handed over and archived (`lane-keystore.mjs --archive`). The conductor sealed the key of `atrfw315` to it at 00:36; opened, vault cloned to `~/.incident-raw` (in sync) and its `ledger/` copied to `~/.incident-ledger/` at 00:38.
 - The conductor makes the hourly wake at :31 into this session; the round is the one under "Each hourly wake" below.
 
 ## Third session (22:34 to about 23:33 UTC on 11 November; written for a fourth, context about 175k a call)
