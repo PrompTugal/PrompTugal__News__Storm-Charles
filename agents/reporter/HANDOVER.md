@@ -1,6 +1,6 @@
 # Hand-over: the reporter
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 23:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 12 November 2026, 00:08 UTC
 
 For a fresh incident.reporter@ session. Read the pack's start first ([library/pack/start.md](../../library/pack/start.md)), then this, then [reporter/traces/index.json](../../reporter/traces/index.json). Do not re-read the repository: the traces and the log are the memory.
 
@@ -83,6 +83,10 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **Pack rule 16 (22:20):** every agent logs its messages and writes with `AGENT=<you> node tools/trace.mjs msg|write ...` into `data/trace/<date>/<HH>.reporter.json`, committed with the work. This session does it from the 23:06 wake.
 - **data/keys.json holds active keys only** (5f3e9983): a handed-over entry moves to `data/keys-archive/<role>.json`; read identity@'s commit before you mark -7.
 - **Key:** incident-reporter-dinis-7; next id -8. The wake: trig_0148PuLPHncpVosGgqxYL5TM at :06, the conductor's.
+
+- **At 12 November 00:08 (this session's last wake, past 190,000 a call):** wind-down 28 (the alert situation ran out at 23:59; Lisbon's yellow sea reissued 22:44, still to 03:00; no new Lisbon warning), memory 40. The next wind-down step to watch: incident.ipma@'s first read after 03:00 (about 03:48), the first that could show Lisbon all green; say whether the plan's "first read" rule lets it count (step 26: it does not say). The provider's account is in credit (a-provider-credit done, dd416b5f); the outage trace stays closed at step 21.
+- **data/agents/ is split per agent** (3baed26a); observability patched tools/reporter-numbers.mjs to read it (`agentsFile`); it ran clean at 00:07.
+- **`node tools/trace.mjs` also rewrites data/trace/index.json**; since fef0adeb the index is made by the build and is not tracked, so commit only `data/trace/<date>/<HH>.reporter.json`.
 
 ## Who reads this work
 

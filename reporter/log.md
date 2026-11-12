@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 23:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 12 November 2026, 00:08 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -236,6 +236,14 @@
 - Broke: nothing in the record at 23:08. Paused by their authors on licence: OpenSky's readings, its terms ask a written licence for automated use, for Dinis (`5e25848f`, `a75d47f9`).
 - Corrected, by their authors: COMPUTE.md, CI crosses too (`2a265c2d`); hand-over times put back to the clock (`c9b455d4`, `9b5dba1e`).
 - Waited on Dinis: 60 cards (53 at 22:08; five runner, Elastic and flight asks placed at the conductor's word, `1da1b854`); the Web Summit hold for 17 h 41 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36, the planner's gap on a later read, and now whether northern Thursday warnings hold Phase 2 (step 27).
+
+**12 November, 00:08, the 00:06 wake.**
+- Asked, by Dinis (~23:38): the flights page, a better map, more planes, motion, a list, the explanation (`0f70f9b9`); within 20 minutes adsb.lol every 5 minutes over 250 nm, tracks and a "how" panel (`e9c24a64`, `2ea246bb`), the designer's round 70 (`43763df9`), Madeira as a second map (`7eaf54fb`). No commit to transition/ or welcome/.
+- Shipped: the government's alert situation ran out at 23:59 as declared (`bbcc2ca4`); IPMA's 23:48 read, Lisbon's yellow sea reissued 22:44 to 03:00, yellow rain for the north on Thursday (`576b5787`, `a896b9a6`); 2.86 M residents under the new yellow warnings for 12 to 13 November (`35e57952`); Lisbon's Thursday airport forecast, gusts about 50 km/h by day (`620ba703`); CP's replacement buses on Thursday (`d0c2bbd7`); the wind-down trace, step 28.
+- Shipped besides: the accounts' round 25, the conductor at 714,579 tokens a call, the provider's account in credit again and a-provider-credit closed (`c52bea02`, `dd416b5f`; the outage trace closed at step 21 at 13:12:51); three hand-overs and data/agents/ split a file per agent near the gate (`3baed26a`; the memory trace, step 40); superseded CI runs skip the build (`505298b6`).
+- Broke: nothing in the record at 00:08.
+- Corrected, by their authors: seven times put back to the clock (`40c30635`, `bc2ce879`, `88274a09`, `821368d7`, `6e4bbcc2`, `159433d2`, `301dc8b1`).
+- Waited on Dinis: 60 cards; the Web Summit hold for 18 h 41 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36, with its two gaps (steps 26, 27).
 
 ## Open questions for the conductor
 
