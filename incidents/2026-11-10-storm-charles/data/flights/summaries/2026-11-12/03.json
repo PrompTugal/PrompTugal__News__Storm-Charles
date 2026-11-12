@@ -1,0 +1,73 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-12T04:00:29Z",
+  "label": "model output",
+  "about": "A two-sentence summary of the flight picture for 2026-11-12 03:00-03:59 UTC, written by an open-weight model (meta-llama/llama-4-maverick) through OpenRouter from the JSON in input, and published only because every number in it is one of the input's numbers and it is two sentences (check). Model output: not checked for meaning beyond that, and not ours. The data itself: snapshots/ and crosswind.json.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "hour": "2026-11-12T03:00:00Z",
+  "text": "Three distinct airline flights were seen near Lisbon and Funchal in one hour. At Lisbon's airport, the wind was blowing at 9 knots from 240 degrees at 03:30 UTC.",
+  "model": {
+    "asked": "meta-llama/llama-4-maverick",
+    "served": "meta-llama/llama-4-maverick",
+    "via": "OpenRouter, through tools/llm.mjs (one ledger line per call)",
+    "cost_usd": 0.000159786,
+    "ledger_id": "20261112T040027-d163bd46"
+  },
+  "input": {
+    "hour_utc": "2026-11-12 03:00-03:59",
+    "areas": {
+      "lisbon": {
+        "snapshots_tried": 6,
+        "snapshots_read": 6,
+        "distinct_airline_flights_seen": 3,
+        "at_last_snapshot": {
+          "time_utc": "03:50",
+          "airborne": 1,
+          "on_ground": 0
+        },
+        "airlines": [
+          {"airline":"TAP Air Portugal","flights":2},
+          {"airline":"American","flights":1}
+        ]
+      },
+      "funchal": {
+        "snapshots_tried": 3,
+        "snapshots_read": 3,
+        "distinct_airline_flights_seen": 0,
+        "at_last_snapshot": {
+          "time_utc": "03:40",
+          "airborne": 0,
+          "on_ground": 0
+        },
+        "airlines": []
+      }
+    },
+    "airport_wind": {
+      "LPPT": {
+        "metar_time_utc": "03:30",
+        "wind_dir_deg": 240,
+        "wind_kt": 9,
+        "gust_kt": null,
+        "max_crosswind_kt_this_hour": 5.5
+      },
+      "LPMA": {
+        "metar_time_utc": "03:30",
+        "wind_dir_deg": 310,
+        "wind_kt": 3,
+        "gust_kt": null,
+        "max_crosswind_kt_this_hour": 3
+      }
+    }
+  },
+  "input_sha256": "fa9f38e176de2f1ebfd8a9565ef96ce791ea0c8761deada30481ca49fb4f605f",
+  "sources": [
+    "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-12/03.json",
+    "incidents/2026-11-10-storm-charles/data/flights/crosswind.json"
+  ],
+  "check": {
+    "passed": true,
+    "numbers_checked": 6,
+    "problems": []
+  }
+}

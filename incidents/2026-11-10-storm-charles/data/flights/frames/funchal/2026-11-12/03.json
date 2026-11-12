@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T03:00:16Z",
+  "updated": "2026-11-12T03:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -27,7 +27,8 @@
   "cadence_min": 20,
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
-    "BAW": "British Airways"
+    "BAW": "British Airways",
+    "TAP": "TAP Air Portugal"
   },
   "frames": [
     {
@@ -47,6 +48,45 @@
       "withheld_by_owner_request": 0,
       "rows": [
         ["BAW246","BAW","A35K",31.1326,-16.1347,40000,false,539,26,0,0]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T03:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 101,
+        "sha256": "2bbe4ef1b32a42ca6a5af236656b43458a0ad284e9e2a0dc2e3902eb3c0852d1",
+        "read": "2026-11-12T03:20:16Z",
+        "response_ms": 504,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T032016Z-2bbe4ef1b32a.body",
+        "rate_limit_remaining": 475
+      },
+      "airline": 0,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T03:40:15Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 1187,
+        "sha256": "137c2d9bccfaa8eaed3608e7b33b1da326b6f1bb16bec3fcd6a46884fafbddac",
+        "read": "2026-11-12T03:40:15Z",
+        "response_ms": 232,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T034015Z-137c2d9bccfa.body",
+        "rate_limit_remaining": 494
+      },
+      "airline": 2,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["TAP082","TAP","A339",30.9074,-15.5509,40000,false,525,33,0,0.2],
+        ["TAP088","TAP","A339",32.3809,-14.4547,40000,false,527,34,0,39.7]
       ],
       "others": []
     }
