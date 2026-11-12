@@ -1,29 +1,29 @@
 {
  "about": "The delegation of collectors' analysis to open-weight models through OpenRouter, at a glance: per calling agent, delegated calls (tasks WS-214/delegate/*), failures (a call not ok), re-asks (an answer that failed the schema or the task's check and was asked again), loops, and the agreement each owner's own check reports. From the published call records; text-free.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-12T00:32:57Z",
+ "updated": "2026-11-12T01:32:01Z",
  "label": "fact",
  "source": "models/calls/index.json and the owners' result files named",
  "collectors": {
   "incident.models@web-summit.dinis": {
-   "calls": 343,
+   "calls": 373,
    "failed": 0,
    "failure_rate": 0,
-   "cost_usd": 0.077293,
-   "loops": 103,
-   "answers_checked": 315,
+   "cost_usd": 0.088554,
+   "loops": 113,
+   "answers_checked": 345,
    "reasked": 6,
-   "reask_rate": 0.019,
+   "reask_rate": 0.017,
    "tasks": {
-    "extract-decision": 78,
+    "extract-decision": 108,
     "translate": 29,
     "match-fact": 221,
     "extract-warning": 15
    },
    "models": {
-    "google/gemini-3.5-flash-lite": 113,
-    "meta-llama/llama-4-maverick": 109,
-    "qwen/qwen3.5-397b-a17b": 26,
+    "google/gemini-3.5-flash-lite": 123,
+    "meta-llama/llama-4-maverick": 119,
+    "qwen/qwen3.5-397b-a17b": 36,
     "google/gemma-4-31b-it": 74,
     "qwen/qwen3.5-9b": 16,
     "mistralai/ministral-8b-2512": 5
@@ -39,46 +39,46 @@
    }
   },
   "incident.media@web-summit.dinis": {
-   "calls": 78,
+   "calls": 123,
    "failed": 1,
-   "failure_rate": 0.013,
-   "cost_usd": 0.013307,
-   "loops": 26,
-   "answers_checked": 77,
+   "failure_rate": 0.008,
+   "cost_usd": 0.021167,
+   "loops": 41,
+   "answers_checked": 122,
    "reasked": 0,
    "reask_rate": 0,
    "tasks": {
-    "match-fact": 78
+    "match-fact": 123
    },
    "models": {
-    "meta-llama/llama-4-maverick": 26,
-    "google/gemma-4-31b-it": 26,
-    "google/gemini-3.5-flash-lite": 26
+    "meta-llama/llama-4-maverick": 41,
+    "google/gemma-4-31b-it": 41,
+    "google/gemini-3.5-flash-lite": 41
    },
    "owner_check": {
     "file": "research/media/models-match.json",
-    "read": 45,
-    "agree_with_pattern": 31,
-    "models_agree_pattern_differs": 4,
-    "cost_usd": 0.021167
+    "read": 60,
+    "agree_with_pattern": 41,
+    "models_agree_pattern_differs": 5,
+    "cost_usd": 0.029542
    }
   },
   "incident.sources@web-summit.dinis": {
-   "calls": 75,
+   "calls": 105,
    "failed": 0,
    "failure_rate": 0,
-   "cost_usd": 0.009645,
-   "loops": 25,
-   "answers_checked": 75,
+   "cost_usd": 0.013483,
+   "loops": 35,
+   "answers_checked": 105,
    "reasked": 0,
    "reask_rate": 0,
    "tasks": {
-    "extract-warning": 75
+    "extract-warning": 105
    },
    "models": {
-    "qwen/qwen3.5-9b": 25,
-    "mistralai/ministral-8b-2512": 25,
-    "google/gemini-3.5-flash-lite": 25
+    "qwen/qwen3.5-9b": 35,
+    "mistralai/ministral-8b-2512": 35,
+    "google/gemini-3.5-flash-lite": 35
    },
    "owner_check": {
     "file": "sources/meteoalarm/data/portugal/models-check.json",
@@ -89,27 +89,27 @@
    }
   },
   "incident.transport@web-summit.dinis": {
-   "calls": 51,
+   "calls": 70,
    "failed": 0,
    "failure_rate": 0,
-   "cost_usd": 0.006173,
-   "loops": 15,
-   "answers_checked": 51,
-   "reasked": 6,
-   "reask_rate": 0.118,
+   "cost_usd": 0.007605,
+   "loops": 21,
+   "answers_checked": 70,
+   "reasked": 7,
+   "reask_rate": 0.1,
    "tasks": {
-    "translate": 51
+    "translate": 70
    },
    "models": {
     "qwen/qwen3.5-9b": 6,
-    "meta-llama/llama-4-maverick": 17,
-    "google/gemini-3.5-flash-lite": 16,
-    "google/gemma-4-31b-it": 12
+    "meta-llama/llama-4-maverick": 24,
+    "google/gemini-3.5-flash-lite": 22,
+    "google/gemma-4-31b-it": 18
    },
    "owner_check": {
     "file": "transport/gloss.json",
-    "items": 18,
-    "check_passed": 12
+    "items": 23,
+    "check_passed": 14
    }
   }
  }
