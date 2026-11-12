@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T12:00:16Z",
+  "updated": "2026-11-12T12:40:17Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -28,7 +28,12 @@
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
     "EXS": "Jet2",
-    "RYR": "Ryanair"
+    "RYR": "Ryanair",
+    "TOM": "TUI Airways",
+    "TRA": "Transavia",
+    "BEL": "Brussels Airlines",
+    "EJU": "easyJet Europe",
+    "TAP": "TAP Air Portugal"
   },
   "frames": [
     {
@@ -49,6 +54,53 @@
       "rows": [
         ["EXS7AE","EXS","B738",31.079,-16.6498,37000,false,401,188,0,0.2],
         ["RYR272T","RYR","B38M",31.3058,-14.861,36000,false,511,31,-64,0.2]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T12:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 2089,
+        "sha256": "05594cd4e2f6897628845446c458597e83848cb7119edcbae79704c236c04bbd",
+        "read": "2026-11-12T12:20:15Z",
+        "response_ms": 488,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T122015Z-05594cd4e2f6.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 3,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["RYR7KX","RYR","B38M",32.0687,-15.5665,36000,false,495,19,0,14.8],
+        ["TOM37B","TOM","B38M",32.3262,-16.1453,37000,false,406,201,0,0.4],
+        ["TRA1N","TRA","A21N",32.6035,-16.6281,9850,false,306,47,2944,0]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T12:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 3974,
+        "sha256": "5d27f73c2fb057a01797ac2c19d215a55746155e21e824de6cbfe8bfb3d85efa",
+        "read": "2026-11-12T12:40:16Z",
+        "response_ms": 452,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T124016Z-5d27f73c2fb0.body",
+        "rate_limit_remaining": 498
+      },
+      "airline": 6,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["BEL7QJ","BEL","A20N",31.647,-15.0373,37000,false,389,213,0,0.2],
+        ["EJU9486","EJU","A319",32.731,-16.6709,6175,false,268,46,3840,0.3],
+        ["EXS1HJ","EXS","B738",31.6049,-16.4442,37000,false,398,190,0,0.3],
+        ["EXS1ZK","EXS","A21N",31.9905,-16.5147,37000,false,416,184,0,0.2],
+        ["EXS7LH","EXS","B738",33.0579,-16.4345,37000,false,420,184,0,27.4],
+        ["TAP028","TAP","A339",32.3708,-14.4627,40000,false,520,34,0,23.9]
       ],
       "others": []
     }

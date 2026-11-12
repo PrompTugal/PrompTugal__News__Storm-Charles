@@ -1,0 +1,69 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-12T13:00:17Z",
+  "label": "fact",
+  "area": "funchal",
+  "area_def": {
+    "name": "Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal)",
+    "lat": 32.75,
+    "lon": -16.85,
+    "dist_nm": 150
+  },
+  "hour": "2026-11-12T13:00:00Z",
+  "about": "Aircraft adsb.lol's community receivers saw in Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal), 2026-11-12 13:00 to :59 UTC, one frame per poll (Lisbon every 5 minutes, Madeira every 20). Fact: what adsb.lol shows at the time read (frames[].t; frames[].request holds the URL, status, bytes and sha256 of the raw response, which is in our vault). rows: airline flights (an airline's ICAO code plus a flight number), one array per aircraft in the order of fields. others: every other aircraft, one array in the order of other_fields: its ADS-B emitter category and position only, with no callsign, no ICAO24 address, no registration and no type, so nothing names a private owner; altitude rounded to 100 ft. Aircraft whose owners asked to be withheld (PIA or LADD in adsb.lol's data) are dropped and only counted. pos_age_s: how old each position was when read. Nothing between frames is measured: a line or a moving dot drawn between two frames is a drawing (hypothesis), not a position.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "licence": "ODbL 1.0",
+  "fields": ["callsign","airline","type","lat","lon","alt_ft","on_ground","gs_kt","track_deg","vrate_fpm","pos_age_s"],
+  "other_fields": ["category","lat","lon","alt_ft","on_ground","gs_kt","track_deg"],
+  "units": {
+    "alt_ft": "feet, barometric (geometric when barometric is absent); null on the ground",
+    "gs_kt": "knots",
+    "track_deg": "degrees true, clockwise from north",
+    "vrate_fpm": "feet per minute, + climbing",
+    "pos_age_s": "seconds since the position was received",
+    "category": "ADS-B emitter category (A1 light, A2 small, A3 large, A4 B757, A5 heavy, A7 rotorcraft, B1 glider, B6 drone, C1-C3 surface; null not sent)"
+  },
+  "cadence_min": 20,
+  "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
+  "airlines": {
+    "EXS": "Jet2",
+    "EZY": "easyJet",
+    "OCN": "Discover Airlines",
+    "RYR": "Ryanair",
+    "TFL": "TUI fly Netherlands"
+  },
+  "frames": [
+    {
+      "t": "2026-11-12T13:00:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 7488,
+        "sha256": "d856802aa3f541b702eb9ad4aff7e9294bffff6204109e9ba91eeab3aa622929",
+        "read": "2026-11-12T13:00:16Z",
+        "response_ms": 488,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T130016Z-d856802aa3f5.body",
+        "rate_limit_remaining": 498
+      },
+      "airline": 10,
+      "other": 1,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["EXS18AX","EXS","B738",32.1416,-16.5302,38000,false,415,182,0,0.4],
+        ["EXS31L","EXS","A21N",31.8084,-16.527,37000,false,419,184,0,0.4],
+        ["EXS70WH","EXS","A21N",33.024,-16.44,37025,false,425,184,-64,3.4],
+        ["EXS7LH","EXS","B738",30.729,-16.7095,37000,false,412,189,0,0.2],
+        ["EXS9DP","EXS","A21N",31.4918,-16.5539,37025,false,413,182,0,0.4],
+        ["EZY92XR","EZY","A320",32.2854,-15.9952,37000,false,403,209,0,0.7],
+        ["OCN8NT","OCN","A320",32.5863,-15.8023,35000,false,411,209,64,0],
+        ["RYR10KN","RYR","B38M",32.2026,-15.4525,38000,false,508,25,0,57.9],
+        ["RYR563","RYR","B738",30.9392,-16.6289,37000,false,404,193,0,0.6],
+        ["TFL9KM","TFL","B738",31.2752,-16.5575,39000,false,392,193,0,0.1]
+      ],
+      "others": [
+        ["A2",32.019,-15.431,40000,false,502,30]
+      ]
+    }
+  ]
+}
