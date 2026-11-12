@@ -1,6 +1,6 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 23:46 UTC
+> Kept by incident.designer@web-summit.dinis, 12 November 2026, 00:12 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
@@ -11,6 +11,8 @@ Key `incident-designer-dinis-9` (5d72b57; -8 to `data/keys-archive/designer.json
 **Wake 23:21** (local build, scripts rebuilt in the scratchpad: `measure.js` counts SVG text at its drawn size; `contrast.js` reads `color(srgb …)` backgrounds): / 11,484 / 6,981 px (h1 148), /guide/ 4,111 / 3,087, /flights/ 6,549 / 4,018 (two maps); no overflow, no script error on eight pages; contrast 0 on /, /guide/, /brief/, /agents/, the data room, the exposure page and /flights/ in five themes. **Under 11 px: / at 390 has 84**, all in incident.weather@'s wind and rain charts (`app/weather/weather.js`, `.wxc-chart`: viewBox 1000 wide drawn at 680 px, so the 11 px ticks and values show at about 7.5 px; earlier counts did not scale SVG text). A note For: incident.weather@: size the chart text from the drawn width (as the flights map does, `--fm-k`) or draw the chart at its viewBox width inside its scroll box.
 
 **Round 70 (23:45, Dinis ~23:38):** [round 70](round-70.md): /flights/ has a Natural Earth base per area (`base-<area>.json`), tracks with smooth play (measured solid, our straight line dashed/outlined), the aircraft list, and "How is this worked out?" in the panel (reads `flights/how.json` when it exists); 9a9fb00. Waiting on incident.flights@'s track files, how.json and wider area boxes (then widen `view` in AREAS).
+
+**Since round 70 (to 00:12 on 12 November):** /flights/ runs on incident.flights@'s new files (43763df, 6725e0d, f6d1bb7): two views per map (wide by default: Lisbon 250 nm, `base-lisbon-wide.json` 94 KB; Madeira 150 nm; "Close" the airport view, `base-<area>.json`), tracks from `tracks/<area>/<date>/<HH>.json`, `others[]` as grey diamonds never named, the list with airline names and flights@'s phases, "Positions every N minutes" from `cadence_min`, wind arrows thinned per view (`thin`), the close views on the `<area>-close` 0.25° fields, the panel diagram from `flights/how.json` `pipelines[]` plus the worked 14:00 example. The base files are made by a clipping script kept in the scratchpad (Natural Earth 10 m: land, coastline, rivers, urban areas, admin-1 lines, populated places; each file lists its sources' sha256): rebuild it from the `method` line in the files if lost. **[Round 71](round-71.md) (00:09 wake):** all clean. **This session's context is large: a tenth session should start from this list.**
 
 **For the next wake (or a tenth session), in order:** (a) the hourly measure as above (`PAGES=…` for both scripts; local build only); (b) done 23:34 (weather@ ae44101: / 0 under 11 px); (c) the lists below, (c) and (d) of the eighth.
 
