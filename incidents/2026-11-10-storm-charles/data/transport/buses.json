@@ -2,7 +2,7 @@
  "about": "Buses and trams: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.",
  "mode": "buses",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T23:42:24Z",
+ "updated": "2026-11-12T00:44:25Z",
  "not_a_warning_service": "Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "operators": [
@@ -13,12 +13,12 @@
    "label": "fact",
    "state": "disrupted (weather notices in force)",
    "counts": {
-    "active_notices": 105,
-    "weather_notices": 15,
-    "lines_named_in_weather_notices": 56,
+    "active_notices": 94,
+    "weather_notices": 5,
+    "lines_named_in_weather_notices": 20,
     "by_effect": {
-     "DETOUR": 32,
-     "SIGNIFICANT_DELAYS": 43,
+     "DETOUR": 25,
+     "SIGNIFICANT_DELAYS": 39,
      "MODIFIED_SERVICE": 7,
      "ADDITIONAL_SERVICE": 21,
      "REDUCED_SERVICE": 2
@@ -26,107 +26,92 @@
    },
    "notices": [
     {
-     "header": "Linhas 1120, 1121, 1523, 1529, 1530, 1601, 1604, 1605, 1606, 1607, 1725: Desvio de percurso",
-     "excerpt": "Devido ao corte da Rua Desembargador Faria, em Oeiras, as linhas 1120, 1121, 1523, 1529, 1530, 1601, 1604, 1605, 1606, 1607, 1725 sofrerão desvios.",
+     "header": "Odivelas | 2222: Desvio de percurso - Rua Estevão Amarante (Ramada)",
+     "excerpt": "Devido às condições meteorológicas adversas, a linha 2222 (Ramada | Circular) não poderá circular na R. Estêvão Amarante, na Ramada. Ao descer a R. Cmdt. Sacadura Cabral, o autocarro vira logo à esquerda para a R. …",
+     "effect": "DETOUR",
+     "from": "2026-11-11T15:50:00Z",
+     "to": "2026-11-12T18:00:00Z",
+     "en": {
+      "text": null,
+      "label": "evidence",
+      "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
+      "check": "failed: the open models give different figures",
+      "at": "2026-11-12T00:42:33Z",
+      "trace_id": "50abeb1f317cfea1f22bf3f1d55c240b"
+     }
+    },
+    {
+     "header": "Almada | 3018, 3023 e 3515: Desvio de percurso",
+     "excerpt": "Devido aos danos causados pelo mau tempo, a EN10-1, em Vale Fetal, está cortada ao trânsito, pelo que as linhas 3018, 3023 e 3515 estão a efetuar desvio de percurso pela Rua General Humberto Delgado, Rua do Povo e Av. …",
      "effect": "DETOUR",
      "from": "2026-11-11T14:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
+     "to": "2026-11-19T19:59:59Z",
      "en": {
-      "text": "Lines 1120, 1121, 1523, 1529, 1530, 1601, 1604, 1605, 1606, 1607, and 1725 will have route diversions due to the closure of Rua Desembargador Faria in Oeiras.",
+      "text": "Lines 3018, 3023 and 3515 in Almada are diverted via Rua General Humberto Delgado, Rua do Povo and Av. because EN10-1 in Vale Fetal is closed due to bad weather damage.",
       "label": "evidence",
       "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
       "check": "passed: every figure of the Portuguese is in the English, and both open models give the same figures",
-      "at": "2026-11-11T22:47:42Z",
-      "trace_id": "b3cb89d7041d8f955ace7a6fe7cb03ae"
+      "at": "2026-11-12T00:42:39Z",
+      "trace_id": "8982cec2e167496f30552e569df1a21a"
      }
     },
     {
-     "header": "Linha 1247: Desvio de percurso",
-     "excerpt": "Devido À queda de uma árvore, em Janas, a linha 1247 (Fontanelas - Portela de Sintra (Estação) via Janas) irá efetuar desvio de percurso.",
+     "header": "Sesimbra | 3201, 3208, 3210, 3211, 3215 e 3540: Desvio de percurso",
+     "excerpt": "Devido aos danos causados pelo mau tempo, a Estrada da Ponte Concelho, em Sesimbra, está cortada ao trânsito, pelo que as linhas 3201, 3208, 3210, 3211, 3215 e 3540 estão a efetuar desvio de percurso em ambos os …",
      "effect": "DETOUR",
-     "from": "2026-11-11T10:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
+     "from": "2026-11-11T14:00:00Z",
+     "to": "2026-11-19T19:59:59Z",
+     "en": {
+      "text": "Lines 3201, 3208, 3210, 3211, 3215 and 3540 in Sesimbra are on detour in both directions. This is due to the Estrada da Ponte Concelho being closed to traffic because of bad weather damage.",
+      "label": "evidence",
+      "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
+      "check": "passed: every figure of the Portuguese is in the English, and both open models give the same figures",
+      "at": "2026-11-12T00:42:49Z",
+      "trace_id": "dcd43fe84204b504dc31a6e1d7848733"
+     }
+    },
+    {
+     "header": "Sesimbra | 3222, 3535, 3546, 3547, 3549, 3620, 3641 e 3720: Desvio de percurso",
+     "excerpt": "Devido aos danos causados pelo mau tempo, um torço da Avenida da Liberdade, em Sesimbra está cortado ao trânsito, pelo que as linhas 3222, 3535, 3546, 3547, 3549, 3620, 3641 e 3720 estão a efetuar desvio de percurso em …",
+     "effect": "DETOUR",
+     "from": "2026-11-11T14:00:00Z",
+     "to": "2026-11-19T19:59:59Z",
      "en": {
       "text": null,
       "label": "evidence",
       "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
       "check": "failed: the open models give different figures",
-      "at": "2026-11-11T22:47:47Z",
-      "trace_id": "a09e626d00944d56e54dc433e0a6af7c"
+      "at": "2026-11-12T00:43:05Z",
+      "trace_id": "d7b89464a1b748ebccb20fd8a6701488"
      }
     },
     {
-     "header": "Linhas 1119, 1123, 1531, 1610, 1611, 1616 e 1617: Desvio de percurso",
-     "excerpt": "Devido ao corte da estrada da Quinta da Fonte as linhas 1119, 1123, 1531, 1610, 1611, 1616 e 1617 irão efetuar desvio de percurso.",
+     "header": "Sesimbra | 3218 e 3220: Desvio de percurso",
+     "excerpt": "Devido aos danos causados pelo mau tempo na Marginal e Avenida dos Combatentes, em Sesimbra, as linhas 3218 e 3220 estão a realizar desvios de percurso. Deste modo, a linha 3218 fará desvio peça N378, Rua Eduardo da …",
      "effect": "DETOUR",
-     "from": "2026-11-11T10:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
+     "from": "2026-11-11T06:00:00Z",
+     "to": "2026-11-12T23:59:59Z",
      "en": {
       "text": null,
       "label": "evidence",
       "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
       "check": "failed: the open models give different figures",
-      "at": "2026-11-11T22:47:51Z",
-      "trace_id": "a7dd2767d3370380da95384da00ddcf4"
-     }
-    },
-    {
-     "header": "Linhas 1123, 1125, 1529, 1610, 1611, 1616: Desvio de Percurso",
-     "excerpt": "Devido ao corte da Rua do Comércio as linhas 1123, 1125, 1529, 1610, 1611 e 1616 farão desvio de percurso.",
-     "effect": "DETOUR",
-     "from": "2026-11-11T10:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
-     "en": {
-      "text": null,
-      "label": "evidence",
-      "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
-      "check": "failed: the open models give different figures",
-      "at": "2026-11-11T22:47:54Z",
-      "trace_id": "8b091bd5568180b27a9ea2dda58e7624"
-     }
-    },
-    {
-     "header": "Linha 1106: Desvio de percurso",
-     "excerpt": "Devido ao corte da Av. Pierre de Coubertin, a linha 1106 (Algés (Estação) - Queijas (PSP)) está a sofrer um desvio de percurso.",
-     "effect": "DETOUR",
-     "from": "2026-11-11T10:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
-     "en": {
-      "text": null,
-      "label": "evidence",
-      "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
-      "check": "failed: the open models give different figures",
-      "at": "2026-11-11T22:47:57Z",
-      "trace_id": "e536d350845f50bd2a74f929a580c98a"
-     }
-    },
-    {
-     "header": "Linhas 1613, 1614, 1615, 1618, 1619, 1622: Desvio de Percurso",
-     "excerpt": "Devido ao corte da estrada da Abóboda, as linhas 1613, 1614, 1615, 1618, 1619 e 1622 farão desvio de percurso.",
-     "effect": "DETOUR",
-     "from": "2026-11-11T10:00:00Z",
-     "to": "2026-11-11T23:59:59Z",
-     "en": {
-      "text": null,
-      "label": "evidence",
-      "source": "model summary (google/gemma-4-31b-it and meta-llama/llama-4-maverick), not the operator's words",
-      "check": "failed: the open models give different figures",
-      "at": "2026-11-11T22:48:02Z",
-      "trace_id": "a92e918f0459f8832a4723ac1b6d0951"
+      "at": "2026-11-12T00:43:12Z",
+      "trace_id": "acf0864bbd338ad877cf9be147333281"
      }
     }
    ],
    "link": "https://www.carrismetropolitana.pt/",
    "source": "https://api.carrismetropolitana.pt/v2/alerts",
-   "read": "2026-11-11T23:41:59Z",
-   "sha256": "90a60144d2220b9ce9a065183859d55105c1b9e6be16e2c822e6c50fac710302",
+   "read": "2026-11-12T00:43:59Z",
+   "sha256": "f32c6556af4e9c0dd9bbfb6ebd4829d2d2fe087f04c9a2d0bcfd5e2f453e5ade",
    "licence": "Carris Metropolitana's network data is published on dados.gov.pt under CC BY (TML); the API itself states no licence",
    "vehicles_now": {
     "label": "fact",
     "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
-    "at": "2026-11-11T23:42:01Z",
-    "vehicles": 234,
-    "lines": 151,
+    "at": "2026-11-12T00:44:02Z",
+    "vehicles": 133,
+    "lines": 96,
     "series": [
      {
       "at": "2026-11-11T12:06:46Z",
@@ -232,11 +217,21 @@
       "at": "2026-11-11T23:42:01Z",
       "vehicles": 234,
       "lines": 151
+     },
+     {
+      "at": "2026-11-12T00:42:05Z",
+      "vehicles": 129,
+      "lines": 92
+     },
+     {
+      "at": "2026-11-12T00:44:02Z",
+      "vehicles": 133,
+      "lines": 96
      }
     ],
     "source": "https://api.carrismetropolitana.pt/v2/vehicles",
-    "read": "2026-11-11T23:42:01Z",
-    "sha256": "f6803330c2bd6465c2a1a88d57883962525e0536e5e1f1288e89e1bddafa41f7",
+    "read": "2026-11-12T00:44:02Z",
+    "sha256": "991776d74f759a90c26c1a7025097cdeb45d5b4d05f8a06de82904c15c83fbfc",
     "baseline": {
      "label": "none",
      "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
@@ -252,9 +247,9 @@
    "vehicles_now": {
     "label": "fact",
     "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
-    "at": "2026-11-11T23:42:03Z",
-    "vehicles": 53,
-    "lines": 30,
+    "at": "2026-11-12T00:44:04Z",
+    "vehicles": 43,
+    "lines": 32,
     "series": [
      {
       "at": "2026-11-11T12:17:04Z",
@@ -355,11 +350,21 @@
       "at": "2026-11-11T23:42:03Z",
       "vehicles": 53,
       "lines": 30
+     },
+     {
+      "at": "2026-11-12T00:42:06Z",
+      "vehicles": 43,
+      "lines": 32
+     },
+     {
+      "at": "2026-11-12T00:44:04Z",
+      "vehicles": 43,
+      "lines": 32
      }
     ],
     "source": "https://broker.fiware.urbanplatform.portodigital.pt/v2/entities?q=vehicleType==bus&limit=1000",
-    "read": "2026-11-11T23:42:03Z",
-    "sha256": "17bde8b7357704e1b012c07dc86355647623d71b5e912d1c1a8a1905419f04b2",
+    "read": "2026-11-12T00:44:04Z",
+    "sha256": "cc164761c41fa2c66ad7fa3a86a79ec165f794bfbd9847f5410d17aceeecb843",
     "baseline": {
      "label": "none",
      "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
@@ -368,8 +373,8 @@
    "notices": [],
    "link": "https://www.stcp.pt/",
    "source": "https://dados.gov.pt/datasets/urban-platform-bus-location/",
-   "read": "2026-11-11T23:42:03Z",
-   "sha256": "17bde8b7357704e1b012c07dc86355647623d71b5e912d1c1a8a1905419f04b2",
+   "read": "2026-11-12T00:44:04Z",
+   "sha256": "cc164761c41fa2c66ad7fa3a86a79ec165f794bfbd9847f5410d17aceeecb843",
    "licence": "CC0 (dados.gov.pt, published by STCP through Porto Digital's urban platform)"
   }
  ],

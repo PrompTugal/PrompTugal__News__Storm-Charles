@@ -47,7 +47,8 @@
         '<p>' + prov('ANA, the airport operator, in its newsroom', n.link, n.read) + '</p>'
     }
     if (d.label === 'fact') {
-      s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + ' ' + lbl('fact') + '</p>' + bars(d.by_hour_utc || [])
+      if (d.paused) s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen from ' + tm(d.covered_from, dhm(d.covered_from)) + ' to ' + tm(d.frozen_at, dhm(d.frozen_at)) + ' UTC ' + lbl('fact') + '</p><p class="meta">OpenSky readings paused from then, pending a licence; not a count of today.</p>' + bars(d.by_hour_utc || [])
+      else s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + ' ' + lbl('fact') + '</p>' + bars(d.by_hour_utc || [])
       if (d.by_airline && d.by_airline.length) s += '<p class="meta">' + d.by_airline.slice(0, 6).map(function (x) { return esc(x.airline) + ' ' + x.n }).join(' · ') + (d.by_airline.length > 6 ? ' · …' : '') + '</p>'
       s += '<p>' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '</p>'
     } else s += '<p>' + lbl('none') + ' ' + esc(d.note || 'No reading') + '</p>'

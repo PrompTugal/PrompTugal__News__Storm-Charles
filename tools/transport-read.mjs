@@ -507,7 +507,9 @@ const fl = PAUSE ? (() => {
     let prev = []; try { prev = JSON.parse(fs.readFileSync(path.join(OUT, 'flights.json'), 'utf8')).airports || [] } catch { }
     const note = `${PAUSE.status || 'paused'} (from ${PAUSE.paused_at}): ${PAUSE.reason}`
     return prev.map(a => ({ ...a, ana: undefined,
-        departures_today: a.departures_today?.paused ? a.departures_today : { ...a.departures_today, paused: note, frozen_at: a.departures_today?.read || null },
+        departures_today: (dt => ({ ...dt, day: (dt.frozen_at || dt.read || '').slice(0, 10) || null,
+            ...(dt.frozen_at && dt.frozen_at.slice(0, 10) < iso(Date.now()).slice(0, 10) ? { not_today: `These are ${dt.frozen_at.slice(0, 10)}'s counts, frozen at ${dt.frozen_at.slice(11, 16)} UTC when OpenSky readings were paused: not a count of today.` } : {}) }))(
+            a.departures_today?.paused ? a.departures_today : { ...a.departures_today, paused: note, frozen_at: a.departures_today?.read || null }),
         live_snapshot: adsbLive(a.icao) }))
 })() : await flights()
 const an = await ana()
