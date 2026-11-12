@@ -96,6 +96,7 @@
     var inb = function (lon, lat) { return lon >= bb[0] && lon <= bb[2] && lat >= bb[1] && lat <= bb[3] }
     var snaps = (idx.snapshots || []).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 }), wa = (idx.wind_hours || []).filter(function (w) { return w.area === A.wind + '-close' }), winds = (!V.wide && wa.length ? wa : (idx.wind_hours || []).filter(function (w) { return w.area !== A.wind + '-close' })).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 })  /* the close view takes the finer field (area <wind>-close) when the files have it */
     var seen = {}, times = snaps.map(function (s) { return s.t }).concat(winds.map(function (w) { return w.t })).filter(function (t) { return seen[t] ? false : (seen[t] = 1) }).sort()
+    if (snaps.length) { var lastSnap = snaps[snaps.length - 1].t; times = times.filter(function (t) { return t <= lastSnap }) }  /* the time line ends at the last measured frame: wind hours past it (the model's forecast) are not steps of their own (round 73) */
     if (!times.length) { box.innerHTML = '<p class="meta">No snapshots yet.</p>'; return }
     var rw = Array.isArray(runways) ? runways : runways && runways.runways || []
     // the base map: Natural Earth land, urban areas, rivers, district lines, coast; a graticule; place labels; the runways (OurAirports)
