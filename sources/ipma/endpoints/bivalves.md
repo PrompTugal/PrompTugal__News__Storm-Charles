@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Shellfish harvesting bans by production zone
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 06:53 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 07:52 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Interdições à apanha nas Zonas de Produção de Moluscos
 | Shape | FeatureCollection of zone polygons (3.4 MB), with the bulletin's number and publication_date at the top |
 | IPMA says it updates | not stated (the latest bulletin) |
 | IPMA's file dated (its Last-Modified header) | 2026-11-09 16:20 UTC |
-| We last read it | 2026-11-12 06:52 UTC, 1 file, 3411715 bytes |
+| We last read it | 2026-11-12 07:51 UTC, 1 file, 3411715 bytes |
 | IPMA's note | "Últimas permissões/interdições publicadas para a apanha e comercialização de moluscos bivalves, equinodermes, tunicados e gastrópodes marinhos vivos." |
 | More from IPMA | https://www.ipma.pt/pt/bivalves |
 
@@ -46,6 +46,6 @@ IPMA's name for it: *Interdições à apanha nas Zonas de Produção de Moluscos
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/biology/bivalves/CI_SNMB.geojson](https://api.ipma.pt/open-data/observation/biology/bivalves/CI_SNMB.geojson) | 200 | 3411715 | `1f5ee7e1f1445d9b…` | 2026-11-09 16:20 | 2026-11-12 06:52 |
+| [observation/biology/bivalves/CI_SNMB.geojson](https://api.ipma.pt/open-data/observation/biology/bivalves/CI_SNMB.geojson) | 200 | 3411715 | `1f5ee7e1f1445d9b…` | 2026-11-09 16:20 | 2026-11-12 07:51 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads. Our small files made from it: [data/shellfish-zones.json](../data.md#data/shellfish-zones.json).

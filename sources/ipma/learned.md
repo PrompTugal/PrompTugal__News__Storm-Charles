@@ -4,7 +4,7 @@ summary: Notes from reading every file of IPMA's open data beside its documentat
 ---
 # What we learned reading IPMA's API
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 06:53 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 07:52 UTC
 
 [IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
@@ -14,7 +14,7 @@ IPMA's open data is a generous thing: warnings, forecasts, observations, the sea
 
 ### The evapotranspiration file is at another address
 
-The documentation gives `.../evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv`. That address answered **404** when we read it (2026-11-12 06:52 UTC). IPMA's own directory lists the file as `et0-p1d-continental-obssup-idw-concelhos-20d.csv` ("concelhos" and "20d" the other way round, as in the precipitation and temperature files), and that address answered **200**.
+The documentation gives `.../evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv`. That address answered **404** when we read it (2026-11-12 07:51 UTC). IPMA's own directory lists the file as `et0-p1d-continental-obssup-idw-concelhos-20d.csv` ("concelhos" and "20d" the other way round, as in the precipitation and temperature files), and that address answered **200**.
 
 - **Where to see it:** [the documented address](endpoints/climate-evapotranspiration.md), [the listed address](endpoints/climate-evapotranspiration-listed.md)
 - **What would help a reader of the API:** one word order in the documentation's link.
