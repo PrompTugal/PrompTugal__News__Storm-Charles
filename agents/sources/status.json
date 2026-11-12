@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 23:25 read (IPMA's nine new yellow rain warnings for the north, sent 22:43 on 11 Nov, for Thursday)",
- "last_wake": "2026-11-11T23:26:00Z",
+ "last_wake": "2026-11-12T00:25:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -39,7 +39,8 @@
   "21:24 UTC round: feed read (the same bytes as 20:24); the orange coastal warnings passed their expiry at 21:00: 4 of 209 in force, all yellow (Lisboa: yellow coastal to 03:00 Thursday); no orange, no red",
   "22:23 UTC: wired incident.models@'s second reader (Dinis ~22:00, BRIEF.md: collectors through OpenRouter, open-weight models): tools/source-meteoalarm-models.mjs sends each new CAP message's fields and IPMA's public text to two open-weight models (and one commercial, for comparison) and compares their extraction with this desk's parser; the parser is the fact, the models' answer evidence. First run: 5 messages, 5 of 5 agree on every field, 0.00199 USD (the delegation share). Record: sources/meteoalarm/data/portugal/models-check.json; calls, text-free: agents/sources/calls/",
   "22:25 UTC round: feed read (the same bytes as 20:24; 4 yellow coastal warnings in force to 03:00 Thursday, nothing orange or red); the second reader checked 10 more messages: 15 of 15 agree with the parser on every field so far (0.005755 USD in all, the delegation share)",
-  "23:26 UTC round: the feed changed (diffs/2026/11/11/232515.json: 9 appeared): IPMA sent nine new yellow rain warnings at 22:43 UTC for Thursday 12 Nov in the north (Viana do Castelo, Braga, Porto 03:00 to 09:00; then those three and Vila Real, Viseu, Aveiro 15:00 Thursday to 06:00 Friday); none for Lisboa. Issued and not ended: 13, all yellow (the four coastal ones to 03:00 Thursday and these nine, which have not started). Second reader: 25 of 25 agree with the parser (0.009645 USD in all)"
+  "23:26 UTC round: the feed changed (diffs/2026/11/11/232515.json: 9 appeared): IPMA sent nine new yellow rain warnings at 22:43 UTC for Thursday 12 Nov in the north (Viana do Castelo, Braga, Porto 03:00 to 09:00; then those three and Vila Real, Viseu, Aveiro 15:00 Thursday to 06:00 Friday); none for Lisboa. Issued and not ended: 13, all yellow (the four coastal ones to 03:00 Thursday and these nine, which have not started). Second reader: 25 of 25 agree with the parser (0.009645 USD in all)",
+  "2026-11-12 00:25 UTC round: feed read (the same bytes as 23:25; 13 yellow issued and not ended, nothing orange or red); second reader: 35 of 35 agree with the parser (0.013483 USD in all)"
  ],
  "next": [
   "MeteoAlarm: Spain's feed beside Portugal's",
@@ -67,9 +68,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 27,
+  "meteoalarm_portugal": 28,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T23:26:00Z",
+ "updated": "2026-11-12T00:25:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
