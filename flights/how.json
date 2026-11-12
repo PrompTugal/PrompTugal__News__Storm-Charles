@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T23:54:17Z",
+  "updated": "2026-11-12T12:14:00Z",
   "label": "fact",
   "about": "How the flights page is made, as data for the reader's panel (Dinis via incident.conductor@, 11 November ~23:38 UTC: a visual explanation of how the plane data is worked out). Two pipelines and one sum: aircraft (adsb.lol -> our poll -> filter -> frames and snapshots -> tracks -> the map), the wind field (Open-Meteo -> the map's arrows) and the crosswind arithmetic on the airports' METAR, with a worked example. Each step names its source, the time it was read and its numbers. Every step's label: fact (read from the source), derived (arithmetic on facts, the rule printed), hypothesis (a drawing or a judgement of ours).",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -113,20 +113,20 @@
           "source": "https://open-meteo.com",
           "licence": "CC BY 4.0",
           "read": "2026-11-11T23:53:54Z",
-          "refresh": "every 6 hours"
+          "refresh": "every 12 hours (06:00 and 18:00 UTC) from 12 November 18:00 UTC; every 6 hours before"
         },
         {
           "id": "lattice",
           "label": "evidence",
           "title": "A lattice of points",
-          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.5 degrees apart over boxes that hold the aircraft areas (0.25 degrees over a smaller box until 11 November 23:54 UTC).",
+          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 1.0 degree apart over boxes that hold the aircraft areas from 12 November 18:00 UTC (0.5 degrees before, kept in the days already written; 0.25 degrees over a smaller box until 11 November 23:54 UTC). Coarser to spare Open-Meteo's free limit (10,000 point-requests a day), shared with other agents.",
           "grids": [
             {
               "area": "lisbon",
-              "points": 396,
-              "rows": 18,
-              "cols": 22,
-              "step_deg": 0.5,
+              "points": 99,
+              "rows": 9,
+              "cols": 11,
+              "step_deg": 1.0,
               "box": {
                 "lat": [
                   34.5,
@@ -136,14 +136,21 @@
                   -14.5,
                   -4
                 ]
+              },
+              "earlier": {
+                "points": 396,
+                "rows": 18,
+                "cols": 22,
+                "step_deg": 0.5,
+                "until": "2026-11-12T12:00:00Z"
               }
             },
             {
               "area": "madeira",
-              "points": 168,
-              "rows": 12,
-              "cols": 14,
-              "step_deg": 0.5,
+              "points": 42,
+              "rows": 6,
+              "cols": 7,
+              "step_deg": 1.0,
               "box": {
                 "lat": [
                   30,
@@ -153,10 +160,17 @@
                   -20,
                   -13.5
                 ]
+              },
+              "earlier": {
+                "points": 168,
+                "rows": 12,
+                "cols": 14,
+                "step_deg": 0.5,
+                "until": "2026-11-12T12:00:00Z"
               }
             }
           ],
-          "window": "2026-11-10T12:00:00Z to 2026-11-12T12:00:00Z",
+          "window": "2026-11-10T12:00:00Z to 2026-11-13T12:00:00Z",
           "files": [
             "incidents/2026-11-10-storm-charles/data/flights/wind/<area>-<date>.json"
           ]
@@ -317,7 +331,7 @@
         },
         {
           "label": "A lattice of points",
-          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.5 degrees apart over boxes that hold the aircraft areas: Lisbon 396 points, Madeira 168.",
+          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points over boxes that hold the aircraft areas: 1.0 degree apart from 12 November 18:00 UTC (Lisbon 99 points, Madeira 42), 0.5 before (Lisbon 396, Madeira 168).",
           "source": "incidents/2026-11-10-storm-charles/data/flights/wind/<area>-<date>.json",
           "kind": "evidence"
         },

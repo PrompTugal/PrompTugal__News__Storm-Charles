@@ -2,22 +2,27 @@
 // The wind field over Lisbon and Madeira (incident.flights@web-summit.dinis, 11 November 2026, WS-214; Dinis ~22:00 UTC).
 //   node tools/flights-wind.mjs   -> incidents/<id>/data/flights/wind/<area>-<date>.json, one file per area per UTC day
 // Open-Meteo (CC BY 4.0) hourly wind at 10 m (speed, direction, gusts) and at 850 hPa (speed, direction, about 1,500 m),
-// on a 0.5-degree lattice (0.25 until 11 November 23:54 UTC, over a smaller box), 10 November 12:00 to 13 November 12:00 UTC (moved a day forward at 11:14 UTC on 12 November). Model data, not observations; hours after the
+// on a 1.0-degree lattice (0.5 until 12 November 12:00 UTC; 0.25 until 11 November 23:54 UTC, over a smaller box), 10 November 12:00 to 13 November 12:00 UTC (moved a day forward at 11:14 UTC on 12 November). Model data, not observations; hours after the
 // time read are Open-Meteo's forecast, marked, and replaced on the next run. Not ours and not a warning.
 import path from 'node:path'
 import { BY, DATA, NOT_WARNING, OPENMETEO_CITE, fetchProv, writeJSON, iso } from './flights-common.mjs'
 
-const START = '2026-11-10T12:00'; const END = '2026-11-13T12:00'
+// Open-Meteo's free limit (10,000 point-requests a day) is shared with other sessions on the same egress (incident.conductor@,
+// 12 November 12:15 UTC): re-fetch only from the UTC day that held the time 12 hours ago (earlier days are final and stay as
+// written), the wide boxes at 1.0 degree, every 12 hours (06:00 and 18:00 UTC, publish.sh). About 286 points a run.
+const FIRST = '2026-11-10T12:00'; const END = '2026-11-13T12:00'
+const fromDay = new Date(Date.now() - 12 * 3600e3).toISOString().slice(0, 10) + 'T00:00'
+const START = process.env.WIND_FROM || (fromDay > FIRST ? fromDay : FIRST)
 const AREAS = {
   // the boxes around the aircraft areas (tools/flights-poll.mjs): Lisbon 250 nm of 38.75 N 9.20 W, Madeira 150 nm of 32.75 N 16.85 W
-  // (incident.conductor@, 11 November 23:53 UTC: the arrows covered only the old small lattice). 0.5 degrees keeps a day under 256 KB.
+  // (incident.conductor@, 11 November 23:53 UTC: the arrows covered only the old small lattice). 1.0 degree (from 12 November 18:00 UTC) keeps Open-Meteo's shared daily limit.
   lisbon: { name: 'Lisbon area and the Atlantic approaches', lat: [34.5, 43], lon: [-14.5, -4] },
   madeira: { name: 'Madeira and its approaches', lat: [30, 35.5], lon: [-20, -13.5] },
   // finer fields for the maps' close views (incident.designer@, 23:58 UTC): the earlier 0.25-degree boxes
   'lisbon-close': { name: 'Lisbon area (close view)', lat: [37.5, 40], lon: [-10.5, -8], step: 0.25 },
   'madeira-close': { name: 'Madeira (close view)', lat: [32.5, 33.25], lon: [-17.5, -16.25], step: 0.25 }
 }
-const STEP_WIDE = 0.5
+const STEP_WIDE = 1.0   // 0.5 until the 12 November 12:00 UTC run (days written before then keep their 0.5-degree grid)
 const VARS = ['wind_speed_10m', 'wind_direction_10m', 'wind_gusts_10m', 'wind_speed_850hPa', 'wind_direction_850hPa']
 const range = ([a, b], STEP) => { const r = []; for (let x = a; x <= b + 1e-9; x += STEP) r.push(Math.round(x * 100) / 100); return r }
 const written = []

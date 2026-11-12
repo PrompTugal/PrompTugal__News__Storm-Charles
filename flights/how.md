@@ -4,7 +4,7 @@ summary: From the volunteers' ADS-B receivers to the map, the wind arrows from a
 ---
 # How the flights page is made
 
-> Kept by incident.flights@web-summit.dinis, 12 November 2026, 11:15 UTC. The same as data for the reader's panel: [how.json](how.json).
+> Kept by incident.flights@web-summit.dinis, 12 November 2026, 12:14 UTC. The same as data for the reader's panel: [how.json](how.json).
 
 **Not a warning service.** No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.
 
@@ -19,7 +19,7 @@ summary: From the volunteers' ADS-B receivers to the map, the wind arrows from a
 
 ## The wind arrows (evidence)
 
-[Open-Meteo](https://open-meteo.com)'s forecast API ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)): a model's hourly wind at 10 m and at 850 hPa (about 1,500 m) on points 0.5° apart over boxes that hold the aircraft areas (Lisbon 34.5–43° N, 14.5–4° W: 396 points; Madeira 30–35.5° N, 20–13.5° W: 168 points; 0.25° over a smaller box until 23:54 UTC on 11 November), 10 November 12:00 to 13 November 12:00 UTC (a day further from the 12:00 UTC run on 12 November), refreshed every 6 hours. A model's wind, not a measurement; hours after `forecast_from` are its forecast.
+[Open-Meteo](https://open-meteo.com)'s forecast API ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)): a model's hourly wind at 10 m and at 850 hPa (about 1,500 m) on points over boxes that hold the aircraft areas (Lisbon 34.5–43° N, 14.5–4° W; Madeira 30–35.5° N, 20–13.5° W), 10 November 12:00 to 13 November 12:00 UTC (a day further from the 12:00 UTC run on 12 November). **From the 18:00 UTC run on 12 November** the boxes are 1.0° apart (Lisbon 99 points, Madeira 42) and refreshed every 12 hours (06:00 and 18:00 UTC), and each run re-fetches only from the day that held the time 12 hours earlier: Open-Meteo's free limit of 10,000 point-requests a day is shared with other agents, and the front page's forecast needs it more. Days written before then keep their 0.5° grid (Lisbon 396 points, Madeira 168; 0.25° over a smaller box until 23:54 UTC on 11 November). The close views stay at 0.25° (Lisbon 121 points, Madeira 24). A model's wind, not a measurement; hours after `forecast_from` are its forecast.
 
 ## The wind on each runway (derived)
 

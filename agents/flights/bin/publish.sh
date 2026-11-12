@@ -10,12 +10,12 @@ log(){ echo "$(date -u +%FT%TZ) $*"; }
 cd $WT && git fetch -q --depth 1 origin dev && git checkout -q dev && git reset -q --hard origin/dev && git clean -qfd
 mkdir -p $D && REPO=$WT node ~/flights-bin/merge.mjs ~/flights-stage $WT $D/snapshots && { [ -d ~/flights-stage/$D/frames ] && REPO=$WT node ~/flights-bin/merge.mjs ~/flights-stage $WT $D/frames ; true; }
 node tools/flights-crosswind.mjs || log "crosswind failed"
-H=$(date -u +%H); if [ $((10#$H % 6)) -eq 0 ] || [ "${FORCE_WIND:-}" = 1 ]; then node tools/flights-wind.mjs || log "wind failed"; fi
+H=$(date -u +%H); if [ $((10#$H % 12)) -eq 6 ] || [ "${FORCE_WIND:-}" = 1 ]; then node tools/flights-wind.mjs || log "wind failed"; fi
 node tools/flights-summary.mjs --root . || log "summary failed"
 node tools/flights-index.mjs
 git add $D agents/flights/calls 2>/dev/null; git add $D
 if git diff --cached --quiet; then log "nothing to publish"; exit 0; fi
-git commit -q -m "incident.flights@web-summit.dinis: hourly: frames, snapshots, crosswind$( [ $((10#$H % 6)) -eq 0 ] && echo ', wind field'), summary, index ($(date -u +%H:%M) UTC)" -m "Agent: incident.flights@web-summit.dinis
+git commit -q -m "incident.flights@web-summit.dinis: hourly: frames, snapshots, crosswind$( [ $((10#$H % 12)) -eq 6 ] && echo ', wind field'), summary, index ($(date -u +%H:%M) UTC)" -m "Agent: incident.flights@web-summit.dinis
 Issue: WS-214
 For: incident.designer@web-summit.dinis
 Co-Authored-By: Claude <noreply@anthropic.com>
