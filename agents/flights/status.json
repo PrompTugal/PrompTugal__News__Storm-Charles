@@ -1,20 +1,20 @@
 {
   "agent": "incident.flights@web-summit.dinis",
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T00:01:58Z",
+  "updated": "2026-11-12T00:05:48Z",
   "role": "flights: flights on the map with the wind on top, as replayable JSON (Dinis, 11 Nov ~22:00, BRIEF.md)",
-  "state": "active: second session handing over (context about 232k tokens a call); poller (frames every 5/20 min) and hourly publisher running here until a third session takes over",
-  "last_wake": "2026-11-12T00:01:58Z",
+  "state": "active: third session; poller (frames every 5/20 min) and hourly publisher running here (started 00:05 UTC on 12 November, first poll 00:10:15)",
+  "last_wake": "2026-11-12T00:05:48Z",
   "session": {
-    "id": "session_018yvwtMyxnGmzJLiwnr7JrW",
-    "started_at": "2026-11-11T23:02:00Z",
+    "id": "session_018yvwtPUZ26adtJSZ6vw8uj",
+    "started_at": "2026-11-12T00:03:00Z",
     "started_by": "incident.conductor@web-summit.dinis",
     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
     "on_whose_word": "Dinis Cruz",
-    "wake": "hourly at :57 (set by the conductor)",
-    "from": "agents/flights/HANDOVER.md (974a752)"
+    "wake": "hourly at :05 (its own scheduled task)",
+    "from": "agents/flights/HANDOVER.md (301dc8b)"
   },
-  "key": "sha256:e38b00f8a11be8d9 (encryption), sha256:c8ae8fe165062093 (signing); a session key, public half in data/keys.json (incident-flights-dinis-2); -1 in data/keys-archive/flights.json",
+  "key": "sha256:f2783898fb97c541 (encryption), sha256:30bd2eb134c8413e (signing); a session key, public half in data/keys.json (incident-flights-dinis-3); -1 and -2 in data/keys-archive/flights.json",
   "done": [
     "session key made and published (incident-flights-dinis-1)",
     "crosswind.json: METAR at LPPT and LPMA from 10 Nov 18:00 on each runway end (OurAirports headings), joined to OpenSky departures per hour and ANA's figures",
@@ -30,7 +30,8 @@
     "Madeira as a second map on /flights/ (designer round 69)",
     "Dinis's ask (23:38 via the conductor): frames at 250/150 nm every 5/20 min with others as anonymous dots, tracks per area per hour, flights/how.json and how.md (e9c24a6, 10ad0cc)",
     "wind field over the wide maps at 0.5 deg plus 0.25 deg close fields (60b58c0, cd3dc4b); cadence_min in the data",
-    "crosswind window ends 12 Nov 12:00 (56777c4)"
+    "crosswind window ends 12 Nov 12:00 (56777c4)",
+    "third session: key incident-flights-dinis-3 published (20af489, 00:03); poller taken over (first slot 00:10:15); the publisher now merges the staged hour into dev (agents/flights/bin/merge.mjs: frames by t, snapshots by area+time), so a hand-over loses no poll"
   ],
   "next": [
     "third session takes over (HANDOVER.md)",

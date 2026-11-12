@@ -3,6 +3,8 @@
 # 20 min: 12 + 3 = 15 requests an hour, 360 of adsb.lol's 500 a day per IP (the window resets at 00:00 UTC). --legacy (the
 # earlier 40/30 nm snapshot shape that incident.transport@ and the summary read) on Lisbon's :x0 polls and every Madeira poll.
 # Publishes hourly from the :00 slot.
+# third session: wait for the next slot first, so a (re)start never polls twice in one slot or publishes off the hour.
+now=$(date -u +%s); next=$(( (now / 300 + 1) * 300 + 15 )); sleep $(( next - now ))
 cd /home/user/PrompTugal__News__Storm-Charles
 while true; do
   m=$((10#$(date -u +%M)))

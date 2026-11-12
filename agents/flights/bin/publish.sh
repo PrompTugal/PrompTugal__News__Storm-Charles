@@ -8,7 +8,7 @@ log(){ echo "$(date -u +%FT%TZ) $*"; }
 ( cd ~/vaults/flights-raw && cp -r ~/.incident-raw/flights/. . && timeout 300 sgit commit -m "flights raw $(date -u +%FT%H)" >/dev/null 2>&1; timeout 450 sgit --token "$SG_SEND_ACCESS_TOKEN" push >/dev/null 2>&1 && log "vault pushed" || log "vault push failed" )
 # 2. the worktree at origin/dev
 cd $WT && git fetch -q --depth 1 origin dev && git checkout -q dev && git reset -q --hard origin/dev && git clean -qfd
-mkdir -p $D && cp -r ~/flights-stage/$D/snapshots $D/ && { [ -d ~/flights-stage/$D/frames ] && cp -r ~/flights-stage/$D/frames $D/ ; true; }
+mkdir -p $D && REPO=$WT node ~/flights-bin/merge.mjs ~/flights-stage $WT $D/snapshots && { [ -d ~/flights-stage/$D/frames ] && REPO=$WT node ~/flights-bin/merge.mjs ~/flights-stage $WT $D/frames ; true; }
 node tools/flights-crosswind.mjs || log "crosswind failed"
 H=$(date -u +%H); if [ $((10#$H % 6)) -eq 0 ] || [ "${FORCE_WIND:-}" = 1 ]; then node tools/flights-wind.mjs || log "wind failed"; fi
 node tools/flights-summary.mjs --root . || log "summary failed"
@@ -19,5 +19,5 @@ git commit -q -m "incident.flights@web-summit.dinis: hourly: frames, snapshots, 
 Issue: WS-214
 For: incident.designer@web-summit.dinis
 Co-Authored-By: Claude <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_018yvwtMyxnGmzJLiwnr7JrW"
+Claude-Session: https://claude.ai/code/<your session>"
 AGENT=incident.flights@web-summit.dinis admin/tools/release.sh 2>&1 | tail -2
