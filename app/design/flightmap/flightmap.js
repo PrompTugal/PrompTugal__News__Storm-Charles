@@ -195,11 +195,12 @@
     function drawWind(wd) { var ws = ''
       ;(wd && wd.points || []).forEach(function (p) {
         if (!inb(p.lon, p.lat)) return
-        if (V.thin && (Math.abs(p.lat / V.thin - Math.round(p.lat / V.thin)) > 0.02 || Math.abs(p.lon / V.thin - Math.round(p.lon / V.thin)) > 0.02)) return  /* a wide view: one arrow per V.thin degrees, shorter */
+        if (V.thin && !(stepOf(wd) >= V.thin - 1e-6) && (Math.abs(p.lat / V.thin - Math.round(p.lat / V.thin)) > 0.02 || Math.abs(p.lon / V.thin - Math.round(p.lon / V.thin)) > 0.02)) return  /* a wide view: one arrow per V.thin degrees, shorter; a field already as coarse as V.thin (its step_deg or its latitudes' spacing, flights@'s 1.0 deg fields from 12 Nov 18:00) is drawn whole (round 75) */
         var L = Math.min(64, 10 + (p.speed_kt || 0) * 1.1) * (V.wide ? 0.7 : 1), ang = ((p.dir_from_deg || 0) + 180) % 360
         ws += '<g transform="translate(' + X(p.lon).toFixed(1) + ' ' + Y(p.lat).toFixed(1) + ') rotate(' + ang + ')"><line y1="' + (L / 2) + '" y2="' + (-L / 2) + '"/><path d="M0 ' + (-L / 2 - 2) + ' l-4 8 h8 z"/><title>Wind from ' + Math.round(p.dir_from_deg) + '°, ' + Math.round(p.speed_kt) + ' kt' + (p.gust_kt ? ', gusts ' + Math.round(p.gust_kt) + ' kt' : '') + ' (model)</title></g>'
       })
       wl.innerHTML = ws; wl._wd = wd; caption() }
+    function stepOf(wd) { if (wd._step != null) return wd._step; var st = wd.step_deg || (wd.grid && wd.grid.step_deg); if (!st) { var la = {}; (wd.points || []).forEach(function (p) { la[p.lat] = 1 }); var v = Object.keys(la).map(Number).sort(function (a, b) { return a - b }); st = 0; for (var i = 1; i < v.length; i++) { var d = v[i] - v[i - 1]; if (d > 1e-6 && (!st || d < st)) st = d } } return (wd._step = st || 0) }  /* the field's own spacing: the file's step_deg, or the smallest gap between its latitudes */
     function caption() {
       var T = lastT, sn = snapAt(T), cm = sn && sn.cadence_min, ce = g('.fm-cad'); if (cm && ce) ce.textContent = 'Positions every ' + cm + ' minutes; movement between them is drawn, not measured.'
       var wd = wl._wd, n = here.filter(function (h) { return !h.s.p.on_ground }).length, nb = here.filter(function (h) { return !h.s.measured }).length, sd = sn ? lastSnapFor(sn) : null
