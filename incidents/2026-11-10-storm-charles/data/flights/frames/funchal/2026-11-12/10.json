@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T10:00:17Z",
+  "updated": "2026-11-12T10:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -27,7 +27,11 @@
   "cadence_min": 20,
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
-    "RYR": "Ryanair"
+    "RYR": "Ryanair",
+    "EWG": "Eurowings",
+    "JAF": "TUI fly Belgium",
+    "EDW": "Edelweiss",
+    "TAM": "LATAM Brasil"
   },
   "frames": [
     {
@@ -47,6 +51,51 @@
       "withheld_by_owner_request": 0,
       "rows": [
         ["RYR12BQ","RYR","B38M",31.1479,-16.5269,37000,false,414,190,0,0.3]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T10:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 1481,
+        "sha256": "a0e625d653052a859da34901cd2beb62e3e337b8837dac7ed8eb005e89f13a00",
+        "read": "2026-11-12T10:20:16Z",
+        "response_ms": 465,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T102016Z-a0e625d65305.body",
+        "rate_limit_remaining": 492
+      },
+      "airline": 2,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["EWG7A","EWG","A20N",31.6154,-16.4084,37025,false,410,191,64,0.1],
+        ["JAF7YC","JAF","B38M",31.7739,-16.3807,37000,false,389,196,0,0.1]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T10:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 3526,
+        "sha256": "decfad66b0d945ad38f8405addcf6f5ff92aaed880bf3d43b804b3a7ca0c0b53",
+        "read": "2026-11-12T10:40:16Z",
+        "response_ms": 748,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T104016Z-decfad66b0d9.body",
+        "rate_limit_remaining": 499
+      },
+      "airline": 5,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["EDW97WL","EDW","A320",30.8935,-15.6665,35975,false,511,38,0,0.1],
+        ["EWG7532","EWG","A320",32.1579,-14.637,35000,false,384,214,0,0.8],
+        ["RYR1YL","RYR","B38M",31.39,-15.2119,37000,false,397,209,0,0.4],
+        ["RYR281W","RYR","B38M",32.2712,-14.5653,37000,false,375,213,0,0.1],
+        ["TAM8084","TAM","B77W",31.6266,-15.8813,34000,false,527,25,0,0.1]
       ],
       "others": []
     }
