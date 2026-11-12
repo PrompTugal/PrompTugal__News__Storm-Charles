@@ -137,6 +137,13 @@
     x.hours.forEach(function (h) { if (T(h.hour_utc) <= t) cur = h })
     var hd = '<h2>Who lives under the warnings <span class="lbl">arithmetic on facts</span></h2>'
     if (!cur) { box.innerHTML = hd + '<p class="meta">No hour of the file covers now.</p>'; return }
+    // more than 2 hours older than the warnings beside it: the figures would contradict that panel, so they are not shown
+    var aRead = D.areas && D.areas.now && T(D.areas.now.read_utc)
+    if (aRead && aRead - T(x.read_utc) > 2 * 36e5) {
+      box.innerHTML = hd + '<div class="bc-stale">Not shown: the file was worked out from IPMA\'s warnings as read at ' + tm(x.read_utc, dayhm(x.read_utc)) + ' UTC, more than two hours before the warnings beside it (read ' + tm(aRead, hm(aRead)) + ' UTC), so its figures would no longer match them.</div>' +
+        prov('IPMA warnings × INE census, by incident.datascience@', view('incidents/' + inc + '/data/exposure/people-by-hour.json', 'hours'), x.read_utc)
+      return
+    }
     var M = function (n) { return n >= 1e6 ? (n / 1e6).toFixed(2) + ' M' : n >= 1e3 ? Math.round(n / 1e3) + ' k' : String(n) }
     hd += '<div class="bc-tiles bc-ex3">' + ['red', 'orange', 'yellow'].map(function (l) {
       return '<div class="bc-tile bc-ext lv-' + l + '"><div class="bc-tv">' + esc(M(cur[l] || 0)) + '</div><div class="bc-tk"><span class="lvl ' + l + '">' + LEVEL[l] + '</span> residents</div></div>'
