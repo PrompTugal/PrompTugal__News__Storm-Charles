@@ -81,7 +81,7 @@ for (const f of walk(path.join(D, 'wind')).filter(f => /\/wind\/[a-z]+(-close)?-
   w.times.forEach((t, i) => {
     const L = w.levels['10m']; const U = w.levels['850hPa']
     n.wind += write(`map/wind/${w.area}/${t.slice(0, 10)}/${t.slice(11, 13)}.json`, {
-      by: BY, updated: w.updated, t, area: w.area, label: 'evidence', forecast: !!(w.forecast_from && t >= w.forecast_from),
+      by: BY, updated: w.updated, t, area: w.area, label: 'evidence', step_deg: w.grid.step_deg, forecast: !!(w.forecast_from && t >= w.forecast_from),
       model: 'Open-Meteo forecast API, best match for the point (a model\'s analysis and short-range forecast, not observations)',
       source: w.request.url.replace(/latitude=[^&]+&longitude=[^&]+/, 'latitude=…&longitude=…'), read_utc: w.request.read, licence: OPENMETEO_CITE,
       method: `One hour of ${path.relative(root, f)} (which holds the full request URL, its status, bytes and sha256), one entry per lattice point. dir_from_deg: where the wind blows FROM (an arrow points to dir_from_deg + 180). upper: 850 hPa, about 1,500 m.`,
