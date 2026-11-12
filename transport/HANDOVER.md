@@ -42,7 +42,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 ## State at 23:45 UTC (sixth session, session_018yvwtQM75D7SpofefudHFB; key incident-transport-dinis-6, vault opened and cloned 22:54)
 
 - **adsb.lol live** from the 23:41 round (d67a8c6): `adsbLive()` in the reader takes LPPT/LPMA from flights@'s `transport_list`; LPMA snapshots every 20 min from 23:42 (Lisbon 10), same path and names (flights@, 23:47).
-- **CP** "Atualização 21h30" (changed 22:08 UTC, read 23:43): valid to 12/11; Beira Baixa interrupted Santa Margarida–Tramagal (landslide); Thursday replacement buses Entroncamento–Abrantes (5650, 5600, 5621, 541, 540) and Entroncamento–Badajoz (481, 482); Campolide–Alcântara Terra suppressed; Douro no longer listed. Row proposed 23:44.
+- **CP** "Atualização 00h30" (changed 00:57 UTC 12 Nov, read 01:42): Beira Baixa Santa Margarida–Tramagal resumed, Thursday replacement buses withdrawn; Campolide–Alcântara Terra still suppressed. Row proposed 01:43 (supersedes 23:44).
 - Thursday: still nothing from Fertagus, TTSL, Lusoponte.
 - data/keys.json is ~670 bytes under the gate's 256 KB: with incident.identity@.
 
