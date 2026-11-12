@@ -1,7 +1,7 @@
 {
  "about": "English summaries of operator notices by open-weight models (tools/transport-gloss.mjs), by the sha256 of the Portuguese text: evidence, labelled with the models' names.",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-12T10:42:47Z",
+ "updated": "2026-11-12T11:42:59Z",
  "items": {
   "8542ed55f7ddd155e45abe6788e153af6eb345731050787030a941844db4fde9": {
    "at": "2026-11-11T22:47:32Z",
@@ -578,6 +578,30 @@
    "check": "failed: the open models give different figures",
    "cost_usd": 0.00046668,
    "calls": 4
+  },
+  "431a0eb43141c7ffafa87bd78db2f4cd7bb99b5590c5871d716c95aa77527c12": {
+   "at": "2026-11-12T11:42:59Z",
+   "trace_id": "91655d5d3a1495c30628bb3c7cc5c354",
+   "text": "Service is interrupted between Trindade and General Torres on the connection between the Rosa and Amarela lines. The Rosa (G) line is expected to begin commercial operation in March 2027.",
+   "models": [
+    "google/gemma-4-31b-it",
+    "meta-llama/llama-4-maverick"
+   ],
+   "served": [
+    "google/gemma-4-31b-it",
+    "meta-llama/llama-4-maverick"
+   ],
+   "comparison": [
+    {
+     "model": "google/gemini-3.5-flash-lite",
+     "label": "commercial, for comparison",
+     "valid": true,
+     "same_figures": true
+    }
+   ],
+   "check": "passed: every figure of the Portuguese is in the English, and both open models give the same figures",
+   "cost_usd": 0.00031629,
+   "calls": 3
   }
  }
 }
