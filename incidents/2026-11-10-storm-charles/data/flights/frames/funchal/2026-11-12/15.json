@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T15:00:17Z",
+  "updated": "2026-11-12T15:40:17Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -31,7 +31,14 @@
     "IBS": "Iberia Express",
     "RYR": "Ryanair",
     "TRA": "Transavia",
-    "TUI": "TUI Airways"
+    "TUI": "TUI Airways",
+    "AUA": "Austrian",
+    "IBE": "Iberia",
+    "TOM": "TUI Airways",
+    "AEA": "Air Europa",
+    "EZY": "easyJet",
+    "TFL": "TUI fly Netherlands",
+    "WZZ": "Wizz Air"
   },
   "frames": [
     {
@@ -60,6 +67,58 @@
       "others": [
         ["A3",32.623,-16.782,2900,false,222,170]
       ]
+    },
+    {
+      "t": "2026-11-12T15:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 4938,
+        "sha256": "2b6860d56cbcd56b974906922b3907bb3b815654a4cbac83215b0be3ee0ea795",
+        "read": "2026-11-12T15:20:16Z",
+        "response_ms": 481,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T152016Z-2b6860d56cbc.body"
+      },
+      "airline": 7,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["AUA465","AUA","A320",31.3806,-15.2326,37000,false,388,208,-64,0],
+        ["EXS6KY","EXS","A21N",31.446,-16.0204,36000,false,484,6,0,0],
+        ["EXS8UB","EXS","A21N",31.0251,-16.0439,36025,false,483,6,0,0.8],
+        ["EXS9H","EXS","B738",31.8668,-16.5222,37000,false,414,184,0,0.1],
+        ["IBE6113","IBE","A359",31.3794,-17.6909,35000,false,424,213,0,0],
+        ["TOM6HT","TOM","B38M",31.9292,-14.3636,38000,false,509,30,-64,0.1],
+        ["TUI5CG","TUI","B738",32.1702,-14.6284,35000,false,373,214,0,0.3]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T15:40:17Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 6331,
+        "sha256": "e1b480846b88208edffdf03adaa30c83d85212a848f687bf3bd1ceeec9f08111",
+        "read": "2026-11-12T15:40:16Z",
+        "response_ms": 765,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T154016Z-e1b480846b88.body"
+      },
+      "airline": 9,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["AEA49JA","AEA","B38M",32.171,-14.3219,38000,false,519,31,0,0.5],
+        ["EXS14H","EXS","A21N",30.6176,-15.5459,38000,false,489,17,0,0.2],
+        ["EXS22RE","EXS","B738",31.5116,-15.9655,38000,false,468,6,0,5.1],
+        ["EZY65DY","EZY","A20N",32.3226,-16.0124,39000,false,392,207,64,0],
+        ["EZY86ZG","EZY","A320",31.8009,-14.8275,36000,false,519,33,64,1.2],
+        ["RYR79JY","RYR","B738",31.9376,-14.8051,37000,false,376,214,0,0.4],
+        ["TFL6VH","TFL","B738",31.9566,-14.0825,36000,false,498,28,0,0],
+        ["TUI1HT","TUI","B738",32.7819,-14.1412,37000,false,391,214,0,0.2],
+        ["WZZ64QT","WZZ","A21N",31.9344,-16.2227,37000,false,385,209,64,0.2]
+      ],
+      "others": []
     }
   ]
 }
