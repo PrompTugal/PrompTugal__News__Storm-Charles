@@ -9,25 +9,25 @@
   "job": "**where the weather data comes from**: observing systems, models, services, down to the raw material; who feeds which site; every licence",
   "shared_row": false,
   "status_file": "agents/meteorology/status.json",
-  "status_sha256": "45cc9950db6f7e0bf6bd9efa36c3b09154556f3d2b9708032d8947ad1abdc1ce",
-  "state": "second session; re-read at 09:25Z on 12 November: 0 changed state; next re-read about 12:30Z",
-  "last_wake": "2026-11-12T09:28Z",
+  "status_sha256": "6428fcec485bacbcda907cfc9acae7fb44c86c9f20e5791b2696d4da2374e41b",
+  "state": "second session; re-read at 12:30Z on 12 November: 1 changed state (BBC Weather's page no longer names MeteoGroup); next re-read about 15:35Z",
+  "last_wake": "2026-11-12T12:33Z",
   "jobs": [],
   "done": [
     "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
     "meteorology/lineage.json (grammar: 6 layers, 10 verbs each with its inverse), nodes/*.json (103 nodes), edges/*.json (143 edges)",
-    "11:36Z re-read (--stale): 258 stamped, 0 changed state in the end. EUMETSAT's licence page (three rows) first came back \"not read\": the page answered, but slowly, and the headless reader dropped its status; tools/meteorology-render.mjs now…",
     "14:42Z re-read (--stale): 258 stamped, 0 changed state in the end. prociv.gov.pt (two rows) did not answer on the first pass and answered on a second, a few minutes later: \"not stated\", as before (the address answers intermittently from he…",
     "17:55Z re-read (--stale): 258 stamped, 2 changed state: \"body-ecmwf publishes data-era5\" and the licence row lic-copernicus-era5 went from stated to not read. Their page (cds.climate.copernicus.eu) stalled, then answered 502, on five tries…",
     "21:01Z re-read (--stale): 258 stamped; \"body-ecmwf publishes data-era5\" and lic-copernicus-era5 went from not read back to stated (Copernicus's page answers again, the licence wording unchanged). Météo-France's page on data.gouv.fr did not…",
     "00:07Z (12 Nov) re-read (--stale): 258 stamped, 0 changed state in the end. Météo-France's open-data page came back empty on the first pass (its script had not drawn) and whole on a second: stated, as before; the reader now counts an empty…",
     "03:13Z (12 Nov) re-read (--stale): 258 stamped, 3 changed state, each still so on a second try: \"body-ecmwf publishes data-era5\" and lic-copernicus-era5 from stated to not read (cds.climate.copernicus.eu answers 502, as it did at 17:47Z on…",
     "06:22Z (12 Nov) re-read (--stale): 258 stamped; the three rows of 03:10Z are back as they were: \"body-ecmwf publishes data-era5\" and lic-copernicus-era5 stated (Copernicus's page answers again), \"site-sc-eco visualises null\" not stated (EC…",
-    "09:28Z (12 Nov) re-read (--stale): 258 stamped, 0 changed state, every address answered on the first pass. 22 not read, as before; the Negócios live blog edge still \"not found in this read\""
+    "09:28Z (12 Nov) re-read (--stale): 258 stamped, 0 changed state, every address answered on the first pass. 22 not read, as before; the Negócios live blog edge still \"not found in this read\"",
+    "12:33Z (12 Nov) re-read (--stale): 258 stamped, 1 changed state, the same on a second read: \"body-meteogroup supplies site-bbc-weather\" from stated to not found in this read. BBC Weather's Lisbon page (bbc.com/weather/2267057) dropped the …"
   ],
-  "done_total": 25,
+  "done_total": 26,
   "next": [
-    "about 12:30Z on 12 November: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed",
+    "about 15:35Z on 12 November: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed. If BBC Weather still does not name MeteoGroup after two more reads, look for a page of …",
     "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
     "22 addresses not read (refused, blocked, or not requested because of their terms): listed on the map page",
     "if Dinis says yes to a build-on item: a GRIB decoder outside the build (GFS box to small JSON); a person registers with EUMETSAT"
