@@ -482,17 +482,20 @@ function adsbLive(icao) {
     const none = note => ({ label: 'none', note })
     if (!['LPPT', 'LPMA'].includes(icao)) return none('No live count: OpenSky is paused pending a licence (Dinis), and adsb.lol via incident.flights@ covers only Lisbon (LPPT) and Madeira (LPMA).')
     const dir = path.join(ROOT, 'incidents/2026-11-10-storm-charles/data/flights/snapshots')
-    let best = null
+    let best = null, seenAny = 0, snaps = 0
     for (const t of [Date.now(), Date.now() - 3600e3]) {
         const h = iso(t), rel = `${h.slice(0, 10)}/${h.slice(11, 13)}.json`
         let doc; try { doc = JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) } catch { continue }
         for (const sn of doc.snapshots || []) {
             const tl = sn.near_airport?.[icao]?.transport_list
+            if (sn.near_airport?.[icao]) { snaps++; seenAny += (sn.aircraft || []).length + (sn.other_aircraft_dropped || 0) }
             if (!sn.time || !tl || tl.on_ground == null || tl.airborne_below_3000m == null) continue
             if (!best || sn.time > best.sn.time) best = { sn, tl, rel, box: sn.near_airport[icao].box }
         }
     }
     if (!best) return none('No live count: OpenSky is paused pending a licence (Dinis), and no adsb.lol snapshot via incident.flights@ with our airline list for this airport in this hour or the last.')
+    // Thin coverage (as with OpenSky at Faro and Funchal): fewer than 3 aircraft of any operator in the whole area over the two hours is the receivers' gap, not an empty sky.
+    if (seenAny < 3) return { ...none(`adsb.lol's community receivers saw ${seenAny} aircraft of any operator in this whole area over ${snaps} snapshots in this hour and the last: its coverage here is too thin to count. Not zero: unknown.`), at: best.sn.time, source: 'https://adsb.lol', via: `incidents/2026-11-10-storm-charles/data/flights/snapshots/${best.rel}`, aircraft_seen_any_operator: seenAny, snapshots: snaps }
     return {
         label: 'fact', series: 'adsb.lol, via incident.flights@ (from 11 Nov, the 23:41 round; before it, OpenSky)',
         what: 'airline aircraft (our airline list) adsb.lol\'s community receivers saw in a box of about 25 km around the airport at the time read: on the ground, and airborne below 3,000 m (barometric altitude)',
