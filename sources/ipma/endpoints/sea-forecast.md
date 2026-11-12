@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Sea state forecast up to 3 days, by day
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 09:53 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 10:52 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,8 +19,8 @@ IPMA's name for it: *Previsão do Estado do Mar até 3 dias, informação agrega
 | Shape | {owner, country, forecastDate, dataUpdate, data: [one object per coastal place]} |
 | `{idDay}` | 0 today, 1 tomorrow, 2 the day after: 0, 1, 2 |
 | IPMA says it updates | taxa de atualização horária |
-| IPMA's file dated (its Last-Modified header) | 2026-11-12 09:31 UTC |
-| We last read it | 2026-11-12 09:52 UTC, 3 files, 9821 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-12 10:31 UTC |
+| We last read it | 2026-11-12 10:50 UTC, 3 files, 9821 bytes |
 | IPMA's note | "Apenas estão disponíveis dados diários." |
 
 ## Fields
@@ -50,8 +50,8 @@ IPMA's name for it: *Previsão do Estado do Mar até 3 dias, informação agrega
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/oceanography/daily/hp-daily-sea-forecast-day0.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day0.json) | 200 | 3275 | `8dcf0ee0b4711037…` | 2026-11-12 09:31 | 2026-11-12 09:52 |
-| [forecast/oceanography/daily/hp-daily-sea-forecast-day1.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day1.json) | 200 | 3273 | `ec84ad69f1a4bba8…` | 2026-11-12 09:31 | 2026-11-12 09:52 |
-| [forecast/oceanography/daily/hp-daily-sea-forecast-day2.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day2.json) | 200 | 3273 | `9bf1ad8d3e276568…` | 2026-11-12 09:31 | 2026-11-12 09:52 |
+| [forecast/oceanography/daily/hp-daily-sea-forecast-day0.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day0.json) | 200 | 3275 | `542edaef95f2ed73…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/oceanography/daily/hp-daily-sea-forecast-day1.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day1.json) | 200 | 3273 | `3d2817f4d5f75565…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/oceanography/daily/hp-daily-sea-forecast-day2.json](https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day2.json) | 200 | 3273 | `dbfb8db107f286ea…` | 2026-11-12 10:31 | 2026-11-12 10:51 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/sea-forecast.json](../changes/sea-forecast.json). Our small files made from it: [data/sea.json](../data.md#data/sea.json).

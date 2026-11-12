@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Daily forecast up to 5 days, by place
 
-> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 09:53 UTC
+> Kept by incident.ipma@web-summit.dinis, 12 November 2026, 10:52 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,8 +19,8 @@ IPMA's name for it: *Previsão Meteorológica Diária até 5 dias agregada por L
 | Shape | {owner, country, globalIdLocal, dataUpdate, data: [one object per day]} |
 | `{globalIdLocal}` | every globalIdLocal in distrits-islands.json |
 | IPMA says it updates | taxa de atualização horária; the model runs twice a day: "a corrida das 00UTC (disponibilizada em regra a partir das 10:00) e das 12UTC (disponibilizada em regra a partir das 20:00)" |
-| IPMA's file dated (its Last-Modified header) | 2026-11-12 09:31 UTC |
-| We last read it | 2026-11-12 09:50 UTC, 35 files, 41434 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-12 10:31 UTC |
+| We last read it | 2026-11-12 10:49 UTC, 35 files, 41434 bytes |
 | IPMA's note | "Os dados de previsão são obtidos automaticamente através de processamento estatístico das previsões de dois modelos numéricos (ECMWF e AROME). Apenas estão disponíveis dados diários." |
 
 ## Fields
@@ -51,40 +51,40 @@ IPMA's name for it: *Previsão Meteorológica Diária até 5 dias agregada por L
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/meteorology/cities/daily/1010500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1010500.json) | 200 | 1197 | `083de8e5934ba4e6…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1020500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1020500.json) | 200 | 1174 | `4cbd083f2771d0d8…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1030300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1030300.json) | 200 | 1195 | `556475461ae4d916…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1030800.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1030800.json) | 200 | 1197 | `e85f100443a2b5b1…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1040200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1040200.json) | 200 | 1192 | `7ccfb947babba306…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1050200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1050200.json) | 200 | 1194 | `94035fe60d72f503…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1060300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1060300.json) | 200 | 1194 | `db36d12854af0064…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1070500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1070500.json) | 200 | 1194 | `48bf2b02974d1890…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1080500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json) | 200 | 1171 | `1855151747bf20fc…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1081505.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1081505.json) | 200 | 1191 | `841ea0d1f763a3cf…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1081100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1081100.json) | 200 | 1190 | `58cb751fae1fdf70…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1080800.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080800.json) | 200 | 1192 | `b6038f62f3504677…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1090700.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1090700.json) | 200 | 1187 | `5d4520c288abf257…` | 2026-11-12 09:31 | 2026-11-12 09:50 |
-| [forecast/meteorology/cities/daily/1090821.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1090821.json) | 200 | 1189 | `42ba30ac4dc98e1b…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1100900.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1100900.json) | 200 | 1194 | `9fd737c8dd3c2c3f…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1110600.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1110600.json) | 200 | 1192 | `41be48a2594884c9…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1121400.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1121400.json) | 200 | 1196 | `09fbe16a266a80b1…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1131200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1131200.json) | 200 | 1197 | `ddca0b203caa3c8a…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1141600.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1141600.json) | 200 | 1193 | `d3d236abc48fd09b…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1151200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1151200.json) | 200 | 1193 | `0983e5963363fcb5…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1151300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1151300.json) | 200 | 1193 | `dd9527f578a4e57f…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1160900.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1160900.json) | 200 | 1196 | `9af73fd2827841b3…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1171400.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1171400.json) | 200 | 1192 | `48f7e6cfbbf9039f…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/1182300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1182300.json) | 200 | 1193 | `8ea876297deb70f8…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/2310300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/2310300.json) | 200 | 1134 | `d01549f3fa64e9e2…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/2320100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/2320100.json) | 200 | 1094 | `4b725f9b884912ad…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3410100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3410100.json) | 200 | 1137 | `20ce01cddcb1225e…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3420300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3420300.json) | 200 | 1177 | `99ddb19c3cfbd9f3…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3430100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3430100.json) | 200 | 1199 | `63e49c5014c42558…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3440100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3440100.json) | 200 | 1180 | `b1c05d602754bd61…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3450200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3450200.json) | 200 | 1179 | `4a42c24608893af8…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3460200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3460200.json) | 200 | 1202 | `4a3c2609c42104ca…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3470100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3470100.json) | 200 | 1179 | `54a6693e7d1d0c7d…` | 2026-11-12 09:31 | 2026-11-12 09:51 |
-| [forecast/meteorology/cities/daily/3480200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3480200.json) | 200 | 1178 | `47c46ec54e46ed59…` | 2026-11-12 09:31 | 2026-11-12 09:52 |
-| [forecast/meteorology/cities/daily/3490100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3490100.json) | 200 | 1179 | `34ce03f0b2706472…` | 2026-11-12 09:31 | 2026-11-12 09:52 |
+| [forecast/meteorology/cities/daily/1010500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1010500.json) | 200 | 1197 | `26d6202961f03bd2…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1020500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1020500.json) | 200 | 1174 | `83966669148e32a1…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1030300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1030300.json) | 200 | 1195 | `b4255d056194b295…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1030800.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1030800.json) | 200 | 1197 | `7cb02d22b2ee5d13…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1040200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1040200.json) | 200 | 1192 | `a8512b0fe51473dc…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1050200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1050200.json) | 200 | 1194 | `028e8b759bfe8c9d…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1060300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1060300.json) | 200 | 1194 | `6dd90440779f33a3…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1070500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1070500.json) | 200 | 1194 | `eee44532e84e2ed0…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1080500.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json) | 200 | 1171 | `62910b736309e5fb…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1081505.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1081505.json) | 200 | 1191 | `37cd96c84f35afdb…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1081100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1081100.json) | 200 | 1190 | `74cb94d86dc7dd5c…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1080800.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080800.json) | 200 | 1192 | `994e9b0af00bd0e0…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1090700.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1090700.json) | 200 | 1187 | `7ffce3709d8c3bea…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1090821.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1090821.json) | 200 | 1189 | `9566b7d4548ccff8…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1100900.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1100900.json) | 200 | 1194 | `9ae19a4fde06c955…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1110600.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1110600.json) | 200 | 1192 | `067c5f4110cef7c9…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1121400.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1121400.json) | 200 | 1196 | `47f854b4176ba7e5…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1131200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1131200.json) | 200 | 1197 | `d395eebae98d50ec…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1141600.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1141600.json) | 200 | 1193 | `96c1d44b82850344…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1151200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1151200.json) | 200 | 1193 | `e1db20d4ee624c4d…` | 2026-11-12 10:31 | 2026-11-12 10:49 |
+| [forecast/meteorology/cities/daily/1151300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1151300.json) | 200 | 1193 | `4902b28645671a67…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/1160900.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1160900.json) | 200 | 1196 | `4fb54f414baf798d…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/1171400.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1171400.json) | 200 | 1192 | `b394d31be1f241f4…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/1182300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1182300.json) | 200 | 1193 | `19997a66bf610f5a…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/2310300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/2310300.json) | 200 | 1134 | `8c9c5d6e63534a54…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/2320100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/2320100.json) | 200 | 1094 | `7018bbb03644d157…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3410100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3410100.json) | 200 | 1137 | `9b6c397dcc1f4cc3…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3420300.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3420300.json) | 200 | 1177 | `4951b70f6ea787a3…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3430100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3430100.json) | 200 | 1199 | `165dc1c6826b5381…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3440100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3440100.json) | 200 | 1180 | `57e0abb3c51b757d…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3450200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3450200.json) | 200 | 1179 | `7d1c2407d88f26e0…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3460200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3460200.json) | 200 | 1202 | `0cfe2f1ec83afcf1…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3470100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3470100.json) | 200 | 1179 | `360ae0f7471768e9…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3480200.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3480200.json) | 200 | 1178 | `524c9aeb448a38fb…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
+| [forecast/meteorology/cities/daily/3490100.json](https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/3490100.json) | 200 | 1179 | `fd712c96c51db843…` | 2026-11-12 10:31 | 2026-11-12 10:50 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/city-daily.json](../changes/city-daily.json). Our small files made from it: [data/cities.json](../data.md#data/cities.json).
