@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T17:00:27Z",
+  "updated": "2026-11-12T18:00:27Z",
   "label": "fact",
   "about": "The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC to 12 November 12:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky's receivers saw and to ANA's own cancellation figures. Facts: the METAR (IPMA's observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -4847,13 +4847,13 @@
   ],
   "sources": [
     {"what":"runway headings, degrees true (OurAirports, public domain; read once, cached)","url":"https://davidmegginson.github.io/ourairports-data/runways.csv","status":200,"bytes":3974055,"sha256":"a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9","read":"2026-11-12T01:00:27Z","response_ms":267,"raw":"flights vault: ourairports/2026-11-12/2026-11-12T010027Z-a39ff4071b14.body"},
-    {"what":"METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)","url":"https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json","status":200,"bytes":109762,"sha256":"eb5803e3929bb32c3a989b746651ac06ea4755301a62eb34ed2c1ab55515bbd5","read":"2026-11-12T17:00:26Z","response_ms":445,"raw":"flights vault: awc-metar/2026-11-12/2026-11-12T170026Z-eb5803e3929b.body"},
+    {"what":"METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)","url":"https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json","status":200,"bytes":109724,"sha256":"d68a51a660d4c78c57c3b5e919ef160b339a28825470cc221c34d65ed3c92ef8","read":"2026-11-12T18:00:27Z","response_ms":631,"raw":"flights vault: awc-metar/2026-11-12/2026-11-12T180027Z-d68a51a660d4.body"},
     {"path":"incidents/2026-11-10-storm-charles/data/transport/flights.json","what":"airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@","sha256":"9b7799da4d9b0b4fe315da6c8950f91c0e1137e27b1886b403af91414c6e5516","bytes":21318,"read_utc":"2026-11-12T14:42:59Z"},
     {"path":"incidents/2026-11-10-storm-charles/data/weather/airport.json","what":"METAR history kept by incident.meteorologist@ (LPPT)","sha256":"5432955720bdb36353a6b4cbb3178d886c0980595fba2ba2b5a85ccdf7565f78","bytes":68366,"read_utc":"2026-11-12T14:23:11Z"},
     {"path":"incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json","what":"METAR history kept by incident.meteorologist@ (LPMA)","sha256":"94e626cff26385c38f0909e76af256b13ccd5e38d6c6a1bba240b6fc1f98f2a6","bytes":57228,"read_utc":"2026-11-12T14:23:11Z"}
   ],
   "source": "https://aviationweather.gov/api/data/metar (IPMA's METAR), with incident.meteorologist@'s airport files; runways from OurAirports",
-  "read_utc": "2026-11-12T17:00:26Z",
+  "read_utc": "2026-11-12T18:00:27Z",
   "method": "For each METAR: headwind = wind x cos(wind direction - runway heading), crosswind = |wind x sin(...)|, true degrees; gust components the same with the gust. hours[] (LPPT) and hours_by_airport give, per hour, the METAR with the strongest gust or wind. Variable winds (VRB) have no components.",
   "hours": [
     {

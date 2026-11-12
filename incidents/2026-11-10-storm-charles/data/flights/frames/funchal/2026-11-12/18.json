@@ -1,0 +1,67 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-12T18:00:16Z",
+  "label": "fact",
+  "area": "funchal",
+  "area_def": {
+    "name": "Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal)",
+    "lat": 32.75,
+    "lon": -16.85,
+    "dist_nm": 150
+  },
+  "hour": "2026-11-12T18:00:00Z",
+  "about": "Aircraft adsb.lol's community receivers saw in Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal), 2026-11-12 18:00 to :59 UTC, one frame per poll (Lisbon every 5 minutes, Madeira every 20). Fact: what adsb.lol shows at the time read (frames[].t; frames[].request holds the URL, status, bytes and sha256 of the raw response, which is in our vault). rows: airline flights (an airline's ICAO code plus a flight number), one array per aircraft in the order of fields. others: every other aircraft, one array in the order of other_fields: its ADS-B emitter category and position only, with no callsign, no ICAO24 address, no registration and no type, so nothing names a private owner; altitude rounded to 100 ft. Aircraft whose owners asked to be withheld (PIA or LADD in adsb.lol's data) are dropped and only counted. pos_age_s: how old each position was when read. Nothing between frames is measured: a line or a moving dot drawn between two frames is a drawing (hypothesis), not a position.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "licence": "ODbL 1.0",
+  "fields": ["callsign","airline","type","lat","lon","alt_ft","on_ground","gs_kt","track_deg","vrate_fpm","pos_age_s"],
+  "other_fields": ["category","lat","lon","alt_ft","on_ground","gs_kt","track_deg"],
+  "units": {
+    "alt_ft": "feet, barometric (geometric when barometric is absent); null on the ground",
+    "gs_kt": "knots",
+    "track_deg": "degrees true, clockwise from north",
+    "vrate_fpm": "feet per minute, + climbing",
+    "pos_age_s": "seconds since the position was received",
+    "category": "ADS-B emitter category (A1 light, A2 small, A3 large, A4 B757, A5 heavy, A7 rotorcraft, B1 glider, B6 drone, C1-C3 surface; null not sent)"
+  },
+  "cadence_min": 20,
+  "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
+  "airlines": {
+    "EIN": "Aer Lingus",
+    "EXS": "Jet2",
+    "RYR": "Ryanair",
+    "TUI": "TUI Airways",
+    "TVF": "Transavia France"
+  },
+  "frames": [
+    {
+      "t": "2026-11-12T18:00:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 7037,
+        "sha256": "4aec8ccacf24d1d93137cf64c0f779538f60d626bdc487440ed25991662ab392",
+        "read": "2026-11-12T18:00:16Z",
+        "response_ms": 496,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T180016Z-4aec8ccacf24.body"
+      },
+      "airline": 9,
+      "other": 1,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["EIN78L","EIN","A320",31.4993,-15.1488,37000,false,381,213,0,0.4],
+        ["EIN7PH","EIN","A320",30.9813,-15.5,36975,false,392,208,64,0],
+        ["EXS16ZV","EXS","B738",31.858,-14.2479,38000,false,496,29,0,0.4],
+        ["RYR22EE","RYR","B738",31.2227,-15.3446,37000,false,395,208,0,0.3],
+        ["RYR5QM","RYR","B738",31.5658,-15.0968,39000,false,387,214,0,0.3],
+        ["RYR7CR","RYR","B38M",31.9969,-14.7664,37000,false,391,213,0,0.3],
+        ["RYR883L","RYR","B38M",32.7995,-14.1223,39000,false,391,214,0,1.1],
+        ["TUI8KN","TUI","B738",31.52,-15.0276,36000,false,507,33,0,0.8],
+        ["TVF30AN","TVF","B738",32.2584,-14.3445,38000,false,500,32,0,0]
+      ],
+      "others": [
+        [null,32.701,-15.816,37000,false,404,206]
+      ]
+    }
+  ]
+}
