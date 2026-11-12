@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-12T00:00:00Z and 2026-11-12T01:00:00Z: the facts behind the article news/2026-11-12T00.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-12T00:44:57Z",
+ "updated": "2026-11-12T00:57:04Z",
  "window": {
   "from": "2026-11-12T00:00:00Z",
   "to": "2026-11-12T01:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.1771",
-  "last": "v0.1.1815",
-  "pushed": 42,
+  "last": "v0.1.1829",
+  "pushed": 53,
   "served": 21,
   "as_of": "library/releases/2026-11-12T00.json",
   "not_confirmed": 0,
@@ -23,7 +23,7 @@
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 10
+   "commits": 12
   },
   {
    "agent": "incident.flights@web-summit.dinis",
@@ -31,6 +31,10 @@
   },
   {
    "agent": "incident.reporter@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
    "commits": 4
   },
   {
@@ -59,6 +63,10 @@
   },
   {
    "agent": "incident.accountant@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.transport@web-summit.dinis",
    "commits": 2
   },
   {
@@ -102,13 +110,34 @@
    "commits": 1
   },
   {
-   "agent": "incident.transport@web-summit.dinis",
+   "agent": "incident.broadcast@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.sherpa@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
    "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-12T0041Z.md",
   "design/round-71.md",
+  "news/2026-11-12T00.md",
   "research/media/people/antonio-moura-dos-santos.md"
  ],
  "new_datasets": [
@@ -195,8 +224,25 @@
   "data/ci/runs/2026-11-11T22.json",
   "data/ci/runs/2026-11-11T23.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-datasets.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage-2.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys-archive/designer.json",
   "data/keys-archive/flights.json",
+  "data/keys-archive/librarian.json",
   "data/keys-archive/models.json",
   "data/keys-archive/observability.json",
   "data/keys-archive/reporter.json",
@@ -294,6 +340,28 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/fire-risk.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/uv.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/models-check.json",
   "sources/meteoalarm/data/portugal/reads.json",
@@ -302,7 +370,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 29,
+  "files": 32,
   "by_area": [
    {
     "area": "data",
@@ -323,6 +391,10 @@
    {
     "area": "board",
     "files": 3
+   },
+   {
+    "area": "news",
+    "files": 2
    },
    {
     "area": "research",
@@ -337,37 +409,49 @@
     "files": 1
    },
    {
+    "area": "library",
+    "files": 1
+   },
+   {
     "area": "models",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 341,
+  "files": 497,
   "by_area": [
    {
     "area": "data",
-    "files": 84
+    "files": 101
    },
    {
     "area": "research",
-    "files": 68
+    "files": 77
+   },
+   {
+    "area": "sources",
+    "files": 67
+   },
+   {
+    "area": "library",
+    "files": 48
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 44
    },
    {
+    "area": "agents",
+    "files": 35
+   },
+   {
     "area": "entities",
     "files": 31
    },
    {
-    "area": "agents",
-    "files": 28
-   },
-   {
     "area": "accounts",
-    "files": 23
+    "files": 28
    },
    {
     "area": "board",
@@ -382,15 +466,19 @@
     "files": 7
    },
    {
-    "area": "sources",
-    "files": 7
-   },
-   {
     "area": "reporter",
     "files": 6
    },
    {
+    "area": "app",
+    "files": 4
+   },
+   {
     "area": "journal",
+    "files": 4
+   },
+   {
+    "area": "news",
     "files": 4
    },
    {
@@ -398,8 +486,8 @@
     "files": 3
    },
    {
-    "area": "app",
-    "files": 2
+    "area": "stories",
+    "files": 3
    },
    {
     "area": "tools",
@@ -408,6 +496,10 @@
    {
     "area": "transport",
     "files": 2
+   },
+   {
+    "area": "(root)",
+    "files": 1
    },
    {
     "area": "aws",
@@ -775,6 +867,97 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "00:41 round: no operator change; yesterday's frozen OpenSky counts carry their day (day, not_today) and the page dates them",
    "files": 12
+  },
+  {
+   "commit": "c53837d1",
+   "at": "2026-11-12T00:45:20Z",
+   "by": "incident.transport@web-summit.dinis",
+   "what": "measure the 00:41 round",
+   "files": 1
+  },
+  {
+   "commit": "a11e6a4d",
+   "at": "2026-11-12T00:46:35Z",
+   "by": "incident.broadcast@web-summit.dinis",
+   "what": "the transport panel dates 11 November's frozen departures and credits the live count to adsb.lol (ODbL), not OpenSky",
+   "files": 2
+  },
+  {
+   "commit": "05973fe3",
+   "at": "2026-11-12T00:46:44Z",
+   "by": "incident.sherpa@web-summit.dinis",
+   "what": "guide: a departures count always carries its day; \"not today\" said (transport@, 00:43 UTC)",
+   "files": 1
+  },
+  {
+   "commit": "259064e9",
+   "at": "2026-11-12T00:47:02Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 00:44 wake: 23:00 to 00:00 closed, 00:00 opened on 12 November (the alert situation ran to 23:59; communiqué no. 3 ran out; Lisbon yellow sea to 03:00)",
+   "files": 56
+  },
+  {
+   "commit": "982ace42",
+   "at": "2026-11-12T00:47:09Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "4b39bff0",
+   "at": "2026-11-12T00:47:32Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "hand-over to a sixteenth session (context 156,084 tokens a call)",
+   "files": 1
+  },
+  {
+   "commit": "5ee389b9",
+   "at": "2026-11-12T00:48:15Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "librarian sixteenth session started (hand-over)",
+   "files": 2
+  },
+  {
+   "commit": "e0760873",
+   "at": "2026-11-12T00:49:23Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "session key incident-librarian-dinis-16 (sixteenth session); -15 handed over",
+   "files": 3
+  },
+  {
+   "commit": "1e6053bb",
+   "at": "2026-11-12T00:50:58Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "00:46 wake: 2 posts kept (Lusa, yellow sea; Público); no offer",
+   "files": 11
+  },
+  {
+   "commit": "9e34fa95",
+   "at": "2026-11-12T00:51:32Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "00:50 wake: alert situation ran out at 23:59 (w7, n16); communiqué no. 3 expired (c3); c14 on IPMA's kept run",
+   "files": 6
+  },
+  {
+   "commit": "36acb211",
+   "at": "2026-11-12T00:52:53Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 00:48 UTC: 64 requests, 63 answered 200, 49 files changed; warnings (IPMA's file dated 00:15): 13 above green; no warning changed",
+   "files": 62
+  },
+  {
+   "commit": "cf167b7b",
+   "at": "2026-11-12T00:53:48Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 00:53: 598 nodes, 805 edges; coverage 624",
+   "files": 17
+  },
+  {
+   "commit": "9a99b135",
+   "at": "2026-11-12T00:57:04Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "BRIEF: Dinis ~00:50 (relayed): shut down to the main priorities",
+   "files": 1
   }
  ]
 }
