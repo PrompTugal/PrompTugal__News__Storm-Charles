@@ -162,6 +162,19 @@ function live() {
   for (const e of out) console.log(`${appendLive(e)}: ${e.name || e.phase} (${e.unit_id})`);
 }
 
+// ---------- CI runs recorded until ----------
+// incident.ci@ writes data/ci/runs/; when its records stop (its wake was stopped on 12 November ~00:50, BRIEF.md), CI still runs
+// on every push: the trace has no A0-ci-<run> after that time, which must read as "not recorded", never as zero runs.
+function ciRecorded(now = Date.now()) {
+  let newest = '';
+  try { for (const f of fs.readdirSync(path.join(ROOT, 'data/ci/runs')).filter(f => f.endsWith('.json')))
+    for (const r of readJSON('data/ci/runs/' + f, {}).runs || []) { const t = r.started || r.queued || r.pushed || ''; if (t > newest) newest = t; } } catch { }
+  const out = { recorded_until: newest || 'not recorded', source: 'data/ci/runs/ (incident.ci@)' };
+  if (newest && now - Date.parse(newest) > 90 * 60e3)
+    out.note = `CI runs not recorded since ${newest.slice(0, 16).replace('T', ' ')} UTC: incident.ci@'s records stopped (its wake was stopped at Dinis's word, 12 November ~00:50, BRIEF.md); CI itself still runs on every push, so no runs in the trace after that time means not recorded, not zero runs`;
+  return out;
+}
+
 // ---------- units.json ----------
 function units(knownAgents = new Set()) {
   const keys = loadKeys();
@@ -195,12 +208,13 @@ function units(knownAgents = new Set()) {
       keys: (keys[a] || []).map(k => ({ id: k.id, key_fp: k.fp, signing_fp: k.signing, made: iso(k.made), status: k.status })),
       sessions: sessions.length ? sessions : undefined });
   }
+  const ciGap = ciRecorded();
   list.push({ unit_id: 'A0-ci', altitude: 'A0', role: 'compute', name: 'CI: build, gate, deploy (each run is a unit A0-ci-<run>)', account: 'PrompTugal (GitHub Actions)', environment: ENV.ci,
-    about: 'started by a push; its runs are recorded by incident.ci@ in data/ci/runs/' });
+    about: 'started by a push; its runs are recorded by incident.ci@ in data/ci/runs/' + (ciGap.note ? '; ' + ciGap.note : '') });
   for (const l of list) for (const k of Object.keys(l)) if (l[k] === undefined) delete l[k];
   const out = { elastic_feed: { index: INDEX_UNITS, owner: BY, id: 'unit_id', docs: 'units', about: 'The units of the Storm Charles team\'s trace (WS-214): person, swarm, agents, compute' },
     about: 'Every unit that appears in data/trace/*/*.json: the person, the swarm (A4), each agent (A3) with its keys and its sessions in order, and the compute (A0). Altitudes and runtimes as in the fringe repository\'s docs/where-agents-run.md §2-3. io_level: L5 for the conductor (git, vaults, lanes, wakes, spawns), L4 for the team (git behind the gate; most also use vaults and lanes). Sessions: from data/agents/sessions.json (by Claude-Session trailers) and agents/conductor/sessions.json (spawns from 20:47 UTC on 11 November); "started_at" only where someone wrote it down.',
-    by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), sources: ['data/keys.json', 'data/agents/sessions.json', 'agents/conductor/sessions.json', 'data/agents/index.json'], count: list.length, units: list };
+    by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), sources: ['data/keys.json', 'data/agents/sessions.json', 'agents/conductor/sessions.json', 'data/agents/index.json'], count: list.length, ci_runs: ciGap, units: list };
   fs.mkdirSync(DIR, { recursive: true });
   fs.writeFileSync(path.join(DIR, 'units.json'), JSON.stringify(out, null, 1) + '\n');
   return out;
@@ -369,7 +383,7 @@ function backfill() {
   }
   for (const f of stale) fs.unlinkSync(f);
   const u = units(agents);
-  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nModelEv} model-call events, ${nModelCalls} calls without one (${nModelAgg} aggregates for those with no parent loop) (models/calls), ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
+  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs${ciRecorded().note ? ` (not recorded since ${ciRecorded().recorded_until.slice(11, 16)} UTC)` : ''}, ${nA1} A1 aggregates, ${nModelEv} model-call events, ${nModelCalls} calls without one (${nModelAgg} aggregates for those with no parent loop) (models/calls), ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
 }
 
 // ---------- index.json: every file, its lines, first and last time, sha256 (so a visualizer fetches only what it needs) ----------
