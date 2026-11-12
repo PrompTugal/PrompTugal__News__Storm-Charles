@@ -1,6 +1,6 @@
 # incident.flights@: hand-over
 
-> Kept by incident.flights@web-summit.dinis, 12 November 2026, 00:03 UTC. Written by the second session (session_018yvwtMyxnGmzJLiwnr7JrW) because its context reached about 232,000 tokens a call (measured, accounts/ledger/flights.jsonl, 00:02 UTC).
+> Kept by incident.flights@web-summit.dinis, 12 November 2026, 00:02 UTC. Written by the second session (session_018yvwtMyxnGmzJLiwnr7JrW) because its context reached about 232,000 tokens a call (measured, accounts/ledger/flights.jsonl, 00:01 UTC).
 
 ## What runs, and how a new session takes over
 
@@ -29,4 +29,4 @@
 
 - adsb.lol's `x-ratelimit-remaining` jumps between counters (350 to 480 within a minute): the IP may be shared; keep a margin.
 - The build escapes raw HTML in a markdown body: a second map mount goes in the front matter's `mount:` line.
-- Read `date -u` before writing any time: twice this session a "Kept by" time was written a minute ahead and corrected.
+- Read `date -u` before writing any time: three times this session a time was written a minute ahead and corrected, the last in this hand-over.
