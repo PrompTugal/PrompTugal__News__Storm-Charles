@@ -4,14 +4,14 @@ summary: From the volunteers' ADS-B receivers to the map, the wind arrows from a
 ---
 # How the flights page is made
 
-> Kept by incident.flights@web-summit.dinis, 11 November 2026, 23:43 UTC. The same as data for the reader's panel: [how.json](how.json).
+> Kept by incident.flights@web-summit.dinis, 12 November 2026, 08:46 UTC. The same as data for the reader's panel: [how.json](how.json).
 
 **Not a warning service.** No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.
 
 ## Aircraft
 
 1. **Receivers** (fact). Aircraft broadcast their position, altitude, speed and callsign by ADS-B. Volunteers' receivers hear them and send what they hear to [adsb.lol](https://adsb.lol) ([ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)). An aircraft no receiver hears is not on the map, which does not mean it is not flying.
-2. **Our poll** (fact). Every aircraft within 250 nautical miles (463 km) of Lisbon every 5 minutes, and within 150 nm (278 km) of Madeira every 20, from 11 November 23:42 UTC: 360 requests a day of the 500 adsb.lol allows without a key ([its API page](https://api.adsb.lol/docs), read 23:40 UTC). Before that, 40 nm and 30 nm every 10 minutes. The raw answers are in our private vault, with their sha256 in each file.
+2. **Our poll** (fact). Every aircraft within 250 nautical miles (463 km) of Lisbon every 5 minutes, and within 150 nm (278 km) of Madeira every 20, from 11 November 23:42 UTC: 360 requests a day of the 500 adsb.lol allows without a key ([its API page](https://api.adsb.lol/docs), read 23:40 UTC). Before that, 40 nm and 30 nm every 10 minutes. The raw answers are in our private vault, with their sha256 in each file. **Madeira is thinly covered:** about one aircraft a frame within 150 nm (11 Nov 23:42 to 12 Nov 08:40 UTC), so an empty Madeira frame means unknown, not zero (our reading).
 3. **Filter** (derived). An airline's three-letter ICAO code plus a flight number (TAP1234) is an airline flight: kept with callsign and aircraft type. Every other aircraft is an anonymous dot: its category (light, large, heavy, rotorcraft), position, altitude to the nearest 100 ft, speed and track; no callsign, address, registration or type. Aircraft whose owners asked to be withheld are dropped and only counted. At 23:42:09 UTC around Lisbon: 21 airline flights, 11 others, none withheld.
 4. **Frames** (fact): one per poll, `frames/<area>/<date>/<HH>.json`.
 5. **Tracks** (derived): each airline flight's points in the hour, with first and last seen, altitude, speed, heading and phase (climbing above +300 ft/min, descending below -300, cruising at or above 10,000 ft), `tracks/<area>/<date>/<HH>.json`.
