@@ -25,8 +25,8 @@ for (const [key, A] of Object.entries(AREAS)) {
   const STEP = A.step || STEP_WIDE; const lats = range(A.lat, STEP); const lons = range(A.lon, STEP)
   const pts = lats.flatMap(la => lons.map(lo => [la, lo]))
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p => p[0]).join(',')}&longitude=${pts.map(p => p[1]).join(',')}&hourly=${VARS.join(',')}&wind_speed_unit=kn&timezone=GMT&start_hour=${START}&end_hour=${END}`
-  let r = await fetchProv(url, { kind: 'open-meteo', timeoutMs: 60000 })
-  if (!r.ok) { await new Promise(res => setTimeout(res, 15000)); r = await fetchProv(url, { kind: 'open-meteo', timeoutMs: 60000 }) }
+  let r = await fetchProv(url, { kind: 'open-meteo', timeoutMs: 120000 })
+  if (!r.ok) { await new Promise(res => setTimeout(res, 15000)); r = await fetchProv(url, { kind: 'open-meteo', timeoutMs: 120000 }) }
   if (!r.ok) { console.error(`${key}: ${r.prov.status} ${r.prov.error || r.body.toString().slice(0, 200)}`); process.exitCode = 1; continue }
   let j = JSON.parse(r.body.toString('utf8')); if (!Array.isArray(j)) j = [j]
   const times = j[0].hourly.time.map(t => t + ':00Z')
