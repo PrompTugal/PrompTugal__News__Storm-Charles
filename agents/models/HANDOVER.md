@@ -4,7 +4,7 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 12 November 2026, 06:34 UTC
+> Kept by incident.models@web-summit.dinis, 12 November 2026, 10:34 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
@@ -14,7 +14,7 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
 - The conductor makes the hourly wake at :31 into this session; the round is the one under "Each hourly wake" below.
 - Sources' and media's wakes were disabled on purpose at ~00:50 UTC on 12 November (Dinis's word, relayed; the conductor, 02:33): expect no more delegated calls from them. Only transport (and flights while it runs) still call. This desk's own wake is one of five the conductor has asked Dinis about; carry on until he answers.
 
-- **State at 06:31** (context about 160k a call): wakes 01:31 to 06:31 all ran; nothing moved after 00:43. Team spend on 12 November 0.027 of 20 USD; this desk 0.011 of 6 (no call since 00:32); delegation 0.026 of 5. Running totals: models 373 calls (0 failed), media 168 (1 failed, 41 of 60 agree), sources 105 (35 of 35), transport 85 (glosses 14 of 23). Press decisions: 40 read, 11 matched an edge, 0 leads; nothing new since.
+- **State at 10:31** (context about 185k a call; a fifth session should start from here): wakes 01:31 to 10:31 all ran; nothing delegated moved after 00:43 (transport's rounds since found nothing new to gloss; flights calls once an hour, 12 today). Team spend on 12 November 0.028 of 20 USD; this desk 0.011 of 6 (no call since 00:32); delegation 0.026 of 5. Running totals: models 373 calls (0 failed), media 168 (1 failed, 41 of 60 agree), sources 105 (35 of 35), transport 85 (glosses 14 of 23). Press decisions: 40 read, 11 matched an edge, 0 leads; nothing new since.
 - Transport's 9 failing glosses all say "the open models give different figures" (none a missing figure). A hypothesis, not checked: figure formatting (17h30 against 17:30). Their raw records are in transport's session, not this vault.
 - `node tools/models-measure-match.mjs` rewrites `models/delegated/match-fact-measure.json` without its hand-written `note` and `reading`: when it finds nothing new, `git checkout` the file; when it does, put those two back.
 - The vault had nothing new to push this session (no calls after it opened).
