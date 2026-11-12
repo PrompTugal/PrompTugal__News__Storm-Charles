@@ -1,7 +1,7 @@
 {
  "about": "A forecast provider supplies a site with its forecasts (the site says so). Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-12T09:25Z",
+ "updated": "2026-11-12T12:32Z",
  "verb": "supplies",
  "inverse": "supplied_by",
  "edges": [
@@ -12,11 +12,12 @@
    "expect": [
     "BBC Weather in association with MeteoGroup"
    ],
-   "read_utc": "2026-11-12T09:25Z",
+   "read_utc": "2026-11-12T12:32Z",
    "http": 200,
-   "sha256": "10c9776e6145ed2a3bbc3dd409f9b3965f3e0bc3dec6bbbe3fbfa7561a4c9bc9",
-   "state": "stated",
-   "quote": "FAQs Feeds Elsewhere MeteoGroup , external World Meteorological Organization , external Met Office , external BBC Weather in association with MeteoGroup , external All times are Western European Standard Time (Europe/Lisbon, GMT) unless otherwise stated. Explore the BBC Home News"
+   "sha256": "07846f936761f0ac078926b67ac21c3b5e606516d0e8a86265efb98c0fa9a53b",
+   "state": "not found in this read",
+   "found": [],
+   "note": "The page's footer carried the line \"BBC Weather in association with MeteoGroup\" and a link to MeteoGroup at every read up to 09:25 UTC on 12 November; at 12:33 UTC on 12 November, read twice, the footer lists only the World Meteorological Organization and the Met Office and the line is gone. What we read, not why: the page gives no reason, and it no longer says who supplies its forecast."
   },
   {
    "from": "body-ecmwf",
@@ -26,9 +27,9 @@
     "modelo global do ECMWF"
    ],
    "note": "IPMA derives products from ECMWF's global model as well as from its own AROME runs.",
-   "read_utc": "2026-11-12T09:25Z",
+   "read_utc": "2026-11-12T12:30Z",
    "http": 200,
-   "sha256": "7c0f700b1095b7b9749e1beede4ec71a343afa94f63387e8cb4c0ba8fd3b82d4",
+   "sha256": "3337e68428b36fd5c965e249b14fa97a2cd69a701a6ef9b59e74751cf323ec21",
    "state": "stated",
    "quote": "uma resolução horizontal de 2.5 km. Têm sido desenvolvidos vários produtos derivados deste modelo, bem como do modelo global do ECMWF, sendo efetuada a verificação/validação dos resultados de uma forma sistemática. ECMWF AROME --> Media Notícias Comunicados Palestras / formações Comunicados"
   }
