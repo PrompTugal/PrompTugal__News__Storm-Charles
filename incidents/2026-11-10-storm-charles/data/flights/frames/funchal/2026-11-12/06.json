@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-12T06:00:17Z",
+  "updated": "2026-11-12T06:40:16Z",
   "label": "fact",
   "area": "funchal",
   "area_def": {
@@ -27,7 +27,8 @@
   "cadence_min": 20,
   "cadence": "one frame every 20 minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)",
   "airlines": {
-    "AZU": "Azul"
+    "AZU": "Azul",
+    "RYR": "Ryanair"
   },
   "frames": [
     {
@@ -47,6 +48,44 @@
       "withheld_by_owner_request": 0,
       "rows": [
         ["AZU8750","AZU","A332",32.1127,-14.6435,40000,false,522,34,0,0.2]
+      ],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T06:20:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 101,
+        "sha256": "2325f53e2a5ac9dc36ef30d6fc9a3d47d717662fafe3b76eb828209a2434c80e",
+        "read": "2026-11-12T06:20:16Z",
+        "response_ms": 481,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T062016Z-2325f53e2a5a.body",
+        "rate_limit_remaining": 489
+      },
+      "airline": 0,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [],
+      "others": []
+    },
+    {
+      "t": "2026-11-12T06:40:16Z",
+      "request": {
+        "url": "https://api.adsb.lol/v2/lat/32.75/lon/-16.85/dist/150",
+        "status": 200,
+        "bytes": 810,
+        "sha256": "569f166d3b4b3d643d7115ce1a05405351fc313641ab2e2ad9f5678761ff369d",
+        "read": "2026-11-12T06:40:15Z",
+        "response_ms": 626,
+        "raw": "flights vault: adsblol/2026-11-12/2026-11-12T064015Z-569f166d3b4b.body",
+        "rate_limit_remaining": 473
+      },
+      "airline": 1,
+      "other": 0,
+      "withheld_by_owner_request": 0,
+      "rows": [
+        ["RYR1EQ","RYR","B38M",31.7627,-14.874,36000,false,517,33,0,2.1]
       ],
       "others": []
     }
