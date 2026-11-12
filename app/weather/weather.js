@@ -99,7 +99,8 @@
       return lv ? { type: x[2].trim(), level: lv, start_utc: iso(m.onset_utc), end_utc: iso(m.expires_utc), text_pt: m.description_pt, text_en: m.text_en, text_en_by: m.text_en_by, sent_utc: iso(m.sent_utc), read_utc: m.last_seen_utc || m.read_utc, via: 'cap', id: m.identifier } : null
     }).filter(Boolean)
     if (!cur.length) return out
-    var key = function (w) { return w.level + '|' + T(w.start_utc) + '|' + T(w.end_utc) }, types = {}, list = []
+    // a start already past is not a difference: two windows that both run now to the same end, at the same level, are the same warning
+    var key = function (w) { return w.level + '|' + Math.max(T(w.start_utc), t) + '|' + T(w.end_utc) }, types = {}, list = []
     open.concat(cur).forEach(function (w) { types[w.type] = 1 })
     Object.keys(types).forEach(function (ty) {
       var o = open.filter(function (w) { return w.type === ty }), c = cur.filter(function (w) { return w.type === ty })
