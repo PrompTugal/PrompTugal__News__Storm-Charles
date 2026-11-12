@@ -2,12 +2,12 @@
 // The wind field over Lisbon and Madeira (incident.flights@web-summit.dinis, 11 November 2026, WS-214; Dinis ~22:00 UTC).
 //   node tools/flights-wind.mjs   -> incidents/<id>/data/flights/wind/<area>-<date>.json, one file per area per UTC day
 // Open-Meteo (CC BY 4.0) hourly wind at 10 m (speed, direction, gusts) and at 850 hPa (speed, direction, about 1,500 m),
-// on a 0.5-degree lattice (0.25 until 11 November 23:54 UTC, over a smaller box), 10 November 12:00 to 12 November 12:00 UTC. Model data, not observations; hours after the
+// on a 0.5-degree lattice (0.25 until 11 November 23:54 UTC, over a smaller box), 10 November 12:00 to 13 November 12:00 UTC (moved a day forward at 11:14 UTC on 12 November). Model data, not observations; hours after the
 // time read are Open-Meteo's forecast, marked, and replaced on the next run. Not ours and not a warning.
 import path from 'node:path'
 import { BY, DATA, NOT_WARNING, OPENMETEO_CITE, fetchProv, writeJSON, iso } from './flights-common.mjs'
 
-const START = '2026-11-10T12:00'; const END = '2026-11-12T12:00'
+const START = '2026-11-10T12:00'; const END = '2026-11-13T12:00'
 const AREAS = {
   // the boxes around the aircraft areas (tools/flights-poll.mjs): Lisbon 250 nm of 38.75 N 9.20 W, Madeira 150 nm of 32.75 N 16.85 W
   // (incident.conductor@, 11 November 23:53 UTC: the arrows covered only the old small lattice). 0.5 degrees keeps a day under 256 KB.
