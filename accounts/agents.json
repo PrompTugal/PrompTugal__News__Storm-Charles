@@ -1,7 +1,7 @@
 {
  "about": "Tokens each agent's own session has used, by the WS-148 method: an agent runs tools/accounts-measure.mjs in its own session and commits one line of numbers to accounts/ledger/<role>.jsonl (fresh input, output, cache writes, cache reads; no message text). Only the agent can measure its session. Where no line exists the cell says \"not measured\". Tokens, not money: no price is applied.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-12T00:41:41Z",
+ "updated": "2026-11-12T00:43:00Z",
  "method": {
   "tool": "tools/accounts-measure.mjs",
   "from": "WS-148, people/indi/accountant/measure.mjs in SGit-AI/SGit-AI__Website__Web-Summit",
@@ -19,14 +19,14 @@
   "source": "agents/policy.json and data/agents/sessions.json for who exists; accounts/ledger/ for who has measured"
  },
  "team_measured": {
-  "calls": 14160,
-  "fresh_input": 29374,
-  "output": 10492873,
-  "cache_writes": 37551780,
-  "cache_reads": 3710243620,
-  "all": 3758317647,
-  "cache_reads_share": 0.9872,
-  "weighted": 419098389,
+  "calls": 14388,
+  "fresh_input": 29937,
+  "output": 10562963,
+  "cache_writes": 37829180,
+  "cache_reads": 3787390795,
+  "all": 3835812875,
+  "cache_reads_share": 0.9874,
+  "weighted": 427161160,
   "kind": "measured",
   "note": "the sum of the 31 measured of 43 agents; not the team's total"
  },
@@ -896,11 +896,11 @@
   },
   {
    "hour": "2026-11-11T23:00Z",
-   "calls": 444,
-   "fresh_input": 881,
-   "output": 238557,
-   "cache_writes": 611653,
-   "cache_reads": 79517348,
+   "calls": 557,
+   "fresh_input": 1157,
+   "output": 274859,
+   "cache_writes": 754882,
+   "cache_reads": 132199352,
    "agents": [
     "accountant",
     "archivist",
@@ -924,20 +924,21 @@
     "weatherwatch",
     "wikipedia"
    ],
-   "weighted": 8802826
+   "weighted": 14250833
   },
   {
    "hour": "2026-11-12T00:00Z",
-   "calls": 94,
-   "fresh_input": 179,
-   "output": 52411,
-   "cache_writes": 288442,
-   "cache_reads": 18390111,
+   "calls": 209,
+   "fresh_input": 466,
+   "output": 86199,
+   "cache_writes": 422613,
+   "cache_reads": 42855282,
    "agents": [
     "accountant",
     "archivist",
     "board",
     "ci",
+    "conductor",
     "entities",
     "flights",
     "identity",
@@ -950,7 +951,7 @@
     "sources",
     "weatherwatch"
    ],
-   "weighted": 2180043
+   "weighted": 4794806
   }
  ],
  "agents": [
@@ -1253,54 +1254,54 @@
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/conductor.jsonl",
-   "measured_at": "2026-11-11T23:03:48Z",
+   "measured_at": "2026-11-12T00:42:21Z",
    "sessions_measured": 1,
-   "lines": 12,
+   "lines": 13,
    "tokens": {
-    "calls": 3056,
-    "fresh_input": 7316,
-    "output": 1369854,
-    "cache_writes": 5195516,
-    "cache_reads": 1375425976,
-    "without_cache_reads": 6572686,
-    "all": 1381998662,
-    "cache_reads_share": 0.9952,
-    "weighted": 144115284
+    "calls": 3284,
+    "fresh_input": 7879,
+    "output": 1439944,
+    "cache_writes": 5472916,
+    "cache_reads": 1452573151,
+    "without_cache_reads": 6920739,
+    "all": 1459493890,
+    "cache_reads_share": 0.9953,
+    "weighted": 152178054
    },
    "context_per_call": {
     "first": 82622,
-    "median": 458104,
+    "median": 446607,
     "largest": 783922,
-    "last": 714579
+    "last": 286983
    },
-   "compactions": 5,
+   "compactions": 6,
    "subagents": 0,
    "first_call": "2026-11-10T18:56:43.267Z",
-   "last_call": "2026-11-11T23:03:36.149Z",
+   "last_call": "2026-11-12T00:42:20.971Z",
    "per_commit": {
-    "weighted_tokens": 514697,
+    "weighted_tokens": 543493,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "ReadNotifications": {
-     "calls": 866,
-     "returned_chars": 3813856
+     "calls": 936,
+     "returned_chars": 4086949
     },
     "connector tools": {
-     "calls": 1048,
-     "returned_chars": 1094834
+     "calls": 1100,
+     "returned_chars": 1183288
     },
     "Bash": {
-     "calls": 770,
-     "returned_chars": 767801
-    },
-    "Read": {
-     "calls": 16,
-     "returned_chars": 7344
+     "calls": 827,
+     "returned_chars": 800598
     },
     "SendUserFile": {
-     "calls": 31,
-     "returned_chars": 7221
+     "calls": 35,
+     "returned_chars": 8313
+    },
+    "Read": {
+     "calls": 18,
+     "returned_chars": 7344
     },
     "Write": {
      "calls": 8,
@@ -1315,7 +1316,7 @@
      "returned_chars": 0
     }
    },
-   "last_task": "23:00 hour: Thursday CAP row; keys split policy; hand-overs (transport, librarian, flights, models, weatherwatch)",
+   "last_task": "00:00 hour: wake, alert end row, IPMA communiqué row, five hand-overs (flights, reporter, designer, observability, models), flights page asks",
    "quality": "pass"
   },
   {
