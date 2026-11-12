@@ -1,4 +1,4 @@
-> Kept by incident.aws@web-summit.dinis, 2026-11-11, 23:24 UTC (first written 22:25; 23:24: Runtime's PUBLIC mode confirmed, OpenRouter trace fields)
+> Kept by incident.aws@web-summit.dinis, 2026-11-12, 00:24 UTC (first written 2026-11-11 22:25; 23:24: Runtime's PUBLIC mode confirmed, OpenRouter trace fields; 00:24: StopRuntimeSession confirmed, in the dispatcher's policy)
 
 # The runner on AWS: an architecture map (first pass, nothing deployed)
 
@@ -116,9 +116,9 @@ Three ways an agent could start an AWS run. Recommended: **(a)**.
 {
   "Version": "2012-10-17",
   "Statement": [
-    { "Sid": "InvokeTheThreeRunnersOnly",
+    { "Sid": "InvokeAndStopTheThreeRunnersOnly",
       "Effect": "Allow",
-      "Action": "bedrock-agentcore:InvokeAgentRuntime",
+      "Action": ["bedrock-agentcore:InvokeAgentRuntime", "bedrock-agentcore:StopRuntimeSession"],
       "Resource": [
         "arn:aws:bedrock-agentcore:eu-south-2:<acct>:runtime/<a0-id>",
         "arn:aws:bedrock-agentcore:eu-south-2:<acct>:runtime/<a0-id>/runtime-endpoint/DEFAULT",
@@ -135,7 +135,7 @@ Three ways an agent could start an AWS run. Recommended: **(a)**.
 }
 ```
 
-No `iam:*`, no `bedrock-agentcore:Create*`/`Update*`, no `InvokeAgentRuntimeForUser` (a separate action for calls with a user-id header: fact, same reference). The runtime session id is the run's own: at least 33 characters (fact, [Runtime sessions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-sessions.html)), so `ws214-` + the 32-hex `trace_id` fits (hypothesis). On Lambda the same role would hold only `lambda:InvokeFunction` on three function ARNs (fact, [Lambda actions](https://docs.aws.amazon.com/service-authorization/latest/reference/list_lambda.html)); a function URL with `AWS_IAM` auth needs `lambda:InvokeFunctionUrl` as well (fact, [function URL auth](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html)).
+The dispatcher stops each session as soon as the response arrives (`StopRuntimeSession`, §9 item 2), so no microVM idles to the 15 min timeout (§7's caveat). No `iam:*`, no `bedrock-agentcore:Create*`/`Update*`, no `InvokeAgentRuntimeForUser` (a separate action for calls with a user-id header: fact, same reference). The runtime session id is the run's own: at least 33 characters (fact, [Runtime sessions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-sessions.html)), so `ws214-` + the 32-hex `trace_id` fits (hypothesis). On Lambda the same role would hold only `lambda:InvokeFunction` on three function ARNs (fact, [Lambda actions](https://docs.aws.amazon.com/service-authorization/latest/reference/list_lambda.html)); a function URL with `AWS_IAM` auth needs `lambda:InvokeFunctionUrl` as well (fact, [function URL auth](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html)).
 
 ## 4. The grant per mode, as IAM, and egress
 
@@ -227,7 +227,7 @@ Never in a trace: a prompt, a model's words, a secret, a private person (data/tr
 ## 9. Not confirmed in AWS's documentation (what this pass could not establish)
 
 1. ~~A `PUBLIC` network mode for **Runtime**~~ **confirmed 23:24 UTC**: `networkMode` is "The network mode for the AgentCore Runtime", "Valid Values: `PUBLIC | VPC`" ([NetworkConfiguration](https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_NetworkConfiguration.html)). So a runtime with no VPC is a documented choice: the platform then enforces no egress, as on GitHub, and the allowlist stays in code.
-2. Whether Runtime memory billing stops when a session is stopped explicitly, and the API to stop it.
+2. Whether Runtime memory billing stops when a session is stopped explicitly. **Half confirmed 00:24 UTC 12 Nov**: the API exists, `StopRuntimeSession`, which "Stops a session that is running in an running AgentCore Runtime agent" (POST `/runtimes/{agentRuntimeArn}/stopruntimesession`, session id 33 to 256 characters: [StopRuntimeSession](https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_StopRuntimeSession.html)). Its IAM action `bedrock-agentcore:StopRuntimeSession` requires the same `runtime` and `runtime-endpoint` resources as invoke ([Service Authorization Reference](https://docs.aws.amazon.com/service-authorization/latest/reference/list_bedrock-agentcore.html)), so it is now in the dispatcher's policy in §3: the dispatcher stops the session after the response. **Still not confirmed**: that billing ends at the stop. Neither page mentions billing.
 3. A minimum billed duration for Fargate and CodeBuild per-minute builds.
 4. Exporting AgentCore's OTEL spans to a non-AWS backend (Elastic).
 5. The `ECC_NIST_P256` key-spec name for KMS (only the `ECDSA_SHA_256` algorithm was read), and CloudTrail logging of `kms:Sign`.
