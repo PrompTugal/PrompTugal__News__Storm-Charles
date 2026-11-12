@@ -116,7 +116,7 @@
         return '<li class="bc-w lv-' + esc(x.level) + (on ? ' on' : '') + '"><span class="lvl ' + esc(x.level) + '">' + esc(LEVEL[x.level] || x.level) + '</span> <b>' + esc(HAZ[x.type] || x.type) + '</b> ' +
           '<span class="bc-win">' + (on ? 'in force · ' : 'from ' + tm(x.start_utc, dayhm(x.start_utc)) + ' ') + 'to ' + tm(x.end_utc, dayhm(x.end_utc)) + '</span>' +
           '<div class="bc-wt">' + esc(x.text_en || x.text_pt) + '</div></li>'
-      }).join('') + '</ul>' + prov('IPMA open data', w.source, w.read_utc)
+      }).join('') + '</ul>' + (lis.length ? '' : '<p class="meta">No warning above green for the Lisbon district in IPMA\'s read, now or later.</p>') + prov('IPMA open data', w.source, w.read_utc)
     }
     if (a && a.now && a.now.by_area) {
       var names = {}; ((D.places && D.places.areas) || []).forEach(function (p) { names[p.id] = p.name })
@@ -124,7 +124,7 @@
       Object.keys(a.now.by_area).forEach(function (k) { var p = a.now.by_area[k].peak; if (by[p]) by[p].push(names[k] || k) })
       h += '<div class="bc-sub">Every area, the highest level today</div><div class="bc-areas">' + ['red', 'orange', 'yellow'].filter(function (l) { return by[l].length }).map(function (l) {
         return '<div class="bc-ar"><span class="lvl ' + l + '">' + LEVEL[l] + ' · ' + by[l].length + '</span> ' + esc(by[l].sort().join(' · ')) + '</div>'
-      }).join('') + '</div>' + prov('IPMA open data, as we keep it', view('sources/ipma/data/warnings.json', 'now'), a.now.read_utc)
+      }).join('') + (by.red.length + by.orange.length + by.yellow.length ? '' : '<div class="meta">Every area green in IPMA\'s read.</div>') + '</div>' + prov('IPMA open data, as we keep it', view('sources/ipma/data/warnings.json', 'now'), a.now.read_utc)
     }
     box.innerHTML = h
   }
@@ -142,7 +142,7 @@
       return '<div class="bc-tile bc-ext lv-' + l + '"><div class="bc-tv">' + esc(M(cur[l] || 0)) + '</div><div class="bc-tk"><span class="lvl ' + l + '">' + LEVEL[l] + '</span> residents</div></div>'
     }).join('') + '</div>' +
       '<div class="meta">Residents (INE Census 2021) of the IPMA areas at each level in the hour from ' + tm(cur.hour_utc, hm(cur.hour_utc)) + ' UTC' +
-      (x.peak ? '; the most under red in the file: ' + esc(M(x.peak.red)) + ' at ' + tm(x.peak.hour_utc, dayhm(x.peak.hour_utc)) + ' UTC' : '') +
+      (x.peak && x.peak.red ? '; the most under red in the file: ' + esc(M(x.peak.red)) + ' at ' + tm(x.peak.hour_utc, dayhm(x.peak.hour_utc)) + ' UTC' : '') +
       '. Where people sleep, not where they are; never a count of people harmed.</div>' +
       (D.areas && D.areas.now && T(D.areas.now.read_utc) - T(x.read_utc) > 30 * 60e3 ? '<div class="bc-stale">Worked out from IPMA\'s warnings as read at ' + tm(x.read_utc, hm(x.read_utc)) + ' UTC; IPMA\'s warnings were read again at ' + tm(D.areas.now.read_utc, hm(D.areas.now.read_utc)) + ' UTC and may have changed since: the warnings panel has the newer read.</div>' : '') +
       prov('IPMA warnings × INE census, by incident.datascience@', view('incidents/' + inc + '/data/exposure/people-by-hour.json', 'hours'), x.read_utc)
