@@ -143,7 +143,9 @@
 
   // the communiqué in force, in one line under the band: its number (from IPMA's title), its validity and when IPMA's feed last listed it
   function commLine(t) {
-    var c = commNow(t); if (!c) return ''
+    var c = commNow(t)
+    if (!c) { var e = commEnded(t); if (!e) return ''; var en = String(e.title || '').match(/comunicado\s+n\S*\s*\d+/i)
+      return '<p class="wxc-comm">No IPMA communiqué in force in the file read. <span>The last, <span lang="pt">' + esc(en ? en[0] : 'comunicado') + '</span> (issued ' + when(e.issued_utc, t) + ' UTC), was valid to ' + when(e.valid_to_utc, t) + ' UTC.</span> ' + prov('comm', 'IPMA communiqués', (D.comm || {}).read_utc) + '</p>' }
     var m = String(c.title || '').match(/comunicado\s+n\S*\s*\d+/i)
     // IPMA's own words, never ours: the text without its link sentences; on the line, the first two clauses of the sentence that gives a figure in km/h
     var ss = String(c.text_pt || '').split(/(?<=\.)\s+/).filter(function (x) { return x && !/https?:/.test(x) })
@@ -189,12 +191,18 @@
     })
     return out.length ? '<p class="wxc-chg">' + out.join(' · ') + '</p>' : ''
   }
+  // the newest mainland communiqué that has run out in the last 36 hours: shown as ended, with its validity, when none is in force
+  function commEnded(t) {
+    var its = ((D.comm || {}).items || []).filter(function (c) { return ok(c.valid_to_utc) && T(c.valid_to_utc) <= t && T(c.valid_to_utc) > t - 36 * 36e5 && /continente|lisboa/i.test(c.title || '') }).sort(function (a, b) { return T(b.issued_utc) - T(a.issued_utc) })
+    return its[0] || null
+  }
   function commNow(t) {
     var its = ((D.comm || {}).items || []).filter(function (c) { return ok(c.valid_to_utc) && T(c.valid_to_utc) > t && ok(c.issued_utc) && /continente|lisboa/i.test(c.title || '') }).sort(function (a, b) { return T(b.issued_utc) - T(a.issued_utc) })
     return its[0] || null
   }
   function communique(t) {
-    var c = commNow(t); if (!c) return ''
+    var c = commNow(t)
+    if (!c) { var e = commEnded(t); return e ? '<p class="meta wxc-where">No IPMA communiqué in force in the file read. The last, <span lang="pt">' + esc(e.title) + '</span>, issued ' + when(e.issued_utc, t) + ' UTC, was valid to ' + when(e.valid_to_utc, t) + ' UTC. ' + prov('comm', 'IPMA communiqués', (D.comm || {}).read_utc) + '</p>' : '' }
     return '<p class="meta wxc-where">IPMA communiqué in force: <span lang="pt">' + esc(c.title) + '</span>. Issued ' + when(c.issued_utc, t) + ' UTC, valid to ' + when(c.valid_to_utc, t) + (ok(c.last_seen_utc) ? ', last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) : '') + '. ' + prov('comm', 'IPMA communiqués', D.comm.read_utc) + '</p>'
   }
 
