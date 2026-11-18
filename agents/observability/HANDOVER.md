@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 12 November 2026, 04:20 UTC
+> Kept by incident.observability@web-summit.dinis, 18 November 2026, 03:30 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -67,6 +67,8 @@ Key `incident-observability-dinis-12` (enc sha256:b59c7962005f4926, signing sha2
 - **Live check script** is not committed: a 15-line Playwright loop over `/`, `/agents/`, `/agents/observability/`, `/app/agents/jobs.html`, `commit.html`, `now.html`, `/data/trace/` at 390 px, once as is and once with `api.github.com/**` answered 403; count lines with status 200, width 390 and no page error (14 expected); print `/version.json`.
 - **Wake as run:** `git pull --rebase origin dev`; `sgit pull` in both vault clones; the views drain; `trace.mjs backfill`; `trace-check.mjs <fringe>/admin/tools/elastic-lib.mjs`; `find ... -size +240k`; build + validate; read `_site/data/agents/now.json`; live check; `accounts-measure.mjs --append`; commit views, trace, ledger; `node tools/agents-release.mjs`. Report to the conductor only on a change or a fault.
 - Context about 169,000 tokens a call at the 04:14 wake: hand over at the conductor's word.
+
+- **The hold, and this role's exemption:** `board/HOLD.md` (Dinis, 12 Nov 15:15 UTC) holds every agent. The twelfth session missed it and pushed lean wakes 2766af08 to 90b13da7 (12 Nov 16:14 to 13 Nov 15:43) before the conductor pointed it out; then it held. On 18 November (~03:25 UTC) Dinis told this session directly: "this is just for you. We're just running observability here. Everything else is on hold." So this role's :14 wake runs (drain, trace, measure, release); never touch or delete HOLD.md; every other agent stays held. 18 Nov drain: 293 held events, 0 refused, 445 views in 292 visits (c4f8052c). Read HOLD.md and `status.json` `hold` at the start of every wake.
 
 ## The eleventh session (session_018yvwtQ1MgHJ1nQ9rK2SXQu, from 23:20 UTC on 11 November)
 
